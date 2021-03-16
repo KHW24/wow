@@ -1,16 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
- <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
-<!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-<!-- Latest compiled JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="project/resources/css/postView.css"/>
  <div class="container ">
-    <br><br>
     <!--이미지 슬라이드-->
     <div class="row center-block">
       <div class="col-sm-10">
@@ -25,15 +16,15 @@
           <!-- Wrapper for slides -->
           <div class="carousel-inner">
             <div class="item active">
-              <img src="./images/macaron.jpg" alt="이미지">
+              <img src="${pageContext.request.contextPath}/resources/images/macaron.jpg" alt="이미지">
             </div>
 
             <div class="item">
-              <img src="./images/macaron2.jpg" alt="이미지">
+              <img src="${pageContext.request.contextPath}/resources/images/macaron2.jpg" alt="이미지">
             </div>
 
             <div class="item">
-              <img src="./images/macaron3.jpg" alt="이미지">
+              <img src="${pageContext.request.contextPath}/resources/images/macaron3.jpg" alt="이미지">
             </div>
           </div>
 
@@ -52,7 +43,7 @@
     <!--유저 프로필, 닉네임, 주소, 쪽지보내기,신고하기-->
     <table class="userInfo">
       <tr>
-        <td><img src="./images/userimage.jpg" /></td>
+        <td><img src="${pageContext.request.contextPath}/resources/images/userimage.jpg" /></td>
         <td>
           <span class="user-info"><strong>하이d</strong></span><br>
           <span class="user-info">춘천시 우두동</span>
@@ -61,7 +52,7 @@
         <td><button class="btn btn-default">신고하기</button></td>
       </tr>
       <tr>
-        <td class="heart"><img src="./images/heart.png"/>
+        <td class="heart"><img src="${pageContext.request.contextPath}/resources/images/heart.png"/>
         </td>
         <td colspan="2" class="title">
           <strong>마카롱 팝니다</strong>

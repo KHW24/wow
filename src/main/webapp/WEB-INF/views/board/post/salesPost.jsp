@@ -8,6 +8,7 @@
 
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="project/resources/css/post/post.css"/>
   <div class="container">
   <div class="page-title">
     게시글 작성

@@ -12,17 +12,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-/**
- * Handles requests for the application home page.
- */
+
 @Controller
 public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
-	/**
-	 * Simply selects the home view to render by returning its name.
-	 */
+	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
@@ -38,8 +34,17 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value="postView.do", method=RequestMethod.GET)
-	public String post(ModelAndView modelAndView) throws Exception{
-		return "board/post/buyerPostView";
+	public String postView(Model model) throws Exception{
+		model.addAttribute("center","../board/post/buyerPostView.jsp");
+		return "template/index";
 	}
+	
+	@RequestMapping(value="postWrite.do", method=RequestMethod.GET)
+	public String postWriteView(Model model) throws Exception{
+		model.addAttribute("center","../board/post/salesPost.jsp");
+		return "template/index";
+	}
+	
+	
 	
 }
