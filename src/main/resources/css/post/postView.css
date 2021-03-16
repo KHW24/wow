@@ -1,0 +1,74 @@
+@charset "UTF-8";
+
+  /* 이미지 슬라이드 크기 조정 */
+ .item>img{
+   top:0;
+   left:0;
+   min-width:100%;
+   min-height:500px;
+   max-height:500px;
+ }
+ /* 닉네임,주소, 댓글,댓글등록버튼 마진 조정 */
+ .userInfo, .comments, .comments-btn{
+   margin: 20px;
+ }
+ /* 닉네임,주소 부분 크기 조정 */
+ .userInfo tr td:nth-of-type(2){
+   width:700px;
+ }
+/* 닉네임, 조회수, 댓글 글씨크기 조정 */
+ .user-info, .read-count, .comments-title{
+   font-size: 16px;
+ }
+ /* 글제목 크기 조정 */
+ .title{
+   font-size:22px;
+ }
+ /* 유저 프로필 사진, 좋아요 하트 이미지 크기 */
+ img{
+  width:70px;
+  height:70px;
+ }
+ /* 좋아요 구분자  */
+ .heart{
+   border-right:2px solid #cccc;
+ }
+ /* 글제목 패딩 */
+ .title{
+   padding-left:30px;
+ }
+ /* 글내용 스타일 */
+ pre {
+   background-color: white;
+   border:none;
+   text-align: center;
+ }
+ /* 섹션별 구분자 */
+ .userInfo tr:nth-of-type(2),.contents, .comments-hr{
+   border-bottom: 2px solid #cccc;
+ }
+ /* 대댓글 들여쓰기 */
+ .reply{
+   margin-left:20px;
+ }
+ /* 댓글별 마진 */
+ .comment{
+   margin-top:20px;
+ }
+ /*전체 툴 마진 조정*/
+ .container{
+ 	margin: 50px;
+ }
+ 
+ /********************************게시글작성 페이지 css
+ ******************************************************/
+ .page-title{
+    text-align: center;
+    line-height: 150px;
+    font-size: 25px;
+    font-weight: bold;
+  }
+
+  label{
+    font-size: 16px;
+  }
