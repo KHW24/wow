@@ -4,17 +4,15 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <style>
 	.form-group{margin-top: 4%; height: 30px;}  
-	.btn:hover{
-		background-color: indigo;
-		color: white;
-	}
+	 .btn:hover{
+        background-color: rgb(173, 39, 173);
+        color: white;
+    }
 </style>
 
 <div style="text-align: center;">
 	<h2>내 정보 수정</h2>
 	<hr>
-	<br>
-	<br>
 </div>
 <form>
 	<table style="margin: 0 auto; width: 30%; height: 300px;">
@@ -97,6 +95,6 @@
 		</tbody>
 	</table>
 	<div style="text-align: center;">
-		<button type="button" class="btn">완료</button>
+		<button type="button" class="btn" style="margin-bottom :3%">완료</button>
 	</div>
 </form>
