@@ -4,10 +4,10 @@
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <style>
-.btn:hover {
-	background-color: indigo;
-	color: white;
-}
+ .btn:hover{
+        background-color: rgb(173, 39, 173);
+        color: white;
+    }
 </style>
 
 
@@ -25,13 +25,13 @@
 		<tr>
 			<td><label for="usr">비밀번호:</label></td>
 			<td><input type="text" class="form-control" id="infoConPw"
-				placeholder="비밀번호를 입력해주세요"><br></td>
+				placeholder="비밀번호를 입력해주세요" required><br></td>
 		</tr>
 		<tr>
 			<td><label for="pwd" style="padding-right: 18%;">비밀번호
 					확인:</label></td>
 			<td><input type="password" class="form-control"
-				id="infoConPwCon" placeholder="다시 한 번 입력해주세요"><br></td>
+				id="infoConPwCon" placeholder="다시 한 번 입력해주세요" required><br></td>
 		</tr>
 		<tr>
 		</tr>
