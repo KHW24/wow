@@ -17,7 +17,7 @@
   
   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/main.css"/>
 <style>
-	#header1 {height:200px;}
+	#header1 {height:100px;}
 	#center1 {}
 	#footer1 {height:300px;}
  </style>

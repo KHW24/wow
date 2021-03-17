@@ -45,24 +45,28 @@ public class HomeController {
 		return "template/index";
 	}
 	
+	//관심품목 페이지
 	@RequestMapping(value="wishList.do", method=RequestMethod.GET)
 	public String wishListView(Model model) throws Exception{
 		model.addAttribute("center","../mypage/wishList.jsp");
 		return "template/index";
 	}
 	
+	//게시물 리스트 페이지
 	@RequestMapping(value="boardList.do", method=RequestMethod.GET)
 	public String boardListView(Model model) throws Exception{
 		model.addAttribute("center","../board/boardList.jsp");
 		return "template/index";
 	}
 	
+	//판매자별 게시물 리스트 페이지
 	@RequestMapping(value="otherList.do", method=RequestMethod.GET)
 	public String otherListView(Model model) throws Exception{
 		model.addAttribute("center","../board/otherList.jsp");
 		return "template/index";
 	}
 
+	//내가 쓴 글 리스트
 	@RequestMapping(value="myList.do", method=RequestMethod.GET)
 	public String myListView(Model model) throws Exception{
 		model.addAttribute("center","../mypage/myList.jsp");

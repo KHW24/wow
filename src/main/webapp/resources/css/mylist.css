@@ -2,7 +2,7 @@
 	html, body {width: 100%; height:100%;}
     * {margin: 0; padding: 0;}
     /* 바디부분에 글꼴과 폰트사이즈 */
-    body{font-family: '돋움',sans-serif; font-size: 12px;}
+    body{font: 20px Montserrat, sans-serif; font-size: 12px;}
     /* 리스트에 . 같은 스타일 없애기 */
     ul,ol{list-style: none;}
     /* 리스트제목에 효과 없애기 */

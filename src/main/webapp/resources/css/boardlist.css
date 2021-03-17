@@ -3,7 +3,7 @@
     html, body {width: 100%; height:100%;}
     * {margin: 0; padding: 0;}
     /* 바디부분에 글꼴과 폰트사이즈 */
-    body{font-family: '돋움',sans-serif; font-size: 12px;}
+    body{font: 20px Montserrat, sans-serif; font-size: 12px;}
     /* 리스트에 . 같은 스타일 없애기 */
     ul,ol{list-style: none;}
     /* 리스트제목에 효과 없애기 */
@@ -28,10 +28,10 @@
     .radiobtn {margin-left: 65px;}
     /* 글 등록 버튼 */
     #enbtn {float:right; margin-right: 300px;}
-    #enbtndiv {height:50px; width:1000px; margin-bottom: 100px;}
+    #enbtndiv {height:50px; margin-bottom: 100px;}
     /* 게시물에서 가격 */
     #price {float: left;}
     /* 게시물에서 하트 */
     #hbtn {border: none; background-color: white; font-size: 18px;}
     /* 더보기 버튼 */
-    #more {width: 700px; margin-left: 300px;}
+    #more {width: 700px; margin-left: 380px; margin-bottom:50px;}
