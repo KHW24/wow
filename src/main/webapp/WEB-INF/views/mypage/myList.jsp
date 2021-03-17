@@ -5,7 +5,7 @@
 		rel="stylesheet" type="text/css" />
     <!-- 전체 div -->
         <div class="wraps">
-            <h1>내가 쓴 글</h1>
+            <h1>내 게시물</h1>
             <!-- 카테고리 드롭다운 -->
             <div class="dropdown" id="dropdown">
                 <button class="btn btn-default" type="button" data-toggle="dropdown">Category
