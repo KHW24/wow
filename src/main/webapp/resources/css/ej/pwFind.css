@@ -1,0 +1,28 @@
+@charset "UTF-8";
+
+    .btn_submit{
+        width: 100px;
+        text-align: center;
+    }
+    .btn1:hover{
+        background-color: rgb(173, 39, 173);
+        color: white;
+    }
+    table{
+        margin-left:auto; 
+        margin-right:auto;
+    }
+    .h3{
+        font-weight: bold;
+        text-align: center;
+    }
+    th, td{
+       padding: 10px;
+    }
+    th{
+        text-align: right;
+    }
+    .center{
+        text-align: center;
+    }
+    
