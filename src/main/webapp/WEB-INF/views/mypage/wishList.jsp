@@ -1,15 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    
-    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    
-    <!-- Latest compiled JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-    <script src="/readmore-js/readmore.min.js"></script>
     <!-- css 파일 -->
 	<link href="${pageContext.request.contextPath}/resources/css/wishlist.css"
 		rel="stylesheet" type="text/css" />
@@ -40,7 +31,7 @@
                     <li>
                         <span class="thumb">
                             <em>카테고리명</em>
-                            <a href="#"><img class="img-rounded" src="./images/sample.jpg" alt=""></span>
+                            <a href="#"><img class="img-rounded" src="${pageContext.request.contextPath}/resources/images/sample.jpg" alt=""></span>
                             <Strong>글 제목</Strong>
                         </a>
                         <p>작성자(or지역) 12-18(날짜)</p>
@@ -49,7 +40,7 @@
                     <li>
                         <span class="thumb">
                             <em>카테고리명</em>
-                            <a href="#"><img class="img-rounded" src="./images/sample.jpg" alt=""></span>
+                            <a href="#"><img class="img-rounded" src="${pageContext.request.contextPath}/resources/images/sample.jpg" alt=""></span>
                             <Strong>글 제목</Strong>
                         </a>
                         <p>작성자(or지역) 12-18(날짜)</p>
@@ -58,7 +49,7 @@
                     <li>
                         <span class="thumb">
                             <em>카테고리명</em>
-                            <a href="#"><img class="img-rounded" src="./images/sample.jpg" alt=""></span>
+                            <a href="#"><img class="img-rounded" src="${pageContext.request.contextPath}/resources/images/sample.jpg" alt=""></span>
                             <Strong>글 제목</Strong>
                         </a>
                         <p>작성자(or지역) 12-18(날짜)</p>
@@ -67,7 +58,7 @@
                     <li>
                         <span class="thumb">
                             <em>카테고리명</em>
-                            <a href="#"><img class="img-rounded" src="./images/sample.jpg" alt=""></span>
+                            <a href="#"><img class="img-rounded" src="${pageContext.request.contextPath}/resources/images/sample.jpg" alt=""></span>
                             <Strong>글 제목</Strong>
                         </a>
                         <p>작성자(or지역) 12-18(날짜)</p>
@@ -76,7 +67,7 @@
                     <li>
                         <span class="thumb">
                             <em>카테고리명</em>
-                            <a href="#"><img class="img-rounded" src="./images/sample.jpg" alt=""></span>
+                            <a href="#"><img class="img-rounded" src="${pageContext.request.contextPath}/resources/images/sample.jpg" alt=""></span>
                             <Strong>글 제목</Strong>
                         </a>
                         <p>작성자(or지역) 12-18(날짜)</p>

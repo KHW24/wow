@@ -17,15 +17,26 @@
   
   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/main.css"/>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/post/postView.css"/>
+<style>
+	#header1 {height:200px;}
+	#center1 {}
+	#footer1 {height:300px;}
+ </style>
 </head>
 <body>
 	<!-- header -->
+	<div id="header1">
 	<%@ include file="header.jsp" %> 
+	</div>
 	
 	<!-- center -->
+	<div id="center1">
 	<jsp:include page="${center}"/>
+	</div>
 	
 	<!-- footer -->
+	<div id="footer1">
 	<%@ include file="footer.jsp" %>
+	</div>
 </body>
 </html>

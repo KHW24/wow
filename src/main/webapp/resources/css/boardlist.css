@@ -33,4 +33,4 @@
     /* 게시물에서 하트 */
     #hbtn {border: none; background-color: white; font-size: 18px;}
     /* 더보기 버튼 */
-    #more {width: 700px; margin-left: 370px;}
+    #more {width: 700px; margin-left: 370px; margin-bottom: 100px;}

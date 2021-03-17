@@ -40,7 +40,7 @@
                     <li>
                         <span class="thumb">
                             <em>카테고리명</em>
-                            <a href="#"><img class="img-rounded" src="./images/sample.jpg" alt=""></span>
+                            <a href="#"><img class="img-rounded" src="${pageContext.request.contextPath}/resources/images/sample.jpg" alt=""></span>
                             <Strong>글 제목</Strong>
                         </a>
                         <p>본인닉네임(or지역) 12-18</p>
@@ -49,7 +49,7 @@
                     <li>
                         <span class="thumb">
                             <em>카테고리명</em>
-                            <a href="#"><img class="img-rounded" src="./images/sample.jpg" alt=""></span>
+                            <a href="#"><img class="img-rounded" src="${pageContext.request.contextPath}/resources/images/sample.jpg" alt=""></span>
                             <Strong>글 제목</Strong>
                         </a>
                         <p>본인닉네임(or지역) 12-18</p>
@@ -58,7 +58,7 @@
                     <li>
                         <span class="thumb">
                             <em>카테고리명</em>
-                            <a href="#"><img class="img-rounded" src="./images/sample.jpg" alt=""></span>
+                            <a href="#"><img class="img-rounded" src="${pageContext.request.contextPath}/resources/images/sample.jpg" alt=""></span>
                             <Strong>글 제목</Strong>
                         </a>
                         <p>본인닉네임(or지역) 12-18</p>
@@ -67,7 +67,7 @@
                     <li>
                         <span class="thumb">
                             <em>카테고리명</em>
-                            <a href="#"><img class="img-rounded" src="./images/sample.jpg" alt=""></span>
+                            <a href="#"><img class="img-rounded" src="${pageContext.request.contextPath}/resources/images/sample.jpg" alt=""></span>
                             <Strong>글 제목</Strong>
                         </a>
                         <p>본인닉네임(or지역) 12-18</p>
@@ -76,7 +76,7 @@
                     <li>
                         <span class="thumb">
                             <em>카테고리명</em>
-                            <a href="#"><img class="img-rounded" src="./images/sample.jpg" alt=""></span>
+                            <a href="#"><img class="img-rounded" src="${pageContext.request.contextPath}/resources/images/sample.jpg" alt=""></span>
                             <Strong>글 제목</Strong>
                         </a>
                         <p>본인닉네임(or지역) 12-18</p>
