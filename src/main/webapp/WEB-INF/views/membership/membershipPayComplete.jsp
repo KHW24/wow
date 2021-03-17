@@ -1,21 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-
-<!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-<!-- Latest compiled JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<!-- icon library -->
+<script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/ej/membershipPayComplete.css"/>
     <div class="container">
         <div class="icon">
         <i class="fas fa-clipboard-check fa-6x"></i>
         </div>
 
-        <h3>고객님, <span class="purple">멤버십 결제</span>가 완료되었습니다.</h3>
+        <h3 class="h3">고객님, 멤버십 <span class="purple">결제</span>가 완료되었습니다.</h3>
         <br>
-        <p>고객님의 결제 내역은 다음과 같습니다.</p><br>
+        <p class="p">고객님의 결제 내역은 다음과 같습니다.</p><br>
         
         <table class="table text-center">
             <tr>
@@ -40,4 +35,4 @@
         </div>
         
     </div>
-    
+    <br><br><br><br><br><br>

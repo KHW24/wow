@@ -1,0 +1,48 @@
+@charset "UTF-8";
+
+.bold{
+    font-weight: bold;
+    margin-left: 180px;
+}
+.center{
+    text-align: center;
+}
+.purple{
+    font-size: 20px;
+    color: rgb(173, 39, 173)
+}
+
+hr{
+    width: 800px;
+}
+.table{
+    width: 800px;
+    border : 1px solid lightgray;
+    margin-left:auto; 
+    margin-right:auto;
+}
+th{
+    background-color: lightgray;
+    text-align: center;
+    width: 300px;
+}
+td{
+    width: 300px;
+}
+
+/* 버튼 */
+.btn1, .btn2{
+    margin: 20px;
+}
+.btn:hover{
+    background-color: rgb(173, 39, 173);
+    color: white;
+}
+/* 확인버튼 */
+.btn1{
+    width: 100px;
+}
+/* 멤버십취소신청 버튼 */
+.btn2{
+    width: 150px;
+}

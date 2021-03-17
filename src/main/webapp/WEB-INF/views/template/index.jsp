@@ -16,7 +16,6 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   
   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/main.css"/>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/post/postView.css"/>
 <style>
 	#header1 {height:200px;}
 	#center1 {}
@@ -31,7 +30,12 @@
 	
 	<!-- center -->
 	<div id="center1">
-	<jsp:include page="${center}"/>
+	<c:if test="${!empty center}">
+		<jsp:include page="${center}"/>
+	</c:if>
+	<c:if test="${empty center}">
+		<!--<jsp:include page="center.jsp"/>-->
+	</c:if>
 	</div>
 	
 	<!-- footer -->
