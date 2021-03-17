@@ -91,6 +91,9 @@ $(function(){
                     </li>
                 </ul>
             </div>
+            
         </div>
-            <button type="button" id="more" class="btn btn-default">더보기</button><br/>
-            <button id="enbtn" type="button" class="btn btn-default">글 등록</button>
+        <button type="button" id="more" class="btn btn-default">더보기</button><br/>
+            <div id="enbtndiv">
+            	<button id="enbtn" type="button" class="btn btn-default">글 등록</button>
+            </div>

@@ -13,7 +13,7 @@
     /* a태그 마우스올리거나 누르면 밑줄효과 */
     a:hover,a:active,a:focus{text-decoration: underline;}
     /* width 1000px로 주고, 가운데 정렬 */
-    .wraps {width: 1000px; margin-left: 200px; }
+    .wraps {width: 1200px; margin-left: 200px; }
     /* 썸네일리스트부분div 왼쪽정렬, 왼쪽띄기, 크기, 패딩 지정  */
     .fixed_img_col li {float: left; margin-left: 50px; width: 200px; height: 350px; padding: 20px 15px;}
     .fixed_img_col li strong {font-size: 23px;}
@@ -28,9 +28,10 @@
     .radiobtn {margin-left: 65px;}
     /* 글 등록 버튼 */
     #enbtn {float:right; margin-right: 300px;}
+    #enbtndiv {height:50px; width:1000px; margin-bottom: 100px;}
     /* 게시물에서 가격 */
     #price {float: left;}
     /* 게시물에서 하트 */
     #hbtn {border: none; background-color: white; font-size: 18px;}
     /* 더보기 버튼 */
-    #more {width: 700px; margin-left: 370px; margin-bottom: 100px;}
+    #more {width: 700px; margin-left: 300px;}
