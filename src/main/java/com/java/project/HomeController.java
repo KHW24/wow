@@ -18,23 +18,33 @@ public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
-	
+	//시작페이지(메인 첫페이지)
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		return "template/index";
 	}
 	
-	@RequestMapping(value="postView.do", method=RequestMethod.GET)
-	public String postView(Model model) throws Exception{
+	//구매자 버전 게시물 보기 
+	@RequestMapping(value="postBuyerView.do", method=RequestMethod.GET)
+	public String postBuyerView(Model model) throws Exception{
 		model.addAttribute("center","../board/post/buyerPostView.jsp");
 		return "template/index";
 	}
 	
+	//판매자 버전 게시물 보기 
+		@RequestMapping(value="postSellerView.do", method=RequestMethod.GET)
+		public String postSellerView(Model model) throws Exception{
+			model.addAttribute("center","../board/post/sellerPostView.jsp");
+			return "template/index";
+		}
+		
+	//게시물 작성 페이지
 	@RequestMapping(value="postWrite.do", method=RequestMethod.GET)
 	public String postWriteView(Model model) throws Exception{
 		model.addAttribute("center","../board/post/salesPost.jsp");
 		return "template/index";
 	}
+	
 	@RequestMapping(value="wishList.do", method=RequestMethod.GET)
 	public String wishListView(Model model) throws Exception{
 		model.addAttribute("center","../mypage/wishList.jsp");
@@ -70,6 +80,13 @@ public class HomeController {
 		@RequestMapping(value="myMship.do", method=RequestMethod.GET)
 		public String myMshipView(Model model) throws Exception{
 			model.addAttribute("center","../membership/myMembership.jsp");
+			return "template/index";
+		}
+
+		//멤버십 결제 선택
+		@RequestMapping(value="mshipSelect.do", method=RequestMethod.GET)
+		public String mshipSelectView(Model model) throws Exception{
+			model.addAttribute("center","../membership/membershipSelect.jsp");
 			return "template/index";
 		}
 		

@@ -1,13 +1,34 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<style>
+ .page-title{
+    text-align: center;
+    line-height: 150px;
+    font-size: 25px;
+    font-weight: bold;
+  }
+  .payment-method-title{
+    width:500px;
+  }
+  table{
+    text-align: center;
+    font-size:20px;
+  }
+  table tr{
+    height:100px;
+  }
+  .payment-method-hr{
+    border-bottom:2px solid #cccc;
+  }
+  .amount{
+   font-size:25px;
+   font-weight: bolder; 
+  }
+  .total{
+    text-align: center;
+  }
+</style>
 
-<!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-<!-- Latest compiled JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
  <div class="container">
     <div class="row">
       <div class="col-sm-10 payment-method-hr ">
