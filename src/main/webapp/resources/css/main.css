@@ -19,6 +19,62 @@
   .navbar-nav  li a:hover {
       color: #1abc9c !important;
     }
+    
+    /* 본문 */
+  .p1 {
+    color :#555555;
+    font : 18px Montserrat, sans-serif;
+    text-align: center;
+  }
+  p {font-size: 16px;}
+  .margin {margin-bottom: 45px;}
+  .bg-2 { 
+    background-color: #474e5d; /* Dark Blue */
+    color: #ffffff;
+  }
+  .bg-3 { 
+    background-color: #ffffff; /* White */
+    color: #555555;
+  }
+  .container-fluid {
+    padding-top: 70px;
+    padding-bottom: 70px;
+  }
+  
+
+
+  /* 해쉬 태그 버튼 */
+  .hashbutton {
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+    background-color: #e7e7e7; 
+    color: black;
+    opacity: 0.5;
+  }
+  .hashbutton:hover, .hashbutton:focus, .hashbutton.active {background: white; color: black; opacity: 0.1;}
+
+
+
+  /* 뉴스 사진 */
+  .news {
+    border: none;
+    color: black;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  .news:hover, .news:focus, .news.active {background: white; opacity: 0.5;}
+
+    
 
 /*==================== 
     Footer 
