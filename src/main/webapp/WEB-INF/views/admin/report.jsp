@@ -1,8 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html lang="en">
-<head>
 
  <style>
  
@@ -50,12 +47,8 @@
   
   </style>
   
-</head>
 
-
-<body>
-
- <!-- first Container Category -->
+  <!-- Category -->
 <div class="container-fluid bg-3 text-center">
   <h3 class="margin"><b>신고 회원 관리</b></h3>
   <br>
@@ -115,6 +108,3 @@
 <br>
 </div>
 
-</body>
-
-</html>

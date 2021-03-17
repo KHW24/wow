@@ -12,7 +12,7 @@
     <!-- Wrapper for slides -->
     <div class="carousel-inner">
       <div class="item active">
-        <img src="mainpic1.jpg" alt="Los Angeles" style="width:100%;">
+        <img src="${pageContext.request.contextPath}/resources/images/mainpic1.jpg" alt="Los Angeles" style="width:100%;">
         <div class="carousel-caption">
           <h3>핸드메이드 명함</h3>
           <p>나만의 디자인</p>
@@ -21,7 +21,7 @@
       </div>
 
       <div class="item">
-        <img src="mainpic2.jpg" alt="Chicago" style="width:100%;">
+        <img src="${pageContext.request.contextPath}/resources/images/mainpic2.jpg" alt="Chicago" style="width:100%;">
         <div class="carousel-caption">
           <h3>마블 캔들</h3>
           <p>올해의 캔들</p>
@@ -30,7 +30,7 @@
       </div>
     
       <div class="item">
-        <img src="mainpic3.jpg" alt="New york" style="width:100%;">
+        <img src="${pageContext.request.contextPath}/resources/images/mainpic3.jpg" alt="New york" style="width:100%;">
         <div class="carousel-caption">
           <h3>종로 공방 지갑</h3>
           <p>추가된 색상</p>
@@ -100,15 +100,15 @@
           사랑하는 가족, 연인, 친구와 가지고 있는 소중한 추억을 담아 캔들로 간직해 보세요.</p>
         <br>
         <div class="news">
-        <img src="pic1.jpg" class="img-responsive margin" style="width:100%" alt="Image">
+        <img src="${pageContext.request.contextPath}/resources/images/pic1.jpg" class="img-responsive margin" style="width:100%" alt="Image">
       </div>
       </div>
       <div class="col-sm-4"> 
         <p>을지로 3동 에코백<br>회원 OOO님이 제작한 에코백을 A 공원 앞에서 판매 합니다. 
-          여러 그림이 그려진 에코백을 한 눈에 구경해보세요.</p>
+         세상에 하나 밖에 없는 그림이 그려진 에코백을 한 눈에 구경해보세요.</p>
         <br>
         <div class="news">
-        <img src="pic2.jpg" class="img-responsive margin" style="width:100%" alt="Image">
+        <img src="${pageContext.request.contextPath}/resources/images/pic2.jpg" class="img-responsive margin" style="width:100%" alt="Image">
       </div>
       </div>
 
@@ -117,7 +117,7 @@
           다양한 경력의 가죽 공예 제작 고수님과 상담해보세요.</p>
         <br>
         <div class="news">
-        <img src="pic3.jpg" class="img-responsive margin" style="width:100%" alt="Image">
+        <img src="${pageContext.request.contextPath}/resources/images/pic3.jpg" class="img-responsive margin" style="width:100%" alt="Image">
         </div>
       </div>
 
