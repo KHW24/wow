@@ -1,13 +1,29 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-
-<!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-<!-- Latest compiled JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+ <style>
+  .page-title{
+    text-align: center;
+    line-height: 150px;
+    font-size: 25px;
+    font-weight: bold;
+  }
+  .test{
+    text-align: center;
+    font-size:20px;
+    font-weight: bolder;
+  }
+  .contents{
+    margin:0 auto;
+  }
+  .description{
+    font-size:15px;
+  }
+  .mshipImg {
+    width:200px;
+    height:200px;
+    margin: 20px 0;
+  }
+  </style>
   <div class="container">
     <div class="page-title">
       멤버십 결제
@@ -15,7 +31,7 @@
     <div class="row contents">
       <div class="col-sm-4 test">
         <span>1주 멤버십</span><br>
-        <img src="./images/membership1.png"/>
+        <img src="${pageContext.request.contextPath}/resources/images/membership1.png" class="mshipImg"/>
         <br>
         <span>1,000원</span><br>
         <span class="description">일주일간 검색 상위노출</span><br><br>
@@ -23,7 +39,7 @@
       </div>
       <div class="col-sm-4 test">
         <span>2주 멤버십</span><br>
-        <img src="./images/membership2.png"/>
+        <img src="${pageContext.request.contextPath}/resources/images/membership2.png" class="mshipImg"/>
         <br>
         <span>1,000원</span><br>
         <span class="description">이주일간 검색 상위노출</span><br><br>
@@ -31,11 +47,12 @@
       </div>
       <div class="col-sm-4 test">
         <span>한달 멤버십</span><br>
-        <img src="./images/membership3.png"/>
+        <img src="${pageContext.request.contextPath}/resources/images/membership3.png" class="mshipImg"/>
         <br>
         <span>1,000원</span><br>
         <span class="description">한 달동안 검색 상위노출</span><br><br>
         <button class="btn btn-default">결제하기</button>
+        <br><br><br>
       </div>
     </div>
   </div>

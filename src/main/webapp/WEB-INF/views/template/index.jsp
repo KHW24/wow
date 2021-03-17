@@ -34,7 +34,7 @@
 		<jsp:include page="${center}"/>
 	</c:if>
 	<c:if test="${empty center}">
-		<!--<jsp:include page="center.jsp"/>-->
+		<jsp:include page="center.jsp"/>
 	</c:if>
 	</div>
 	
