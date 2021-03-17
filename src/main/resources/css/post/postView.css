@@ -1,9 +1,7 @@
 @charset "UTF-8";
 
-  /* 이미지 슬라이드 크기 조정 */
- .item>img{
-   top:0;
-   left:0;
+ /* 이미지 슬라이드 크기 조정 */
+  .item>img{
    min-width:100%;
    min-height:500px;
    max-height:500px;
@@ -14,7 +12,7 @@
  }
  /* 닉네임,주소 부분 크기 조정 */
  .userInfo tr td:nth-of-type(2){
-   width:700px;
+   width:750px;
  }
 /* 닉네임, 조회수, 댓글 글씨크기 조정 */
  .user-info, .read-count, .comments-title{
@@ -38,13 +36,13 @@
    padding-left:30px;
  }
  /* 글내용 스타일 */
- pre {
+ pre{
    background-color: white;
    border:none;
    text-align: center;
  }
  /* 섹션별 구분자 */
- .userInfo tr:nth-of-type(2),.contents, .comments-hr{
+ .userInfo tr:nth-of-type(2), .section-hr{
    border-bottom: 2px solid #cccc;
  }
  /* 대댓글 들여쓰기 */
@@ -55,20 +53,10 @@
  .comment{
    margin-top:20px;
  }
- /*전체 툴 마진 조정*/
- .container{
- 	margin: 50px;
- }
- 
- /********************************게시글작성 페이지 css
- ******************************************************/
- .page-title{
-    text-align: center;
-    line-height: 150px;
-    font-size: 25px;
-    font-weight: bold;
-  }
 
-  label{
-    font-size: 16px;
-  }
+/* 센터 부분 마진 */
+ .wrapper{
+   padding: 50px;
+   color:black;
+   font-size:15px;
+ }
