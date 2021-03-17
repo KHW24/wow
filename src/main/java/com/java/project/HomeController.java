@@ -124,7 +124,53 @@ public class HomeController {
 			model.addAttribute("center","../login/pwFindUpt.jsp");
 			return "template/index";
 		}
+		
+		// 로그인
+		@RequestMapping(value="login.do", method=RequestMethod.GET)
+		public String loginView(Model model) throws Exception{
+			model.addAttribute("center","../login/login.jsp");
+			return "template/index";
+		}
+		
+		// 아이디 찾기
+		@RequestMapping(value="idFind.do", method=RequestMethod.GET)
+		public String idFindView(Model model) throws Exception{
+			model.addAttribute("center","../login/idFind.jsp");
+			return "template/index";
+		}
 	
-	
-	
+		// 회원가입
+		@RequestMapping(value="join.do", method=RequestMethod.GET)
+		public String joinView(Model model) throws Exception{
+			model.addAttribute("center","../join/join.jsp");
+			return "template/index";
+		}
+		
+		// 내 정보 수정
+		@RequestMapping(value="myInfoUp.do", method=RequestMethod.GET)
+		public String myInfoUpView(Model model) throws Exception{
+			model.addAttribute("center", "../mypage/myInfoUp.jsp");
+			return "template/index";
+		}
+		
+		// 본인 확인
+		@RequestMapping(value="myInfoCon.do", method=RequestMethod.GET)
+		public String myInfoConView(Model model) throws Exception{
+			model.addAttribute("center", "../mypage/myInfoCon.jsp");
+			return "template/index";
+		}
+		
+		// 내 댓글 보기
+		@RequestMapping(value="myComment.do", method=RequestMethod.GET)
+		public String myCommentView(Model model) throws Exception{
+			model.addAttribute("center", "../mypage/myComment.jsp");
+			return "template/index";
+		}
+		
+		// 쪽지함
+		@RequestMapping(value="message.do", method=RequestMethod.GET)
+		public String messageView(Model model) throws Exception{
+			model.addAttribute("center", "../mypage/message.jsp");
+			return "template/index";
+		}
 }
