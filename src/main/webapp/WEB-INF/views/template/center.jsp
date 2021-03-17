@@ -105,7 +105,7 @@
       </div>
       <div class="col-sm-4"> 
         <p>을지로 3동 에코백<br>회원 OOO님이 제작한 에코백을 A 공원 앞에서 판매 합니다. 
-          여러 그림이 그려진 에코백을 한 눈에 구경해보세요.</p>
+         세상에 하나 밖에 없는 그림이 그려진 에코백을 한 눈에 구경해보세요.</p>
         <br>
         <div class="news">
         <img src="${pageContext.request.contextPath}/resources/images/pic2.jpg" class="img-responsive margin" style="width:100%" alt="Image">
