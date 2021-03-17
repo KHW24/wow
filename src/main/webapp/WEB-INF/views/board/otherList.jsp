@@ -1,17 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    
-    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    
-    <!-- Latest compiled JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
-    <script src="/readmore-js/readmore.min.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <!-- css 파일 -->
 	<link href="${pageContext.request.contextPath}/resources/css/otherlist.css"
 		rel="stylesheet" type="text/css" />
@@ -32,7 +21,7 @@
         <div class="wraps">
             <!-- 프로필 이미지 & 다른 게시물 보기 링크 부분 -->
             <div class="imgdiv">
-                <a href="#"><img id="pimg" src="./images/내정보.jpg"></a>
+                <a href="#"><img id="pimg" src="${pageContext.request.contextPath}/resources/images/myicon.png"></a>
                 <a href="#"><h5><strong>판매자님의 다른 게시물</strong></h5></a>
             </div>
             <!-- 판매중/판매완료 라디오버튼 -->
