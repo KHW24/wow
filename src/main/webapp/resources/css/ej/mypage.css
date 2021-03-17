@@ -1,0 +1,50 @@
+@charset "UTF-8";
+
+    .left{
+        float: left;
+    }
+    .h3{
+        font-weight: bold;
+        text-align: center;
+    }
+
+    .a{
+        clear: both;
+        font-size: 12px;
+        margin: 2px;
+    }
+    .p{
+        float: left;
+        font-size: 12px;
+        margin: 3px;
+    }
+    .user{
+        color: lightgray;
+    }
+    table{
+        margin-left:auto; 
+    	margin-right:auto;
+    }
+    .right{
+        float: left ;
+        margin-left: 20px;
+        width: 500px;
+        height: 200px;
+        background-color: lightgray;
+    }
+    th{
+        padding-right: 30px;
+    }
+    td{
+        
+        padding: 40px;
+        
+        text-align: center;
+        font-weight: bold;
+        background-color: lightgray;
+    }
+    .icon{
+        color :black;
+        font-size: 12px;
+        margin: 2px;
+    }

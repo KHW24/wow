@@ -35,3 +35,4 @@
         <button class="btn btn2">멤버십취소 신청</button>
         </div>
     </div>
+    <br><br><br><br><br><br>
