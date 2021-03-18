@@ -38,7 +38,7 @@
 </div>  
 
 <script language="Javascript">
-   //저장된 해당 쿠키가 있으면 창을 안 띄운다 없으면 뛰운다.
+   //저장된 해당 쿠키가 있으면 창을 안 띄운다 없으면 띄운다.
    cookiedata = document.cookie;    
    if ( cookiedata.indexOf("topPop=done") < 0 ){      
       document.all['promotionBanner'].style.display = "block";
