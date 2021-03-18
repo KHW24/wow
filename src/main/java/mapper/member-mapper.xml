@@ -24,5 +24,4 @@
 		SELECT * FROM TABLE1 
 	</select>
 		
-	
 </mapper>

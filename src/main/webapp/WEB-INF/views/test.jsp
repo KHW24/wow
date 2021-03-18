@@ -14,8 +14,6 @@
 </head>
 <body>
 
-
-
 <table border="1">
   <tr>
     <th>아이디</th>
@@ -33,7 +31,6 @@
     </c:forEach>
 
 </table>
-
 
 </body>
 </html>

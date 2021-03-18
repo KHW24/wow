@@ -39,5 +39,4 @@ public class MemberController {
 	      return modelAndView;   
 	   }
 
-	
 }
