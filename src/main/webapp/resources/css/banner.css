@@ -1,5 +1,5 @@
 @charset "UTF-8";
-   #promotionBanner {width: 320px; height: 380px; background-color:#690881; color: #ffffff; position: absolute; top: 150px; left: 100px;}
+   #promotionBanner {width: 320px; height: 380px; background-color:#690881; color: #ffffff; position: absolute; top: 200px; left: 300px;}
    .popContents {width: 300px;  padding: 20px; overflow: hidden;}
    .popClose {width: 400px;  font-size: 9pt; padding: 10px;}
    #chkday {color: #5a5a5a; margin-left: 115px;}
