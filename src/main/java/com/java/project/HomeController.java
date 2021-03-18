@@ -21,6 +21,7 @@ public class HomeController {
 	//시작페이지(메인 첫페이지)
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
+		model.addAttribute("main","main-request");
 		return "template/index";
 	}
 	

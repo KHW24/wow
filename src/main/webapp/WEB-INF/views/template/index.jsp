@@ -24,7 +24,12 @@
 <body>
 	<!-- header -->
 	<div id="header1">
-	<%@ include file="header.jsp" %> 
+	<c:if test="${!empty main}">
+		<%@ include file="header.jsp" %>
+	</c:if> 
+	<c:if test="${empty main}">
+		<%@ include file="dropHeader.jsp" %>
+	</c:if> 
 	</div>
 	
 	<!-- center -->

@@ -22,7 +22,7 @@
     <div class="thumb-content"><a href="#.">마이페이지</a></div> 
     </li>
     <li>
-    <div class="thumb-content"><a href="#.">멤버쉽 관리</a></div> 
+    <div class="thumb-content"><a href="#.">멤버십 관리</a></div> 
     </li>
     <li>
     <div class="thumb-content"><a href="#.">관심품목</a></div> 
@@ -40,7 +40,7 @@
     <div class="col-xs-12 col-sm-6 col-md-3">
     <div class="widget no-box">
     <h5 class="widget-title">Membership<span></span></h5>
-    <p>멤버쉽 가입으로 혜택을 누려보세요</p>
+    <p>멤버십 가입으로 혜택을 누려보세요</p>
     <a class="btn" href="#." target="_blank">가입하기</a>
     </div>
     </div>

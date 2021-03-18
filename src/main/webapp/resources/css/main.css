@@ -20,6 +20,11 @@
       color: #1abc9c !important;
     }
     
+   /* Navi logo 드롭 다운 메뉴*/
+  .dropdown-toggle {
+    font-size : 18px;
+  }
+  
     /* 본문 */
   .p1 {
     color :#555555;
