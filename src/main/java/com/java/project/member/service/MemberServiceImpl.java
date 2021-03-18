@@ -31,5 +31,11 @@ public class MemberServiceImpl implements MemberService{
 		int cnt = memberDAO.updateMember(member);
 		return cnt; 
 	}
+
+	@Override
+	public int deleteMember(String userId) throws Exception {
+		int cnt = memberDAO.deleteMember(userId);
+		return cnt;
+	}
 	
 }

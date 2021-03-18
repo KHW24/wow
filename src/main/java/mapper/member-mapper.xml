@@ -28,4 +28,9 @@
 	<update id="updateMember" parameterType="Member">
 		UPDATE TABLE1 SET PASSWORD=#{password}, NICKNAME=#{nickname}, EMAIL=#{email}, ADDRESS=#{address} WHERE ID=#{id}
 	</update>
+	
+	<!-- DELETE -->
+	<delete id="deleteMember" parameterType="String">
+		DELETE FROM TABLE1 WHERE ID = #{userId}
+	</delete>
 </mapper>

@@ -32,5 +32,9 @@ public class MemberDAO {
 		return cnt;
 	}
 	
-	
+	//delete
+	public int deleteMember(String userId) throws Exception{
+		int cnt = sqlSession.delete("Member.deleteMember", userId);
+		return cnt;
+	}
 }
