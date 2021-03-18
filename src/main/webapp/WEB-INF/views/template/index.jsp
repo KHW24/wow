@@ -16,7 +16,6 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   
   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/main.css"/>
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/banner.css"/>
 <style>
 	#header1 {height:100px;}
 	#footer1 {height:300px;}
@@ -41,11 +40,6 @@
 	<!-- footer -->
 	<div id="footer1">
 	<%@ include file="footer.jsp" %>
-	</div>
-	
-	<!-- banner -->
-	<div id="banner">
-	<%@ include file="banner.jsp" %>
 	</div>
 </body>
 </html>

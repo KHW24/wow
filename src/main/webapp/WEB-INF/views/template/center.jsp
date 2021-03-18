@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/banner.css"/>
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
     <ol class="carousel-indicators">
@@ -122,4 +122,7 @@
       </div>
 
     </div>
-  </div>
+  	</div>
+		<div id="banner">
+		<%@ include file="banner.jsp" %>
+	</div>
