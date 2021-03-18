@@ -32,9 +32,9 @@
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
-		<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe" />
-		<property name="username" value="JISU" />
-		<property name="password" value="JISU1" />
+		<property name="url" value="jdbc:oracle:thin:@49.247.26.104:1521:xe" />
+		<property name="username" value="team02" />
+		<property name="password" value="wowproject" />
 	</bean>
 	<beans:bean id="sqlSessionFactory"
 		class="org.mybatis.spring.SqlSessionFactoryBean">
