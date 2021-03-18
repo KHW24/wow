@@ -1,0 +1,10 @@
+@charset "UTF-8";
+   #promotionBanner {width: 320px; height: 380px; background-color:#690881; color: #ffffff; position: absolute; top: 150px; left: 100px;}
+   .popContents {width: 300px;  padding: 20px; overflow: hidden;}
+   .popClose {width: 400px;  font-size: 9pt; padding: 10px;}
+   #chkday {color: #5a5a5a; margin-left: 115px;}
+   label[for=chkday] { cursor: pointer; color: #ffffff; padding-right: 10px;}
+   #closebtn { color: #fdfdfd;}
+   #mem {text-decoration: none; color: #eca5d7;}
+   #baimg {width: 280px; margin-top:10px;}
+   #bah3 {margin-left: 10px;}
