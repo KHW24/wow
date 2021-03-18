@@ -13,14 +13,14 @@
 <div style="text-align: center;">
    <h2>회원가입</h2><hr>
 </div>
-<form>
+<form action="joinCon.do" method="post">
 	<table style="margin: 0 auto; width: 30%; height: 300px;">
 		<tbody>
 			<tr>
-				<td style="text-align: center;">닉네임</td>
+				<td style="text-align: center;">아이디</td>
 				<td>
 					<div class="form-group" style="margin-top: 4%; height: 30px;">
-						<input type="text" class="form-control" id="joinName" required>
+						<input type="text" class="form-control" id="joinId" name="id" required>
 					</div>
 				</td>
 				<td>
@@ -29,10 +29,10 @@
 				</td>
 			</tr>
 			<tr>
-				<td style="text-align: center;">아이디</td>
+				<td style="text-align: center;">닉네임</td>
 				<td>
 					<div class="form-group" style="margin-top: 4%; height: 30px;">
-						<input type="text" class="form-control" id="joinId" required>
+						<input type="text" class="form-control" id="joinName" name="nickname" required>
 					</div>
 				</td>
 				<td>
@@ -44,7 +44,7 @@
 				<td style="text-align: center;">비밀번호</td>
 				<td>
 					<div class="form-group">
-						<input type="password" class="form-control" id="joinPw"
+						<input type="password" class="form-control" id="joinPw" name="password"
 							placeholder="8자 이상의 영문+숫자+특수문자 조합" required
 							pattern="^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+])(?!.*[^a-zA-z0-9$`~!@$!%*#^?&\\(\\)\-_=+]).{8,16}$">
 					</div>
@@ -65,7 +65,7 @@
 				<td style="text-align: center;">이메일</td>
 				<td>
 					<div class="form-group">
-						<input type="email" class="form-control" id="joinEmail" required>
+						<input type="email" class="form-control" id="joinEmail" name="email" required>
 					</div>
 				</td>
 				<td>
@@ -89,7 +89,7 @@
 				<td style="text-align: center;">주소</td>
 				<td>
 					<div class="form-group" style="margin-top: 2%;">
-						<input type="text" class="form-control" id="joinAdd">
+						<input type="text" class="form-control" id="joinAdd" name="address">
 					</div>
 				</td>
 				<td></td>
@@ -97,6 +97,6 @@
 		</tbody>
 	</table>
 	<div style="text-align: center;">
-		<button type="button" class="btn" style="margin-bottom:2%">완료</button>
+		<input type="submit" class="btn" style="margin-bottom:2%;" value="완료">
 	</div>
 </form>

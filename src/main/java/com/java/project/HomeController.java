@@ -73,7 +73,7 @@ public class HomeController {
 		return "template/index";
 	}
 	
-	//마이 페이지
+		//마이 페이지
 		@RequestMapping(value="mypage.do", method=RequestMethod.GET)
 		public String myPageView(Model model) throws Exception{
 			model.addAttribute("center","../mypage/mypage.jsp");
@@ -177,4 +177,5 @@ public class HomeController {
 			model.addAttribute("center", "../mypage/message.jsp");
 			return "template/index";
 		}
+		
 }
