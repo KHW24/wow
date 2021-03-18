@@ -20,4 +20,9 @@
 		INSERT INTO TABLE1 VALUES(#{id}, #{nickname}, #{password}, #{email}, #{address}, DEFAULT)
 	</insert>
 	
-	</mapper>
+	<select id="selectMemberAll" resultMap="resultMember">
+		SELECT * FROM TABLE1 
+	</select>
+		
+	
+</mapper>

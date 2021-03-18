@@ -1,5 +1,7 @@
 package com.java.project.member.dao;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -17,5 +19,13 @@ public class MemberDAO {
 		int cnt = sqlSession.insert("Member.insertMember", member);
 		return cnt;
 	}
+	
+	// select
+	public List<Member> selectMemberAll() throws Exception {
+		List<Member> memberList =sqlSession.selectList("Member.selectMemberAll"); 
+		return memberList;
+	}
+	
+	
 	
 }

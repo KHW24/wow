@@ -1,5 +1,7 @@
 package com.java.project.member.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,5 +19,11 @@ public class MemberServiceImpl implements MemberService{
 		int cnt = memberDAO.insertMember(member);
 		return cnt;
 	}
+	
+	// select
+	public List<Member> selectMemberAll() throws Exception {
+	      List<Member> memberList = memberDAO.selectMemberAll();
+	      return memberList;
+	   }
 	
 }

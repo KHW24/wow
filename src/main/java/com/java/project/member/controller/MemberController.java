@@ -1,5 +1,7 @@
 package com.java.project.member.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,5 +27,17 @@ public class MemberController {
 		mv.setViewName("template/index");
 		return mv;
 	}
+	
+	// select
+	@RequestMapping(value="/memberList.do", method=RequestMethod.GET)
+	   public ModelAndView memberList(ModelAndView modelAndView) throws Exception{
+	      
+	      List<Member>memberList = memberService.selectMemberAll();
+	      
+	      modelAndView.addObject("MemberList", memberList);
+	      modelAndView.setViewName("test");
+	      return modelAndView;   
+	   }
+
 	
 }
