@@ -13,7 +13,7 @@
  }
  /* 닉네임,주소 부분 크기 조정 */
  .userInfo tr td:nth-of-type(2){
-   width:750px;
+   width:900px;
  }
 /* 닉네임, 조회수, 댓글 글씨크기 조정 */
  .user-info, .read-count, .comments-title{
@@ -103,7 +103,7 @@
     </div>
     <!--유저 프로필, 닉네임, 주소, 쪽지보내기,신고하기-->
      <div class="row">
-        <div class="col-sm-12">
+        <div class="col-sm-12 section-hr">
     	<table class="userInfo">
       <tr>
         <td><img src="${pageContext.request.contextPath}/resources/images/userimage.jpg" class="user-info-img" /></td>
@@ -126,6 +126,7 @@
     </div>
     <div class="row">
       <div class="col-sm-12 text-right">
+      <br>
         <span class="read-count"><strong>0 조회</strong></span>
       </div>
     </div>
