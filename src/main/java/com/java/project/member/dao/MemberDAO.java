@@ -26,5 +26,11 @@ public class MemberDAO {
 		return memberList;
 	}
 	
+	// update
+	public int updateMember(Member member) throws Exception{
+		int cnt = sqlSession.update("Member.updateMember",member);
+		return cnt;
+	}
+	
 	
 }

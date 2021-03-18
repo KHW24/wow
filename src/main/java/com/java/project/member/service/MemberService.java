@@ -10,5 +10,6 @@ public interface MemberService {
 	
 	public List<Member> selectMemberAll() throws Exception;
 	
+	public int updateMember(Member member) throws Exception;
 	
 }

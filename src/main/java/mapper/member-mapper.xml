@@ -23,5 +23,9 @@
 	<select id="selectMemberAll" resultMap="resultMember">
 		SELECT * FROM TABLE1 
 	</select>
-		
+	
+	<!--UPDATE  -->
+	<update id="updateMember" parameterType="Member">
+		UPDATE TABLE1 SET PASSWORD=#{password}, NICKNAME=#{nickname}, EMAIL=#{email}, ADDRESS=#{address} WHERE ID=#{id}
+	</update>
 </mapper>

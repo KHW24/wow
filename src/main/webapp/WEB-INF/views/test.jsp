@@ -23,7 +23,7 @@
   </tr>
      <c:forEach var="member" items="${MemberList}">
   <tr>
-	 <td>${member.id }</td>
+	 <td><a href="memberUpt.do?id=${member.id }">${member.id }</a></td>
 	 <td>${member.nickname }</td>
 	 <td>${member.email }</td>
 	 <td>${member.address }</td>

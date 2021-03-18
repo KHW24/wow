@@ -24,7 +24,12 @@ public class MemberServiceImpl implements MemberService{
 	public List<Member> selectMemberAll() throws Exception {
 	      List<Member> memberList = memberDAO.selectMemberAll();
 	      return memberList;
-	   }
+	}
 	
+	// update
+	public int updateMember(Member member) throws Exception{
+		int cnt = memberDAO.updateMember(member);
+		return cnt; 
+	}
 	
 }
