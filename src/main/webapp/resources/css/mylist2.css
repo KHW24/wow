@@ -12,7 +12,7 @@
     /* a태그 마우스올리거나 누르면 밑줄효과 */
     a:hover,a:active,a:focus{text-decoration: underline;}
     /* width 1000px로 주고, 가운데 정렬 */
-    .wraps {width: 1000px; margin-left: 250px; }
+    .wraps {width: 1000px; margin-left: 200px; }
     /* 내가쓴글 제목 */
     .wraps h1 {padding: 10px 0 4px; margin-left: 475px;}
     /* 썸네일리스트부분div 왼쪽정렬, 왼쪽띄기, 크기, 패딩 지정  */
