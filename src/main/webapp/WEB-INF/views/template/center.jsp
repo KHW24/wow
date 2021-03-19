@@ -57,15 +57,15 @@
   <!-- first Container Category -->
   <div class="container-fluid bg-3 text-center">
     <h3 class="margin"><b>카테고리</b></h3>
-    <a href="#" class="btn btn-default btn-lg"> <br>&nbsp; &nbsp;&nbsp;  FOOD&nbsp; &nbsp; &nbsp; <br><br>
+    <a href="boardList.do" class="btn btn-default btn-lg"> <br>&nbsp; &nbsp;&nbsp;  FOOD&nbsp; &nbsp; &nbsp; <br><br>
     </a>
-    <a href="#" class="btn btn-default btn-lg"> <br>&nbsp; &nbsp;&nbsp;  ACC&nbsp; &nbsp; &nbsp; <br><br>
+    <a href="boardList.do" class="btn btn-default btn-lg"> <br>&nbsp; &nbsp;&nbsp;  ACC&nbsp; &nbsp; &nbsp; <br><br>
     </a>
-    <a href="#" class="btn btn-default btn-lg"> <br>&nbsp; &nbsp;&nbsp;  PET&nbsp; &nbsp; &nbsp; <br><br>
+    <a href="boardList.do" class="btn btn-default btn-lg"> <br>&nbsp; &nbsp;&nbsp;  PET&nbsp; &nbsp; &nbsp; <br><br>
     </a>
-    <a href="#" class="btn btn-default btn-lg"> <br>&nbsp;INTERIOR&nbsp;<br><br>
+    <a href="boardList.do" class="btn btn-default btn-lg"> <br>&nbsp;INTERIOR&nbsp;<br><br>
     </a>
-    <a href="#" class="btn btn-default btn-lg"> <br>&nbsp; &nbsp;&nbsp;  ETC&nbsp; &nbsp; &nbsp; <br><br>
+    <a href="boardList.do" class="btn btn-default btn-lg"> <br>&nbsp; &nbsp;&nbsp;  ETC&nbsp; &nbsp; &nbsp; <br><br>
     </a>
 
   </div>

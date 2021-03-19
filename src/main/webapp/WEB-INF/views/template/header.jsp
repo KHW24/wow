@@ -10,7 +10,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>                        
           </button>
-          <a class="navbar-brand" href="#">이웃의 솜씨</a>
+          <a class="navbar-brand" href="main.do">이웃의 솜씨</a>
         </div>
       
             <ul class="nav navbar-nav">
@@ -30,9 +30,9 @@
       
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">HOME</a></li>
-            <li><a href="#">LOGIN</a></li>
-            <li><a href="#">MY PAGE</a></li>
+            <li><a href="main.do">HOME</a></li>
+            <li><a href="login.do">LOGIN</a></li>
+            <li><a href="mypage.do">MY PAGE</a></li>
           </ul>
         </div>
       </div>

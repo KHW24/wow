@@ -19,16 +19,16 @@
     <h5 class="widget-title">Quick Links<span></span></h5>
     <ul class="thumbnail-widget">
     <li>
-    <div class="thumb-content"><a href="#.">마이페이지</a></div> 
+    <div class="thumb-content"><a href="mypage.do">마이페이지</a></div> 
     </li>
     <li>
-    <div class="thumb-content"><a href="#.">멤버십 관리</a></div> 
+    <div class="thumb-content"><a href="myMship.do">멤버십 관리</a></div> 
     </li>
     <li>
-    <div class="thumb-content"><a href="#.">관심품목</a></div> 
+    <div class="thumb-content"><a href="wishList.do">관심품목</a></div> 
     </li>
     <li>
-    <div class="thumb-content"><a href="#.">게시글</a></div> 
+    <div class="thumb-content"><a href="boardList.do">게시글</a></div> 
     </li>
     <li>
     <div class="thumb-content"><a href="#.">뉴스</a></div>  
@@ -41,7 +41,7 @@
     <div class="widget no-box">
     <h5 class="widget-title">Membership<span></span></h5>
     <p>멤버십 가입으로 혜택을 누려보세요</p>
-    <a class="btn" href="#." target="_blank">가입하기</a>
+    <a class="btn" href="mshipSelect.do" target="_blank">가입하기</a>
     </div>
     </div>
 

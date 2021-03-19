@@ -31,6 +31,13 @@ public class HomeController {
 		return "template/index";
 	}
 	
+	//메인페이지
+		@RequestMapping(value = "main.do", method = RequestMethod.GET)
+		public String main(Locale locale, Model model) {
+			model.addAttribute("main","main-request");
+			return "template/index";
+		}
+	
 	//구매자 버전 게시물 보기 
 	@RequestMapping(value="postBuyerView.do", method=RequestMethod.GET)
 	public String postBuyerView(Model model) throws Exception{
@@ -197,4 +204,5 @@ public class HomeController {
 			model.addAttribute("cnt",cnt);
 			return "deleteCompl";
 		}
+		
 }

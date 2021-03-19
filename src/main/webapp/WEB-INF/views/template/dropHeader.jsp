@@ -36,9 +36,9 @@
   
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">HOME</a></li>
-        <li><a href="#">LOGIN</a></li>
-        <li><a href="#">MY PAGE</a></li>
+        <li><a href="main.do">HOME</a></li>
+        <li><a href="login.do">LOGIN</a></li>
+        <li><a href="mypage.do">MY PAGE</a></li>
       </ul>
     </div>
   </div>
