@@ -18,8 +18,8 @@
 
 <form class="form-horizontal" action="/action_page.php" style="width: 30%; margin-left: 40%;">
 	<div class="radio" style="margin-left:10%;">
-		<label><input type="radio" name="findId">아이디 찾기</label> <label>
-		<input type="radio" name="findId">비밀번호 찾기</label><br>
+		<label><input type="radio" name="find" value="idFind" checked>아이디 찾기</label> 
+		<label><input type="radio" name="find" value="pwFind" onclick="location.href='pwFind.do'">비밀번호 찾기</label><br>
 		<br>
 	</div>
 	<div class="form-group" >
