@@ -16,7 +16,7 @@
 </div>
 
 
-<form class="form-horizontal" action="/action_page.php" style="width: 30%; margin-left: 40%;">
+<form class="form-horizontal" action="" style="width: 30%; margin-left: 40%;">
 	<div class="radio" style="margin-left:10%;">
 		<label><input type="radio" name="find" value="idFind" checked>아이디 찾기</label> 
 		<label><input type="radio" name="find" value="pwFind" onclick="location.href='pwFind.do'">비밀번호 찾기</label><br>
@@ -36,7 +36,7 @@
 	</div>
 	<div class="form-group">
 		<div class="col-sm-offset-2 col-sm-10" style="text-align: center; padding-right: 55%;">
-			<button type="submit" class="btn" style="margin-left:10%; margin-bottom:10%">아이디찾기</button>
+			<input type="submit" class="btn" style="margin-left:10%; margin-bottom:10%" value="아이디찾기"/>
 		</div>
 	</div>
 </form>
