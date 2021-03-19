@@ -78,7 +78,8 @@
     <br>
     <div class="col-sm-offset-1">
       <input type="submit" class="btn btn-default" value="등록">&nbsp;&nbsp;
-      <buton class="btn btn-default">취소</buton>
+      <a href="boardList.do" class="btn btn-default">취소</a>
+      <br><br><br><br>
   </div>
 </form>
   </div>
