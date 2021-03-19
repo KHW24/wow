@@ -42,7 +42,7 @@ $(function(){
                     <li>
                         <span class="thumb">
                             <em>카테고리명</em>
-                            <a href="#"><img class="img-rounded" src="${pageContext.request.contextPath}/resources/images/sample.jpg" alt=""></span>
+                            <a href="postBuyerView.do"><img class="img-rounded" src="${pageContext.request.contextPath}/resources/images/sample.jpg" alt=""></span>
                             <Strong>글 제목</Strong>
                         </a>
                         <p>작성자(or지역) 12-18(날짜)</p>
@@ -52,7 +52,7 @@ $(function(){
                     <li>
                         <span class="thumb">
                             <em>카테고리명</em>
-                            <a href="#"><img class="img-rounded" src="${pageContext.request.contextPath}/resources/images/sample.jpg" alt=""></span>
+                            <a href="postBuyerView.do"><img class="img-rounded" src="${pageContext.request.contextPath}/resources/images/sample.jpg" alt=""></span>
                             <Strong>글 제목</Strong>
                         </a>
                         <p>작성자(or지역) 12-18(날짜)</p>
@@ -62,7 +62,7 @@ $(function(){
                     <li>
                         <span class="thumb">
                             <em>카테고리명</em>
-                            <a href="#"><img class="img-rounded" src="${pageContext.request.contextPath}/resources/images/sample.jpg" alt=""></span>
+                            <a href="postBuyerView.do"><img class="img-rounded" src="${pageContext.request.contextPath}/resources/images/sample.jpg" alt=""></span>
                             <Strong>글 제목</Strong>
                         </a>
                         <p>작성자(or지역) 12-18(날짜)</p>
@@ -72,7 +72,7 @@ $(function(){
                     <li>
                         <span class="thumb">
                             <em>카테고리명</em>
-                            <a href="#"><img class="img-rounded" src="${pageContext.request.contextPath}/resources/images/sample.jpg" alt=""></span>
+                            <a href="postBuyerView.do"><img class="img-rounded" src="${pageContext.request.contextPath}/resources/images/sample.jpg" alt=""></span>
                             <Strong>글 제목</Strong>
                         </a>
                         <p>작성자(or지역) 12-18(날짜)</p>
@@ -82,7 +82,7 @@ $(function(){
                     <li>
                         <span class="thumb">
                             <em>카테고리명</em>
-                            <a href="#"><img class="img-rounded" src="${pageContext.request.contextPath}/resources/images/sample.jpg" alt=""></span>
+                            <a href="postBuyerView.do"><img class="img-rounded" src="${pageContext.request.contextPath}/resources/images/sample.jpg" alt=""></span>
                             <Strong>글 제목</Strong>
                         </a>
                         <p>작성자(or지역) 12-18(날짜)</p>

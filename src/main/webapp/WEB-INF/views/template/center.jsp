@@ -100,7 +100,7 @@
           사랑하는 가족, 연인, 친구와 가지고 있는 소중한 추억을 담아 캔들로 간직해 보세요.</p>
         <br>
         <div class="news">
-        <img src="${pageContext.request.contextPath}/resources/images/pic1.jpg" class="img-responsive margin" style="width:100%" alt="Image">
+        <a href="postBuyerView.do"><img src="${pageContext.request.contextPath}/resources/images/pic1.jpg" class="img-responsive margin" style="width:100%" alt="Image"></a>
       </div>
       </div>
       <div class="col-sm-4"> 
@@ -108,7 +108,7 @@
          세상에 하나 밖에 없는 그림이 그려진 에코백을 한 눈에 구경해보세요.</p>
         <br>
         <div class="news">
-        <img src="${pageContext.request.contextPath}/resources/images/pic2.jpg" class="img-responsive margin" style="width:100%" alt="Image">
+        <a href="postBuyerView.do"><img src="${pageContext.request.contextPath}/resources/images/pic2.jpg" class="img-responsive margin" style="width:100%" alt="Image"></a>
       </div>
       </div>
 
@@ -117,7 +117,7 @@
           다양한 경력의 가죽 공예 제작 고수님과 상담해보세요.</p>
         <br>
         <div class="news">
-        <img src="${pageContext.request.contextPath}/resources/images/pic3.jpg" class="img-responsive margin" style="width:100%" alt="Image">
+        <a href="postBuyerView.do"><img src="${pageContext.request.contextPath}/resources/images/pic3.jpg" class="img-responsive margin" style="width:100%" alt="Image"></a>
         </div>
       </div>
 

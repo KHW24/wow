@@ -21,8 +21,8 @@
         <div class="wraps">
             <!-- 프로필 이미지 & 다른 게시물 보기 링크 부분 -->
             <div class="imgdiv">
-                <a href="#"><img id="pimg" src="${pageContext.request.contextPath}/resources/images/myicon.png"></a>
-                <a href="#"><h5><strong>판매자님의 다른 게시물</strong></h5></a>
+                <a href="otherList.do"><img id="pimg" src="${pageContext.request.contextPath}/resources/images/myicon.png"></a>
+                <a href="otherList.do"><h5><strong>판매자님의 다른 게시물</strong></h5></a>
             </div>
             <!-- 판매중/판매완료 라디오버튼 -->
             <div class="radiobtn">
@@ -36,7 +36,7 @@
                     <li>
                         <span class="thumb">
                             <em>카테고리명</em>
-                            <a href="#"><img class="img-rounded" src="${pageContext.request.contextPath}/resources/images/sample.jpg" alt=""></span>
+                            <a href="postBuyerView.do"><img class="img-rounded" src="${pageContext.request.contextPath}/resources/images/sample.jpg" alt=""></span>
                             <Strong>글 제목</Strong>
                         </a>
                         <p>작성자(or지역) 12-18(날짜)</p>
@@ -46,7 +46,7 @@
                     <li>
                         <span class="thumb">
                             <em>카테고리명</em>
-                            <a href="#"><img class="img-rounded" src="${pageContext.request.contextPath}/resources/images/sample.jpg" alt=""></span>
+                            <a href="postBuyerView.do"><img class="img-rounded" src="${pageContext.request.contextPath}/resources/images/sample.jpg" alt=""></span>
                             <Strong>글 제목</Strong>
                         </a>
                         <p>작성자(or지역) 12-18(날짜)</p>
@@ -56,7 +56,7 @@
                     <li>
                         <span class="thumb">
                             <em>카테고리명</em>
-                            <a href="#"><img class="img-rounded" src="${pageContext.request.contextPath}/resources/images/sample.jpg" alt=""></span>
+                            <a href="postBuyerView.do"><img class="img-rounded" src="${pageContext.request.contextPath}/resources/images/sample.jpg" alt=""></span>
                             <Strong>글 제목</Strong>
                         </a>
                         <p>작성자(or지역) 12-18(날짜)</p>
@@ -66,7 +66,7 @@
                     <li>
                         <span class="thumb">
                             <em>카테고리명</em>
-                            <a href="#"><img class="img-rounded" src="${pageContext.request.contextPath}/resources/images/sample.jpg" alt=""></span>
+                            <a href="postBuyerView.do"><img class="img-rounded" src="${pageContext.request.contextPath}/resources/images/sample.jpg" alt=""></span>
                             <Strong>글 제목</Strong>
                         </a>
                         <p>작성자(or지역) 12-18(날짜)</p>
@@ -76,7 +76,7 @@
                     <li>
                         <span class="thumb">
                             <em>카테고리명</em>
-                            <a href="#"><img class="img-rounded" src="${pageContext.request.contextPath}/resources/images/sample.jpg" alt=""></span>
+                            <a href="postBuyerView.do"><img class="img-rounded" src="${pageContext.request.contextPath}/resources/images/sample.jpg" alt=""></span>
                             <Strong>글 제목</Strong>
                         </a>
                         <p>작성자(or지역) 12-18(날짜)</p>

@@ -37,6 +37,13 @@ public class HomeController {
 			model.addAttribute("main","main-request");
 			return "template/index";
 		}
+
+	//관리자페이지
+	@RequestMapping(value = "report.do", method = RequestMethod.GET)
+	public String report(Locale locale, Model model) {
+		model.addAttribute("center","../admin/report.jsp");
+		return "template/index";
+	}
 	
 	//구매자 버전 게시물 보기 
 	@RequestMapping(value="postBuyerView.do", method=RequestMethod.GET)
@@ -196,6 +203,13 @@ public class HomeController {
 		@RequestMapping(value="message.do", method=RequestMethod.GET)
 		public String messageView(Model model) throws Exception{
 			model.addAttribute("center", "../mypage/message.jsp");
+			return "template/index";
+		}
+		
+		// 관리자페이지-멤버십관리
+		@RequestMapping(value="admembership.do", method=RequestMethod.GET)
+		public String admembership(Model model) throws Exception{
+			model.addAttribute("center", "../admin/membership.jsp");
 			return "template/index";
 		}
 		

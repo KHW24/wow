@@ -106,9 +106,9 @@
         <div class="col-sm-12 section-hr">
     	<table class="userInfo">
       <tr>
-        <td><img src="${pageContext.request.contextPath}/resources/images/userimage.jpg" class="user-info-img" /></td>
+        <td><a href="otherList.do"><img src="${pageContext.request.contextPath}/resources/images/userimage.jpg" class="user-info-img" /></a></td>
         <td>
-          <span class="user-info"><strong>하이d</strong></span><br>
+          <a href="otherList.do"><span class="user-info"><strong>하이d</strong></span></a><br>
           <span class="user-info">춘천시 우두동</span>
         </td>
         <td><button class="btn btn-default">쪽지보내기</button></td>

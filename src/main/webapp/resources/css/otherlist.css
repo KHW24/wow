@@ -3,7 +3,7 @@
 	html, body {width: 100%; height:100%;}
     * {margin: 0; padding: 0;}
     /* 바디부분에 글꼴과 폰트사이즈 */
-    body{font:20px Montserrat, sans-serif; font-size: 12px;}
+    .wraps {font:20px Montserrat, sans-serif; font-size: 12px;}
     /* 리스트에 . 같은 스타일 없애기 */
     ul,ol{list-style: none;}
     /* 리스트제목에 효과 없애기 */
@@ -22,7 +22,7 @@
     /* 중요! 사이즈 맞춰야함 */
     .fixed_img_col {height: 700px;}
     /* 중요! 이미지크기 꼭 맞춰야함 */
-    img {width: 230px; height: 200px;}
+	.fixed_img_col li img {width: 230px; height: 200px;}
     /* 판매중/판매완료 라디오버튼 */
     .radiobtn {margin-left: 65px;}
     /* 게시물에서 가격 */

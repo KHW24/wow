@@ -2,7 +2,7 @@
 	html, body {width: 100%; height:100%;}
     * {margin: 0; padding: 0;}
     /* 바디부분에 글꼴과 폰트사이즈 */
-    body{font: 20px Montserrat, sans-serif; font-size: 12px;}
+    .wraps {font: 20px Montserrat, sans-serif; font-size: 12px;}
     /* 리스트에 . 같은 스타일 없애기 */
     ul,ol{list-style: none;}
     /* 리스트제목에 효과 없애기 */
@@ -12,7 +12,7 @@
     /* a태그 마우스올리거나 누르면 밑줄효과 */
     a:hover,a:active,a:focus{text-decoration: underline;}
     /* width 1000px로 주고, 가운데 정렬 */
-    .wraps {width: 1000px; margin-left: 200px; }
+    .wraps {width: 1000px; margin-left: 250px; }
     /* 내가쓴글 제목 */
     .wraps h1 {padding: 10px 0 4px; margin-left: 475px;}
     /* 썸네일리스트부분div 왼쪽정렬, 왼쪽띄기, 크기, 패딩 지정  */
@@ -23,7 +23,7 @@
     /* 중요! 사이즈 맞춰야함 */
     .fixed_img_col {height: 700px;}
     /* 중요! 이미지크기 꼭 맞춰야함 */
-    img {width: 230px; height: 200px;}
+	.fixed_img_col li img {width: 230px; height: 200px;}
     #dropdown {margin-left: 60px; margin-bottom: 30px; margin-top: 50px;}
     /* 판매중/판매완료 라디오버튼 */
     .radiobtn {margin-left: 65px;}
