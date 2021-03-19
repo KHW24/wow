@@ -171,7 +171,7 @@
   </div>
   <div class="row">
     <div class="col-sm-12 text-right section-hr">
-      <button class="btn btn-default">글 수정</button>
+      <a href="postUpdate.do" class="btn btn-default" >글 수정</a>
       <button class="btn btn-default">글 삭제</button>
       <br><br>
     </div>
