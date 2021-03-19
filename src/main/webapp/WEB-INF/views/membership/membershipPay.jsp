@@ -57,8 +57,8 @@
         <br><br>
        <span class="amount"> 최종 결제 금액: 1,200원 결제 [7일 멤버십] <span>
         <br><br>
-        <button class="btn btn-default">결제하기</button>
-        <button class="btn btn-default">결제취소</button>
+        <a href="paySuccess.do"><button class="btn btn-default">결제하기</button></a>
+        <a href="javascript:history.back()"><button class="btn btn-default">결제취소</button></a>
       </div>
     </div>
 

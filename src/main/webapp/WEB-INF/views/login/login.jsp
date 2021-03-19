@@ -43,8 +43,8 @@
                 <button type="button" class="btn">카카오톡 로그인</button><br>            
             </div>
             <div style="margin-left: 25%; margin-top: 3%;">
-            <button type="button" class="btn btn-link">아이디/비밀번호찾기</button>
-            <button type="button" class="btn btn-link">회원가입</button>
+            <a href="idFind.do"><button type="button" class="btn btn-link">아이디/비밀번호찾기</button></a>
+            <a href="join.do"><button type="button" class="btn btn-link">회원가입</button></a>
             </div>
         </div>
     </div>

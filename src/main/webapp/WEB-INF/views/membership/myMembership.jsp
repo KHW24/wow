@@ -31,8 +31,8 @@
             </tr>
         </table>
         <div class=center>
-        <button class="btn btn1">확인</button>
-        <button class="btn btn2">멤버십취소 신청</button>
+        <a href="mypage.do"><button class="btn btn1">확인</button></a>
+        <a href="payCancle.do"><button class="btn btn2">멤버십취소 신청</button></a>
         </div>
     </div>
     <br><br><br><br><br><br>

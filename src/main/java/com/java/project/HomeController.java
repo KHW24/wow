@@ -100,6 +100,13 @@ public class HomeController {
 			model.addAttribute("center","../membership/myMembership.jsp");
 			return "template/index";
 		}
+		
+		//멤버십 결제 페이지
+		@RequestMapping(value="mshippay.do", method=RequestMethod.GET)
+		public String mshipPayView(Model model) throws Exception{
+			model.addAttribute("center","../membership/membershipPay.jsp");
+			return "template/index";
+		}
 
 		//멤버십 결제 선택
 		@RequestMapping(value="mshipSelect.do", method=RequestMethod.GET)
@@ -107,7 +114,7 @@ public class HomeController {
 			model.addAttribute("center","../membership/membershipSelect.jsp");
 			return "template/index";
 		}
-		
+				
 		//멤버십 결제완료
 		@RequestMapping(value="paySuccess.do", method=RequestMethod.GET)
 		public String paySuccessView(Model model) throws Exception{

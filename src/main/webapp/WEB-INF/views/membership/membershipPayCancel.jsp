@@ -22,8 +22,8 @@
             </table>
             <br><br><br>
             <div class=center>
-            <button class="btn btn1">뒤로가기</button>
-            <button class="btn btn1">취소요청</button>
+            <a href="javascript:history.back()"><button class="btn btn1">뒤로가기</button></a>
+            <a href="payCancleSuccess.do"><button class="btn btn1">취소요청</button></a>
             </div>
         </div>
     </div>

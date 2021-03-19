@@ -35,7 +35,7 @@
         <br>
         <span>1,000원</span><br>
         <span class="description">일주일간 검색 상위노출</span><br><br>
-        <button class="btn btn-default">결제하기</button>
+        <a href="mshippay.do"><button class="btn btn-default">결제하기</button></a>
       </div>
       <div class="col-sm-4 test">
         <span>2주 멤버십</span><br>
@@ -43,7 +43,7 @@
         <br>
         <span>1,000원</span><br>
         <span class="description">이주일간 검색 상위노출</span><br><br>
-        <button class="btn btn-default">결제하기</button>
+        <a href="mshippay.do"><button class="btn btn-default">결제하기</button></a>
       </div>
       <div class="col-sm-4 test">
         <span>한달 멤버십</span><br>
@@ -51,7 +51,7 @@
         <br>
         <span>1,000원</span><br>
         <span class="description">한 달동안 검색 상위노출</span><br><br>
-        <button class="btn btn-default">결제하기</button>
+        <a href="mshippay.do"><button class="btn btn-default">결제하기</button></a>
         <br><br><br>
       </div>
     </div>
