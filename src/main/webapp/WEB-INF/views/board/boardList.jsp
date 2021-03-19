@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <!-- css 파일 -->
-	<link href="${pageContext.request.contextPath}/resources/css/boardlist.css"
+	<link href="${pageContext.request.contextPath}/resources/css/boardlist2.css"
 		rel="stylesheet" type="text/css" />
 <script>
 $(function(){

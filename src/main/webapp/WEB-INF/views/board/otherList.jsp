@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <!-- css 파일 -->
-	<link href="${pageContext.request.contextPath}/resources/css/otherlist.css"
+	<link href="${pageContext.request.contextPath}/resources/css/otherlist2.css"
 		rel="stylesheet" type="text/css" />
 <script>
     $(function(){
