@@ -121,7 +121,7 @@
     box-shadow: none; -webkit-box-shadow: none; -moz-box-shadow: none; -ms-box-shadow: none; -o-box-shadow: none;}
   .widget.subscribe p{  margin-bottom: 18px;}
   .widget li a{ color: rgb(179, 55, 179);}
-  .widget li a:hover{ color: #4b92dc;}
+  .widget li a:hover{ color: #e0e0e0;}
   .widget-title {margin-bottom: 20px;}
   .widget-title span {background: #839FAD none repeat scroll 0 0;
   display: block; height: 1px;margin-top: 25px;position: relative;width: 20%;}
@@ -145,8 +145,9 @@
   ul.social-footer2 li {display: inline-block;padding: 0;}
   ul.social-footer2 li a:hover {background-color: rgb(179, 55, 179);}
   ul.social-footer2 li a {display: block; height:30px;width: 30px;text-align: center;}
+  
   .btn{background-color: rgb(179, 55, 179); color:#fff;}
-  .btn:hover, .btn:focus, .btn.active {background: #4b92dc;color: #fff;
+  .btn:hover, .btn:focus, .btn.active {background: #e0e0e0;color: #fff;
   -webkit-box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
   -moz-box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
   -ms-box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
