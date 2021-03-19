@@ -12,7 +12,7 @@
 </style>
 <section style="text-align: center;">
     <div >
-        <h2>아이디확인</h2><hr>
+        <h2>아이디확인</h2><hr><br>
     </div>
 
     <div>
@@ -25,6 +25,7 @@
     </div>
 
 </section>
+<br><br><br><br><br><br><br><br><br><br>
 
 
     
