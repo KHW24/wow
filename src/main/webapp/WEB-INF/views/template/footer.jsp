@@ -30,9 +30,6 @@
     <li>
     <div class="thumb-content"><a href="boardList.do">게시글</a></div> 
     </li>
-    <li>
-    <div class="thumb-content"><a href="#.">뉴스</a></div>  
-    </li>
     </ul>
     </div>
     </div>
