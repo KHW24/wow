@@ -31,14 +31,14 @@
 
  <div class="container">
     <div class="row">
-      <div class="col-sm-10 payment-method-hr ">
+      <div class="col-sm-12 payment-method-hr ">
     <div class="page-title">
       결제정보
     </div>
     </div>
   </div>
     <div class="row">
-      <div class="col-sm-10  payment-method-hr">
+      <div class="col-sm-12  payment-method-hr">
         <table>
             <tr>
               <td rowspan="3"  class="payment-method-title"><strong>결제방법</strong></td>
@@ -53,12 +53,13 @@
         </table>  
       </div>
     <div class="row">
-      <div class="col-sm-10 total">
+      <div class="col-sm-12 total">
         <br><br>
        <span class="amount"> 최종 결제 금액: 1,200원 결제 [7일 멤버십] <span>
         <br><br>
         <a href="paySuccess.do"><button class="btn btn-default">결제하기</button></a>
         <a href="javascript:history.back()"><button class="btn btn-default">결제취소</button></a>
+        <br><br><br><br>
       </div>
     </div>
 

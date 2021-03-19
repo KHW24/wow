@@ -13,7 +13,7 @@
  }
  /* 닉네임,주소 부분 크기 조정 */
  .userInfo tr td:nth-of-type(2){
-   width:900px;
+   width:800px;
  }
 /* 닉네임, 조회수, 댓글 글씨크기 조정 */
  .user-info, .read-count, .comments-title{
@@ -43,7 +43,7 @@
    text-align: center;
  }
  /* 섹션별 구분자 */
- .userInfo tr:nth-of-type(2), .section-hr{
+ .section-hr{
    border-bottom: 2px solid #cccc;
  }
  /* 대댓글 들여쓰기 */
@@ -56,7 +56,7 @@
  }
 
 /* 센터 부분 */
- .wrapper{
+ .wrapper, .sellerId {
    color:black;
    font-size:15px;
  }
@@ -108,7 +108,7 @@
       <tr>
         <td><a href="otherList.do"><img src="${pageContext.request.contextPath}/resources/images/userimage.jpg" class="user-info-img" /></a></td>
         <td>
-          <a href="otherList.do"><span class="user-info"><strong>하이d</strong></span></a><br>
+          <a href="otherList.do" class="sellerId" ><span class="user-info"><strong>하이d</strong></span></a><br>
           <span class="user-info">춘천시 우두동</span>
         </td>
         <td><button class="btn btn-default">쪽지보내기</button></td>

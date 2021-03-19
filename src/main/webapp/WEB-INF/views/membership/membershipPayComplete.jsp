@@ -31,7 +31,7 @@
             </tr>
         </table><br><br>
         <div class=center>
-            <a href="myMship.do"><button class="btn btn1">확인</button></a>
+            <a href="main.do"><button class="btn btn1">확인</button></a>
         </div>
         
     </div>
