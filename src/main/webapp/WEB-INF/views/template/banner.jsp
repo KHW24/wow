@@ -32,7 +32,7 @@
       <h4 id="bah3">이웃의 솜씨 OPEN 기념</h4>
       <a href="#"><img id="baimg"src="${pageContext.request.contextPath}/resources/images/banner.PNG"></a>
       <div class="popClose">
-      <input type="checkbox" value="checkbox" name="chkbox" id="chkday"/><label for="chkday"> 오늘 하루 그만보기 </label> 
+      <input type="checkbox" value="checkbox" name="chkbox" id="chkday"/><label for="chkday">&nbsp;오늘 하루 그만보기 </label> 
         <a href="#none" class="btnClose" id="closebtn">닫기</a></div>
    </div>
 </div>  
