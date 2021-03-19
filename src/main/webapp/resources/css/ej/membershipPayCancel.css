@@ -24,7 +24,7 @@ hr{
 }
 .btn1{
     margin: 20px;
-    background-color: white;
+    background-color: rgb(173, 39, 173);
 }
 table{
     margin-left:auto; 
@@ -32,6 +32,6 @@ table{
     
 }
 .btn1:hover{
-    background-color: rgb(173, 39, 173);
+    background-color: lightgray;
     color: white;
 }
