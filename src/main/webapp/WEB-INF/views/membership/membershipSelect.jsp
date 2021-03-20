@@ -37,7 +37,7 @@ IMP.request_pay({
     pg : 'inicis', //가맹점 식별코드
     pay_method : 'card',
     merchant_uid : 'merchant_' + new Date().getTime(),
-    name : bt.id,
+    name : bt.id, // 멤버십명
     amount : bt.value, //판매 가격
     
     //로그인한 세션 회원정보 스크립트태그로 넣어주면된다.
@@ -82,7 +82,7 @@ IMP.request_pay({
         <br>
         <span>2,000원</span><br>
         <span class="description">이주일간 검색 상위노출</span><br><br>
-        <button class="btn btn-default" onclick="button_click(this);" value="2000">결제하기</button>
+        <button class="btn btn-default" onclick="button_click(this);" id="2주 멤버십" value="2000">결제하기</button>
       </div>
       <div class="col-sm-4 test">
         <span>한달 멤버십</span><br>
@@ -90,7 +90,7 @@ IMP.request_pay({
         <br>
         <span>3,500원</span><br>
         <span class="description">한 달동안 검색 상위노출</span><br><br>
-        <button  class="btn btn-default" onclick="button_click(this);" value="3500">결제하기</button>
+        <button  class="btn btn-default" onclick="button_click(this);" id="한달 멤버십" value="3500">결제하기</button>
         <br><br><br>
       </div>
     </div>
