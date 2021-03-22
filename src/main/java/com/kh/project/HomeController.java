@@ -221,19 +221,6 @@ public class HomeController {
 			return "template/index";
 		}
 		
-		// 회원 탈퇴 테스트
-		@RequestMapping(value="deleteTest.do", method=RequestMethod.GET)
-		public String deleteView() throws Exception{
-			return "deletetest";
-		}
-		
-		@RequestMapping(value="memberDelete.do", method=RequestMethod.GET)
-		public String deleteTest(String memberId, Model model) throws Exception {
-			int cnt = memberService.deleteMember(memberId);
-			model.addAttribute("cnt",cnt);
-			return "deleteCompl";
-		}
-		
 		// 아이디 확인 
 		@RequestMapping(value="idFindCon.do", method=RequestMethod.GET)
 		public String idFindConView(Model model) throws Exception{
