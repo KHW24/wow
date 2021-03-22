@@ -1,4 +1,4 @@
-package com.java.project;
+package com.kh.project;
 
 import java.text.DateFormat;
 import java.util.Date;
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.java.project.member.service.MemberService;
+import com.java.kh.member.service.MemberService;
 
 
 @Controller

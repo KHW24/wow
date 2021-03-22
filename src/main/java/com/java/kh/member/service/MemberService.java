@@ -1,8 +1,8 @@
-package com.java.project.member.service;
+package com.java.kh.member.service;
 
 import java.util.List;
 
-import com.java.project.member.vo.Member;
+import com.kh.project.member.vo.Member;
 
 public interface MemberService {
 

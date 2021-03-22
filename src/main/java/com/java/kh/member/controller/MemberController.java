@@ -1,4 +1,4 @@
-package com.java.project.member.controller;
+package com.java.kh.member.controller;
 
 import java.util.List;
 
@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.java.project.member.service.MemberService;
-import com.java.project.member.vo.Member;
+import com.java.kh.member.service.MemberService;
+import com.kh.project.member.vo.Member;
 
 @Controller
 public class MemberController {
