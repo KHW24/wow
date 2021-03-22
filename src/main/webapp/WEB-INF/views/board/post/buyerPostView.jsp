@@ -73,6 +73,13 @@
 		alert("신고가 완료되었습니다.");
 	}); 
  });
+ 
+ function popupOpen(){
+     var popUrl = "/project/messagepopup.do";	//팝업창에 출력될 페이지 URL
+     var popOption = "width=450, height=360, resizable=no, scrollbars=no, status=no;";    //팝업창 옵션(optoin)
+         window.open(popUrl,"",popOption);
+     };
+  
 </script>
  <div class="container wrapper">
     <br><br>
@@ -125,7 +132,9 @@
 					<td><a href="otherList.do" class="sellerId"><span
 							class="user-info"><strong>하이d</strong></span></a><br> 
 							<span class="user-info">춘천시 우두동</span></td>
-					<td><button class="btn btn-default">쪽지보내기</button></td>
+					<td>
+					<button class="btn btn-default" onclick="popupOpen();">쪽지보내기</button>
+					</td>
 					<td>
 						<button class="btn btn-default" data-toggle="modal"
 							data-target="#myModal">신고하기</button> 
@@ -244,3 +253,7 @@
     </div>
   </div>
     </div><!--//div.container-->
+
+
+
+

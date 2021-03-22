@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
@@ -46,17 +47,18 @@
   
   
   </style>
-  
+ 
+
 
  <!-- Category -->
 <div class="container-fluid bg-3 text-center">
   <h3 class="margin"><b>게시물 관리</b></h3>
   <br>
-  <a href="#" class="btn btn-default btn-lg">　멤버쉽 회원 관리　<br>
+  <a href="membership.do" class="btn btn-default btn-lg">　멤버쉽 회원 관리　<br>
   </a>
-  <a href="#" class="btn btn-default btn-lg">　신고 회원 관리　<br>
+  <a href="report.do" class="btn btn-default btn-lg">　신고 회원 관리　<br>
   </a>
-  <a href="#" class="btn btn-default btn-lg">　　게시물 관리　　<br>
+  <a href="postmanage.do" class="btn btn-default btn-lg">　　게시물 관리　　<br>
   </a>
 
 

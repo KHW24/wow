@@ -1,7 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-
+<script>
+function popupOpen(){
+    var popUrl = "/project/messagepopup.do";	//팝업창에 출력될 페이지 URL
+    var popOption = "width=450, height=360, resizable=no, scrollbars=no, status=no;";    //팝업창 옵션(optoin)
+        window.open(popUrl,"",popOption);
+    };
+</script>
  <style>
  
    /* 테이블 */
@@ -90,6 +96,9 @@
     <td>목걸이 팝니다</td>
   </tr>
 </table>
+<br>
+<a href="#" class="btn btn-default btn-lg">멤버쉽 만료 메세지 보내기
+</a>
 <br>
 <div class="pagination">
   <a href="#">&laquo;</a>

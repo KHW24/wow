@@ -27,4 +27,12 @@ public class MemberController {
 		mv.setViewName("template/index");
 		return mv;
 	}
+	
+	// 쪽지 팝업
+		@RequestMapping(value="messagepopup.do", method=RequestMethod.GET)
+		public ModelAndView messagePopup (Member member, ModelAndView mv) throws Exception {
+
+			mv.setViewName("admin/messagepopup");
+			return mv;
+		}
 }
