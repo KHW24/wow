@@ -19,12 +19,15 @@
 			}
 			
 		.button4 {
-	  background-color: white;
-	  color: black;
-	  border: 2px solid #e7e7e7;
-	}
-	
-	.button4:hover {background-color: #e7e7e7;}
+				  background-color: white;
+				  color: white;
+				  background-color: #7F00FF;
+				  border: 1px solid  #7F00FF;
+				}
+				
+	.button4:hover {  background-color: white;
+				  color: black;
+				  border: 1px solid  #7F00FF;}
 	
 	.name {
 	font-family : 맑은고딕, Malgun Gothic, dotum, gulim, sans-serif;
