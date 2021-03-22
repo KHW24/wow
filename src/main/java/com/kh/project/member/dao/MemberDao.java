@@ -1,4 +1,4 @@
-package com.java.project.member.dao;
+package com.kh.project.member.dao;
 
 import java.util.List;
 
@@ -6,10 +6,10 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.java.project.member.vo.Member;
+import com.kh.project.member.vo.Member;
 
 @Repository
-public class MemberDAO {
+public class MemberDao {
 
 	@Autowired
 	private SqlSessionTemplate sqlSession;

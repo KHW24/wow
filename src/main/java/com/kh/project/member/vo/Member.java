@@ -1,4 +1,4 @@
-package com.java.project.member.vo;
+package com.kh.project.member.vo;
 
 public class Member {
 

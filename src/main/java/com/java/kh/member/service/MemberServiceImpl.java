@@ -1,18 +1,18 @@
-package com.java.project.member.service;
+package com.java.kh.member.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.java.project.member.dao.MemberDAO;
-import com.java.project.member.vo.Member;
+import com.kh.project.member.dao.MemberDao;
+import com.kh.project.member.vo.Member;
 
 @Service
 public class MemberServiceImpl implements MemberService{
 
 	@Autowired
-	MemberDAO memberDAO;
+	MemberDao memberDAO;
 	
 	// insert
 	public int insertMember(Member member) throws Exception {
