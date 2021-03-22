@@ -13,7 +13,7 @@
  }
  /* 닉네임,주소 부분 크기 조정 */
  .userInfo tr td:nth-of-type(2){
-   width:900px;
+   width:800px;
  }
 /* 닉네임, 조회수, 댓글 글씨크기 조정 */
  .user-info, .read-count, .comments-title{
@@ -43,7 +43,7 @@
    text-align: center;
  }
  /* 섹션별 구분자 */
- .userInfo tr:nth-of-type(2), .section-hr{
+ .section-hr{
    border-bottom: 2px solid #cccc;
  }
  /* 대댓글 들여쓰기 */
@@ -56,11 +56,24 @@
  }
 
 /* 센터 부분 */
- .wrapper{
+ .wrapper, .sellerId {
    color:black;
    font-size:15px;
  }
+ 
+ /*신고하기 팝업창에서 폰트 강조*/
+.alert-strong{
+	color: red;
+}
 </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+ $(function(){
+	$('#alert').on('click',function(){
+		alert("신고가 완료되었습니다.");
+	}); 
+ });
+</script>
  <div class="container wrapper">
     <br><br>
     <!--이미지 슬라이드-->
@@ -104,25 +117,58 @@
     <!--유저 프로필, 닉네임, 주소, 쪽지보내기,신고하기-->
      <div class="row">
         <div class="col-sm-12 section-hr">
-    	<table class="userInfo">
-      <tr>
-        <td><a href="otherList.do"><img src="${pageContext.request.contextPath}/resources/images/userimage.jpg" class="user-info-img" /></a></td>
-        <td>
-          <a href="otherList.do"><span class="user-info"><strong>하이d</strong></span></a><br>
-          <span class="user-info">춘천시 우두동</span>
-        </td>
-        <td><button class="btn btn-default">쪽지보내기</button></td>
-        <td><button class="btn btn-default">신고하기</button></td>
-      </tr>
-      <tr>
-        <td class="heart"><img src="${pageContext.request.contextPath}/resources/images/heart.png" class="user-info-img"/>
-        </td>
-        <td colspan="3" class="title">
-          <strong>마카롱 팝니다</strong>
-        </td>
-      </tr>
-    </table>
-    </div>
+			<table class="userInfo">
+				<tr>
+					<td><a href="otherList.do"><img
+							src="${pageContext.request.contextPath}/resources/images/userimage.jpg"
+							class="user-info-img" /></a></td>
+					<td><a href="otherList.do" class="sellerId"><span
+							class="user-info"><strong>하이d</strong></span></a><br> 
+							<span class="user-info">춘천시 우두동</span></td>
+					<td><button class="btn btn-default">쪽지보내기</button></td>
+					<td>
+						<button class="btn btn-default" data-toggle="modal"
+							data-target="#myModal">신고하기</button> 
+							
+							<!-- Modal -->
+						<div class="modal fade" id="myModal" role="dialog">
+							<div class="modal-dialog">
+
+								<!-- Modal content-->
+								<div class="modal-content">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal">&times;</button>
+										<h4 class="modal-title">
+											<span class="	glyphicon glyphicon-thumbs-down"></span>&nbsp;&nbsp;<strong>게시글
+												신고하기</strong>
+										</h4>
+									</div>
+									<div class="modal-body text-center">
+										<p>
+											<span class="alert-strong">부적절한 판매글</span>로 생각되면 신고해주세요.
+										</p>
+										<p>
+											관리자 확인 후 <span class="alert-strong">판매글 삭제 및 신고회원 제한
+												조치</span>가 취해집니다.
+										</p>
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-default"
+											data-dismiss="modal" id="alert" >신고하기</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td class="heart"><img
+						src="${pageContext.request.contextPath}/resources/images/heart.png"
+						class="user-info-img" /></td>
+					<td colspan="3" class="title"><strong>마카롱 팝니다</strong></td>
+				</tr>
+			</table>
+		</div>
     </div>
     <div class="row">
       <div class="col-sm-12 text-right">

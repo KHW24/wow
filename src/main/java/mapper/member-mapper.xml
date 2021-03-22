@@ -3,7 +3,7 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="Member">
 	<!-- resultMap의 id는 알아볼 수 있게 지정해야함 type은 vo의 루트를 입력하면됨 -->
-	<resultMap id="resultMember" type="com.java.project.member.vo.Member">
+	<resultMap id="resultMember" type="Member">
 	
 		<!-- vo에서 지정했던 필드들 모두 입력. property는 vo에서 썼던 필드이름이고, column은 SQL문에서의 테이블 컬럼명 입력해야함 -->
 		<!-- 먼저 primary key 선언 -->
@@ -13,24 +13,12 @@
 		<result property="email" column="EMAIL" />
 		<result property="address" column="ADDRESS" />
 		<result property="alert_cnt" column="ALERT_CNT" />
+		<result property="isAdmin" column="IS_ADMIN"/>
 	</resultMap>
 	
 	<!-- INSERT -->
 	<insert id="insertMember" parameterType="Member">
-		INSERT INTO TABLE1 VALUES(#{id}, #{nickname}, #{password}, #{email}, #{address}, DEFAULT)
+		INSERT INTO TABLE1 VALUES(#{id}, #{nickname}, #{password}, #{email}, #{address}, DEFAULT, DEFAULT)
 	</insert>
-	
-	<select id="selectMemberAll" resultMap="resultMember">
-		SELECT * FROM TABLE1 
-	</select>
-	
-	<!--UPDATE  -->
-	<update id="updateMember" parameterType="Member">
-		UPDATE TABLE1 SET PASSWORD=#{password}, NICKNAME=#{nickname}, EMAIL=#{email}, ADDRESS=#{address} WHERE ID=#{id}
-	</update>
-	
-	<!-- DELETE -->
-	<delete id="deleteMember" parameterType="String">
-		DELETE FROM TABLE1 WHERE ID = #{userId}
-	</delete>
+		
 </mapper>

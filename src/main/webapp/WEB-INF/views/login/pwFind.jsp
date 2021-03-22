@@ -8,8 +8,8 @@
 
     <div class="container">
         <h3 class="h3">비밀번호 찾기</h3><br><br><br>
-        <form>
-            <div class="center"><input type="radio" name="find" > 아이디 찾기　 <input type="radio" name="find"> 비밀번호 찾기</div><br><br>
+        <form action="pwFind.do" method="post">
+            <div class="center"><input type="radio" name="find" onclick="location.href='idFind.do'"> 아이디 찾기　 <input type="radio" name="find" checked> 비밀번호 찾기</div><br><br>
             <table>
                 <tr>
                     <th>아이디</th>
@@ -29,7 +29,7 @@
             </table>
             <br><br>
             <div class="center">
-            <input type="submit"  class="btn btn1 btn_submit" value="완료">
+            <input type="submit" class="btn btn1 btn_submit" value="완료">
             </div>
         </form>
     </div>

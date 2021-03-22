@@ -1,4 +1,4 @@
-package com.java.project;
+package com.kh.project;
 
 import java.text.DateFormat;
 import java.util.Date;
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.java.project.member.service.MemberService;
+import com.kh.project.member.service.MemberService;
 
 
 @Controller
@@ -65,6 +65,14 @@ public class HomeController {
 		model.addAttribute("center","../board/post/salesPost.jsp");
 		return "template/index";
 	}
+	
+	//게시물 수정 페이지
+	@RequestMapping(value="postUpdate.do", method=RequestMethod.GET)
+	public String postUpdateView(Model model) throws Exception{
+		model.addAttribute("center","../board/post/salesPostUpdate.jsp");
+		return "template/index";
+	}
+	
 	
 	//관심품목 페이지
 	@RequestMapping(value="wishList.do", method=RequestMethod.GET)
@@ -213,17 +221,11 @@ public class HomeController {
 			return "template/index";
 		}
 		
-		// 회원 탈퇴 테스트
-		@RequestMapping(value="deleteTest.do", method=RequestMethod.GET)
-		public String deleteView() throws Exception{
-			return "deletetest";
-		}
-		
-		@RequestMapping(value="memberDelete.do", method=RequestMethod.GET)
-		public String deleteTest(String memberId, Model model) throws Exception {
-			int cnt = memberService.deleteMember(memberId);
-			model.addAttribute("cnt",cnt);
-			return "deleteCompl";
+		// 아이디 확인 
+		@RequestMapping(value="idFindCon.do", method=RequestMethod.GET)
+		public String idFindConView(Model model) throws Exception{
+			model.addAttribute("center", "../login/idFindCon.jsp");
+			return "template/index";
 		}
 		
 }

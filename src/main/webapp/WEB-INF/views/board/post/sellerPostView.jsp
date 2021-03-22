@@ -13,7 +13,7 @@
  }
  /* 닉네임,주소 부분 크기 조정 */
  .userInfo tr td:nth-of-type(2){
-   width:900px;
+   width:800px;
  }
 /* 닉네임, 조회수, 댓글 글씨크기 조정 */
  .user-info, .read-count, .comments-title{
@@ -43,7 +43,7 @@
    text-align: center;
  }
  /* 섹션별 구분자 */
- .userInfo tr:nth-of-type(2), .section-hr{
+ .section-hr{
    border-bottom: 2px solid #cccc;
  }
  /* 대댓글 들여쓰기 */
@@ -171,7 +171,7 @@
   </div>
   <div class="row">
     <div class="col-sm-12 text-right section-hr">
-      <button class="btn btn-default">글 수정</button>
+      <a href="postUpdate.do" class="btn btn-default" >글 수정</a>
       <button class="btn btn-default">글 삭제</button>
       <br><br>
     </div>

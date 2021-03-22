@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/ej/pwFindUpt.css"/>
     <div class="container">
         <h3 class="h3">비밀번호 변경</h3><br><br><br>
-        <form>
+        <form action="pwFindch" method="post">
             <div class="center"><input type="radio" name="find" > 아이디 찾기　 <input type="radio" name="find"> 비밀번호 찾기</div><br><br>
             <table>
                 <tr>
@@ -21,7 +21,7 @@
             </table>
             <br><br>
             <div class="center">
-            <input type="submit"  class="btn btn1 btn_submit" value="완료">
+            <input type="submit" class="btn btn1 btn_submit" value="완료">
             </div>
         </form>
     </div>

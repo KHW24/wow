@@ -16,7 +16,7 @@
 	<hr>
 </div>
 <div class="container" style="height: 700px">
-	<form style="margin-top:-3%">
+	<form style="margin-top:3%">
 		<input type="submit" class="btn" value="삭제" style="margin-left: 83%;">
 		<table class="table table-condensed">
 			<thead>

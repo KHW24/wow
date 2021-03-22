@@ -14,7 +14,7 @@
 </style>
   <div class="container">
   <div class="page-title">
-    게시글 작성
+    게시글 수정
   </div>
 <form class="form-horizontal" action="#">
   <div class="form-group">
@@ -57,7 +57,7 @@
   <div class="form-group">
     <br>
     <div class="col-sm-offset-1">
-      <textarea class="form-control" rows="20" id="comment" placeholder="내용을 입력해주세요."></textarea>
+      <textarea class="form-control" rows="20" id="comment"></textarea>
     </div>
   </div>
   <div class="form-group">
@@ -77,8 +77,8 @@
   <div class="form-group">
     <br>
     <div class="col-sm-offset-1">
-      <input type="submit" class="btn btn-default" value="등록">&nbsp;&nbsp;
-      <a href="boardList.do" class="btn btn-default">취소</a>
+      <input type="submit" class="btn btn-default" value="수정">&nbsp;&nbsp;
+      <a href="postSellerView.do" class="btn btn-default">취소</a>
       <br><br><br><br>
   </div>
 </form>
