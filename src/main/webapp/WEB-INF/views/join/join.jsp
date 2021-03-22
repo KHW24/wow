@@ -13,7 +13,7 @@
 <div style="text-align: center;">
    <h2>회원가입</h2><hr>
 </div>
-<form action="joinCon.do" method="post">
+<form action="login.do" method="post">
 	<table style="margin: 0 auto; width: 30%; height: 300px;">
 		<tbody>
 			<tr>

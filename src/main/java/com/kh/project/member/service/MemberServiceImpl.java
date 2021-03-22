@@ -1,6 +1,4 @@
-package com.java.kh.member.service;
-
-import java.util.List;
+package com.kh.project.member.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,30 +10,11 @@ import com.kh.project.member.vo.Member;
 public class MemberServiceImpl implements MemberService{
 
 	@Autowired
-	MemberDao memberDAO;
+	MemberDao memberDao;
 	
 	// insert
 	public int insertMember(Member member) throws Exception {
-		int cnt = memberDAO.insertMember(member);
+		int cnt = memberDao.insertMember(member);
 		return cnt;
 	}
-	
-	// select
-	public List<Member> selectMemberAll() throws Exception {
-	      List<Member> memberList = memberDAO.selectMemberAll();
-	      return memberList;
-	}
-	
-	// update
-	public int updateMember(Member member) throws Exception{
-		int cnt = memberDAO.updateMember(member);
-		return cnt; 
-	}
-
-	@Override
-	public int deleteMember(String userId) throws Exception {
-		int cnt = memberDAO.deleteMember(userId);
-		return cnt;
-	}
-	
 }
