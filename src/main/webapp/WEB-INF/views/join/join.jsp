@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 
 <!-- 카카오 지도 API -->
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -41,14 +42,22 @@
 <!-- /카카오 지도 API -->
 <script type="text/javascript">
 
+var csrfHeaderName = "${_csrf.headerName}";
+var csrfTokenValue="${_csrf.token}";
+
 	// 아이디 중복체크
 	function idCheck(){
+		
 		idVal = $("#joinId").val();
 			
+		
 		$.ajax({
 			url: "checkIdDup.do",
 			type: "POST",
 			data : {id: idVal}, 
+			beforeSend : function(xhr){
+				xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+			},
 			dataType : 'json',
 			success: function(data){
 				if(data.result == 0){
@@ -59,8 +68,10 @@
 					//$("#submit").attr("disabled", "disabled");
 				}
 			},
-			error: function(){
-				alert("서버에러");
+			error : function(request, status, errorData){
+				alert("error code: "+request.status + "\n"+"message : "+request.responseText+
+						"\n"+"error : "+errorData);
+				// request.status은 404/500과 같은 오류번호가 나오고, responseText는 오류에 대한 설명이 나온다. 
 			}
 		});
 	};
@@ -102,6 +113,10 @@
 <div style="text-align: center;">
    <h2>회원가입</h2><hr>
 </div>
+<h1></h1>
+
+<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+<input type="hidden" name="${_csrf.headerName}" value="${_csrf.headerName}" />
 <form action="join.do" method="post" id="join">
 	<table style="margin: 0 auto; width: 35%; height: 300px;">
 		<tbody>

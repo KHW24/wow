@@ -46,6 +46,7 @@
             <a href="idFind.do"><button type="button" class="btn btn-link">아이디/비밀번호찾기</button></a>
             <a href="join.do"><button type="button" class="btn btn-link">회원가입</button></a>
             </div>
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
         </div>
     </div>
     </form>
