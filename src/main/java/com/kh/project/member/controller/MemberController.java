@@ -25,15 +25,16 @@ public class MemberController {
 	MemberService memberService;
 	
 	// 회원가입
-	@RequestMapping(value="login.do", method=RequestMethod.POST)
+	@RequestMapping(value="join.do", method=RequestMethod.POST)
 	public ModelAndView insertMember(Member member, ModelAndView mv) throws Exception {
-		
+			
 		int cnt = memberService.insertMember(member);
-		
+			
 		mv.addObject("cnt", cnt);
-		mv.setViewName("template/index");
+		mv.setViewName("redirect:login.do");
 		return mv;
 	}
+	
 	// id 중복체크
 	@ResponseBody
 	@RequestMapping(value="checkIdDup.do", method=RequestMethod.POST)
