@@ -100,10 +100,11 @@
 				<td></td>
 			</tr>
 			<tr>
+				<
 				<td style="text-align: center;">이메일</td>
 				<td>
 					<div class="form-group">
-						<input type="email" class="form-control" id="upEmail">
+						<input type="email" class="form-control" id="email">
 					</div>
 				</td>
 				<td>
@@ -115,12 +116,12 @@
 				<td style="text-align: center;">이메일 인증번호</td>
 				<td>
 					<div class="form-group">
-						<input type="text" class="form-control" id="UpEmailCon">
+						<input type="text" class="form-control" id="authKey" >
 					</div>
 				</td>
 				<td>
 					<button type="button" class="btn"
-						style="width: 90%; height: 65%; margin-left: 10%">이메일확인</button>
+						style="width: 90%; height: 65%; margin-left: 10%" id="authKeyC">이메일확인</button><div class="compare-text"></div>
 				</td>
 			</tr>
 			<tr>
@@ -187,5 +188,53 @@ function nickcheck(){
 </script>
 
 <!-- 이메일 인증  -->
+
+<script>
+
+var authKey;
+$(function () {$("#sendEmail").click(function(){
+	var mail = $("#email").val()
+	
+	if (mail == ""){
+		alert("메일 주소가 입력되지 않았습니다.");
+	}else {
+		authKey = '';
+		$.ajax({
+			url : "sendEmail.do",
+			type : "POST",
+			//contentType : 'text/html; charset=utf-8;',
+			data: {mail : mail},
+			dataType: "json",
+			success: function(data){
+				alert(data.key);
+				authKey = data.key;
+				alert("인증번호가 전송되었습니다.");
+				isCertification=true; //추후 인증 여부를 알기위한 값
+			},
+		    error: function (request,status,errorData){   
+		    	alert('error code: '+request.status+"\n"
+		    			+'message:' +request.reponseText+'\n'
+		    			+ 'error :'+  errorData);
+		    }
+		});
+	}
+});
+	
+});
+
+$(function () {$("#authKeyC").click(function() {
+	if($("#authKey").val() == ""){
+		alert("인증번호를 입력해주세요.");
+		isCertification = false;
+	}else if ($("#authKey").val() == authKey) {   //인증 키 값을 비교를 위해 텍스트인풋과 벨류를 비교
+		$(".compare-text").text("인증 성공!").css("color", "black");
+		isCertification = true;  //인증 성공여부 check
+	} else {
+		$(".compare-text").text("불일치!").css("color", "red");
+		isCertification = false; //인증 실패
+	}
+});
+});
+</script>
  
 
