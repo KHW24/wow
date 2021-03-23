@@ -17,4 +17,11 @@ public class MemberDao {
 		int cnt = sqlSession.insert("Member.insertMember", member);
 		return cnt;
 	}
+	
+	// 아이디 찾기
+	public Member findId(Member member) throws Exception {
+		Member findIdMember = sqlSession.selectOne("Member.findId", member);
+		return findIdMember;
+	}
+	
 }

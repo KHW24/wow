@@ -17,4 +17,13 @@ public class MemberServiceImpl implements MemberService{
 		int cnt = memberDao.insertMember(member);
 		return cnt;
 	}
+	
+	// 아이디 찾기
+	public Member findId(Member member) throws Exception {
+		Member findIdMember = memberDao.findId(member);
+		return findIdMember;
+		
+	}
+
+
 }

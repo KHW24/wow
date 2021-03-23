@@ -10,13 +10,14 @@
         color: white;
     }
 </style>
+
 <section style="text-align: center;">
     <div >
         <h2>아이디확인</h2><hr><br>
     </div>
 
     <div>
-        <div><h4>귀하의 아이디는 ___ 입니다.</div></h4><br><br> <!-- ___ 이 자리는 아이디값 넣을 자리 -->
+        <div><h4>귀하의 아이디는 ${findIdMember.id } 입니다.</div></h4><br><br> <!-- ___ 이 자리는 아이디값 넣을 자리 -->
     </div>
         
     <div>
@@ -25,6 +26,9 @@
     </div>
 
 </section>
+<script>
+alert('${msg}');
+</script>
 <br><br><br><br><br><br><br><br><br><br>
 
 

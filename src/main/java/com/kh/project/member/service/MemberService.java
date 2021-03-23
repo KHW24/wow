@@ -8,4 +8,7 @@ public interface MemberService {
 
 	public int insertMember(Member member) throws Exception;
 	
+	// 아이디찾기
+	public Member findId(Member member) throws Exception;
+	
 }
