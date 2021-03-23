@@ -22,5 +22,10 @@
 	</insert>
 	
 	<!--UPDATE  -->
+	
+	<!-- CHECK NICKNAME -->
+	<select id="checkNickname" resultType="int">
+		SELECT COUNT(*) AS CNT FROM MEMBER WHERE NICKNAME = #{nickname}
+	</select>
 		
 </mapper>

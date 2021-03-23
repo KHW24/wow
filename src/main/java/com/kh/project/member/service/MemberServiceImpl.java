@@ -17,4 +17,10 @@ public class MemberServiceImpl implements MemberService{
 		int cnt = memberDao.insertMember(member);
 		return cnt;
 	}
+	
+	//이은지
+	//회원정보 수정 -> 닉네임중복체크													
+	public int nicknameCheck(String nickname) throws Exception{
+		return memberDao.checkNickname(nickname);
+	}
 }

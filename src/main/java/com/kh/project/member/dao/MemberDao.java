@@ -17,4 +17,9 @@ public class MemberDao {
 		int cnt = sqlSession.insert("Member.insertMember", member);
 		return cnt;
 	}
+	
+	// check nickname
+	public int checkNickname(String nickname) throws Exception{
+		return sqlSession.selectOne("Member.checkNickname",nickname);	
+	}
 }
