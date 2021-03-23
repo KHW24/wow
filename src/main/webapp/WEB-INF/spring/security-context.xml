@@ -7,12 +7,12 @@
 	http://www.springframework.org/schema/beans
 	http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean id="customAccessDenied" class="com.kh.project.member.controller.CustomAccessDeniedHandler"></bean>
+	
 
 	<security:http>
 		<security:intercept-url pattern="/sample/member" access="hasRole('ROLE_MEMBER')"/>
 		<security:intercept-url pattern="/admin" access="hasRole('ROLE_ADMIN')"/>
-		<security:access-denied-handler ref="customAccessDenied"/>
+		
 		
 		<security:form-login login-page="/login.do"/>
 				
