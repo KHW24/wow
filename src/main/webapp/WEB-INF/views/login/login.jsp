@@ -15,7 +15,7 @@
         <div class="form-group">
             <label class="control-label col-sm-2" for="email"></label>
             <div class="col-sm-10">
-                <input type="email" class="form-control" id="id" placeholder="ID를 입력하세요">
+                <input type="text" class="form-control" id="id" placeholder="ID를 입력하세요">
             </div>
         </div>
         <div class="form-group">

@@ -37,4 +37,5 @@ public class MemberController {
 			mv.setViewName("admin/messagepopup");
 			return mv;
 	}
+		
 }
