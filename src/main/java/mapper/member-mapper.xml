@@ -40,4 +40,5 @@
 		SELECT ID FROM MEMBER WHERE NICKNAME = #{nickname} AND EMAIL = #{email}
 	</select>
 	
+	
 </mapper>

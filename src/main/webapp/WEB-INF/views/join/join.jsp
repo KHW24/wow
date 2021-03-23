@@ -84,6 +84,9 @@ var csrfTokenValue="${_csrf.token}";
 			url: "checkNiDup.do",
 			type: "POST",
 			data : {nickname: nickVal}, 
+			beforeSend : function(xhr){
+				xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+			},
 			dataType : 'json',
 			success: function(data){
 				if(data.result == 0){
@@ -215,6 +218,7 @@ var csrfTokenValue="${_csrf.token}";
 					</div>
 				</td>
 				<td></td>
+				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 			</tr>
 		</tbody>
 	</table>

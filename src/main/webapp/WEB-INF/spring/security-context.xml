@@ -10,7 +10,7 @@
 	<bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
 
 	<security:http>
-		<security:intercept-url pattern="/mypage.do" access="hasRole('ROLE_MEMBER')"/>
+		<security:intercept-url pattern="/mypage.do" access="hasRole('1')"/>
 		
 		<security:form-login login-page="/login.do" username-parameter="id" password-parameter="password" />
 		<security:logout logout-url="/main.do" invalidate-session="true" />
@@ -18,7 +18,10 @@
 	
 	<security:authentication-manager>
 		<security:authentication-provider>
-			<security:jdbc-user-service data-source-ref="dataSource" />
+			<security:jdbc-user-service data-source-ref="dataSource"
+				users-by-username-query="SELECT ID AS USERNAME, PASSWORD, IS_ADMIN AS ENABLED FROM MEMBER WHERE ID = ?"
+				authorities-by-username-query="SELECT ID AS USERNAME, CASE WHEN IS_ADMIN='0' THEN 'ROLE_MEMBER' WHEN IS_ADMIN='1' THEN 'ROLE_ADMIN' END AS AUTHORITY FROM MEMBER WHERE ID = ?"
+			 />
 			
 			<security:password-encoder ref="bcryptPasswordEncoder" />
 			
