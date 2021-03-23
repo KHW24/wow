@@ -17,4 +17,16 @@ public class MemberDao {
 		int cnt = sqlSession.insert("Member.insertMember", member);
 		return cnt;
 	}
+	
+	// id 중복체크
+	public int checkIdDup(String id) throws Exception {
+		int cnt = sqlSession.selectOne("Member.checkIdDup", id);
+		return cnt;
+	}
+	
+	// 닉네임 중복체크
+	public int checkNiDup(String nickname) throws Exception {
+		int cnt = sqlSession.selectOne("Member.checkNiDup", nickname);
+		return cnt;
+	}
 }
