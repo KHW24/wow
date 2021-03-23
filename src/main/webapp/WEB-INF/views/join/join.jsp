@@ -38,6 +38,7 @@
     }
 
 </script>
+<!-- /카카오 지도 API -->
 <script type="text/javascript">
 
 	// 아이디 중복체크
@@ -88,7 +89,6 @@
 		});
 	};
 </script>
-<!-- /카카오 지도 API -->
     
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     

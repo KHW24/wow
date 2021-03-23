@@ -2,6 +2,7 @@ package com.kh.project.member.controller;
 
 import java.util.Random;
 
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Controller;
@@ -32,6 +33,35 @@ public class MemberController {
 		mv.addObject("cnt", cnt);
 		mv.setViewName("template/index");
 		return mv;
+	}
+	// id 중복체크
+	@ResponseBody
+	@RequestMapping(value="checkIdDup.do", method=RequestMethod.POST)
+	public String checkIdDup(String id) throws Exception {
+			
+		System.out.println(id);
+		int cnt = memberService.checkIdDup(id);
+		System.out.println(cnt);
+			
+		JSONObject obj = new JSONObject();
+		obj.put("result", cnt);
+			
+		return obj.toJSONString();
+	}
+		
+	// 닉네임 중복체크
+	@ResponseBody
+	@RequestMapping(value="checkNiDup.do", method=RequestMethod.POST)
+	public String checkNiDup(String nickname) throws Exception {
+				
+		System.out.println(nickname);
+		int cnt = memberService.checkNiDup(nickname);
+		System.out.println(cnt);
+				
+		JSONObject obj = new JSONObject();
+		obj.put("result", cnt);
+				
+		return obj.toJSONString();
 	}
 	
 	
