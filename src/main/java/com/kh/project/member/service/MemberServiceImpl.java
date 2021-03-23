@@ -38,6 +38,7 @@ public class MemberServiceImpl implements MemberService{
 		int cnt = memberDao.checkNiDup(nickname);
 		return cnt;
 	}
+	
 	//이은지
 	//회원정보 수정 -> 닉네임중복체크													
 	public int nicknameCheck(String nickname) throws Exception{
