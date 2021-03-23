@@ -8,4 +8,8 @@ public interface MemberService {
 
 	public int insertMember(Member member) throws Exception;
 	
+	public int checkIdDup(String id) throws Exception;
+	
+	public int checkNiDup(String nickname) throws Exception;
+	
 }
