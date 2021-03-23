@@ -7,22 +7,21 @@
 	http://www.springframework.org/schema/beans
 	http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	
+	<bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
 
 	<security:http>
 		<security:intercept-url pattern="/mypage.do" access="hasRole('ROLE_MEMBER')"/>
 		
-		<security:form-login login-page="/login.do" username-parameter="userId" password-parameter="userPw" />
+		<security:form-login login-page="/login.do" username-parameter="id" password-parameter="password" />
 		<security:logout logout-url="/main.do" invalidate-session="true" />
 	</security:http>	
 	
 	<security:authentication-manager>
 		<security:authentication-provider>
-			<security:user-service>
-				<security:user name="member" password="{noop}member" authorities="ROLE_MEMBER"/>
-				<security:user name="admin" password="{noop}admin" authorities="ROLE_MEMBER, ROLE_ADMIN"/>
-				
-			</security:user-service>
+			<security:jdbc-user-service data-source-ref="dataSource" />
+			
+			<security:password-encoder ref="bcryptPasswordEncoder" />
+			
 		</security:authentication-provider>
 	
 	</security:authentication-manager>

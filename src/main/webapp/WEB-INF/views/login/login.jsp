@@ -15,13 +15,13 @@
         <div class="form-group">
             <label class="control-label col-sm-2" for="email"></label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="id" name="userId" placeholder="ID를 입력하세요">
+                <input type="text" class="form-control" id="id" name="id" placeholder="ID를 입력하세요">
             </div>
         </div>
         <div class="form-group">
             <label class="control-label col-sm-2" for="pwd"></label>
             <div class="col-sm-10">
-                <input type="password" class="form-control" id="pw" name="userPw" placeholder="Password를 입력하세요">
+                <input type="password" class="form-control" id="pw" name="password" placeholder="Password를 입력하세요">
             </div>
         </div>       
         <div class="form-group">
