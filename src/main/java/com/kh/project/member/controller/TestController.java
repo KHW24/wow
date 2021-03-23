@@ -6,8 +6,8 @@ public class TestController {
 		System.out.println("xptm");	
 		System.out.println("xptm");	
 		System.out.println("xptm");	
-		System.out.println("xptm");	
-		System.out.println("xptm");	
+
 	}
+	
   
 }
