@@ -118,9 +118,9 @@
 </div>
 <h1></h1>
 
+<form action="join.do" method="post" id="join">
 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 <input type="hidden" name="${_csrf.headerName}" value="${_csrf.headerName}" />
-<form action="join.do" method="post" id="join">
 	<table style="margin: 0 auto; width: 35%; height: 300px;">
 		<tbody>
 			<tr>
