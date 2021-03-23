@@ -35,4 +35,9 @@ public class MemberDao {
 		int cnt = sqlSession.selectOne("Member.checkNiDup", nickname);
 		return cnt;
 	}
+	
+	// check nickname
+	public int checkNickname(String nickname) throws Exception{
+		return sqlSession.selectOne("Member.checkNickname",nickname);	
+	}
 }

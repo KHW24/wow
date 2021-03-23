@@ -15,4 +15,9 @@ public interface MemberService {
 	
 	public int checkNiDup(String nickname) throws Exception;
 	
+	//이은지
+	// 회원정보 수정 ->닉네임중복체크													
+	public int nicknameCheck(String nickname) throws Exception;
+	
+	
 }
