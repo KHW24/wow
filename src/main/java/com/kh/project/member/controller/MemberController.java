@@ -72,6 +72,7 @@ public class MemberController {
 		mv.setViewName("admin/messagepopup");
 		return mv;
 	}
+
 	
 	 // 아이디 찾기!!
 	 @RequestMapping(value="findId.do", method=RequestMethod.POST)
@@ -111,5 +112,7 @@ public class MemberController {
 	// 회원정보 수정-> 이메일인증
 	
 	
-	
+
+		
+
 }
