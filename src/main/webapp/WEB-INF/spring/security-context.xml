@@ -10,9 +10,10 @@
 	
 
 	<security:http>
+		<security:intercept-url pattern="/mypage.do" access="hasRole('ROLE_MEMBER')"/>
 		
-		<security:form-login login-page="/login.do"/>
-				
+		<security:form-login login-page="/login.do" username-parameter="userId" password-parameter="userPw" />
+		<security:logout logout-url="/main.do" invalidate-session="true" />
 	</security:http>	
 	
 	<security:authentication-manager>

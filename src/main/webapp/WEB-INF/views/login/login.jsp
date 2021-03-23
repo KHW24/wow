@@ -11,17 +11,17 @@
 </style>
 <div style="text-align: center; font:bold 30px black; margin:1% 0 1% 0;">로그인</div>
 <div class="container" style="margin: 0 auto; width: 30%; height: 400px; background-color: #c4bfbe;">
-<form class="form-horizontal" action="/action_page.php" style="margin:10% 13% 0 0;">
+<form class="form-horizontal" action="${pageContext.request.contextPath}/login" style="margin:10% 13% 0 0;" method="post">
         <div class="form-group">
             <label class="control-label col-sm-2" for="email"></label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="id" placeholder="ID를 입력하세요">
+                <input type="text" class="form-control" id="id" name="userId" placeholder="ID를 입력하세요">
             </div>
         </div>
         <div class="form-group">
             <label class="control-label col-sm-2" for="pwd"></label>
             <div class="col-sm-10">
-                <input type="password" class="form-control" id="pw" placeholder="Password를 입력하세요">
+                <input type="password" class="form-control" id="pw" name="userPw" placeholder="Password를 입력하세요">
             </div>
         </div>       
         <div class="form-group">
