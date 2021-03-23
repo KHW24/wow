@@ -18,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.kh.project.member.service.MemberService;
 import com.kh.project.member.vo.Member;
 
+
 @Controller
 public class MemberController {
 
@@ -25,7 +26,7 @@ public class MemberController {
 	MemberService memberService;
 	
 	// 회원가입
-	@RequestMapping(value="login.do", method=RequestMethod.POST)
+	@RequestMapping(value="join.do", method=RequestMethod.POST)
 	public ModelAndView insertMember(Member member, ModelAndView mv) throws Exception {
 		
 		int cnt = memberService.insertMember(member);

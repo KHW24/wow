@@ -10,9 +10,6 @@
 	
 
 	<security:http>
-		<security:intercept-url pattern="/sample/member" access="hasRole('ROLE_MEMBER')"/>
-		<security:intercept-url pattern="/admin" access="hasRole('ROLE_ADMIN')"/>
-		
 		
 		<security:form-login login-page="/login.do"/>
 				
