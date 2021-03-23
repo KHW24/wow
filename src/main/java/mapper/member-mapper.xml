@@ -28,6 +28,11 @@
 	</select>
 
 	<!--UPDATE  -->
+	
+	<!-- CHECK NICKNAME -->
+	<select id="checkNickname" resultType="int">
+		SELECT COUNT(*) AS CNT FROM MEMBER WHERE NICKNAME = #{nickname}
+	</select>
 		
 		
 	<!-- 아이디 찾기, 닉네임과 이메일 입력해서 아이디 찾기 받아오는 값이 2개이기 떄문에 ParameterType값을 String으로 하지않고 Member(vo)로 작성 -->

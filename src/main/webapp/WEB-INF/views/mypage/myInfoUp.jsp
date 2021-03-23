@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
+<!-- 제이쿼리  -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    
 <!-- 카카오 지도 API -->
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
@@ -60,12 +63,12 @@
 				<td style="text-align: center;">닉네임</td>
 				<td>
 					<div class="form-group" style="margin-top: 4%; height: 30px;">
-						<input type="text" class="form-control" id="upName">
+						<input type="text" class="form-control" id="upNickName">
 					</div>
 				</td>
 				<td>
 					<button type="button" class="btn"
-						style="width: 90%; height: 65%; margin-left: 10%">중복확인</button>
+						style="width: 90%; height: 65%; margin-left: 10%" onclick="nickcheck();">중복확인</button>
 				</td>
 			</tr>
 			<tr>
@@ -105,7 +108,7 @@
 				</td>
 				<td>
 					<button type="button" class="btn"
-						style="width: 90%; height: 65%; margin-left: 10%">이메일전송</button>
+						style="width: 90%; height: 65%; margin-left: 10%" id="sendEmail">이메일전송</button>
 				</td>
 			</tr>
 			<tr>
@@ -156,3 +159,33 @@
 		<button type="button" class="btn" style="margin-bottom :3%">완료</button>
 	</div>
 </form>
+
+<!-- 닉네임 중복체크 -->
+<script>
+function nickcheck(){
+	nickname = $("#upNickName").val();
+	
+	$.ajax({
+	    url: 'nickCheck.do',
+	    type: 'POST',
+	    //dataType: 'text', //(생략가능)
+	    contentType : 'text/html; charset=utf-8;',//내가 서버로 보내는 데이터의 타입
+	    //text/html이랑 text/plain이랑 차이점 알아두기
+	    data: nickname ,
+
+	    success: function(data){
+	         if(data == 0){
+	         alert("사용하실 수 있는 닉네임입니다.");
+	         }else{
+	         	alert("중복된 닉네임이 존재합니다.");
+	         }
+	    },
+	    error: function (){                   
+	    }
+	  });
+}
+</script>
+
+<!-- 이메일 인증  -->
+ 
+
