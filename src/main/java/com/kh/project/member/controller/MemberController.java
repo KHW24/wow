@@ -45,7 +45,7 @@ public class MemberController {
 		return obj.toJSONString();
 	}
 		
-		// 닉네임 중복체크
+	// 닉네임 중복체크
 	@ResponseBody
 	@RequestMapping(value="checkNiDup.do", method=RequestMethod.POST)
 	public String checkNiDup(String nickname) throws Exception {
