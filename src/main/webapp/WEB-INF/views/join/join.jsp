@@ -42,8 +42,8 @@
 <!-- /카카오 지도 API -->
 <script type="text/javascript">
 
-var csrfHeaderName = "${_csrf.headerName}";
-var csrfTokenValue="${_csrf.token}";
+	var csrfHeaderName = "${_csrf.headerName}";
+	var csrfTokenValue="${_csrf.token}";
 
 	// 아이디 중복체크
 	function idCheck(){
@@ -118,9 +118,9 @@ var csrfTokenValue="${_csrf.token}";
 </div>
 <h1></h1>
 
+<form action="join.do" method="post" id="join">
 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 <input type="hidden" name="${_csrf.headerName}" value="${_csrf.headerName}" />
-<form action="join.do" method="post" id="join">
 	<table style="margin: 0 auto; width: 35%; height: 300px;">
 		<tbody>
 			<tr>

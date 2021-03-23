@@ -56,7 +56,7 @@
 	<h2>내 정보 수정</h2>
 	<hr>
 </div>
-<form>
+<form method="POST">
 	<table style="margin: 0 auto; width: 35%; height: 300px;">
 		<tbody>
 			<tr>
@@ -164,7 +164,6 @@
 <script>
 function nickcheck(){
 	nickname = $("#upNickName").val();
-	
 	$.ajax({
 	    url: 'nickCheck.do',
 	    type: 'POST',
@@ -172,7 +171,6 @@ function nickcheck(){
 	    contentType : 'text/html; charset=utf-8;',//내가 서버로 보내는 데이터의 타입
 	    //text/html이랑 text/plain이랑 차이점 알아두기
 	    data: nickname ,
-
 	    success: function(data){
 	         if(data == 0){
 	         alert("사용하실 수 있는 닉네임입니다.");
@@ -182,7 +180,7 @@ function nickcheck(){
 	    },
 	    error: function (){                   
 	    }
-	  });
+	 });
 }
 </script>
 
