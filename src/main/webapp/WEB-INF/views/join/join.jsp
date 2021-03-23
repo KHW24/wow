@@ -103,7 +103,7 @@
    <h2>회원가입</h2><hr>
 </div>
 <form action="join.do" method="post" id="join">
-	<table style="margin: 0 auto; width: 30%; height: 300px;">
+	<table style="margin: 0 auto; width: 35%; height: 300px;">
 		<tbody>
 			<tr>
 				<td style="text-align: center;">아이디</td>
@@ -176,7 +176,27 @@
 				<td style="text-align: center;">주소</td>
 				<td>
 					<div class="form-group" style="margin-top: 2%;">
-						<input type="text" class="form-control" id="joinAdd" name="address">
+					<input type="text" class="form-control" id="postCode" name="postCode" placeholder="우편번호" required="required" size="25" readonly>
+					</div>
+				</td>
+				<td>
+					<input type="button" onclick="DaumPostcode()" class="btn" style="width: 90%; height: 65%; margin-left: 10%" value="우편번호 찾기 ">
+				</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>
+					<div class="form-group" style="margin-top: 2%;">
+					<input type="text" class="form-control" id="roadAddress" name="roadAddress" placeholder="도로명주소" size="35" required="required" readonly>
+					</div>
+				</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>
+					<div class="form-group" style="margin-top: 2%;">
+					 <input type="text" class="form-control" id="detailAddress" name="detailAddress" placeholder="상세주소" size="35" required="required">
 					</div>
 				</td>
 				<td></td>
