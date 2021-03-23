@@ -10,5 +10,9 @@ public interface MemberService {
 	
 	// 아이디찾기
 	public Member findId(Member member) throws Exception;
+
+	public int checkIdDup(String id) throws Exception;
+	
+	public int checkNiDup(String nickname) throws Exception;
 	
 }

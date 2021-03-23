@@ -25,5 +25,17 @@ public class MemberServiceImpl implements MemberService{
 		
 	}
 
+	// 아이디 중복체크
+	@Override
+	public int checkIdDup(String id) throws Exception {
+		int cnt= memberDao.checkIdDup(id);
+		return cnt;
+	}
 
+	// 닉네임 중복체크
+	@Override
+	public int checkNiDup(String nickname) throws Exception {
+		int cnt = memberDao.checkNiDup(nickname);
+		return cnt;
+	}
 }

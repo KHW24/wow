@@ -38,6 +38,56 @@
     }
 
 </script>
+<script type="text/javascript">
+
+	// 아이디 중복체크
+	function idCheck(){
+		idVal = $("#joinId").val();
+			
+		$.ajax({
+			url: "checkIdDup.do",
+			type: "POST",
+			data : {id: idVal}, 
+			dataType : 'json',
+			success: function(data){
+				if(data.result == 0){
+					alert("사용가능한 아이디입니다.")
+					//$("#submit").removeAttr("disabled");	
+				}else{
+					alert("중복된 아이디입니다.")
+					//$("#submit").attr("disabled", "disabled");
+				}
+			},
+			error: function(){
+				alert("서버에러");
+			}
+		});
+	};
+
+	// 닉네임 중복체크
+	function niCheck(){
+		nickVal = $("#joinName").val();
+			
+		$.ajax({
+			url: "checkNiDup.do",
+			type: "POST",
+			data : {nickname: nickVal}, 
+			dataType : 'json',
+			success: function(data){
+				if(data.result == 0){
+					alert("사용가능한 닉네임입니다.")
+					$("#submit").prop("disabled", "");	
+				}else{
+					alert("중복된 닉네임입니다.")
+					$("#submit").prop("disabled", "disabled");
+				}
+			},
+			error: function(){
+				alert("서버에러");
+			}
+		});
+	};
+</script>
 <!-- /카카오 지도 API -->
     
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -52,8 +102,8 @@
 <div style="text-align: center;">
    <h2>회원가입</h2><hr>
 </div>
-<form action="login.do" method="post">
-	<table style="margin: 0 auto; width: 35%; height: 300px;">
+<form action="join.do" method="post" id="join">
+	<table style="margin: 0 auto; width: 30%; height: 300px;">
 		<tbody>
 			<tr>
 				<td style="text-align: center;">아이디</td>
@@ -63,8 +113,7 @@
 					</div>
 				</td>
 				<td>
-					<button type="button" class="btn"
-						style="width: 90%; height: 65%; margin-left: 10%">중복확인</button>
+					<input type="button" class="btn" style="width: 90%; height: 65%; margin-left: 10%" id="checkIdDup" onclick="idCheck();" value="중복확인">
 				</td>
 			</tr>
 			<tr>
@@ -75,8 +124,7 @@
 					</div>
 				</td>
 				<td>
-					<button type="button" class="btn"
-						style="width: 90%; height: 65%; margin-left: 10%">중복확인</button>
+					<input type="button" class="btn" style="width: 90%; height: 65%; margin-left: 10%" id="checkNiDup" onclick="niCheck();" value="중복확인">
 				</td>
 			</tr>
 			<tr>
@@ -128,27 +176,7 @@
 				<td style="text-align: center;">주소</td>
 				<td>
 					<div class="form-group" style="margin-top: 2%;">
-					<input type="text" class="form-control" id="postCode" name="postCode" placeholder="우편번호" required="required" size="25" readonly>
-					</div>
-				</td>
-				<td>
-					<input type="button" onclick="DaumPostcode()" class="btn" style="width: 90%; height: 65%; margin-left: 10%" value="우편번호 찾기 ">
-				</td>
-			</tr>
-			<tr>
-				<td></td>
-				<td>
-					<div class="form-group" style="margin-top: 2%;">
-					<input type="text" class="form-control" id="roadAddress" name="roadAddress" placeholder="도로명주소" size="35" required="required" readonly>
-					</div>
-				</td>
-				<td></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td>
-					<div class="form-group" style="margin-top: 2%;">
-					 <input type="text" class="form-control" id="detailAddress" name="detailAddress" placeholder="상세주소" size="35" required="required">
+						<input type="text" class="form-control" id="joinAdd" name="address">
 					</div>
 				</td>
 				<td></td>

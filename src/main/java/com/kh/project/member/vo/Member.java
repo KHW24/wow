@@ -8,6 +8,7 @@ public class Member {
 	private String email;
 	private String address;
 	private int alert_cnt;
+	private int isAdmin;
 
 	public String getId() {
 		return id;
@@ -44,6 +45,12 @@ public class Member {
 	}
 	public void setAlert_cnt(int alert_cnt) {
 		this.alert_cnt = alert_cnt;
+	}
+	public int getIsAdmin() {
+		return isAdmin;
+	}
+	public void setIsAdmin(int isAdmin) {
+		this.isAdmin = isAdmin;
 	}
 	
 }
