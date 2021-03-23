@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -40,6 +41,25 @@ public class MemberController {
 
 		mv.setViewName("admin/messagepopup");
 		return mv;
+	}
+	
+	 // 아이디 찾기!!
+	 @RequestMapping(value="findId.do", method=RequestMethod.POST)
+	 public ModelAndView findId(@ModelAttribute Member member, ModelAndView mv) throws Exception {
+
+	      try {   // 아이디 찾기 성공시(findIdMember 값이 있을때)
+	         Member findIdMember = memberService.findId(member);
+	         System.out.println("컨트롤러에서 id : "+findIdMember.getId());
+	         mv.addObject("findIdMember", findIdMember); 
+	         mv.addObject("center", "../login/idFindCon.jsp");
+	         mv.setViewName("template/index");
+	         mv.addObject("msg","아이디 찾기 성공");   // alert대신에 msg로 메세지 전달
+	      } catch(NullPointerException e) {   // 아이디 찾기 실패시(findIdMember.getId()가 널 값일때 )
+	         mv.addObject("msg","아이디 찾기 실패");   // alert대신에 msg로 메세지 전달
+	         mv.addObject("center", "../login/idFind.jsp");
+	         mv.setViewName("template/index");
+	      }
+	      return mv; 
 	}
 		
 	// 이은지
