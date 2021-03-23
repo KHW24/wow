@@ -42,8 +42,8 @@
 <!-- /카카오 지도 API -->
 <script type="text/javascript">
 
-var csrfHeaderName = "${_csrf.headerName}";
-var csrfTokenValue="${_csrf.token}";
+	var csrfHeaderName = "${_csrf.headerName}";
+	var csrfTokenValue="${_csrf.token}";
 
 	// 아이디 중복체크
 	function idCheck(){
@@ -84,6 +84,9 @@ var csrfTokenValue="${_csrf.token}";
 			url: "checkNiDup.do",
 			type: "POST",
 			data : {nickname: nickVal}, 
+			beforeSend : function(xhr){
+				xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+			},
 			dataType : 'json',
 			success: function(data){
 				if(data.result == 0){
