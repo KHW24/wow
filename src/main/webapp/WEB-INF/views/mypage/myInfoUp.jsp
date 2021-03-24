@@ -1,11 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    
+	pageEncoding="UTF-8"%>
+
 <!-- 제이쿼리  -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
 <!-- 카카오 지도 API -->
-<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script
+	src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
     //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
     function DaumPostcode() {
@@ -38,18 +40,24 @@
 
             }
         }).open();
-  
+    }
+
 </script>
 <!-- /카카오 지도 API -->
 
 
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <style>
-	.form-group{margin-top: 4%; height: 30px;}  
-	.btn:hover{
-        background-color: rgb(173, 39, 173);
-        color: white;
-    }
+.form-group {
+	margin-top: 4%;
+	height: 30px;
+}
+
+.btn:hover {
+	background-color: rgb(173, 39, 173);
+	color: white;
+}
 </style>
 <div style="text-align: center;">
 	<h2>내 정보 수정</h2>
@@ -62,29 +70,32 @@
 				<td style="text-align: center;">닉네임</td>
 				<td>
 					<div class="form-group" style="margin-top: 4%; height: 30px;">
-						<input type="text" class="form-control" id="upNickName" name="nickname" value="${member.nickname }">
+						<input type="text" class="form-control" id="upNickName"
+							name="nickname" value="${member.nickname }">
 					</div>
 				</td>
 				<td>
 					<button type="button" class="btn"
-						style="width: 90%; height: 65%; margin-left: 10%" onclick="nickcheck();">중복확인</button>
+						style="width: 90%; height: 65%; margin-left: 10%"
+						onclick="nickcheck();">중복확인</button>
 				</td>
 			</tr>
 			<tr>
 				<td style="text-align: center;">아이디</td>
 				<td>
 					<div class="form-group" style="margin-top: 4%; height: 30px;">
-						<input type="text" class="form-control" id="upId" name="id" value="${member.id }" readonly="readonly">
+						<input type="text" class="form-control" id="upId" name="id"
+							value="${member.id }" readonly="readonly">
 					</div>
 				</td>
-				<td>	
-				</td>
+				<td></td>
 			</tr>
 			<tr>
 				<td style="text-align: center;">비밀번호</td>
 				<td>
 					<div class="form-group">
-						<input type="password" class="form-control" id="upPw" name="password" value="">
+						<input type="password" class="form-control" id="upPw"
+							name="password" value="">
 					</div>
 				</td>
 				<td></td>
@@ -99,46 +110,54 @@
 				<td></td>
 			</tr>
 			<tr>
-				<
 				<td style="text-align: center;">이메일</td>
 				<td>
 					<div class="form-group">
-						<input type="email" class="form-control" id="email" name="email" value="${member.email }">
+						<input type="email" class="form-control" id="email" name="email"
+							value="${member.email }" readonly="readonly">
 					</div>
 				</td>
 				<td>
 					<button type="button" class="btn"
-						style="width: 90%; height: 65%; margin-left: 10%" id="sendEmail">이메일전송</button>
+						style="width: 90%; height: 65%; margin-left: 10%; display: none;"
+						id="sendEmail">이메일전송</button>
+					<button type="button" class="btn"
+						style="width: 90%; height: 65%; margin-left: 10%;" id="emailUpt">이메일변경</button>
 				</td>
 			</tr>
-			<tr>
+			<tr id="emailTr" style="display: none;">
 				<td style="text-align: center;">이메일 인증번호</td>
 				<td>
 					<div class="form-group">
-						<input type="text" class="form-control" id="authKey" >
+						<input type="text" class="form-control" id="authKey">
 					</div>
 				</td>
 				<td>
 					<button type="button" class="btn"
-						style="width: 90%; height: 65%; margin-left: 10%" id="authKeyC">이메일확인</button><div class="compare-text"></div>
+						style="width: 90%; height: 65%; margin-left: 10%" id="authKeyC">이메일확인</button>
+					<div class="compare-text"></div>
 				</td>
 			</tr>
 			<tr>
 				<td style="text-align: center;">주소</td>
 				<td>
 					<div class="form-group" style="margin-top: 2%;">
-					<input type="text" class="form-control" id="postCode" name="postCode" placeholder="우편번호" required="required" size="25" value="" readonly>
+						<input type="text" class="form-control" id="postCode"
+							name="postCode" placeholder="우편번호" required="required" size="25"
+							readonly>
 					</div>
 				</td>
-				<td>
-					<input type="button" onclick="DaumPostcode()" class="btn" style="width: 90%; height: 65%; margin-left: 10%" value="우편번호 찾기 ">
+				<td><input type="button" onclick="DaumPostcode()" class="btn"
+					style="width: 90%; height: 65%; margin-left: 10%" value="우편번호 찾기 ">
 				</td>
 			</tr>
 			<tr>
 				<td></td>
 				<td>
 					<div class="form-group" style="margin-top: 2%;">
-					<input type="text" class="form-control" id="roadAddress" name="roadAddress" placeholder="도로명주소" size="35" required="required" value="" readonly>
+						<input type="text" class="form-control" id="roadAddress"
+							name="address" placeholder="도로명주소" size="35" required="required"
+							value="${member.address }" readonly>
 					</div>
 				</td>
 				<td></td>
@@ -147,16 +166,17 @@
 				<td></td>
 				<td>
 					<div class="form-group" style="margin-top: 2%;">
-					 <input type="text" class="form-control" id="detailAddress" name="detailAddress" placeholder="상세주소" size="35" required="required" value="">
+						<input type="text" class="form-control" id="detailAddress"
+							name="address" placeholder="상세주소" size="35" required="required">
 					</div>
 				</td>
 				<td></td>
 			</tr>
-			
+
 		</tbody>
 	</table>
 	<div style="text-align: center;">
-		<button type="submit" class="btn" style="margin-bottom :3%">완료</button>
+		<button type="submit" class="btn" style="margin-bottom: 3%">완료</button>
 	</div>
 </form>
 
@@ -218,8 +238,9 @@ $(function () {$("#sendEmail").click(function(){
 		});
 	}
 });
-	
 });
+	
+
 
 $(function () {$("#authKeyC").click(function() {
 	if($("#authKey").val() == ""){
@@ -233,6 +254,22 @@ $(function () {$("#authKeyC").click(function() {
 		isCertification = false; //인증 실패
 	}
 });
+});
+
 </script>
- 
+
+<!-- 이메일변경 클릭시 -> 인정번호버튼보이게 -->
+<script>
+	$(function(){ $("#emailUpt").click(function(){
+		$("#sendEmail").css("display","block");
+		$("#emailUpt").css("display","none");
+		$("#emailTr").show();
+		$("#email").attr("readonly",false);
+	})
+
+	});
+	
+
+</script>
+
 
