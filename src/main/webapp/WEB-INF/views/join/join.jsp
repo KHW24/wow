@@ -218,7 +218,6 @@
 				</td>
 				<td></td>
 				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-				<input type="hidden" name="isAdmin" value="1" />
 			</tr>
 		</tbody>
 	</table>

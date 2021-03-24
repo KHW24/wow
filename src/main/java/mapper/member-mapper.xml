@@ -9,12 +9,17 @@
 		<result property="email" column="EMAIL" />
 		<result property="address" column="ADDRESS" />
 		<result property="alert_cnt" column="ALERT_CNT" />
-		<result property="isAdmin" column="IS_ADMIN"/>
+		<result property="enabled" column="ENABLED"/>
+	</resultMap>
+	
+	<resultMap type="MemberAuth" id="resultMemberAuth">
+		<result property="id" column="id"/>
+		<result property="auth" column="auth"/>		
 	</resultMap>
 	
 	<!-- INSERT -->
 	<insert id="insertMember" parameterType="Member">
-		INSERT INTO MEMBER VALUES(#{id}, #{nickname}, #{password}, #{email}, #{address}, DEFAULT, #{isAdmin})
+		INSERT INTO MEMBER VALUES(#{id}, #{nickname}, #{password}, #{email}, #{address}, DEFAULT, DEFAULT)
 	</insert>
 	
 	<!-- checkIdDup -->

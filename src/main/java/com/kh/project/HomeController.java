@@ -7,6 +7,7 @@ import java.util.Locale;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -226,6 +227,15 @@ public class HomeController {
 		public String idFindConView(Model model) throws Exception{
 			model.addAttribute("center", "../login/idFindCon.jsp");
 			return "template/index";
+		}
+		
+		// 에러페이지
+		@RequestMapping(value="accessError.do", method=RequestMethod.GET)
+		public String errorPageView(Authentication auth) throws Exception{
+			logger.info("access Denied : "+auth);
+			return "accessError";
+			
+			
 		}
 		
 }

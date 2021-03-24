@@ -7,19 +7,21 @@
 	http://www.springframework.org/schema/beans
 	http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
+	<bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bctypt.BctyptPasswordEncoder"/>
 
 	<security:http>
-		<security:intercept-url pattern="/mypage.do" access="hasRole('ROLE_USER')"/>
+		<security:intercept-url pattern="/mypage.do" access="hasRole('ROLE_MEMBER')"/>
 		
 		<security:form-login login-page="/login.do" username-parameter="id" password-parameter="password" />
 		<security:logout logout-url="/main.do" invalidate-session="true" />
+		
+		<security:access-denied-handler error-page="/accessError.do"/>
 	</security:http>	
 	
 	<security:authentication-manager>
 		<security:authentication-provider>
 			<security:jdbc-user-service data-source-ref="dataSource"
-				users-by-username-query="SELECT id AS userName, password, IS_ADMIN AS enabled FROM MEMBER WHERE id = ?"
+				users-by-username-query="SELECT id AS userName, password, enabled FROM MEMBER WHERE id = ?"
 				authorities-by-username-query="SELECT id AS userName, auth FROM MEMBER_AUTH WHERE id = ?"
 			 />
 			

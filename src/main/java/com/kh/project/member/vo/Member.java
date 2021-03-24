@@ -1,7 +1,5 @@
 package com.kh.project.member.vo;
 
-
-
 public class Member {
 
 	private String id;
@@ -10,8 +8,20 @@ public class Member {
 	private String email;
 	private String address;
 	private int alert_cnt;
-	private int isAdmin;
+	private int enabled;
 
+	public Member(String id, String nickname, String password, String email, String address, int alert_cnt,
+			int enabled) {
+		super();
+		this.id = id;
+		this.nickname = nickname;
+		this.password = password;
+		this.email = email;
+		this.address = address;
+		this.alert_cnt = alert_cnt;
+		this.enabled = enabled;
+	}
+	
 	public String getId() {
 		return id;
 	}
@@ -48,11 +58,17 @@ public class Member {
 	public void setAlert_cnt(int alert_cnt) {
 		this.alert_cnt = alert_cnt;
 	}
-	public int getIsAdmin() {
-		return isAdmin;
+	public int getEnabled() {
+		return enabled;
 	}
-	public void setIsAdmin(int isAdmin) {
-		this.isAdmin = isAdmin;
+	public void setEnabled(int enabled) {
+		this.enabled = enabled;
+	}
+	
+	@Override
+	public String toString() {
+		return "Member [id=" + id + ", nickname=" + nickname + ", password=" + password + ", email=" + email
+				+ ", address=" + address + ", alert_cnt=" + alert_cnt + ", enabled=" + enabled + "]";
 	}
 	
 }
