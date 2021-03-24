@@ -144,7 +144,7 @@
 					<div class="form-group" style="margin-top: 2%;">
 						<input type="text" class="form-control" id="postCode"
 							name="postCode" placeholder="우편번호" required="required" size="25"
-							value="" readonly>
+							value="${member.postCode }" readonly>
 					</div>
 				</td>
 				<td><input type="button" onclick="DaumPostcode()" class="btn"
@@ -156,8 +156,8 @@
 				<td>
 					<div class="form-group" style="margin-top: 2%;">
 						<input type="text" class="form-control" id="roadAddress"
-							name="address" placeholder="도로명주소" size="35" required="required"
-							value="" readonly>
+							name="roadAddress" placeholder="도로명주소" size="35" required="required"
+							value="${member.roadAddress }" readonly>
 					</div>
 				</td>
 				<td></td>
@@ -167,7 +167,7 @@
 				<td>
 					<div class="form-group" style="margin-top: 2%;">
 						<input type="text" class="form-control" id="detailAddress"
-							name="address" placeholder="상세주소" size="35" required="required" value="">
+							name="detailAddress" placeholder="상세주소" size="35" required="required" value="${member.detailAddress }">
 					</div>
 				</td>
 				<td></td>
