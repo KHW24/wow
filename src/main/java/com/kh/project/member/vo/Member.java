@@ -6,9 +6,31 @@ public class Member {
 	private String nickname;
 	private String password;
 	private String email;
-	private String address;
+	private String postCode;
+	private String roadAddress;
+	private String detailAddress;
 	private int alert_cnt;
 	private int isAdmin;
+	
+	public Member(String id, String nickname, String password, String email, String postCode, String roadAddress,
+			String datailAddress, int alert_cnt, int isAdmin) {
+		this.id = id;
+		this.nickname = nickname;
+		this.password = password;
+		this.email = email;
+		this.postCode = postCode;
+		this.roadAddress = roadAddress;
+		this.detailAddress = datailAddress;
+		this.alert_cnt = alert_cnt;
+		this.isAdmin = isAdmin;
+	}
+	
+	public Member() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+
 
 	public String getId() {
 		return id;
@@ -34,11 +56,23 @@ public class Member {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getAddress() {
-		return address;
+	public String getPostCode() {
+		return postCode;
 	}
-	public void setAddress(String address) {
-		this.address = address;
+	public void setPostCode(String postCode) {
+		this.postCode = postCode;
+	}
+	public String getRoadAddress() {
+		return roadAddress;
+	}
+	public void setRoadAddress(String roadAddress) {
+		this.roadAddress = roadAddress;
+	}
+	public String getDetailAddress() {
+		return detailAddress;
+	}
+	public void setDetailAddress(String detailAddress) {
+		this.detailAddress = detailAddress;
 	}
 	public int getAlert_cnt() {
 		return alert_cnt;
@@ -52,5 +86,9 @@ public class Member {
 	public void setIsAdmin(int isAdmin) {
 		this.isAdmin = isAdmin;
 	}
+	
+	
+
+	
 	
 }

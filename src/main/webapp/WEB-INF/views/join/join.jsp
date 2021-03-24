@@ -221,7 +221,7 @@ $(function(){
 				<td></td>
 				<td>
 					<div class="form-group" style="margin-top: 2%;">
-					<input type="text" class="form-control" id="roadAddress" name="address" placeholder="도로명주소" size="35" required="required" readonly>
+					<input type="text" class="form-control" id="roadAddress" name="roadAddress" placeholder="도로명주소" size="35" required="required" readonly>
 					</div>
 				</td>
 				<td></td>
@@ -230,7 +230,7 @@ $(function(){
 				<td></td>
 				<td>
 					<div class="form-group" style="margin-top: 2%;">
-					 <input type="text" class="form-control" id="detailAddress" name="address" placeholder="상세주소" size="35" required="required">
+					 <input type="text" class="form-control" id="detailAddress" name="detailAddress" placeholder="상세주소" size="35" required="required">
 					</div>
 				</td>
 				<td></td>
