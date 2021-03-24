@@ -16,6 +16,7 @@
 	<resultMap type="MemberAuth" id="resultMemberAuth">
 		<result property="id" column="id"/>
 		<result property="auth" column="auth"/>		
+
 	</resultMap>
 	
 	<!-- INSERT -->
