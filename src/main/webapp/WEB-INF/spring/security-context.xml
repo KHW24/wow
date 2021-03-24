@@ -7,7 +7,7 @@
 	http://www.springframework.org/schema/beans
 	http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bctypt.BctyptPasswordEncoder"/>
+	<bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BcryptPasswordEncoder"/>
 
 	<security:http>
 		<security:intercept-url pattern="/mypage.do" access="hasRole('ROLE_MEMBER')"/>
