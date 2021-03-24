@@ -13,14 +13,14 @@ public class Member {
 	private int isAdmin;
 	
 	public Member(String id, String nickname, String password, String email, String postCode, String roadAddress,
-			String datailAddress, int alert_cnt, int isAdmin) {
+			String detailAddress, int alert_cnt, int isAdmin) {
 		this.id = id;
 		this.nickname = nickname;
 		this.password = password;
 		this.email = email;
 		this.postCode = postCode;
 		this.roadAddress = roadAddress;
-		this.detailAddress = datailAddress;
+		this.detailAddress = detailAddress;
 		this.alert_cnt = alert_cnt;
 		this.isAdmin = isAdmin;
 	}
@@ -29,8 +29,6 @@ public class Member {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
-
 
 	public String getId() {
 		return id;
@@ -80,15 +78,11 @@ public class Member {
 	public void setAlert_cnt(int alert_cnt) {
 		this.alert_cnt = alert_cnt;
 	}
-	public int getIsAdmin() {
+	public  int getIsAdmin() {
 		return isAdmin;
 	}
 	public void setIsAdmin(int isAdmin) {
 		this.isAdmin = isAdmin;
 	}
-	
-	
 
-	
-	
 }

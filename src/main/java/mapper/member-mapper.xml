@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="Member">
-	<!-- resultMap의 id는 알아볼 수 있게 지정해야함 type은 vo의 루트를 입력하면됨 -->
+		<!-- resultMap의 id는 알아볼 수 있게 지정해야함 type은 vo의 루트를 입력하면됨 -->
 		<!-- vo에서 지정했던 필드들 모두 입력. property는 vo에서 썼던 필드이름이고, column은 SQL문에서의 테이블 컬럼명 입력해야함 -->
 		<!-- 먼저 primary key 선언 -->
 	<resultMap id="resultMember" type="Member">
@@ -29,7 +29,7 @@
 	
 	<!--UPDATE  -->
 	<update id="updateMember" parameterType="Member">
-		UPDATE MEMBER SET NICKNAME=#{nickname}, PASSWORD=#{password}, EMAIL=#{email}, ADDRESS=#{address} where id=#{id}
+		UPDATE MEMBER SET NICKNAME=#{nickname}, PASSWORD=#{password}, EMAIL=#{email}, POSTCODE=#{postCode} , ROADADDRESS=#{roadAddress}, DETAILADDRESS=#{detailAddress} where id=#{id}
 	</update>
 	
 	<!-- CHECK NICKNAME -->

@@ -34,15 +34,15 @@ public class MemberController {
 	MemberService memberService;
 	
 	// 회원가입
-	@RequestMapping(value="login.do", method=RequestMethod.POST)
-	public ModelAndView insertMember(Member member, ModelAndView mv) throws Exception {
+		@RequestMapping(value="join.do", method=RequestMethod.POST)
+		public ModelAndView insertMember(Member member, ModelAndView mv) throws Exception {
+
+			int cnt = memberService.insertMember(member);
 		
-		int cnt = memberService.insertMember(member);
-		
-		mv.addObject("cnt", cnt);
-		mv.setViewName("template/index");
-		return mv;
-	}
+			mv.addObject("cnt", cnt);
+			mv.setViewName("redirect:login.do");
+			return mv;
+		}
 	
 	
 	// 쪽지 팝업

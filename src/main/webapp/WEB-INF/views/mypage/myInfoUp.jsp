@@ -144,7 +144,7 @@
 					<div class="form-group" style="margin-top: 2%;">
 						<input type="text" class="form-control" id="postCode"
 							name="postCode" placeholder="우편번호" required="required" size="25"
-							readonly>
+							value="" readonly>
 					</div>
 				</td>
 				<td><input type="button" onclick="DaumPostcode()" class="btn"
@@ -157,7 +157,7 @@
 					<div class="form-group" style="margin-top: 2%;">
 						<input type="text" class="form-control" id="roadAddress"
 							name="address" placeholder="도로명주소" size="35" required="required"
-							value="${member.address }" readonly>
+							value="" readonly>
 					</div>
 				</td>
 				<td></td>
@@ -167,7 +167,7 @@
 				<td>
 					<div class="form-group" style="margin-top: 2%;">
 						<input type="text" class="form-control" id="detailAddress"
-							name="address" placeholder="상세주소" size="35" required="required">
+							name="address" placeholder="상세주소" size="35" required="required" value="">
 					</div>
 				</td>
 				<td></td>
@@ -269,7 +269,6 @@ $(function () {$("#authKeyC").click(function() {
 
 	});
 	
-
 </script>
 
 
