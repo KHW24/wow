@@ -14,7 +14,7 @@
 	
 	<!-- INSERT -->
 	<insert id="insertMember" parameterType="Member">
-		INSERT INTO MEMBER VALUES(#{id}, #{nickname}, #{password}, #{email}, #{address}, DEFAULT, DEFAULT)
+		INSERT INTO MEMBER VALUES(#{id}, #{nickname}, #{password}, #{email}, #{address}, DEFAULT, #{isAdmin})
 	</insert>
 	
 	<!-- checkIdDup -->

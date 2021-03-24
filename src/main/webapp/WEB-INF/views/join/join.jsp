@@ -119,8 +119,7 @@
 <h1></h1>
 
 <form action="join.do" method="post" id="join">
-<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-<input type="hidden" name="${_csrf.headerName}" value="${_csrf.headerName}" />
+
 	<table style="margin: 0 auto; width: 35%; height: 300px;">
 		<tbody>
 			<tr>
@@ -219,6 +218,7 @@
 				</td>
 				<td></td>
 				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+				<input type="hidden" name="isAdmin" value="1" />
 			</tr>
 		</tbody>
 	</table>

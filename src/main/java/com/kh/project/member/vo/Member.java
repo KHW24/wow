@@ -1,5 +1,7 @@
 package com.kh.project.member.vo;
 
+
+
 public class Member {
 
 	private String id;
