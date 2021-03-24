@@ -218,6 +218,8 @@
 				</td>
 				<td></td>
 				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+				<input type="hidden" name="alert_cnt" value="0" />
+				<input type="hidden" name="enabled" value="1" />
 			</tr>
 		</tbody>
 	</table>

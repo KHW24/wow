@@ -39,6 +39,7 @@
 			<input type="submit" class="btn" style="margin-left:10%; margin-bottom:10%" value="아이디찾기"/>
 		</div>
 	</div>
+	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 </form>
 <script>
 // msg로 넘어오는 값이 없으면 알람안뜨게함.

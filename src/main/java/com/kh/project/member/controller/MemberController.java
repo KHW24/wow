@@ -5,6 +5,8 @@ import java.util.Random;
 import javax.inject.Inject;
 
 import org.json.simple.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.kh.project.HomeController;
 import com.kh.project.member.service.MemberService;
 import com.kh.project.member.vo.Member;
 
@@ -25,6 +28,8 @@ import com.kh.project.member.vo.Member;
 @Controller
 public class MemberController {
 
+	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
+	
 	@Autowired
 	MemberService memberService;
 	
@@ -37,6 +42,7 @@ public class MemberController {
 	public ModelAndView insertMember(Member member, ModelAndView mv) throws Exception {
 			
 		String inputPw = member.getPassword();
+		
 		String pw = pwdEncoder.encode(inputPw);	
 		member.setPassword(pw);
 		

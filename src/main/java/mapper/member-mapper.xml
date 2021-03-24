@@ -10,6 +10,7 @@
 		<result property="address" column="ADDRESS" />
 		<result property="alert_cnt" column="ALERT_CNT" />
 		<result property="enabled" column="ENABLED"/>
+		<collection property="authList" resultMap="resultMemberAuth"></collection>
 	</resultMap>
 	
 	<resultMap type="MemberAuth" id="resultMemberAuth">
@@ -45,5 +46,9 @@
 		SELECT ID FROM MEMBER WHERE NICKNAME = #{nickname} AND EMAIL = #{email}
 	</select>
 	
+	<!-- 로그인  -->
+	<select id="readLogin" resultMap="resultMember">
+		SELECT MEMBER.ID, NICKNAME, PASSWORD, EMAIL, ADDRESS, ALERT_CNT, ENABLED, AUTH FROM MEMBER LEFT OUTER JOIN MEMBER_AUTH ON MEMBER.ID = MEMBER_AUTH.ID WHERE MEMBER.ID = #{id}
+	</select>
 	
 </mapper>

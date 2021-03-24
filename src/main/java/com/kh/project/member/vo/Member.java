@@ -1,5 +1,7 @@
 package com.kh.project.member.vo;
 
+import java.util.List;
+
 public class Member {
 
 	private String id;
@@ -9,9 +11,10 @@ public class Member {
 	private String address;
 	private int alert_cnt;
 	private int enabled;
-
-	public Member(String id, String nickname, String password, String email, String address, int alert_cnt,
-			int enabled) {
+	private List<MemberAuth> authList;
+	
+	public Member(String id, String nickname, String password, String email, String address, int alert_cnt, int enabled,
+			List<MemberAuth> authList) {
 		super();
 		this.id = id;
 		this.nickname = nickname;
@@ -20,8 +23,8 @@ public class Member {
 		this.address = address;
 		this.alert_cnt = alert_cnt;
 		this.enabled = enabled;
+		this.authList = authList;
 	}
-	
 	public String getId() {
 		return id;
 	}
@@ -64,11 +67,19 @@ public class Member {
 	public void setEnabled(int enabled) {
 		this.enabled = enabled;
 	}
-	
+	public List<MemberAuth> getAuthList() {
+		return authList;
+	}
+	public void setAuthList(List<MemberAuth> authList) {
+		this.authList = authList;
+	}
 	@Override
 	public String toString() {
 		return "Member [id=" + id + ", nickname=" + nickname + ", password=" + password + ", email=" + email
-				+ ", address=" + address + ", alert_cnt=" + alert_cnt + ", enabled=" + enabled + "]";
+				+ ", address=" + address + ", alert_cnt=" + alert_cnt + ", enabled=" + enabled + ", authList="
+				+ authList + "]";
 	}
+
+	
 	
 }
