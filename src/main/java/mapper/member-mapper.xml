@@ -9,7 +9,7 @@
 		<result property="email" column="EMAIL" />
 		<result property="address" column="ADDRESS" />
 		<result property="alert_cnt" column="ALERT_CNT" />
-		<result property="isAdmin" column="IS_ADMIN"/>
+		<result property="enabled" column="ENABLED"/>
 	</resultMap>
 	
 	<!-- INSERT -->
