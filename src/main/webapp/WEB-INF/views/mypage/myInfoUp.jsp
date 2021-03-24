@@ -38,8 +38,7 @@
 
             }
         }).open();
-    }
-
+  
 </script>
 <!-- /카카오 지도 API -->
 
@@ -56,14 +55,14 @@
 	<h2>내 정보 수정</h2>
 	<hr>
 </div>
-<form>
+<form action="myInfoUp.do" method="POST">
 	<table style="margin: 0 auto; width: 35%; height: 300px;">
 		<tbody>
 			<tr>
 				<td style="text-align: center;">닉네임</td>
 				<td>
 					<div class="form-group" style="margin-top: 4%; height: 30px;">
-						<input type="text" class="form-control" id="upNickName">
+						<input type="text" class="form-control" id="upNickName" name="nickname" value="${member.nickname }">
 					</div>
 				</td>
 				<td>
@@ -75,7 +74,7 @@
 				<td style="text-align: center;">아이디</td>
 				<td>
 					<div class="form-group" style="margin-top: 4%; height: 30px;">
-						<input type="text" class="form-control" id="upId" value="아이디가져오기" readonly="readonly">
+						<input type="text" class="form-control" id="upId" name="id" value="${member.id }" readonly="readonly">
 					</div>
 				</td>
 				<td>	
@@ -85,7 +84,7 @@
 				<td style="text-align: center;">비밀번호</td>
 				<td>
 					<div class="form-group">
-						<input type="password" class="form-control" id="upPw">
+						<input type="password" class="form-control" id="upPw" name="password" value="">
 					</div>
 				</td>
 				<td></td>
@@ -94,7 +93,7 @@
 				<td style="text-align: center;">비밀번호확인</td>
 				<td>
 					<div class="form-group">
-						<input type="password" class="form-control" id="upPwCon">
+						<input type="password" class="form-control" id="upPwCon" value="">
 					</div>
 				</td>
 				<td></td>
@@ -104,7 +103,7 @@
 				<td style="text-align: center;">이메일</td>
 				<td>
 					<div class="form-group">
-						<input type="email" class="form-control" id="email">
+						<input type="email" class="form-control" id="email" name="email" value="${member.email }">
 					</div>
 				</td>
 				<td>
@@ -128,7 +127,7 @@
 				<td style="text-align: center;">주소</td>
 				<td>
 					<div class="form-group" style="margin-top: 2%;">
-					<input type="text" class="form-control" id="postCode" name="postCode" placeholder="우편번호" required="required" size="25" readonly>
+					<input type="text" class="form-control" id="postCode" name="postCode" placeholder="우편번호" required="required" size="25" value="" readonly>
 					</div>
 				</td>
 				<td>
@@ -139,7 +138,7 @@
 				<td></td>
 				<td>
 					<div class="form-group" style="margin-top: 2%;">
-					<input type="text" class="form-control" id="roadAddress" name="roadAddress" placeholder="도로명주소" size="35" required="required" readonly>
+					<input type="text" class="form-control" id="roadAddress" name="roadAddress" placeholder="도로명주소" size="35" required="required" value="" readonly>
 					</div>
 				</td>
 				<td></td>
@@ -148,7 +147,7 @@
 				<td></td>
 				<td>
 					<div class="form-group" style="margin-top: 2%;">
-					 <input type="text" class="form-control" id="detailAddress" name="detailAddress" placeholder="상세주소" size="35" required="required">
+					 <input type="text" class="form-control" id="detailAddress" name="detailAddress" placeholder="상세주소" size="35" required="required" value="">
 					</div>
 				</td>
 				<td></td>
@@ -157,7 +156,7 @@
 		</tbody>
 	</table>
 	<div style="text-align: center;">
-		<button type="button" class="btn" style="margin-bottom :3%">완료</button>
+		<button type="submit" class="btn" style="margin-bottom :3%">완료</button>
 	</div>
 </form>
 
@@ -233,7 +232,6 @@ $(function () {$("#authKeyC").click(function() {
 		$(".compare-text").text("불일치!").css("color", "red");
 		isCertification = false; //인증 실패
 	}
-});
 });
 </script>
  

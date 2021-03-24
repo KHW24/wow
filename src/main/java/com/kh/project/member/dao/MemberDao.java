@@ -18,6 +18,17 @@ public class MemberDao {
 		return cnt;
 	}
 	
+	// select member
+	public Member selectMember (String id) throws Exception {
+		System.out.println("MemberDao- "+id);
+		return sqlSession.selectOne("Member.selectMember", id);
+	}
+	
+	// update member
+	public int updateMember (Member member) throws Exception {
+		return sqlSession.update("Member.updateMember", member);
+	}
+	
 	// check nickname
 	public int checkNickname(String nickname) throws Exception{
 		return sqlSession.selectOne("Member.checkNickname",nickname);	

@@ -55,7 +55,28 @@ public class MemberController {
 		
 	// 이은지
 	// 회원정보 수정
+	
+	// 나의 회원정보  (내정보 가져오기)
+	@RequestMapping(value="myInfoUp.do", method=RequestMethod.GET)
+	public String myInfoUpView(Model model) throws Exception{
+		//아직 session정보가 없어서
+		String id = "test01";
 		
+		Member member = memberService.selectMember(id);
+		model.addAttribute("member", member);		
+		model.addAttribute("center", "../mypage/myInfoUp.jsp");
+		return "template/index";
+	}
+	
+	// 회원정보 수정
+	@RequestMapping(value="myInfoUp.do", method=RequestMethod.POST)
+	public ModelAndView updateMember(Member member, ModelAndView mv)throws Exception{
+		memberService.updateMember(member);
+			
+		mv.setViewName("template/index");
+		return mv;
+	}
+	
 	// 회원정보 수정 - >닉네임 중복체크
 	@ResponseBody //응답
 	@RequestMapping(value="nickCheck.do", method=RequestMethod.POST)

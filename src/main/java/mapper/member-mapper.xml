@@ -13,7 +13,6 @@
 		<result property="email" column="EMAIL" />
 		<result property="address" column="ADDRESS" />
 		<result property="alert_cnt" column="ALERT_CNT" />
-		<result property="isAdmin" column="IS_ADMIN"/>
 	</resultMap>
 	
 	<!-- INSERT -->
@@ -21,7 +20,15 @@
 		INSERT INTO TABLE1 VALUES(#{id}, #{nickname}, #{password}, #{email}, #{address}, DEFAULT, DEFAULT)
 	</insert>
 	
+	<!-- SELECT MEMBER -->
+	<select id="selectMember" parameterType="String" resultMap="resultMember">
+		SELECT * FROM MEMBER WHERE ID = #{id}
+	</select>
+	
 	<!--UPDATE  -->
+	<update id="updateMember" parameterType="Member">
+		UPDATE MEMBER SET NICKNAME=#{nickname}, PASSWORD=#{password}, EMAIL=#{email}, ADDRESS=#{address} where id=#{id}
+	</update>
 	
 	<!-- CHECK NICKNAME -->
 	<select id="checkNickname" resultType="int">

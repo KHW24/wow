@@ -19,6 +19,17 @@ public class MemberServiceImpl implements MemberService{
 	}
 	
 	//이은지
+
+	// 나의 회원정보
+	public Member selectMember(String id) throws Exception {
+		return memberDao.selectMember(id);
+	}
+	
+	//회원 정보 수정
+	public int updateMember(Member member) throws Exception{
+		return memberDao.updateMember(member);
+	}
+	
 	//회원정보 수정 -> 닉네임중복체크													
 	public int nicknameCheck(String nickname) throws Exception{
 		return memberDao.checkNickname(nickname);

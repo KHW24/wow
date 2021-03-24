@@ -186,12 +186,7 @@ public class HomeController {
 			return "template/index";
 		}
 		
-		// 내 정보 수정
-		@RequestMapping(value="myInfoUp.do", method=RequestMethod.GET)
-		public String myInfoUpView(Model model) throws Exception{
-			model.addAttribute("center", "../mypage/myInfoUp.jsp");
-			return "template/index";
-		}
+
 		
 		// 본인 확인
 		@RequestMapping(value="myInfoCon.do", method=RequestMethod.GET)
