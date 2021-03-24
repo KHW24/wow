@@ -8,23 +8,12 @@ public class Member {
 	private String nickname;
 	private String password;
 	private String email;
-	private String address;
+	private String postCode;
+	private String roadAddress;
+	private String detailAddress;
 	private int alert_cnt;
 	private int enabled;
 	private List<MemberAuth> authList;
-	
-	public Member(String id, String nickname, String password, String email, String address, int alert_cnt, int enabled,
-			List<MemberAuth> authList) {
-		super();
-		this.id = id;
-		this.nickname = nickname;
-		this.password = password;
-		this.email = email;
-		this.address = address;
-		this.alert_cnt = alert_cnt;
-		this.enabled = enabled;
-		this.authList = authList;
-	}
 	public String getId() {
 		return id;
 	}
@@ -49,11 +38,23 @@ public class Member {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getAddress() {
-		return address;
+	public String getPostCode() {
+		return postCode;
 	}
-	public void setAddress(String address) {
-		this.address = address;
+	public void setPostCode(String postCode) {
+		this.postCode = postCode;
+	}
+	public String getRoadAddress() {
+		return roadAddress;
+	}
+	public void setRoadAddress(String roadAddress) {
+		this.roadAddress = roadAddress;
+	}
+	public String getDetailAddress() {
+		return detailAddress;
+	}
+	public void setDetailAddress(String detailAddress) {
+		this.detailAddress = detailAddress;
 	}
 	public int getAlert_cnt() {
 		return alert_cnt;
@@ -73,12 +74,31 @@ public class Member {
 	public void setAuthList(List<MemberAuth> authList) {
 		this.authList = authList;
 	}
+	public Member(String id, String nickname, String password, String email, String postCode, String roadAddress,
+			String detailAddress, int alert_cnt, int enabled, List<MemberAuth> authList) {
+		super();
+		this.id = id;
+		this.nickname = nickname;
+		this.password = password;
+		this.email = email;
+		this.postCode = postCode;
+		this.roadAddress = roadAddress;
+		this.detailAddress = detailAddress;
+		this.alert_cnt = alert_cnt;
+		this.enabled = enabled;
+		this.authList = authList;
+	}
 	@Override
 	public String toString() {
 		return "Member [id=" + id + ", nickname=" + nickname + ", password=" + password + ", email=" + email
-				+ ", address=" + address + ", alert_cnt=" + alert_cnt + ", enabled=" + enabled + ", authList="
-				+ authList + "]";
+				+ ", postCode=" + postCode + ", roadAddress=" + roadAddress + ", detailAddress=" + detailAddress
+				+ ", alert_cnt=" + alert_cnt + ", enabled=" + enabled + ", authList=" + authList + "]";
 	}
+	
+	
+	
+	
+	
 
 	
 	
