@@ -42,6 +42,25 @@
     
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     
+<script>
+// 비밀번호 일치여부
+$(function(){
+    $('#joinPw').keyup(function(){
+      $('#checkPw').html('');
+    });
+
+    $('#joinPwCon').keyup(function(){
+        if($('#joinPw').val() != $('#joinPwCon').val()){
+          $('#checkPw').html('비밀번호 불일치');
+          $('#checkPw').attr('color', 'red');
+        } else{
+          $('#checkPw').html('비밀번호 일치');
+          $('#checkPw').attr('color', '#B337B3');
+        }
+    });
+});
+</script>    
+
 <style>
 	.form-group{margin-top: 4%; height: 30px;}
     .btn:hover{
@@ -52,7 +71,11 @@
 <div style="text-align: center;">
    <h2>회원가입</h2><hr>
 </div>
-<form action="login.do" method="post">
+<h1></h1>
+
+<form action="join.do" method="post" id="join">
+<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+<input type="hidden" name="${_csrf.headerName}" value="${_csrf.headerName}" />
 	<table style="margin: 0 auto; width: 35%; height: 300px;">
 		<tbody>
 			<tr>
@@ -63,8 +86,7 @@
 					</div>
 				</td>
 				<td>
-					<button type="button" class="btn"
-						style="width: 90%; height: 65%; margin-left: 10%">중복확인</button>
+					<input type="button" class="btn" style="width: 90%; height: 65%; margin-left: 10%" id="checkIdDup" onclick="idCheck();" value="중복확인">
 				</td>
 			</tr>
 			<tr>
@@ -75,8 +97,7 @@
 					</div>
 				</td>
 				<td>
-					<button type="button" class="btn"
-						style="width: 90%; height: 65%; margin-left: 10%">중복확인</button>
+					<input type="button" class="btn" style="width: 90%; height: 65%; margin-left: 10%" id="checkNiDup" onclick="niCheck();" value="중복확인">
 				</td>
 			</tr>
 			<tr>
@@ -94,11 +115,11 @@
 				<td style="text-align: center;">비밀번호확인</td>
 				<td>
 					<div class="form-group">
-						<input type="password" class="form-control" id="joinPwCon"
-							required>
+						<input type="password" class="form-control" id="joinPwCon" required>
 					</div>
+				<td style="padding: 4%;">	
+					<font id="checkPw" size="2"></font>	
 				</td>
-				<td></td>
 			</tr>
 			<tr>
 				<td style="text-align: center;">이메일</td>
@@ -120,8 +141,7 @@
 					</div>
 				</td>
 				<td>
-					<button type="button" class="btn"
-						style="width: 90%; height: 65%; margin-left: 10%">이메일확인</button>
+					<button type="button" class="btn" style="width: 90%; height: 65%; margin-left: 10%">이메일확인</button>
 				</td>
 			</tr>
 			<tr>
