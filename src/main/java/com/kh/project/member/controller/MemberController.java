@@ -3,10 +3,13 @@ package com.kh.project.member.controller;
 import java.util.Random;
 
 import javax.inject.Inject;
+import javax.mail.internet.MimeMessage;
 
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,6 +34,42 @@ public class MemberController {
 	// 비밀번호 암호화
 	@Autowired
 	BCryptPasswordEncoder pwdEncoder;
+		
+	// 회원 가입 -> 이메일 인증
+	@Autowired
+	JavaMailSender mailSender;
+		
+	@RequestMapping(value="mailCheck.do", method=RequestMethod.GET)
+	@ResponseBody
+	public String mailCheck(String email) throws Exception{
+		System.out.println("이메일 데이터 전송 확인");
+		System.out.println("인증번호 : "+ email);
+			
+		Random random = new Random();
+		int cNum = random.nextInt(888888)+111111;
+		System.out.println("인증번호 : "+cNum);
+			
+		// 메일 보내기
+		String setFrom = "somssi2525@gmail.com";
+		String toMail = email;
+		String title = "회원가입 인증번호입니다.";
+		String content = "인증번호는 "+ cNum +"입니다."+"<br>"+"해당 인증번호를 홈페이지에 입력해 주세요.";
+			
+		try {
+			MimeMessage mail = mailSender.createMimeMessage();
+			MimeMessageHelper mailHelper = new MimeMessageHelper(mail,true,"UTF-8");
+		
+			mailHelper.setFrom(setFrom);
+			mailHelper.setTo(toMail);
+			mailHelper.setSubject(title);
+			mailHelper.setText(content,true);
+			mailSender.send(mail);
+		} catch (Exception e) {
+			System.out.println("오류발생");
+		}
+			String num = Integer.toString(cNum);
+			return num;
+	}
 		
 	// 회원가입
 	@RequestMapping(value="join.do", method=RequestMethod.POST)

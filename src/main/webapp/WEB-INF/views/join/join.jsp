@@ -101,27 +101,65 @@
 			}
 		});
 	};
+	
+	// 비밀번호 일치여부
+	$(function(){
+	    $('#joinPw').keyup(function(){
+	      $('#checkPw').html('');
+	    });
+
+	    $('#joinPwCon').keyup(function(){
+	        if($('#joinPw').val() != $('#joinPwCon').val()){
+	          $('#checkPw').html('비밀번호 불일치');
+	          $('#checkPw').attr('color', 'red');
+	        } else{
+	          $('#checkPw').html('비밀번호 일치');
+	          $('#checkPw').attr('color', '#B337B3');
+	        }
+	    });
+	});
+	
+	// 이메일 확인 
+	var code ="";
+	
+	function mailCheck(){
+		var email = $("#joinEmail").val();
+		
+		$.ajax({
+			type: "GET",
+			url: "mailCheck.do?email="+email,	
+			beforeSend : function(xhr){
+				xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+			},
+			success: function(data){
+				code = data;
+				if(email != ""){
+					alert("이메일이 전송되었습니다.");
+					$("#emailBox").css("display","");
+				}else{
+					alert("이메일을 입력해주세요.")
+				}
+			},
+			error: function(){
+				alert("서버에러");
+			}
+		});
+	};
+	
+	// 이메일 인증번호 확인
+	function mailCheckCon(){
+		emailConVal = $("#joinEmailCon").val();
+		if(emailConVal == ""){
+			alert("인증번호를 입력해주세요.")
+		}else if(code == emailConVal){
+			alert("인증되었습니다.")
+		}else if(code != emailConVal){
+			alert("인증번호를 확인해주세요.")
+		}
+	}
 </script>
     
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<script>
-// 비밀번호 일치여부
-$(function(){
-    $('#joinPw').keyup(function(){
-      $('#checkPw').html('');
-    });
-
-    $('#joinPwCon').keyup(function(){
-        if($('#joinPw').val() != $('#joinPwCon').val()){
-          $('#checkPw').html('비밀번호 불일치');
-          $('#checkPw').attr('color', 'red');
-        } else{
-          $('#checkPw').html('비밀번호 일치');
-          $('#checkPw').attr('color', '#B337B3');
-        }
-    });
-});
-</script>    
 
 <style>
 	.form-group{margin-top: 4%; height: 30px;}
@@ -191,11 +229,10 @@ $(function(){
 					</div>
 				</td>
 				<td>
-					<button type="button" class="btn"
-						style="width: 90%; height: 65%; margin-left: 10%">이메일전송</button>
+					<input type="button" class="btn" style="width: 90%; height: 65%; margin-left: 10%" value="이메일전송" onclick="mailCheck()">
 				</td>
 			</tr>
-			<tr>
+			<tr style="display:none" id="emailBox">
 				<td style="text-align: center;">이메일 인증번호</td>
 				<td>
 					<div class="form-group">
@@ -203,7 +240,7 @@ $(function(){
 					</div>
 				</td>
 				<td>
-					<button type="button" class="btn" style="width: 90%; height: 65%; margin-left: 10%">이메일확인</button>
+					<input type="button" class="btn" style="width: 90%; height: 65%; margin-left: 10%" value="인증번호확인" onclick="mailCheckCon()">
 				</td>
 			</tr>
 			<tr>
