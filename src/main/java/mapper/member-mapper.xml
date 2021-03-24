@@ -7,7 +7,7 @@
 		<result property="nickname" column="NICKNAME" />
 		<result property="password" column="PASSWORD" />
 		<result property="email" column="EMAIL" />
-		<result property="postCode" column="ADDRESS" />
+		<result property="postCode" column="POSTCODE" />
 		<result property="roadAddress" column="ROADADDRESS" />
 		<result property="detailAddress" column="DETAILADDRESS" />
 		<result property="alert_cnt" column="ALERT_CNT" />
