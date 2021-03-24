@@ -10,19 +10,20 @@ public class Member {
 	private String roadAddress;
 	private String detailAddress;
 	private int alert_cnt;
-	private int isAdmin;
+	private int enabled;
 	
 	public Member(String id, String nickname, String password, String email, String postCode, String roadAddress,
-			String datailAddress, int alert_cnt, int isAdmin) {
+			String detailAddress, int alert_cnt, int enabled) {
+		super();
 		this.id = id;
 		this.nickname = nickname;
 		this.password = password;
 		this.email = email;
 		this.postCode = postCode;
 		this.roadAddress = roadAddress;
-		this.detailAddress = datailAddress;
+		this.detailAddress = detailAddress;
 		this.alert_cnt = alert_cnt;
-		this.isAdmin = isAdmin;
+		this.enabled = enabled;
 	}
 	
 	public Member() {
@@ -80,15 +81,15 @@ public class Member {
 	public void setAlert_cnt(int alert_cnt) {
 		this.alert_cnt = alert_cnt;
 	}
-	public int getIsAdmin() {
-		return isAdmin;
+	public int getEnabled() {
+		return enabled;
 	}
-	public void setIsAdmin(int isAdmin) {
-		this.isAdmin = isAdmin;
+	public void setEnabled(int enabled) {
+		this.enabled = enabled;
 	}
 	
 	
 
 	
-	
+
 }
