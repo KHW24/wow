@@ -84,7 +84,7 @@
 				<td style="text-align: center;">아이디</td>
 				<td>
 					<div class="form-group" style="margin-top: 4%; height: 30px;">
-						<input type="text" class="form-control" id="upId" name="id"
+						<input type="text" class="form-control" id="id" name="id"
 							value="${member.id }" readonly="readonly">
 					</div>
 				</td>
@@ -177,8 +177,33 @@
 	</table>
 	<div style="text-align: center;">
 		<button type="submit" class="btn" style="margin-bottom: 3%">완료</button>
+		<a class="btn" style="margin-bottom: 3%" data-toggle="modal" data-target="#myModal">회원탈퇴</a>
+		<!-- Modal -->
+		<div class="modal fade" id="myModal" role="dialog">
+			<div class="modal-dialog">
+					<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">
+							<strong>회원탈퇴하기</strong>
+						</h4>
+					</div>
+					<div class="modal-body text-center">
+						<p>
+							정말 탈퇴 하시겠습니까?
+						</p>
+					</div>
+					<div class="modal-footer">
+						<button style="text-align: center;" type="button" class="btn btn-default" data-dismiss="modal" id="alert" >탈퇴</button>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 </form>
+
+
 
 <!-- 닉네임 중복체크 -->
 <script>
@@ -258,7 +283,7 @@ $(function () {$("#authKeyC").click(function() {
 
 </script>
 
-<!-- 이메일변경 클릭시 -> 인정번호버튼보이게 -->
+<!-- 이메일변경 클릭시 -> 인증번호버튼보이게 -->
 <script>
 	$(function(){ $("#emailUpt").click(function(){
 		$("#sendEmail").css("display","block");
@@ -269,6 +294,37 @@ $(function () {$("#authKeyC").click(function() {
 
 	});
 	
+</script>
+
+<!-- 탈퇴하기 버튼클릭시 팝업창 -->
+<script>
+ $(function(){$('#alert').on('click',function(){
+		 var id = $("#id").val()
+		$.ajax({
+			url : "secession.do",
+/* 			type : "POST",
+			//contentType : 'text/html; charset=utf-8;',
+			data: {id : id},
+			dataType: "json", */
+		    type: 'POST',
+		    contentType : 'text/html; charset=utf-8;',//내가 서버로 보내는 데이터의 타입
+		    data: id ,
+			success: function(data){
+				if(data == 1){
+					alert("회원 탈퇴가 완료되었습니다."); 
+					window.location.href = "main.do"
+			    }else{
+			         alert("다시한번 시도해주세요.");
+			    }
+			},
+		    error: function (request,status,errorData){   
+		    	alert('error code: '+request.status+"\n"
+		    			+'message:' +request.reponseText+'\n'
+		    			+ 'error :'+  errorData);
+		    }
+		});
+	}); 
+ });
 </script>
 
 

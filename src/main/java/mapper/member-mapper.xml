@@ -27,7 +27,7 @@
 		SELECT * FROM MEMBER WHERE ID = #{id}
 	</select>
 	
-	<!--UPDATE  -->
+	<!--UPDATE MEBER -->
 	<update id="updateMember" parameterType="Member">
 		UPDATE MEMBER SET NICKNAME=#{nickname}, PASSWORD=#{password}, EMAIL=#{email}, POSTCODE=#{postCode} , ROADADDRESS=#{roadAddress}, DETAILADDRESS=#{detailAddress} where id=#{id}
 	</update>
@@ -36,5 +36,10 @@
 	<select id="checkNickname" resultType="int">
 		SELECT COUNT(*) AS CNT FROM MEMBER WHERE NICKNAME = #{nickname}
 	</select>
-		
+	
+	<!--DELETE MEMBER  -->
+	<delete id="deleteMember" parameterType="Member">
+		DELETE FROM MEMBER WHERE ID= #{id} <!-- ★ member에 있는 필드값을 정확하게 써줘야함 -->
+	</delete>
+
 </mapper>

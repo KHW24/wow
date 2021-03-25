@@ -18,6 +18,8 @@ public interface MemberService {
 	// 회원정보 수정 -> 닉네임중복체크													
 	public int nicknameCheck(String nickname) throws Exception;
 	
+	// 회원탈퇴
+	public int deleteMember(String id) throws Exception;
 	
 	
 }

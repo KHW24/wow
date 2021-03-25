@@ -34,4 +34,9 @@ public class MemberServiceImpl implements MemberService{
 	public int nicknameCheck(String nickname) throws Exception{
 		return memberDao.checkNickname(nickname);
 	}
+	
+	// 회원탈퇴
+	public int deleteMember(String id) throws Exception{
+		return memberDao.deleteMember(id);
+	}
 }

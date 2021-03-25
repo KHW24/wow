@@ -115,5 +115,18 @@ public class MemberController {
 		js.put("key", key);
 		return js.toJSONString();
 	}
+	
+	// 회원탈퇴 (로그인완성되면-> 세션도끊어주기)
+	@ResponseBody
+	@RequestMapping(value="secession.do", method=RequestMethod.POST)
+	public String deleteMember(@RequestBody String paramData)throws Exception{
+		String id = paramData.trim();
+			
+		int cnt = memberService.deleteMember(id);
+		System.out.println(cnt);
+		
+		return cnt+"";
+	}
+	
 
 }
