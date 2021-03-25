@@ -17,6 +17,7 @@
 
 
 <form class="form-horizontal" action="findId.do" method="post" style="width: 30%; margin-left: 40%;">
+<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 	<div class="radio" style="margin-left:10%;">
 		<label><input type="radio" name="find" value="idFind" checked>아이디 찾기</label> 
 		<label><input type="radio" name="find" value="pwFind" onclick="location.href='pwFind.do'">비밀번호 찾기</label><br>

@@ -12,6 +12,7 @@
 </style>
 
 <section style="text-align: center;">
+<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
     <div >
         <h2>아이디확인</h2><hr><br>
     </div>
