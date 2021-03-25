@@ -196,7 +196,7 @@ public class HomeController {
 		// 본인 확인
 		@RequestMapping(value="myInfoCon.do", method=RequestMethod.GET)
 		public String myInfoConView(Model model) throws Exception{
-			model.addAttribute("center", "../mypage/myInfoCon.jsp");
+			model.addAttribute("center", "../mypage/myinfoCon.jsp");
 			return "template/index";
 		}
 		

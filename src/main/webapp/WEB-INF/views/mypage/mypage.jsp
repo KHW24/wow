@@ -16,7 +16,7 @@
                         <p class="p">솜씨님 환영합니다.</p>
                         <a href="message.do" class="icon"><i class="far fa-envelope"></i></a>[0]<br>
                         <div class="a">
-                        <a href="myMship.do">나의멤버십 </a><a href="myInfoUp.do">나의정보수정</a>
+                        <a href="myMship.do">나의멤버십 </a><a href="myInfoCon.do">나의정보수정</a>
                        </div>
                     </div>
                 </th>
