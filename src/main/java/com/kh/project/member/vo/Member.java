@@ -1,8 +1,12 @@
 package com.kh.project.member.vo;
 
+import java.util.Collection;
 import java.util.List;
 
-public class Member {
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+public class Member implements UserDetails{
 
 	private String id;
 	private String nickname;
@@ -14,6 +18,25 @@ public class Member {
 	private int alert_cnt;
 	private int enabled;
 	private List<MemberAuth> authList;
+	
+	public Member() {}
+	
+	public Member(String id, String nickname, String password, String email, String postCode, String roadAddress,
+			String detailAddress, int alert_cnt, int enabled, List<MemberAuth> authList) {
+		super();
+		this.id = id;
+		this.nickname = nickname;
+		this.password = password;
+		this.email = email;
+		this.postCode = postCode;
+		this.roadAddress = roadAddress;
+		this.detailAddress = detailAddress;
+		this.alert_cnt = alert_cnt;
+		this.enabled = enabled;
+		this.authList = authList;
+	}
+	
+	
 	public String getId() {
 		return id;
 	}
@@ -74,25 +97,48 @@ public class Member {
 	public void setAuthList(List<MemberAuth> authList) {
 		this.authList = authList;
 	}
-	public Member(String id, String nickname, String password, String email, String postCode, String roadAddress,
-			String detailAddress, int alert_cnt, int enabled, List<MemberAuth> authList) {
-		super();
-		this.id = id;
-		this.nickname = nickname;
-		this.password = password;
-		this.email = email;
-		this.postCode = postCode;
-		this.roadAddress = roadAddress;
-		this.detailAddress = detailAddress;
-		this.alert_cnt = alert_cnt;
-		this.enabled = enabled;
-		this.authList = authList;
-	}
+	
 	@Override
 	public String toString() {
 		return "Member [id=" + id + ", nickname=" + nickname + ", password=" + password + ", email=" + email
 				+ ", postCode=" + postCode + ", roadAddress=" + roadAddress + ", detailAddress=" + detailAddress
 				+ ", alert_cnt=" + alert_cnt + ", enabled=" + enabled + ", authList=" + authList + "]";
+	}
+
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getUsername() {
+		// TODO Auto-generated method stub
+		return this.id;
+	}
+
+	@Override
+	public boolean isAccountNonExpired() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	public boolean isAccountNonLocked() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	public boolean isCredentialsNonExpired() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		// TODO Auto-generated method stub
+		return true;
 	}
 	
 	

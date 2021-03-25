@@ -40,4 +40,8 @@ public class MemberDao {
 	public int checkNickname(String nickname) throws Exception{
 		return sqlSession.selectOne("Member.checkNickname",nickname);	
 	}
+	
+//	public Member getMember(String id) throws Exception{
+//		return sqlSession.selectOne("Member.readLogin",id);
+//	}
 }

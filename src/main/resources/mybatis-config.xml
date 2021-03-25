@@ -9,7 +9,7 @@
 	
 	<typeAliases> <!-- Class 별칭을 선언하여 모든 경로를 적어주지 않아도 된다. -->
       <typeAlias type="com.kh.project.member.vo.Member" alias="Member" />
-   	  <typeAlias type="com.kh.project.member.vo.MemberAuth" alias="MemberAuth"/>
+      <typeAlias type="com.kh.project.member.vo.MemberAuth" alias="MemberAuth" />
    </typeAliases>
    
    
@@ -17,6 +17,7 @@
    <!-- 사용하고자 하는 mapper를 등록한다. -->
    <mappers> 
       <mapper resource="mapper/member-mapper.xml" />
+      <mapper resource="mapper/member-mapper2.xml" />
   </mappers>
 	
 </configuration>

@@ -4,6 +4,9 @@ import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +38,7 @@ public class HomeController {
 	//메인페이지
 		@RequestMapping(value = "main.do", method = RequestMethod.GET)
 		public String main(Locale locale, Model model) {
+			
 			model.addAttribute("main","main-request");
 			return "template/index";
 		}
@@ -230,12 +234,18 @@ public class HomeController {
 		}
 		
 		// 에러페이지
-		@RequestMapping(value="accessError.do", method=RequestMethod.GET)
+		@RequestMapping(value="accessError", method=RequestMethod.GET)
 		public String errorPageView(Authentication auth) throws Exception{
 			logger.info("access Denied : "+auth);
 			return "accessError";
-			
-			
 		}
+		
+		// admin test
+		@RequestMapping(value="admin.do", method=RequestMethod.GET)
+		public String adminPageView() throws Exception{
+			return "admin";
+		}
+		
+		
 		
 }

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -17,6 +18,7 @@
     .btn{
       background-color: rgb(179, 55, 179);
       color:#ffff;
+      font-size:20px;
     }
     .anno{
       text-align: center;
@@ -24,7 +26,10 @@
       margin-top: 200px;
     }
     .strong{
-      font-size:25px;
+      font-size:40px;
+    }
+    .sentence{
+    	font-size:20px;
     }
   </style>
 </head>
@@ -32,7 +37,7 @@
 	<div class="anno">
 		<p class="strong anno">죄송합니다.</p>
 		<br>
-		<p>요청하신 페이지를 찾을 수 없습니다. 관리자에게 문의바랍니다.</p>
+		<p class="sentence">요청하신 페이지를 찾을 수 없습니다. 관리자에게 문의바랍니다.</p>
 		<br>
 		<br>
 		<button class="btn btn-default" onclick="history.back();">이전페이지</button>

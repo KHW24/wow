@@ -11,6 +11,7 @@
 </style>
 <div style="text-align: center; font:bold 30px black; margin:1% 0 1% 0;">로그인</div>
 <div class="container" style="margin: 0 auto; width: 30%; height: 400px; background-color: #c4bfbe;">
+
 <form class="form-horizontal" action="${pageContext.request.contextPath}/login" style="margin:10% 13% 0 0;" method="post">
         <div class="form-group">
             <label class="control-label col-sm-2" for="email"></label>
