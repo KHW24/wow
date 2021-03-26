@@ -40,8 +40,18 @@ public class MemberDao {
 	public int checkNickname(String nickname) throws Exception{
 		return sqlSession.selectOne("Member.checkNickname",nickname);	
 	}
-	
-//	public Member getMember(String id) throws Exception{
-//		return sqlSession.selectOne("Member.readLogin",id);
+
+//	public Member readLogin(String id) throws Exception {
+//		return sqlSession.selectOne("Login.readLogin", id);
 //	}
+	public Member getMember(String id) throws Exception{
+		
+		System.out.println("dao옴");
+		System.out.println("userName: "+id);
+		Member member = sqlSession.selectOne("Member.readLogin",id);
+		System.out.println("member: "+member);
+		return member;
+	}
+
+	
 }

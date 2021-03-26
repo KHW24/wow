@@ -1,46 +1,63 @@
 package com.kh.project;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.kh.project.member.dao.MemberDao;
 import com.kh.project.member.vo.Member;
+import com.kh.project.member.vo.MemberAuth;
 
 public class CustomUserDetailsService implements UserDetailsService{
 
+	private static final Logger logger = LoggerFactory.getLogger(CustomUserDetailsService.class);
 	
-	MemberMapper memberMapper;
+	
+	private  MemberDao memberDao;
 	
 	@Autowired
-	public void setMemberMapper(MemberMapper memberMapper) {
-		this.memberMapper = memberMapper;
+	public void setMemberDao(MemberDao memberDao) {
+		this.memberDao = memberDao;
 	}
 
 
 	@Override
-	public Member loadUserByUsername(String id) throws UsernameNotFoundException {
-//		Member member = null;
-//		try {
-//			member = memberDao.getMember(id);
-//		} catch (Exception e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		Member member = new Member();
-//		
-//		System.out.println("detailsservice옴");
-//		try {
-//			member = memberDao.getMember(username);
-//		} catch (Exception e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-		Member member = memberMapper.readLogin(id);
-		return member == null ? null : member;
+	public UserDetails loadUserByUsername(String id) throws UsernameNotFoundException {
+		Member vo = new Member();
+		try {
+			System.out.println("userName: "+id);
+			
+		 vo = memberDao.getMember(id);
+//		 if(vo==null) {
+//			 throw new UsernameNotFoundException("사용자 정보가 없습니다.");
+//		 }
+		 System.out.println("문제후");
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+//		Collection<GrantedAuthority> roles = new ArrayList<GrantedAuthority>();
+//		roles.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
+//		vo.setPassword("$2a$10$NFTutDa0/1KC/9hDBZIXnusr03T1g4AW2vf1IH8zhIqRVWTyOD6pS");
+//		vo.setId("admin");
+//		MemberAuth auth = new MemberAuth();
+//		auth.setAuth("ROLE_ADMIN");
+//		ArrayList authList = new ArrayList();
+//		authList.add(auth);
+//		vo.setAuthList(authList);
+		System.out.println("detailsservice옴"+vo);
+		return vo == null ? null : new CustomUser(vo);
 	}
 
 }
