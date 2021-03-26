@@ -20,14 +20,19 @@
 		<result property="auth" column="auth"/>		
 	</resultMap>
 	 
-	<!-- 로그인  -->
-	<select id="readLogin" resultMap="resultMember" parameterType="String">
+	<!-- LOGIN-->
+	<select id="getMember" resultMap="resultMember" parameterType="String">
 		SELECT MEMBER.ID, NICKNAME, PASSWORD, EMAIL, POSTCODE, ROADADDRESS, DETAILADDRESS, ALERT_CNT, ENABLED, AUTH FROM MEMBER LEFT OUTER JOIN MEMBER_AUTH ON MEMBER.ID = MEMBER_AUTH.ID WHERE MEMBER.ID = #{id}
 	</select>
 	
 	<!-- INSERT -->
 	<insert id="insertMember" parameterType="Member">
 		INSERT INTO MEMBER VALUES(#{id}, #{nickname}, #{password}, #{email}, #{postCode}, #{roadAddress}, #{detailAddress}, DEFAULT, DEFAULT)
+	</insert>
+	
+	<!-- INSERT AUTH -->
+	<insert id="insertMemberAuth" parameterType="Member">
+		INSERT INTO MEMBER_AUTH VALUES(#{id}, 'ROLE_MEMBER')
 	</insert>
 	
 	<!-- checkIdDup -->
@@ -53,6 +58,5 @@
 		SELECT ID FROM MEMBER WHERE NICKNAME = #{nickname} AND EMAIL = #{email}
 	</select>
 	
-
 	
 </mapper>

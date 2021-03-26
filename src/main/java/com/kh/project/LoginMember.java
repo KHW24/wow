@@ -9,15 +9,15 @@ import org.springframework.security.core.userdetails.User;
 
 import com.kh.project.member.vo.Member;
 
-public class CustomUser extends User{
-	
+public class LoginMember extends User{
+
 	private Member member;
 
-	public CustomUser(String username, String password, Collection<? extends GrantedAuthority> authorities) {
+	public LoginMember(String username, String password, Collection<? extends GrantedAuthority> authorities) {
 		super(username, password, authorities);
 	}
 	
-	public CustomUser(Member vo) {
+	public LoginMember(Member vo) {
 		super(vo.getId(), vo.getPassword(), vo.getAuthList().stream().map(auth -> new SimpleGrantedAuthority(auth.getAuth())).collect(Collectors.toList()));
 		this.member = vo;
 	}
@@ -25,9 +25,6 @@ public class CustomUser extends User{
 	public Member getMember() {
 		return member;
 	}
-	
-	
-	
 	
 
 }

@@ -30,6 +30,9 @@
       
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav navbar-right">
+           <sec:authorize access="isAuthenticated()">
+            <li><a href="mypage.do"><sec:authentication property="principal.member.id"/>님</a></li>
+            </sec:authorize>
             <li><a href="main.do">HOME</a></li>
             <sec:authorize access="isAnonymous()">
             	<li><a href="login.do">LOGIN</a></li>

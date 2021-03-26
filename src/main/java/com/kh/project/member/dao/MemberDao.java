@@ -15,6 +15,7 @@ public class MemberDao {
 	// insert
 	public int insertMember(Member member) throws Exception {
 		int cnt = sqlSession.insert("Member.insertMember", member);
+		sqlSession.insert("Member.insertMemberAuth", member);
 		return cnt;
 	}
 	
@@ -41,12 +42,9 @@ public class MemberDao {
 		return sqlSession.selectOne("Member.checkNickname",nickname);	
 	}
 	
+	//login
 	public Member getMember(String id) throws Exception{
-		
-		System.out.println("dao옴");
-		System.out.println("userName: "+id);
-		Member member = sqlSession.selectOne("Member.readLogin",id);
-		System.out.println("member: "+member);
+		Member member = sqlSession.selectOne("Member.getMember",id);
 		return member;
 	}
 }

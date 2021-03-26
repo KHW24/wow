@@ -230,15 +230,10 @@ public class HomeController {
 		}
 		
 		// 에러페이지
-				@RequestMapping(value="accessError", method=RequestMethod.GET)
-				public String errorPageView(Authentication auth) throws Exception{
-					logger.info("access Denied : "+auth);
-					return "accessError";
-				}
+		@RequestMapping(value="accessError", method=RequestMethod.GET)
+		public String errorPageView(Authentication auth) throws Exception{
+			logger.info("access Denied : "+auth);
+			return "accessError";
+		}
 				
-				// admin test
-				@RequestMapping(value="admin.do", method=RequestMethod.GET)
-				public String adminPageView() throws Exception{
-					return "admin";
-				}
 }

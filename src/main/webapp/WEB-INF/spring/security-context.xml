@@ -10,12 +10,11 @@
 	http://www.springframework.org/schema/beans/spring-beans.xsd">
 	
 	<beans:bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/> 
-	 <beans:bean id="customUserDetailsService" class="com.kh.project.CustomUserDetailsService">
+	 <beans:bean id="memberDetailsService" class="com.kh.project.LoginMemberDetailsService">
 	 </beans:bean>
 	
 	<security:http auto-config="true" use-expressions="true">
 		<security:intercept-url pattern="/mypage.do" access="hasRole('ROLE_MEMBER')"/>
-		<security:intercept-url pattern="/admin.do" access="hasRole('ROLE_ADMIN')"/>
 		<security:access-denied-handler error-page="/accessError"/>
 		<security:form-login login-page="/login.do" username-parameter="id" password-parameter="password" default-target-url="/main.do" authentication-failure-url="/login.do" />
 		<security:logout logout-url="/logout.do" invalidate-session="true" logout-success-url="/main.do"/>
@@ -24,16 +23,9 @@
 	
 	<context:component-scan base-package="com.kh.project" />
 	<security:authentication-manager>
-		 <security:authentication-provider user-service-ref="customUserDetailsService"> 
-			<!-- <security:jdbc-user-service data-source-ref="dataSource"
-				users-by-username-query="SELECT id AS userName, password, enabled FROM MEMBER WHERE id = ?"
-				authorities-by-username-query="SELECT id AS userName, auth FROM MEMBER_AUTH WHERE id = ?"
-			 />
- -->			
+		 <security:authentication-provider user-service-ref="memberDetailsService"> 
 			<security:password-encoder ref="bcryptPasswordEncoder" /> 
-			
 		</security:authentication-provider>
-	
 	</security:authentication-manager>
 	
 </beans:beans>
