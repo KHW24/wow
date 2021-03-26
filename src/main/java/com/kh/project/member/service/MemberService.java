@@ -19,5 +19,6 @@ public interface MemberService {
 	// 회원정보 수정 ->닉네임중복체크													
 	public int nicknameCheck(String nickname) throws Exception;
 	
+	public Member getMember(String id) throws Exception; 
 	
 }
