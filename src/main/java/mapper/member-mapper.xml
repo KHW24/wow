@@ -53,10 +53,14 @@
 	</select>
 		
 		
-	<!-- 아이디 찾기, 닉네임과 이메일 입력해서 아이디 찾기 받아오는 값이 2개이기 떄문에 ParameterType값을 String으로 하지않고 Member(vo)로 작성 -->
+	<!-- 아이디 찾기 -->
 	<select id="findId" parameterType="Member" resultMap="resultMember">
 		SELECT ID FROM MEMBER WHERE NICKNAME = #{nickname} AND EMAIL = #{email}
 	</select>
 	
+	<!-- 비밀번호 찾기 -> 비밀번호 변경 -->
+	<update id="updatePw" parameterType="Member">
+		UPDATE MEMBER SET PASSWORD = #{password} WHERE ID = #{id}
+	</update>
 	
 </mapper>

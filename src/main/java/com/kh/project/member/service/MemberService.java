@@ -22,4 +22,7 @@ public interface MemberService {
 	//login
 	public Member getMember(String id) throws Exception; 
 	
+	// 비밀번호 변경
+ 	public int updatePw(Member member) throws Exception;
+	
 }
