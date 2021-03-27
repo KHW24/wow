@@ -16,6 +16,10 @@ public interface MemberService {
 	public int checkNiDup(String nickname) throws Exception;
 	
 	//이은지
+	
+	// 본인확인 -> 이메일 일치확인
+	public String pwMatch(String id) throws Exception;
+	
 	// 회원정보 수정 ->닉네임중복체크													
 	public int nicknameCheck(String nickname) throws Exception;
 	

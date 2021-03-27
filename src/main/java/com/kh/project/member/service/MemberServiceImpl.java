@@ -22,7 +22,6 @@ public class MemberServiceImpl implements MemberService{
 	public Member findId(Member member) throws Exception {
 		Member findIdMember = memberDao.findId(member);
 		return findIdMember;
-		
 	}
 
 	// 아이디 중복체크
@@ -40,6 +39,11 @@ public class MemberServiceImpl implements MemberService{
 	}
 	
 	//이은지
+	// 본인확인 -> 이메일 일치확인
+	public String pwMatch(String id) throws Exception{
+			return memberDao.pwMatch(id);
+	}
+		
 	//회원정보 수정 -> 닉네임중복체크													
 	public int nicknameCheck(String nickname) throws Exception{
 		return memberDao.checkNickname(nickname);

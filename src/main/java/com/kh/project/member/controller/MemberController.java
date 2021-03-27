@@ -1,5 +1,6 @@
 package com.kh.project.member.controller;
 
+import java.security.Principal;
 import java.util.Random;
 
 import javax.inject.Inject;
@@ -142,7 +143,47 @@ public class MemberController {
 	}
 		
 	// 이은지
+	// 본인 확인
+	@ResponseBody
+	@RequestMapping(value="myInfoCon.do", method=RequestMethod.POST)
+	public String myInfoConView(@RequestBody String paramData, Principal principal) throws Exception{
+		
+		//입력한 비밀번호값 , principal id값
+		String inputPw = paramData.trim();
+		String id = principal.getName();
+		
+		//디비에서 회원 비밀번호 가져오기
+		String encodedPw = memberService.pwMatch(id);
+		System.out.println(encodedPw);
+		
+		//String encodedPw="$2a$10$IxumPio6f7GpHUCO66v65ObFuhz1TphF.2JHnxb0Ffy.2yhKCmglq";
+		
+		//입력한 비밀번와 일치하는지 match후  return
+		return String.valueOf(pwdEncoder.matches(inputPw,  encodedPw));
+		
+	}
+//		// 나의 회원정보  (내정보 가져오기)
+//		@RequestMapping(value="myInfoUp.do", method=RequestMethod.GET)
+//		public String myInfoUpView(Model model) throws Exception{
+//			//아직 session정보가 없어서
+//			String id = "test01";
+//			
+//			Member member = memberService.selectMember(id);
+//			model.addAttribute("member", member);		
+//			model.addAttribute("center", "../mypage/myInfoUp.jsp");
+//			return "template/index";
+//		}
+
 	// 회원정보 수정
+	@RequestMapping(value="myInfoUp.do", method=RequestMethod.POST)
+	public ModelAndView updateMember(Member member, ModelAndView mv)throws Exception{
+			//memberService.updateMember(member);
+				
+			mv.setViewName("template/index");
+			return mv;
+	}
+	 
+
 		
 	// 회원정보 수정 - >닉네임 중복체크
 	@ResponseBody //응답

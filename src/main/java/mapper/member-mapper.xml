@@ -47,16 +47,19 @@
 
 	<!--UPDATE  -->
 	
+	<!-- SELECT PW(본인확인)  -->
+	<select id="selectPw" parameterType="String" resultType="String">
+	 	SELECT PASSWORD FROM MEMBER WHERE ID= #{id}
+	</select>
+	
 	<!-- CHECK NICKNAME -->
 	<select id="checkNickname" resultType="int">
 		SELECT COUNT(*) AS CNT FROM MEMBER WHERE NICKNAME = #{nickname}
 	</select>
-		
-		
+			
 	<!-- 아이디 찾기, 닉네임과 이메일 입력해서 아이디 찾기 받아오는 값이 2개이기 떄문에 ParameterType값을 String으로 하지않고 Member(vo)로 작성 -->
 	<select id="findId" parameterType="Member" resultMap="resultMember">
 		SELECT ID FROM MEMBER WHERE NICKNAME = #{nickname} AND EMAIL = #{email}
 	</select>
-	
 	
 </mapper>

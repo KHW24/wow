@@ -37,10 +37,17 @@ public class MemberDao {
 		return cnt;
 	}
 	
-	// check nickname
+	// password match(본인확인)
+	public String pwMatch(String id) throws Exception {
+		String pwdEncoder = sqlSession.selectOne("Member.selectPw",id);
+		return pwdEncoder;
+	}
+	
+	// check nickname 
 	public int checkNickname(String nickname) throws Exception{
 		return sqlSession.selectOne("Member.checkNickname",nickname);	
 	}
+	
 	
 	//login
 	public Member getMember(String id) throws Exception{
