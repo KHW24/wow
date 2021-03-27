@@ -54,4 +54,10 @@ public class MemberDao {
 		Member member = sqlSession.selectOne("Member.getMember",id);
 		return member;
 	}
+	
+	// 비밀번호 변경
+	public int updatePw(Member member) throws Exception {
+		int cnt = sqlSession.update("Member.updatePw", member);
+		return cnt;
+	}
 }
