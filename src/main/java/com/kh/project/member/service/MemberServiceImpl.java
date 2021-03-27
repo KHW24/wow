@@ -50,4 +50,13 @@ public class MemberServiceImpl implements MemberService{
 	public Member getMember(String id) throws Exception {
 		return memberDao.getMember(id);
 	}
+
+	// 비밀번호 변경
+	@Override
+	public int updatePw(Member member) throws Exception {
+		int cnt = memberDao.updatePw(member);
+		return cnt;
+	}
+	
+
 }

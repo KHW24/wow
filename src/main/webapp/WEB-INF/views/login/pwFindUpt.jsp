@@ -6,17 +6,20 @@
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/ej/pwFindUpt.css"/>
     <div class="container">
+
         <h3 class="h3">비밀번호 변경</h3><br><br><br>
-        <form action="pwFindch" method="post">
+        <form action="updatePw.do" method="post">
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+            <input type="hidden" name="id" value="${member.id }"/>
             <div class="center"><input type="radio" name="find" > 아이디 찾기　 <input type="radio" name="find"> 비밀번호 찾기</div><br><br>
             <table>
                 <tr>
                     <th>비밀번호</th>
-                    <td><input type="password" size="30" placeholder="비밀번호를 입력해주세요." required></td>
+                    <td><input type="password" name="password" size="30" placeholder="비밀번호를 입력해주세요." required></td>
                 </tr>
                 <tr>
                     <th>비밀번호 확인</th>
-                    <td><input type="password" size="30" placeholder="비밀번호를 한번더 입력해주세요." required></td>
+                    <td><input type="password" name="passwordch" size="30" placeholder="비밀번호를 한번더 입력해주세요." required></td>
                 </tr>
             </table>
             <br><br>
