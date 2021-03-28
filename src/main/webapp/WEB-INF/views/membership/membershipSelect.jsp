@@ -32,9 +32,9 @@
 
 <script>
 function button_click(bt) {
-IMP.init('imp88302713');
+IMP.init('imp80340117');
 IMP.request_pay({
-    pg : 'inicis', //가맹점 식별코드
+    pg : 'kcp', //가맹점 식별코드
     pay_method : 'card',
     merchant_uid : 'merchant_' + new Date().getTime(),
     name : bt.id, // 멤버십명
@@ -95,3 +95,5 @@ IMP.request_pay({
       </div>
     </div>
   </div>
+  
+  
