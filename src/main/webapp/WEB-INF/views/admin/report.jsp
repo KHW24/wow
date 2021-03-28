@@ -48,7 +48,7 @@
   </style>
   
 
-  <!-- Category -->
+ <!-- Category -->
 <div class="container-fluid bg-3 text-center">
   <h3 class="margin"><b>신고 회원 관리</b></h3>
   <br>

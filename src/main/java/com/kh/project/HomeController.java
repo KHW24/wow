@@ -40,10 +40,24 @@ public class HomeController {
 			return "template/index";
 		}
 
-	//관리자페이지
+	//관리자페이지 - 멤버쉽
+	@RequestMapping(value = "membership.do", method = RequestMethod.GET)
+	public String membership(Locale locale, Model model) {
+		model.addAttribute("center","../admin/membership.jsp");
+		return "template/index";
+	}
+	
+	//관리자페이지 - 신고회원관리
 	@RequestMapping(value = "report.do", method = RequestMethod.GET)
 	public String report(Locale locale, Model model) {
 		model.addAttribute("center","../admin/report.jsp");
+		return "template/index";
+	}
+	
+	//관리자페이지 - 게시글 관리
+	@RequestMapping(value = "postmanage.do", method = RequestMethod.GET)
+	public String postmanage(Locale locale, Model model) {
+		model.addAttribute("center","../admin/postmanage.jsp");
 		return "template/index";
 	}
 	

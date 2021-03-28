@@ -2,10 +2,11 @@
     pageEncoding="UTF-8"%>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/ej/myMembership.css"/>
     
+    <br><br><br>
     <div class="container">
         <div class="bold">
-            <h4>솜씨님은,</h4>
-            <sapn class="purple">1주일멤버십</sapn> 회원입니다.
+            <h4>${userinfo.nickname}님은,</h4>
+            <sapn class="purple">${userinfo.membership}1주일멤버십</sapn> 회원입니다.
         </div>
             <hr><br><br>
         <table class="table text-center">
@@ -35,4 +36,4 @@
         <a href="payCancle.do"><button class="btn btn2">멤버십취소 신청</button></a>
         </div>
     </div>
-    <br><br><br><br><br><br>
+    <br><br><br><br><br>
