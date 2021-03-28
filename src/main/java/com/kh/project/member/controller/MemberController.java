@@ -240,22 +240,20 @@ public class MemberController {
 		return cnt+"";
 	}
 	
-	// 비밀번호 찾기 -> 아이디/이메일 인증
-		@RequestMapping(value="pwFind.do", method=RequestMethod.POST)
-		public ModelAndView findPw(@RequestParam("id") String id, ModelAndView mv) throws Exception {
-			System.out.println("1번째 받아온 id 값" + id);
-			Member member = memberService.getMember(id);
-			System.out.println("1번째 $로 받아온 값 "+member.getId());
-			mv.addObject("member", member);
-	        mv.addObject("center", "../login/pwFindUpt.jsp");
-	        mv.setViewName("template/index");
-			return mv;
-		}
+	// 비밀번호 찾기 -> 아이디/이메일 인증후 변경페이지로
+	@RequestMapping(value="pwFind.do", method=RequestMethod.POST)
+	public ModelAndView findPw(@RequestParam("id") String id, ModelAndView mv) throws Exception {
+		Member member = memberService.getMember(id);
+		mv.addObject("member", member);
+	       mv.addObject("center", "../login/pwFindUpt.jsp");
+	       mv.setViewName("template/index");
+		return mv;
+	}
 		
 	// 비밀번호 찾기 -> 비밀번호 변경
 	@RequestMapping(value="updatePw.do", method=RequestMethod.POST)
 	public ModelAndView updatePw(Member member, ModelAndView mv) throws Exception {
-			
+		
 		String inputPw = member.getPassword();
 		String pw = pwdEncoder.encode(inputPw);	
 		member.setPassword(pw);
@@ -265,6 +263,8 @@ public class MemberController {
 	    mv.setViewName("template/index");
 		return mv;
 	}
+	
+	
 	
 		
 

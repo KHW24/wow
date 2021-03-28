@@ -71,4 +71,6 @@ public class MemberServiceImpl implements MemberService{
 		int cnt = memberDao.updatePw(member);
 		return cnt;
 	}
+	
+	
 }

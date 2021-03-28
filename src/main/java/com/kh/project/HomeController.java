@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.project.member.service.MemberService;
+import com.kh.project.member.vo.Member;
 
 
 @Controller
@@ -152,7 +153,7 @@ public class HomeController {
 			return "template/index";
 		}
 		
-		//비민번호 찾기
+		//비밀번호 찾기
 		@RequestMapping(value="pwFind.do", method=RequestMethod.GET)
 		public String pwFindView(Model model) throws Exception{
 			model.addAttribute("center","../login/pwFind.jsp");

@@ -70,4 +70,6 @@ public class MemberDao {
 		int cnt = sqlSession.update("Member.updatePw", member);
 		return cnt;
 	}
+	
+	
 }

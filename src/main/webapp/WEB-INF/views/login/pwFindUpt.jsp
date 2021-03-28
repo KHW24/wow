@@ -27,7 +27,12 @@
 
         <h3 class="h3">비밀번호 변경</h3><br><br><br>
         <form action="updatePw.do" method="post">
-            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+        <script>
+			var csrfHeaderName ="${_csrf.headerName}";
+			var csrfTokenValue="${_csrf.token}";
+		</script>
+		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+		<input type="hidden" name="${_csrf.headerName}" value="${_csrf.headerName}" />
             <input type="hidden" name="id" value="${member.id }"/>
             <div class="center"><input type="radio" name="find" > 아이디 찾기　 <input type="radio" name="find"> 비밀번호 찾기</div><br><br>
             <table>
