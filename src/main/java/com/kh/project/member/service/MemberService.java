@@ -17,11 +17,17 @@ public interface MemberService {
 	
 	//이은지
 	
-	// 본인확인 -> 이메일 일치확인
+	// 본인확인 -> 비밀번호 일치확인
 	public String pwMatch(String id) throws Exception;
+
+	// 회원정보 수정
+	public int updateMember(Member member) throws Exception;
 	
-	// 회원정보 수정 ->닉네임중복체크													
-	public int nicknameCheck(String nickname) throws Exception;
+	// 회원정보 수정 -> 닉네임중복체크(본인제외)													
+	public int nicknameCheck(Member member) throws Exception;
+	
+	// 회원탈퇴
+	public int deleteMember(String id) throws Exception;
 	
 	//login
 	public Member getMember(String id) throws Exception; 
