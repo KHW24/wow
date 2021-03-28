@@ -55,9 +55,9 @@
 		UPDATE MEMBER SET NICKNAME=#{nickname}, PASSWORD=#{password}, EMAIL=#{email}, POSTCODE=#{postCode} , ROADADDRESS=#{roadAddress}, DETAILADDRESS=#{detailAddress} where id=#{id}
 	</update>
 	
-	<!-- CHECK NICKNAME -->
-	<select id="checkNickname" resultType="int">
-		SELECT COUNT(*) AS CNT FROM MEMBER WHERE NICKNAME = #{nickname}
+	<!-- CHECK NICKNAME (본인제외 중복체크)-->
+	<select id="checkNickname" parameterType="Member" resultType="int">
+		SELECT COUNT(*) AS CNT FROM MEMBER WHERE NICKNAME = #{nickname} AND ID != #{id}
 	</select>
 	
 	<!--DELETE MEMBER  -->

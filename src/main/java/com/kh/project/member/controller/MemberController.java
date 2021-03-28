@@ -188,14 +188,18 @@ public class MemberController {
 			return mv;
 	}
 	
-	// 회원정보 수정 - >닉네임 중복체크
+	// 회원정보 수정 - >닉네임 중복체크 (본인제외)
 	@ResponseBody //응답
 	@RequestMapping(value="nickCheck.do", method=RequestMethod.POST)
-	public String nickCheck(@RequestBody String paramData) throws Exception {
-		String nickname = paramData.trim();
-		System.out.println(nickname);
+	public String nickCheck(@RequestBody String paramData, Principal principal) throws Exception {
 		
-		int cnt = memberService.nicknameCheck(nickname);		
+		// 입력한 nickname, 로그인한 id값 vo에 저장 
+		Member member = new Member();
+		
+		member.setNickname(paramData.trim());
+		member.setId(principal.getName());
+		
+		int cnt = memberService.nicknameCheck(member);		
 		return cnt+"";
 	}
 	

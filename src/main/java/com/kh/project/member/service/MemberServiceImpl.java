@@ -49,9 +49,9 @@ public class MemberServiceImpl implements MemberService{
 		return memberDao.updateMember(member);
 	}
 	
-	//회원정보 수정 -> 닉네임중복체크													
-	public int nicknameCheck(String nickname) throws Exception{
-		return memberDao.checkNickname(nickname);
+	//회원정보 수정 -> 닉네임중복체크	(본인제외)											
+	public int nicknameCheck(Member member) throws Exception{
+		return memberDao.checkNickname(member);
 	}
 	
 	// 회원탈퇴

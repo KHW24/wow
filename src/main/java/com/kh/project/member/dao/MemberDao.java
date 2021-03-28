@@ -48,9 +48,9 @@ public class MemberDao {
 		return sqlSession.update("Member.updateMember", member);
 	}
 	
-	// check nickname
-	public int checkNickname(String nickname) throws Exception{
-		return sqlSession.selectOne("Member.checkNickname",nickname);	
+	// check nickname - 본인제외
+	public int checkNickname(Member member) throws Exception{
+		return sqlSession.selectOne("Member.checkNickname",member);	
 	}
 	
 	// delete member
