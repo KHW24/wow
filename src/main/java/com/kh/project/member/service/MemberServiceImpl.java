@@ -48,6 +48,9 @@ public class MemberServiceImpl implements MemberService{
 	//login
 	@Override
 	public Member getMember(String id) throws Exception {
+	System.out.println(" 여기 지나침");
 		return memberDao.getMember(id);
 	}
+
+	
 }

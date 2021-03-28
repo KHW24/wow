@@ -22,4 +22,6 @@ public interface MemberService {
 	//login
 	public Member getMember(String id) throws Exception; 
 	
+	
+	
 }

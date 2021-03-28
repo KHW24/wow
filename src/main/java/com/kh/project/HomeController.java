@@ -1,27 +1,57 @@
 package com.kh.project;
 
+import java.io.IOException;
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.github.scribejava.core.model.OAuth2AccessToken;
 import com.kh.project.member.service.MemberService;
+import com.kh.project.member.vo.Member;
+import com.kh.project.member.vo.NaverLogin;
 
 
 @Controller
 public class HomeController {
 	
+	
+	private NaverLogin naverLogin;
+	
+	private String apiResult = null;
+	
 	@Autowired
 	MemberService memberService;
+	
+	LoginMemberDetailsService loginMemberDService;
+	
+	@Autowired
+	public void setLoginMemberDService(LoginMemberDetailsService loginMemberDService) {
+		this.loginMemberDService = loginMemberDService;
+	}
+
+	@Autowired
+	private void setNaverLogin(NaverLogin naverLogin) {
+		this.naverLogin = naverLogin;
+	}
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
@@ -166,11 +196,84 @@ public class HomeController {
 			return "template/index";
 		}
 		
-		// 로그인
+		// 로그인 페이지
 		@RequestMapping(value="login.do", method=RequestMethod.GET)
-		public String loginView(Model model) throws Exception{
+		public String loginView(Model model, HttpSession session) throws Exception{
+			
+			String naverAuthUrl = naverLogin.getAuthorizationUrl(session);
+			logger.info("네이버 : " + naverAuthUrl);
+			model.addAttribute("url", naverAuthUrl);
 			model.addAttribute("center","../login/login.jsp");
 			return "template/index";
+		}
+		
+		// 네이버 로그인 성공시 callback호출
+		@RequestMapping(value="/logincallback", method= {RequestMethod.GET,RequestMethod.POST})
+		public String callBack(Model model, @RequestParam String code, @RequestParam String state, HttpSession session, HttpServletRequest request) throws Exception{
+			OAuth2AccessToken oauthToken;
+			oauthToken = naverLogin.getAccessToken(session,code,state);
+			
+			//로그인 사용자 정보 읽어오기 
+			// String형식의 json데이터
+			apiResult = naverLogin.getUserProfile(oauthToken);
+			
+			/**
+			 * apiResult json 구조 {"resultcode":"00", "message":"success",
+			 * "response":{"id":"33666449","nickname":"shinn****","age":"20-29","gender":"M","email":"sh@naver.com","name":"\uc2e0\ubc94\ud638"}}
+			 **/
+			
+			//2. String 형식인 apiResult를 json형태로 바꿈 
+			JSONParser parser = new JSONParser();
+			Object obj = parser.parse(apiResult);
+			JSONObject jsonObj = (JSONObject)obj;
+			
+			//3.데이터 파싱
+			// Top레벨 단계 _response 파싱
+			JSONObject response_obj = (JSONObject)jsonObj.get("response");
+
+			// 네이버에서 주는 고유 ID
+			String naverId = (String) response_obj.get("id");
+			// 네이버에서 설정된 사용자 이름
+			String naverNickname = (String) response_obj.get("nickname");
+			// 네이버에서 설정된 이메일
+			String naverEmail = (String) response_obj.get("email");
+			
+			Member member = new Member();
+			member.setId(naverId);
+			member.setNickname(naverNickname);
+			member.setEmail(naverEmail);
+			
+			//네이버 ID와 이웃의솜씨 저장된 ID 중복여부 체크
+			int naverIdCheck = memberService.checkIdDup(naverId);
+			
+			//중복 아이디 존재시
+			Map<String, Object> memberMap = new HashMap<>();
+			memberMap.put("id", naverId);
+			memberMap.put("nickname", naverNickname);
+			memberMap.put("email", naverEmail);
+			memberMap = response_obj;
+			
+			System.out.println("멤버맵 출력" + memberMap);
+			
+			String userId = (String) memberMap.get("id");
+			
+			// 중복되는 ID가 없을 경우 신규가입으로 아래 구문을 실행
+			if (naverIdCheck == 0) {
+					session.setAttribute("naverUser", member);
+					System.out.println("새롭게 담아본 거" + member);
+					model.addAttribute("center","../join/join.jsp");
+					logger.info("회원가입 페이지 이동 완료");
+					return "template/index";
+			} else {
+					logger.info("여기거침");
+					
+					User navervo = (User) loginMemberDService.loadUserByUsername(naverId);
+					session.setAttribute("naverUser", navervo);
+					System.out.println(navervo);
+					logger.info(navervo.getPassword());
+					System.out.println(navervo.getPassword());
+					return "redirect:main.do";
+			}
 		}
 		
 		// 아이디 찾기

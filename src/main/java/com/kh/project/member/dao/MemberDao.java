@@ -44,7 +44,9 @@ public class MemberDao {
 	
 	//login
 	public Member getMember(String id) throws Exception{
+	System.out.println("여");
 		Member member = sqlSession.selectOne("Member.getMember",id);
 		return member;
 	}
+	
 }

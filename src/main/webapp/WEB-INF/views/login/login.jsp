@@ -60,7 +60,10 @@
         <div style="margin: 0 auto;">
             <div style="margin-left: 38%; font-size: 30px; height: 60px;" >간편로그인<br><br></div>
             <div style="margin-left: 25%; margin-top: 2%; margin-right: 20%; display:flex; flex-direction: row;">
-                <button type="button" class="btn" style="margin-right: 3%;" >네이버 로그인</button>
+            <!-- 네이버 로그인 -->
+            <div id="naver_id_login" style="text-align:center"><a href="${url}">
+            	<img width="223" src="https://developers.naver.com/doc/review_201802/CK_bEFnWMeEBjXpQ5o8N_20180202_7aot50.png"/>
+            </a></div><br>
                 <button type="button" class="btn">카카오톡 로그인</button><br>            
             </div>
             <div style="margin-left: 25%; margin-top: 3%;">

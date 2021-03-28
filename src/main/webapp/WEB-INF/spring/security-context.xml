@@ -12,6 +12,8 @@
 	<beans:bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/> 
 	<beans:bean id="memberDetailsService" class="com.kh.project.LoginMemberDetailsService"/>
 	
+	
+	
 	<beans:bean id="saveIdLoginSuccessHandler" class="com.kh.project.SaveIdLoginSuccessHandler">
 		<beans:property name="defaultTargetUrl" value="/main.do"/>
 		<beans:property name="alwaysUseDefaultTargetUrl" value="true"/>
@@ -27,7 +29,6 @@
 		login-page="/login.do" 
 		username-parameter="id" 
 		password-parameter="password" 
-		
 		authentication-success-handler-ref="saveIdLoginSuccessHandler" 
 		authentication-failure-url="/login.do" />
 		<security:logout logout-url="/logout.do" invalidate-session="true" logout-success-url="/main.do"/>

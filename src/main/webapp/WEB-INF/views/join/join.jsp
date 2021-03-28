@@ -31,7 +31,7 @@
 				<td style="text-align: center;">아이디</td>
 				<td>
 					<div class="form-group" style="margin-top: 4%; height: 30px;">
-						<input type="text" class="form-control" id="joinId" name="id" required >
+						<input type="text" class="form-control" id="joinId" name="id" required value="${naverUser.id}" >
 					</div>
 				</td>
 				<td>
@@ -43,7 +43,7 @@
 				<td style="text-align: center;">닉네임</td>
 				<td>
 					<div class="form-group" style="margin-top: 4%; height: 30px;">
-						<input type="text" class="form-control" id="joinName" name="nickname" required >
+						<input type="text" class="form-control" id="joinName" name="nickname" required value="${naverUser.nickname}">
 					</div>
 				</td>
 				<td>
@@ -76,7 +76,7 @@
 				<td style="text-align: center;">이메일</td>
 				<td>
 					<div class="form-group">
-						<input type="email" class="form-control" id="joinEmail" name="email" required>
+						<input type="email" class="form-control" id="joinEmail" name="email" required value="${naverUser.email}">
 					</div>
 				</td>
 				<td>
