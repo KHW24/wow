@@ -10,13 +10,26 @@
 	http://www.springframework.org/schema/beans/spring-beans.xsd">
 	
 	<beans:bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/> 
-	 <beans:bean id="memberDetailsService" class="com.kh.project.LoginMemberDetailsService">
-	 </beans:bean>
+	<beans:bean id="memberDetailsService" class="com.kh.project.LoginMemberDetailsService"/>
+	
+	<beans:bean id="saveIdLoginSuccessHandler" class="com.kh.project.SaveIdLoginSuccessHandler">
+		<beans:property name="defaultTargetUrl" value="/main.do"/>
+		<beans:property name="alwaysUseDefaultTargetUrl" value="true"/>
+		
+	</beans:bean>
 	
 	<security:http auto-config="true" use-expressions="true">
 		<security:intercept-url pattern="/mypage.do" access="hasRole('ROLE_MEMBER')"/>
+		<security:intercept-url pattern="/login.do" access="isAnonymous()"/>
+		<security:intercept-url pattern="/**" access="permitAll"/>
 		<security:access-denied-handler error-page="/accessError"/>
-		<security:form-login login-page="/login.do" username-parameter="id" password-parameter="password" default-target-url="/main.do" authentication-failure-url="/login.do" />
+		<security:form-login 
+		login-page="/login.do" 
+		username-parameter="id" 
+		password-parameter="password" 
+		
+		authentication-success-handler-ref="saveIdLoginSuccessHandler" 
+		authentication-failure-url="/login.do" />
 		<security:logout logout-url="/logout.do" invalidate-session="true" logout-success-url="/main.do"/>
 	</security:http>	
 	

@@ -63,6 +63,7 @@
 	<beans:bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache">
 		<beans:constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</beans:bean>
+	
 	<!-- 트랜잭션 관리자 -->
 	<!-- 위의 트랜잭션 어노테이션 처리할때 이름을 transactionManager로 설정하면 다음 코드를 쓸 필요 없다. -->
 	<beans:bean id="transactionManager"
@@ -80,5 +81,6 @@
 		</tx:attributes>
 	</tx:advice>
 
+	
 
 </beans>
