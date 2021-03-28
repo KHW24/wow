@@ -222,17 +222,13 @@
 
 <!-- 닉네임 중복체크 -->
 <script>
-
 $(function(){ $("#upNickName").change(function(){
 	$("#niDupSuc").hide();
 	$("#checkNiDup").show();
 	$("input[name=checkNiBox]").val('');
 	
+});	
 });
-	
-});
-
-
 
 function nickcheck(){
 	nickname = $("#upNickName").val();
@@ -277,14 +273,11 @@ function nickcheck(){
 		$("input[name=authKeyCBox]").val('');
 	});
 
-	});
-	
+	});	
 </script>
 
 <!-- 이메일 인증  -->
-
 <script>
-
 var authKey;
 $(function () {$("#sendEmail").click(function(){
 	var mail = $("#email").val()
@@ -317,13 +310,11 @@ $(function () {$("#sendEmail").click(function(){
 	}
 });
 });
-	
-
 
 $(function () {$("#authKeyC").click(function() {
 	if($("#authKey").val() == ""){
 		alert("인증번호를 입력해주세요.");
-		isCertification = false;
+		$("input[name=authKeyCBox]").val('');
 	}else if ($("#authKey").val() == authKey) {   //인증 키 값을 비교를 위해 텍스트인풋과 벨류를 비교
 		$(".compare-text").text("인증 성공!").css("color", "black");
 		$("input[name=authKeyCBox]").val('y');  //인증 성공여부 check
@@ -335,8 +326,6 @@ $(function () {$("#authKeyC").click(function() {
 });
 
 </script>
-
-
 
 <!-- 탈퇴하기 버튼클릭시 팝업창 -->
 <script>
@@ -351,7 +340,7 @@ $(function () {$("#authKeyC").click(function() {
 				xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
 			},
 			success: function(data){
-				if(data == 1){
+				if(data == -1){
 					alert("회원 탈퇴가 완료되었습니다."); 
 					window.location.href = "main.do"
 			    }else{

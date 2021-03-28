@@ -60,9 +60,14 @@
 		SELECT COUNT(*) AS CNT FROM MEMBER WHERE NICKNAME = #{nickname} AND ID != #{id}
 	</select>
 	
-	<!--DELETE MEMBER  -->
+	<!--DELETE MEMBER  call begin end , ;필수-->
 	<delete id="deleteMember" parameterType="Member">
-		DELETE FROM MEMBER WHERE ID= #{id}
+	{ CALL
+	BEGIN
+			DELETE FROM MEMBER_AUTH WHERE ID = #{id};
+			DELETE FROM MEMBER WHERE ID = #{id};
+	END
+	}
 	</delete>
 
 	<!-- 아이디 찾기 -->

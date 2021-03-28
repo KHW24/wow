@@ -48,7 +48,7 @@ public class MemberDao {
 		return sqlSession.update("Member.updateMember", member);
 	}
 	
-	// check nickname - 본인제외
+	// check nickname -본인제외
 	public int checkNickname(Member member) throws Exception{
 		return sqlSession.selectOne("Member.checkNickname",member);	
 	}
@@ -57,7 +57,6 @@ public class MemberDao {
 	public int deleteMember (String id) throws Exception{
 		return sqlSession.delete("Member.deleteMember",id);
 	}
-	
 	
 	//login
 	public Member getMember(String id) throws Exception{

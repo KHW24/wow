@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -229,16 +230,24 @@ public class MemberController {
 			return js.toJSONString();
 	}
 	
-	// 회원탈퇴 (세션도끊어주기)
-	@ResponseBody
-	@RequestMapping(value="secession.do", method=RequestMethod.POST)
-	public String deleteMember(@RequestBody String paramData)throws Exception{
-		String id = paramData.trim();
-		int cnt = memberService.deleteMember(id);
-		System.out.println("결과"+cnt);
+		// 회원탈퇴 (세션도끊어주기)
+		@ResponseBody
+		@RequestMapping(value="secession.do", method=RequestMethod.POST)
+		public String deleteMember(@RequestBody String paramData)throws Exception{
+			String id = paramData.trim();
+			int cnt = memberService.deleteMember(id);
+			System.out.println("결과"+cnt);
+			
+			if(cnt == -1) {
+				//★ 스프링 시큐리티 탈퇴 시 로그아웃 처리가 됨
+				SecurityContextHolder.clearContext();
+			}
+			else {
+
+			}
 		
-		return cnt+"";
-	}
+			return cnt+"";
+		}
 	
 	// 비밀번호 찾기 -> 아이디/이메일 인증후 변경페이지로
 	@RequestMapping(value="pwFind.do", method=RequestMethod.POST)
