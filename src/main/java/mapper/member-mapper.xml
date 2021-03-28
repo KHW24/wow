@@ -44,18 +44,26 @@
 	<select id="checkNiDup" parameterType="String" resultType="int">
 		SELECT COUNT(*) FROM MEMBER WHERE NICKNAME = #{nickname}
 	</select>
-
-	<!--UPDATE  -->
 	
 	<!-- SELECT PW(본인확인)  -->
 	<select id="selectPw" parameterType="String" resultType="String">
 	 	SELECT PASSWORD FROM MEMBER WHERE ID= #{id}
 	</select>
 	
+	<!--UPDATE MEBER -->
+	<update id="updateMember" parameterType="Member">
+		UPDATE MEMBER SET NICKNAME=#{nickname}, PASSWORD=#{password}, EMAIL=#{email}, POSTCODE=#{postCode} , ROADADDRESS=#{roadAddress}, DETAILADDRESS=#{detailAddress} where id=#{id}
+	</update>
+	
 	<!-- CHECK NICKNAME -->
 	<select id="checkNickname" resultType="int">
 		SELECT COUNT(*) AS CNT FROM MEMBER WHERE NICKNAME = #{nickname}
 	</select>
+	
+	<!--DELETE MEMBER  -->
+	<delete id="deleteMember" parameterType="Member">
+		DELETE FROM MEMBER WHERE ID= #{id}
+	</delete>
 
 	<!-- 아이디 찾기, 닉네임과 이메일 입력해서 아이디 찾기 받아오는 값이 2개이기 떄문에 ParameterType값을 String으로 하지않고 Member(vo)로 작성 -->
 

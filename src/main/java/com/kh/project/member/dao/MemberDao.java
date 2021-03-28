@@ -43,9 +43,19 @@ public class MemberDao {
 		return pwdEncoder;
 	}
 	
-	// check nickname 
+	// update member
+	public int updateMember (Member member) throws Exception {
+		return sqlSession.update("Member.updateMember", member);
+	}
+	
+	// check nickname
 	public int checkNickname(String nickname) throws Exception{
 		return sqlSession.selectOne("Member.checkNickname",nickname);	
+	}
+	
+	// delete member
+	public int deleteMember (String id) throws Exception{
+		return sqlSession.delete("Member.deleteMember",id);
 	}
 	
 	

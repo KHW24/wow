@@ -39,14 +39,24 @@ public class MemberServiceImpl implements MemberService{
 	}
 	
 	//이은지
-	// 본인확인 -> 이메일 일치확인
+	// 본인확인 -> 비밀번호 일치확인
 	public String pwMatch(String id) throws Exception{
 			return memberDao.pwMatch(id);
 	}
 		
+	//회원 정보 수정
+	public int updateMember(Member member) throws Exception{
+		return memberDao.updateMember(member);
+	}
+	
 	//회원정보 수정 -> 닉네임중복체크													
 	public int nicknameCheck(String nickname) throws Exception{
 		return memberDao.checkNickname(nickname);
+	}
+	
+	// 회원탈퇴
+	public int deleteMember(String id) throws Exception{
+		return memberDao.deleteMember(id);
 	}
 
 	//login
