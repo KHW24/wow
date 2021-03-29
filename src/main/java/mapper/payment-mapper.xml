@@ -15,5 +15,6 @@
 		INSERT INTO PAYMENT VALUES(#{paymt_seq}, #{paymt_status}, #{paymt_method}, #{price}, #{paymt_date}, #{mship_grade})
 	</insert>
 
+
 </mapper>
 

@@ -14,5 +14,6 @@
 	<insert id="insertMshipdata" parameterType="Mshipdata">
 		INSERT INTO MSHIPDATA VALUES(#{mship_seq}, #{mship_start}, #{mship_yn}, #{mship_end}, #{mship_grade}, #{ID})
 	</insert>
+	
 
 </mapper>
