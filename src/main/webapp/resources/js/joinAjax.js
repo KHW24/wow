@@ -93,11 +93,15 @@
 
 	    $('#joinPwCon').keyup(function(){
 	        if($('#joinPw').val() != $('#joinPwCon').val()){
-	          $('#checkPw').html('비밀번호 불일치');
-	          $('#checkPw').attr('color', 'red');
+	        	if($('#joinPwCon').val() != ''){
+	        		$('#checkPw').html('비밀번호 불일치');
+	        		$('#checkPw').attr('color', 'red');	
+	        		$('#joinSubmit').attr("disabled","disabled");
+	        	}
 	        } else{
 	          $('#checkPw').html('비밀번호 일치');
 	          $('#checkPw').attr('color', '#B337B3');
+	          $('#joinSubmit').removeAttr("disabled");
 	        }
 	    });
 	});
