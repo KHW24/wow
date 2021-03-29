@@ -75,12 +75,14 @@ public class HomeController {
 			return "template/index";
 		}
 		
-	//게시물 작성 페이지
-	@RequestMapping(value="postWrite.do", method=RequestMethod.GET)
-	public String postWriteView(Model model) throws Exception{
-		model.addAttribute("center","../board/post/salesPost.jsp");
-		return "template/index";
-	}
+	/*
+	 * //게시물 작성 페이지
+	 * 
+	 * @RequestMapping(value="postWrite.do", method=RequestMethod.GET) public String
+	 * postWriteView(Model model) throws Exception{
+	 * model.addAttribute("center","../board/post/salesPost.jsp"); return
+	 * "template/index"; }
+	 */
 	
 	//게시물 수정 페이지
 	@RequestMapping(value="postUpdate.do", method=RequestMethod.GET)
