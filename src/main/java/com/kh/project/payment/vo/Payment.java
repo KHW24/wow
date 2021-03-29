@@ -1,31 +1,33 @@
 package com.kh.project.payment.vo;
 
+import java.sql.Date;
+
 public class Payment {
 
-		private int payment_seq;
-		private String payment_status;
-		private String paymetn_method;
+		private int paymentSeq;
+		private String paymentStatus;
+		private String paymetnMethod;
 		private int price; 
-		private String paymt_date;
-		private int mship_grade;
+		private Date paymtDate;
+		private int mshipGrade;
 		
-		public int getPayment_seq() {
-			return payment_seq;
+		public int getPaymentSeq() {
+			return paymentSeq;
 		}
-		public void setPayment_seq(int payment_seq) {
-			this.payment_seq = payment_seq;
+		public void setPaymentSeq(int paymentSeq) {
+			this.paymentSeq = paymentSeq;
 		}
-		public String getPayment_status() {
-			return payment_status;
+		public String getPaymentStatus() {
+			return paymentStatus;
 		}
-		public void setPayment_status(String payment_status) {
-			this.payment_status = payment_status;
+		public void setPaymentStatus(String paymentStatus) {
+			this.paymentStatus = paymentStatus;
 		}
-		public String getPaymetn_method() {
-			return paymetn_method;
+		public String getPaymetnMethod() {
+			return paymetnMethod;
 		}
-		public void setPaymetn_method(String paymetn_method) {
-			this.paymetn_method = paymetn_method;
+		public void setPaymetnMethod(String paymetnMethod) {
+			this.paymetnMethod = paymetnMethod;
 		}
 		public int getPrice() {
 			return price;
@@ -33,26 +35,18 @@ public class Payment {
 		public void setPrice(int price) {
 			this.price = price;
 		}
-		public String getPaymt_date() {
-			return paymt_date;
+		public Date getPaymtDate() {
+			return paymtDate;
 		}
-		public void setPaymt_date(String paymt_date) {
-			this.paymt_date = paymt_date;
+		public void setPaymtDate(Date paymtDate) {
+			this.paymtDate = paymtDate;
 		}
-		public int getMship_grade() {
-			return mship_grade;
+		public int getMshipGrade() {
+			return mshipGrade;
 		}
-		public void setMship_grade(int mship_grade) {
-			this.mship_grade = mship_grade;
+		public void setMshipGrade(int mshipGrade) {
+			this.mshipGrade = mshipGrade;
 		}
-		
-		@Override
-		public String toString() {
-			return "Payment [payment_seq=" + payment_seq + ", payment_status=" + payment_status + ", paymetn_method="
-					+ paymetn_method + ", price=" + price + ", paymt_date=" + paymt_date + ", mship_grade="
-					+ mship_grade + "]";
-		}
-		
 		
 		
 

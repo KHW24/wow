@@ -1,57 +1,52 @@
 package com.kh.project.mshipdata.vo;
 
+import java.sql.Date;
+
 public class Mshipdata {
 	
-	private int mship_seq;
-	private String mship_start;
-	private String mship_yn;
-	private String mship_end; 
-	private int mship_grade;
-	private String ID;
+	private int mshipSeq;
+	private Date mshipStart;
+	private String mshipYn;
+	private Date mshipEnd; 
+	private int mshipGrade;
+	private String id;
 	
-	public int getMship_seq() {
-		return mship_seq;
+	public int getMshipSeq() {
+		return mshipSeq;
 	}
-	public void setMship_seq(int mship_seq) {
-		this.mship_seq = mship_seq;
+	public void setMshipSeq(int mshipSeq) {
+		this.mshipSeq = mshipSeq;
 	}
-	public String getMship_start() {
-		return mship_start;
+	public Date getMshipStart() {
+		return mshipStart;
 	}
-	public void setMship_start(String mship_start) {
-		this.mship_start = mship_start;
+	public void setMshipStart(Date mshipStart) {
+		this.mshipStart = mshipStart;
 	}
-	public String getMship_yn() {
-		return mship_yn;
+	public String getMshipYn() {
+		return mshipYn;
 	}
-	public void setMship_yn(String mship_yn) {
-		this.mship_yn = mship_yn;
+	public void setMshipYn(String mshipYn) {
+		this.mshipYn = mshipYn;
 	}
-	public String getMship_end() {
-		return mship_end;
+	public Date getMshipEnd() {
+		return mshipEnd;
 	}
-	public void setMship_end(String mship_end) {
-		this.mship_end = mship_end;
+	public void setMshipEnd(Date mshipEnd) {
+		this.mshipEnd = mshipEnd;
 	}
-	public int getMship_grade() {
-		return mship_grade;
+	public int getMshipGrade() {
+		return mshipGrade;
 	}
-	public void setMship_grade(int mship_grade) {
-		this.mship_grade = mship_grade;
+	public void setMshipGrade(int mshipGrade) {
+		this.mshipGrade = mshipGrade;
 	}
-	public String getID() {
-		return ID;
+	public String getId() {
+		return id;
 	}
-	public void setID(String iD) {
-		ID = iD;
+	public void setId(String id) {
+		this.id = id;
 	}
-	
-	@Override
-	public String toString() {
-		return "Mshipdata [mship_seq=" + mship_seq + ", mship_start=" + mship_start + ", mship_yn=" + mship_yn
-				+ ", mship_end=" + mship_end + ", mship_grade=" + mship_grade + ", ID=" + ID + "]";
-	}
-	
 	
 	
 	
