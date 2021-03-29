@@ -9,6 +9,7 @@ public class Mshipdata {
 	private int mship_grade;
 	private String ID;
 	
+	
 	public int getMship_seq() {
 		return mship_seq;
 	}
