@@ -1,5 +1,7 @@
 package com.kh.project.board.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,11 +13,20 @@ public class BoardServiceImpl implements BoardService {
 	
 	@Autowired
 	BoardDao boardDao;
+	
+	//board list
+	public List<Board> selectList(int page) throws Exception{
+		return boardDao.selectList(page);
+	}
+	
+	//board list count
+	public int listCount() throws Exception{
+		return boardDao.listCount(); 
+	}
 
 	//글 등록
 	public int insertBoard(Board board) throws Exception{
-		int cnt = boardDao.insertBoard(board);
-		return cnt;
+		return boardDao.insertBoard(board);
 	}
 	
 }

@@ -98,12 +98,14 @@ public class HomeController {
 		return "template/index";
 	}
 	
-	//게시물 리스트 페이지
-	@RequestMapping(value="boardList.do", method=RequestMethod.GET)
-	public String boardListView(Model model) throws Exception{
-		model.addAttribute("center","../board/boardList.jsp");
-		return "template/index";
-	}
+	/*
+	 * //게시물 리스트 페이지
+	 * 
+	 * @RequestMapping(value="boardList.do", method=RequestMethod.GET) public String
+	 * boardListView(Model model) throws Exception{
+	 * model.addAttribute("center","../board/boardList.jsp"); return
+	 * "template/index"; }
+	 */
 	
 	//판매자별 게시물 리스트 페이지
 	@RequestMapping(value="otherList.do", method=RequestMethod.GET)

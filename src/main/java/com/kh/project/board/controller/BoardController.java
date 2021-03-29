@@ -1,5 +1,7 @@
 package com.kh.project.board.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +18,17 @@ public class BoardController {
 	
 	@Autowired
 	BoardService boardService;
+	
+	//게시물 리스트 페이지
+	@RequestMapping(value="boardList.do", method=RequestMethod.GET)
+	public String boardListView(Model model) throws Exception{
+		
+		List<Board> boardList = boardService.selectList(10);
+		
+		model.addAttribute("list", boardList);
+		model.addAttribute("center","../board/boardList.jsp");
+		return "template/index";
+	}
 	
 	//게시물 작성 페이지
 	@RequestMapping(value="postWrite.do", method=RequestMethod.GET)
