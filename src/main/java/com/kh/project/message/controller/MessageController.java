@@ -34,14 +34,14 @@ public class MessageController {
 		return mv;
 	}
 	
-	// 쪽지함 리스트 - select
-	@RequestMapping(value="message.do", method=RequestMethod.GET)
-	public ModelAndView messageList(@RequestParam("get_id") String get_id, ModelAndView mv) throws Exception {
-		Message message = messageService.messageList(get_id);
-		mv.addObject("message", message);
-        mv.addObject("center", "../mypage/message.jsp");
-        mv.setViewName("template/index");
-        return mv;
-	}
+//	// 쪽지함 리스트 - select
+//	@RequestMapping(value="message.do", method=RequestMethod.GET)
+//	public ModelAndView messageList(@RequestParam("get_id") String get_id, ModelAndView mv) throws Exception {
+//		Message message = messageService.messageList(get_id);
+//		mv.addObject("message", message);
+//        mv.addObject("center", "../mypage/message.jsp");
+//        mv.setViewName("template/index");
+//        return mv;
+//	}
 
 }

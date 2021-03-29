@@ -219,12 +219,12 @@ public class HomeController {
 		return "template/index";
 	}
 	
-//	// 쪽지함
-//	@RequestMapping(value="message.do", method=RequestMethod.GET)
-//	public String messageView(Model model) throws Exception{
-//		model.addAttribute("center", "../mypage/message.jsp");
-//		return "template/index";
-//	}
+	// 쪽지함
+	@RequestMapping(value="message.do", method=RequestMethod.GET)
+	public String messageView(Model model) throws Exception{
+		model.addAttribute("center", "../mypage/message.jsp");
+		return "template/index";
+	}
 	
 	// 관리자페이지-멤버십관리
 	@RequestMapping(value="admembership.do", method=RequestMethod.GET)

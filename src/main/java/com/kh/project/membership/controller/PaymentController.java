@@ -1,4 +1,4 @@
-package com.kh.projet.membership.controller;
+package com.kh.project.membership.controller;
 
 import org.springframework.stereotype.Controller;
 

@@ -1,4 +1,4 @@
-package com.kh.projet.membership.dao;
+package com.kh.project.membership.dao;
 
 import org.springframework.stereotype.Repository;
 

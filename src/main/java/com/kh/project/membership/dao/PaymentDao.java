@@ -1,10 +1,10 @@
-package com.kh.projet.membership.dao;
+package com.kh.project.membership.dao;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.kh.projet.membership.vo.Payment;
+import com.kh.project.membership.vo.Payment;
 
 @Repository
 public class PaymentDao {
