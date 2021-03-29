@@ -45,7 +45,7 @@ $(function(){
                     <li>
                         <span class="thumb">
                             <em>${n.post_code }</em>
-                            <a href="postBuyerView.do"><img class="img-rounded" src="${pageContext.request.contextPath}/resources/images/sample.jpg" alt=""></span>
+                            <a href="postBuyerView.do?id=${n.post_no }"><img class="img-rounded" src="${pageContext.request.contextPath}/resources/images/sample.jpg" alt=""></span>
                             <Strong>${n.post_title }</Strong>
                         </a>
                         <p>${n.post_address }&nbsp;·&nbsp;<fmt:formatDate pattern="MM-dd" value="${n.post_date}" /></p>
@@ -53,47 +53,6 @@ $(function(){
                         <button name="hbtn" id="hbtn" class="glyphicon glyphicon-heart-empty"></button>
                     </li>
                     </c:forEach>
-                    
-                  <%--   <li>
-                        <span class="thumb">
-                            <em>카테고리명</em>
-                            <a href="postBuyerView.do"><img class="img-rounded" src="${pageContext.request.contextPath}/resources/images/sample.jpg" alt=""></span>
-                            <Strong>글 제목</Strong>
-                        </a>
-                        <p>작성자(or지역) 12-18(날짜)</p>
-                        <p id="price">5,000원</p>
-                        <button name="hbtn" id="hbtn" class="glyphicon glyphicon-heart-empty"></button>
-                    </li>
-                    <li>
-                        <span class="thumb">
-                            <em>카테고리명</em>
-                            <a href="postBuyerView.do"><img class="img-rounded" src="${pageContext.request.contextPath}/resources/images/sample.jpg" alt=""></span>
-                            <Strong>글 제목</Strong>
-                        </a>
-                        <p>작성자(or지역) 12-18(날짜)</p>
-                        <p id="price">5,000원</p>
-                        <button name="hbtn" id="hbtn" class="glyphicon glyphicon-heart-empty"></button>
-                    </li>
-                    <li>
-                        <span class="thumb">
-                            <em>카테고리명</em>
-                            <a href="postBuyerView.do"><img class="img-rounded" src="${pageContext.request.contextPath}/resources/images/sample.jpg" alt=""></span>
-                            <Strong>글 제목</Strong>
-                        </a>
-                        <p>작성자(or지역) 12-18(날짜)</p>
-                        <p id="price">5,000원</p>
-                        <button name="hbtn" id="hbtn" class="glyphicon glyphicon-heart-empty"></button>
-                    </li>
-                    <li>
-                        <span class="thumb">
-                            <em>카테고리명</em>
-                            <a href="postBuyerView.do"><img class="img-rounded" src="${pageContext.request.contextPath}/resources/images/sample.jpg" alt=""></span>
-                            <Strong>글 제목</Strong>
-                        </a>
-                        <p>작성자(or지역) 12-18(날짜)</p>
-                        <p id="price">5,000원</p>
-                        <button name="hbtn" id="hbtn" class="glyphicon glyphicon-heart-empty"></button>
-                    </li> --%>
                 </ul>
             </div>
             
