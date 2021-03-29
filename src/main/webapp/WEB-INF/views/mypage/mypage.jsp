@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!-- icon library -->
 <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 
@@ -13,7 +14,9 @@
                         <div class="user">
                         <i class="fas fa-user-circle fa-10x"></i>
                         </div>
-                        <p class="p">솜씨님 환영합니다.</p>
+                        <sec:authorize access="isAuthenticated()">
+                        <p class="p"><sec:authentication property="principal.member.id"/>님 환영합니다.</p>
+                        </sec:authorize>
                         <a href="message.do" class="icon"><i class="far fa-envelope"></i></a>[0]<br>
                         <div class="a">
                         <a href="myMship.do">나의멤버십 </a><a href="myInfoCon.do">나의정보수정</a>
