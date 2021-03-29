@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Membership">
+	<resultMap id="resultPayment" type="Payment">
+		<id property="paymentSeq" column="PAYMT_SEQ" />	
+		<result property="paymentStatus" column="PAYMT_STATUS" />
+		<result property="paymetnMethod" column="PAYMT_METHOD" />
+		<result property="price" column="PRICE" />
+		<result property="paymtDate" column="PAYMT_DATE" />
+		<result property="mshipGrade" column="MSHIP_GRADE" />
+	</resultMap>
+	
+	<resultMap id="resultMshipdata" type="Mshipdata">
+		<id property="mshipSeq" column="MSHIP_SEQ" />	
+		<result property="mshipStart" column="MSHIP_START"/>
+		<result property="mshipYn" column="MSHIP_YN"/>		
+		<result property="mshipEnd" column="MSHIP_END"/>	
+		<result property="mshipGrade" column="MSHIP_GRADE"/>
+		<result property="id" column="ID"/>
+		<collection property="payment" resultMap="resultPayment"></collection>
+	</resultMap>
+</mapper>	
