@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Message">
+	<resultMap id="resultMessage" type="Message">
+		<id property="msg_seq" column="MSG_SEQ" />	
+		<result property="id" column="ID" />
+		<result property="msg_contents" column="MSG_CONTENTS" />
+		<result property="msg_date" column="MSG_DATE" />
+		<result property="get_id" column="GET_ID" />
+	</resultMap>
+	
+	<!-- INSERT -->
+	<insert id="messagepost" parameterType="Message">
+		INSERT INTO MESSAGE(ID, MSG_CONTENTS, MSG_DATE, GET_ID) VALUES(#{id}, #{msg_contents}, DEFAULT, #{get_id})
+	</insert>
+	
+</mapper>

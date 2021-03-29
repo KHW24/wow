@@ -2,12 +2,32 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="Board">
+	<resultMap id="resultBoard" type="Board">
+		<id property="post_no" column="ID" />	
+		<result property="post_title" column="POST_TITLE" />
+		<result property="post_price" column="POST_PRICE" />
+		<result property="post_contents" column="POST_CONTENTS" />
+		<result property="post_address" column="POST_ADDRESS" />
+		<result property="post_yn" column="POST_YN" />
+		<result property="post_date" column="POST_DATE" />
+		<result property="post_tags" column="POST_TAGS" />
+		<result property="id" column="ID"/>
+		<result property="hit" column="HIT"/>
+		<result property="post_code" column="POST_CODE"/>
+	</resultMap>
 	
+	<!-- SELECT LIST -->
+	<select id="selectList" parameterType="int" resultType="Board">
+		SELECT * FROM (SELECT ROWNUM NUM, SALES_POST.*FROM SALES_POST) WHERE NUM BETWEEN 1 AND 8
+	</select>
+	
+	<!-- SELECT LIST COUNT  -->
+	<select id="listCount" parameterType="int" resultType="int">
+		SELECT COUNT(*) CNT FROM SALES_POST
+	</select>
 
-
-
-
-
-
-
+	<!-- INSERT -->
+	<insert id="insertBoard" parameterType="Board">
+		INSERT INTO SALES_POST(POST_TITLE, POST_PRICE, POST_CONTENTS, POST_ADDRESS, POST_TAGS, ID, POST_CODE) VALUES(#{post_title}, #{post_price}, #{post_contents}, #{post_address}, #{post_tags}, #{id}, #{post_code})
+	</insert>	
 </mapper>

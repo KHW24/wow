@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
     <!-- css 파일 -->
 	<link href="${pageContext.request.contextPath}/resources/css/boardlist2.css"
 		rel="stylesheet" type="text/css" />
@@ -39,7 +41,20 @@ $(function(){
             <div class="fixed_img_col">
                 <ul>
                     <!-- li가 게시물 하나하나 -->
+                    <c:forEach var="n" items="${list}">
                     <li>
+                        <span class="thumb">
+                            <em>${n.post_code }</em>
+                            <a href="postBuyerView.do"><img class="img-rounded" src="${pageContext.request.contextPath}/resources/images/sample.jpg" alt=""></span>
+                            <Strong>${n.post_title }</Strong>
+                        </a>
+                        <p>${n.post_address }&nbsp;·&nbsp;<fmt:formatDate pattern="MM-dd" value="${n.post_date}" /></p>
+                        <p id="price">${n.post_price }원</p>
+                        <button name="hbtn" id="hbtn" class="glyphicon glyphicon-heart-empty"></button>
+                    </li>
+                    </c:forEach>
+                    
+                  <%--   <li>
                         <span class="thumb">
                             <em>카테고리명</em>
                             <a href="postBuyerView.do"><img class="img-rounded" src="${pageContext.request.contextPath}/resources/images/sample.jpg" alt=""></span>
@@ -78,17 +93,7 @@ $(function(){
                         <p>작성자(or지역) 12-18(날짜)</p>
                         <p id="price">5,000원</p>
                         <button name="hbtn" id="hbtn" class="glyphicon glyphicon-heart-empty"></button>
-                    </li>
-                    <li>
-                        <span class="thumb">
-                            <em>카테고리명</em>
-                            <a href="postBuyerView.do"><img class="img-rounded" src="${pageContext.request.contextPath}/resources/images/sample.jpg" alt=""></span>
-                            <Strong>글 제목</Strong>
-                        </a>
-                        <p>작성자(or지역) 12-18(날짜)</p>
-                        <p id="price">5,000원</p>
-                        <button name="hbtn" id="hbtn" class="glyphicon glyphicon-heart-empty"></button>
-                    </li>
+                    </li> --%>
                 </ul>
             </div>
             

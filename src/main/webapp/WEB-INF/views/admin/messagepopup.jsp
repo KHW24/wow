@@ -38,16 +38,34 @@
 
 
 <br>
-    <div class="name"><p><b>받는 사람</b> 닉네임(아이디)</p></div>
+
+    <form action="messagepost.do" name="myForm" method="post">
+    <script>
+			var csrfHeaderName ="${_csrf.headerName}";
+			var csrfTokenValue="${_csrf.token}";
+/* 			$(function(){
+				$('#pop_btn').on('click',function(){
+					alert("쪽지가 성공적으로 보내졌습니다.")
+					window.open("about:blank","_self").close();
+				});	
+			}); */
+			
+		</script>	
+		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+		<input type="hidden" name="${_csrf.headerName}" value="${_csrf.headerName}" />
+    <div class="name">
+    	<p>
+    		<b><input type="text" name="get_id" value="받는 사람.. 바꿔야됨"/></b> 
+       		<input type="text" name="id" value="닉네임(아이디).. 안보이게 할꺼임"/></p></div>
     <br>
 
-    <textarea name="name" cols="60" rows="15">
+    <textarea name="msg_contents" cols="60" rows="15">
 
     </textarea>
     <br><br>
 
-    <form action='login_page.php'>
-    <button class="button button4">보내기</button>
+
+    <button type="submit" id="pop_btn" class="button button4">보내기</button>
     <button class="button button4">취소</button>
     </form>
     
