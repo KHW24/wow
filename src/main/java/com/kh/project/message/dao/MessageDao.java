@@ -18,6 +18,12 @@ public class MessageDao {
 		int cnt = sqlSession.insert("Message.messagepost", message);
 		return cnt;
 	}
+	
+	// 쪽지함 리스트 - select
+	public Message messageList(String get_id) throws Exception {
+		Message message = sqlSession.selectOne("Message.messageList", get_id);
+		return message;
+	}
 
 
 }

@@ -10,9 +10,17 @@
 		<result property="get_id" column="GET_ID" />
 	</resultMap>
 	
-	<!-- INSERT -->
+	<!-- 쪽지 보내기 - INSERT -->
 	<insert id="messagepost" parameterType="Message">
 		INSERT INTO MESSAGE(ID, MSG_CONTENTS, MSG_DATE, GET_ID) VALUES(#{id}, #{msg_contents}, DEFAULT, #{get_id})
 	</insert>
+	
+	<!-- 쪽지함 리스트 - SELECT -->
+	<select id="messageList" parameterType="string" resultMap="resultMessage">
+		SELECT * FROM MESSAGE WHERE GET_ID = #{get_id}
+	</select>
+	
+	<!-- 쪽지 삭제 - DELETE -->
+	
 	
 </mapper>

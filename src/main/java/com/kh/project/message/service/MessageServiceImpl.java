@@ -18,5 +18,12 @@ public class MessageServiceImpl implements MessageService{
 		int cnt = messageDao.messagepost(message);
 		return cnt;
 	}
+	
+	// 쪽지함 리스트 - select
+	@Override
+	public Message messageList(String get_id) throws Exception {
+		Message message = messageDao.messageList(get_id);
+		return message;
+	}
 
 }
