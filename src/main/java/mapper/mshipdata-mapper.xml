@@ -5,10 +5,9 @@
 	<resultMap id="resultMshipdata" type="Mshipdata">
 		<id property="id" column="ID" />	
 		<result property="mship_seq" column="MSHIP_SEQ" />
-		<result property="mship_start;" column="MSHIP_START" />
-		<result property="mship_end;" column="MSHIP_END" />
-		<result property="mship_grade;" column="MSHIP_GRADE" />
-		<result property="id;" column="ID" />
+		<result property="mship_start" column="MSHIP_START" />
+		<result property="mship_end" column="MSHIP_END" />
+		<result property="mship_grade" column="MSHIP_GRADE" />
 	</resultMap>	
 	 
 	<!-- INSERT -->
