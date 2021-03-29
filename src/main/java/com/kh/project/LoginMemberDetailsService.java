@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 import com.kh.project.member.service.MemberService;
 import com.kh.project.member.vo.Member;
 
-@Service
 public class LoginMemberDetailsService implements UserDetailsService{
 
 	private static final Logger logger = LoggerFactory.getLogger(LoginMemberDetailsService.class);
