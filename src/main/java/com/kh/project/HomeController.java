@@ -8,8 +8,10 @@ import java.util.Locale;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.codehaus.jackson.map.ObjectMapper;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.slf4j.Logger;
@@ -23,12 +25,16 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.github.scribejava.core.model.OAuth2AccessToken;
 import com.kh.project.member.service.MemberService;
 import com.kh.project.member.vo.Member;
 import com.kh.project.member.vo.NaverLogin;
 
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 
 @Controller
 public class HomeController {
@@ -207,6 +213,7 @@ public class HomeController {
 			return "template/index";
 		}
 		
+		
 		// 네이버 로그인 성공시 callback호출
 		@RequestMapping(value="/logincallback", method= {RequestMethod.GET,RequestMethod.POST})
 		public String callBack(Model model, @RequestParam String code, @RequestParam String state, HttpSession session, HttpServletRequest request) throws Exception{
@@ -260,18 +267,16 @@ public class HomeController {
 			// 중복되는 ID가 없을 경우 신규가입으로 아래 구문을 실행
 			if (naverIdCheck == 0) {
 					session.setAttribute("naverUser", member);
-					System.out.println("새롭게 담아본 거" + member);
 					model.addAttribute("center","../join/join.jsp");
-					logger.info("회원가입 페이지 이동 완료");
 					return "template/index";
 			} else {
-					logger.info("여기거침");
-					
-					User navervo = (User) loginMemberDService.loadUserByUsername(naverId);
-					session.setAttribute("naverUser", navervo);
-					System.out.println(navervo);
-					logger.info(navervo.getPassword());
-					System.out.println(navervo.getPassword());
+					LoginMember navervo = (LoginMember) loginMemberDService.loadUserByUsername(naverId);
+					Authentication authentication = new UsernamePasswordAuthenticationToken(navervo, navervo.getPassword(),
+							navervo.getAuthorities());
+					SecurityContext securityContext = SecurityContextHolder.getContext();
+					securityContext.setAuthentication(authentication);
+					session = request.getSession(true);
+					session.setAttribute("SPRING_SECURITY_CONTEXT", securityContext);
 					return "redirect:main.do";
 			}
 		}
