@@ -1,4 +1,4 @@
-package com.kh.project.payment.vo;
+package com.kh.projet.membership.vo;
 
 import java.sql.Date;
 

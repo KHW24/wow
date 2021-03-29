@@ -1,4 +1,4 @@
-package com.kh.project.membership.vo;
+package com.kh.projet.membership.vo;
 
 public class Membership {
 	

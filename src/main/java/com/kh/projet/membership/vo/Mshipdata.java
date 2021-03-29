@@ -1,6 +1,7 @@
-package com.kh.project.mshipdata.vo;
+package com.kh.projet.membership.vo;
 
 import java.sql.Date;
+import java.util.List;
 
 public class Mshipdata {
 	
@@ -10,6 +11,7 @@ public class Mshipdata {
 	private Date mshipEnd; 
 	private int mshipGrade;
 	private String id;
+	private List<Payment> payment;
 	
 	public int getMshipSeq() {
 		return mshipSeq;

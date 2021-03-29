@@ -1,4 +1,4 @@
-package com.kh.project.payment.controller;
+package com.kh.projet.membership.controller;
 
 import org.springframework.stereotype.Controller;
 

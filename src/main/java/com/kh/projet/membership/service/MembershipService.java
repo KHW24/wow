@@ -1,4 +1,4 @@
-package com.kh.project.membership.service;
+package com.kh.projet.membership.service;
 
 public interface MembershipService {
 

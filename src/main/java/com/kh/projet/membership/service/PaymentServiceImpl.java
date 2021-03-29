@@ -1,4 +1,4 @@
-package com.kh.project.payment.service;
+package com.kh.projet.membership.service;
 
 import org.springframework.stereotype.Service;
 	
