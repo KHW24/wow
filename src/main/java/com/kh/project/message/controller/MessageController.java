@@ -16,7 +16,7 @@ public class MessageController {
 	@Autowired
 	MessageService messageService;
 	
-	// 쪽지 팝업
+	// 쪽지 팝업!
 	@RequestMapping(value="messagepopup.do", method=RequestMethod.GET)
 	public ModelAndView messagePopup (Member member, ModelAndView mv) throws Exception {
 
