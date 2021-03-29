@@ -1,6 +1,6 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
     
     <style>
     .button {
@@ -55,12 +55,18 @@
 		<input type="hidden" name="${_csrf.headerName}" value="${_csrf.headerName}" />
     <div class="name">
     	<p>
-    		<b><input type="text" name="get_id" value="받는 사람.. 바꿔야됨"/></b> 
-       		<input type="text" name="id" value="닉네임(아이디).. 안보이게 할꺼임"/></p></div>
+    		<b><input type="text" name="get_id" value="받는 사람.. 바꿔야됨"/></b>
+    		
+    	<sec:authorize access="isAuthenticated()">
+            <input type="text" name="id" 
+            value="<sec:authentication property="principal.member.id"/>" readonly/>
+        </sec:authorize>
+        </p>
+       		</div>
     <br>
 
     <textarea name="msg_contents" cols="60" rows="15">
-
+           
     </textarea>
     <br><br>
 
