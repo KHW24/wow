@@ -24,9 +24,14 @@ public class BoardServiceImpl implements BoardService {
 		return boardDao.listCount(); 
 	}
 
-	//글 등록
+	//board write
 	public int insertBoard(Board board) throws Exception{
 		return boardDao.insertBoard(board);
+	}
+	
+	//board detail page
+	public Board selectPage(int no) throws Exception{
+		return boardDao.selectPage(no);
 	}
 	
 }

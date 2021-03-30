@@ -29,5 +29,11 @@ public class BoardDao {
 		int cnt = sqlSession.insert("Board.insertBoard", board);
 		return cnt;
 	}
+	
+	// select page
+	public Board selectPage(int no) throws Exception {
+		System.out.println("dao+"+no);
+		return sqlSession.selectOne("Board.selectPage", no);
+	}
 
 }
