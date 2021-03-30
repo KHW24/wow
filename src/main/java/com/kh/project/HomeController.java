@@ -130,12 +130,12 @@ public class HomeController {
 		return "template/index";
 	}
 	
-	//마이 멤버십
-	@RequestMapping(value="myMship.do", method=RequestMethod.GET)
-	public String myMshipView(Model model) throws Exception{
-		model.addAttribute("center","../membership/myMembership.jsp");
-		return "template/index";
-	}
+//	//마이 멤버십
+//	@RequestMapping(value="myMship.do", method=RequestMethod.GET)
+//	public String myMshipView(Model model) throws Exception{
+//		model.addAttribute("center","../membership/myMembership.jsp");
+//		return "template/index";
+//	}
 	
 	//멤버십 결제 페이지
 	@RequestMapping(value="mshippay.do", method=RequestMethod.GET)
