@@ -19,7 +19,7 @@
       </li>
       </ul>
     </div>
-  
+
         <ul class="nav navbar-nav">
           <li class="active">
                <form class="navbar-form navbar-left" action="/action_page.php">
@@ -34,7 +34,7 @@
               </form>
           </li>
         </ul>
-  
+
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
        <sec:authorize access="isAuthenticated()">
@@ -50,9 +50,30 @@
             	<form id="logout-btn" action="logout.do" method="post">
             		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
             	</form></li>
-            	<li><a href="mypage.do">MYPAGE</a></li>
-            </sec:authorize>
+            	</sec:authorize>
+            	
+  
+            	  <sec:authorize access="hasRole('ROLE_MEMBER')">
+            	  <li><a href="mypage.do">MYPAGE</a></li>
+            	  </sec:authorize>
+            	  
+            	   <sec:authorize access="hasRole('ROLE_ADMIN')">
+            	  <li><a href="membership.do">ADMIN</a></li>
+            	  </sec:authorize>
+            	  
+            
       </ul>
     </div>
   </div>
 </nav>
+
+
+
+
+
+
+
+
+
+
+
