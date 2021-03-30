@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Reply">
+<resultMap type="Reply" id="resultReply">
+	<id column="REP_SEQ" property="repSeq"/>
+	<result column="POST_NO" property="postNo"/>
+	<result column="REP_DATE" property="repDate"/>
+	<result column="REP_CONTENTS" property="repContents"/>
+	<result column="ID" property="id"/>
+</resultMap>
+
+	<insert id="insertReply" parameterType="Reply">
+		INSERT INTO REPLY VALUES(REP_SEQ.NEXTVAL, SYSDATE, #{repContents}, #{id},
+		#{postNo})
+	</insert>
+
+	<select id="selectReply" parameterType="string">
+		SELECT * FROM REPLY WHERE REP_SEQ = #{repSeq}
+	</select>
+
+	<update id="updateReply" parameterType="Reply">
+		UPDATE REPLY SET REP_CONTENTS = #{repContents} , REP_DATE = SYSDATE WHERE
+		REP_SEQ = #{repSeq}
+	</update>
+
+	<delete id="deleteReply" parameterType="int">
+		DELETE FROM REPLY WHERE REP_SEQ = #{repSeq} 
+	</delete>
+	
+	<select id="getRepliesList" resultMap="resultReply" parameterType="int">
+		SELECT POST_NO, REP_SEQ, REP_DATE, REP_CONTENTS, ID FROM REPLY WHERE POST_NO = #{postNo} ORDER BY POST_NO ASC
+	</select>
+
+</mapper>

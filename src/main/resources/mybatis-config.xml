@@ -14,6 +14,7 @@
       <typeAlias type="com.kh.project.membership.vo.Membership" alias="Membership" />
       <typeAlias type="com.kh.project.membership.vo.Mshipdata" alias="Mshipdata" />
       <typeAlias type="com.kh.project.membership.vo.Payment" alias="Payment" />
+      <typeAlias type="com.kh.project.board.vo.Reply" alias="Reply" />
    </typeAliases>
    
    <!-- 사용하고자 하는 mapper를 등록한다. -->
@@ -21,7 +22,7 @@
       <mapper resource="mapper/member-mapper.xml" />
       <mapper resource="mapper/board-mapper.xml" />
       <mapper resource="mapper/membership-mapper.xml" />
-     
+      <mapper resource="mapper/reply-mapper.xml" />
   </mappers>
 	
 </configuration>

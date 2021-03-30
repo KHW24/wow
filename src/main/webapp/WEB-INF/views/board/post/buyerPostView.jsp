@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <style>
 /* 이미지 슬라이드 크기 조정 */
   .item>img{
@@ -76,7 +77,7 @@
  
  function popupOpen(){
      var popUrl = "/project/messagepopup.do";	//팝업창에 출력될 페이지 URL
-     var popOption = "width=500, height=430, resizable=no, scrollbars=no, status=no;";    //팝업창 옵션(optoin)
+     var popOption = "width=450, height=360, resizable=no, scrollbars=no, status=no;";    //팝업창 옵션(optoin)
          window.open(popUrl,"",popOption);
      };
   
@@ -222,10 +223,11 @@
 <div class="row">  
   <div class="col-sm-12 section-hr">
   <br>
-  <span class="comments-title"><strong>댓글[0]</strong></span>
-  <div class="comments">
-    <div class="comment">
-      <span class="comments-title"><strong>조멜론</strong></span>&nbsp;&nbsp;<span>2021-03-15</span><br>
+  <span class="comments-title"><strong>댓글[<span id="cCnt"></span>]</strong></span>
+  <div class="comments" id="comments-list">
+    <div class="comment" >
+      <span class="comments-title"><strong>조멜론</strong></span>&nbsp;&nbsp;<span>2021-03-15</span>>
+      <button class="btn btn-default">수정</button><br>
       <span>저 사고 싶어요!!!</span>
     </div>
     <div class="reply comment">
@@ -244,12 +246,94 @@
   <div class="row text-center">
     <div class="col-sm-9">
     	<br>
-      <input type="text" placeholder="댓글을 입력하세요." class="form-control">
+    	<form id="replyForm">
+      <sec:authorize access="isAuthenticated()">
+      <input type="text" placeholder="댓글을 입력하세요." name="repContents" id="replyInput" class="form-control">
+   	  <input type="hidden" name="postNo" id="postNo" value="${postNo}"/>
     </div>
     <div class="col-sm-3">
     	<br>
-      <button class="btn btn-default">댓글등록</button>
+      	  <input type="hidden" name="id" value="<sec:authentication property="principal.member.id"/>" />
+      	<button class="btn btn-default" id="reply-btn">댓글등록</button>
+      </sec:authorize>
+      </form>
         <br><br><br><br>
     </div>
   </div>
-    </div><!--//div.container-->
+  </div><!--//div.container-->
+
+<script>
+	var header = "${_csrf.headerName}"; 
+	var token = "${_csrf.token}";
+	var url = "${pageContext.request.contextPath}/reply/add.do";
+
+	("#reply-btn").click(function(){
+		alert("짠");
+		$.ajax({
+			type: "POST",
+			url: url,
+			contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+			data: ("#replyForm").serialize(),
+			beforeSend : function(xhr){
+				xhr.setRequestHeader(header, token);
+			},
+			success : function(data){
+				if(data=="success"){
+					getReplyList();
+					$("#replyInput").val("");
+				}
+			},
+			error:function(request, status, error){
+				alert("code"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+			}
+		});
+		
+	});
+	
+	$(function(){
+		 getReplyList();
+	});
+	
+	function getReplyList(){
+		$.ajax({
+			type: 'POST',
+			url: "/reply/replyList.do",
+			dataType: "json",
+			data: $("#postNo").val(),
+			beforeSend : function(xhr){
+				xhr.setRequestHeader(header, token);
+			},
+			success:function(data){
+				var html = "";
+				var cCnt = data.lengh;
+				
+				if(data.length > 0){
+					$(data).each(function(){
+						html += "<div class='comment'>";
+						html += "<span class='comments-title'><strong>"+data[i].id+"</strong></span>";
+						html += "&nbsp;&nbsp;<span>"+data[i].date+"</span>";
+						html += "<button class='btn btn-default'>수정</button><br>";
+						html += "<span>저 사고 싶어요!!!</span>";
+						html += "</div>";
+					});
+				}else{
+					html += "<div class='comment'>";
+					html += "<span class='comments-title'><strong>"+등록된 댓글이 없습니다.+"</strong></span>";
+					html += "</div>";
+				}
+				
+				$("#cCnt").html(cCnt);
+				$("#comments-list").html(html);
+				
+			},
+			error: function(request, status, error){
+				alert("code"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+			}
+		});
+	}
+	
+	
+	
+</script>
+
+

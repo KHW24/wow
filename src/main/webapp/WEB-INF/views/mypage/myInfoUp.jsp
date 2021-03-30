@@ -279,7 +279,7 @@ function nickcheck(){
 <!-- 이메일 인증  -->
 <script>
 var authKey;
-$(function () {$("#sendEmail").click(function(){
+$(function () { $("#sendEmail").click(function(){
 	var mail = $("#email").val()
 	
 	if (mail == ""){
