@@ -5,7 +5,9 @@
     <br><br><br>
     <div class="container">
         <div class="bold">
-            <h4>${userinfo.nickname}님은,</h4>
+        <sec:authorize access="isAuthenticated()">
+            <h4><sec:authentication property="principal.member.id"/>님은,</h4>
+            </sec:authorize>
             <sapn class="purple">${userinfo.membership}1주일멤버십</sapn> 회원입니다.
         </div>
             <hr><br><br>
