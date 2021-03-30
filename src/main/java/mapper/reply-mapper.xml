@@ -29,7 +29,7 @@
 	</delete>
 	
 	<select id="getRepliesList" resultMap="resultReply" parameterType="int">
-		SELECT POST_NO, REP_SEQ, REP_DATE, REP_CONTENTS, ID FROM REPLY WHERE POST_NO = #{postNo} ORDER BY POST_NO ASC
+		SELECT * FROM REPLY WHERE POST_NO = #{postNo} ORDER BY POST_NO ASC
 	</select>
 
 </mapper>

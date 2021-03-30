@@ -205,7 +205,7 @@
     	  		var id = $("#id").val();
     			$.ajax({
     				type: "POST",
-    				url: "reply/insert.do",
+    				url: "${pageContext.request.contextPath}/reply/insert.do",
     				contentType: "application/x-www-form-urlencoded; charset=UTF-8",
     				data: {repContents : repContents, postNo : postNo, id : id},
     				beforeSend : function(xhr){
@@ -213,7 +213,9 @@
     				},
     				success : function(data){
     					if(data=="success"){
+    						alert("댓글이 등록되었습니다.");
     						$("#repContents").val("");
+    						getReplyList(); 
     					}
     				},
     				error:function(request, status, error){
@@ -230,42 +232,44 @@
      });
      
       function getReplyList(){
-    	  var postNo = $("#postNo").val();
+    	  var header = "${_csrf.headerName}"; 
+  		  var token = "${_csrf.token}";
     	  
-			$.ajax({
-				type: 'POST',
-				url: "reply/list.do",
-				data: postNo=postNo,
-				beforeSend : function(xhr){
-					xhr.setRequestHeader(header, token);
-				},
-				success:function(data){
-					var html = "";
-					var cCnt = data.lengh;
-					
-					if(data.length > 0){
-						
-						$(data).each(function(){
-							html += "<div class='comment'>";
-							html += "<span class='comments-title'><strong>"+data[i].id+"</strong></span>";
-							html += "&nbsp;&nbsp;<span>"+data[i].date+"</span>";
-							html += "<button class='btn btn-default'>수정</button><br>";
-							html += "<span>저 사고 싶어요!!!</span>";
-							html += "</div>";
-						});
-					}else{
-						html += "<div class='comment'>";
-						html += "<span class='comments-title'><strong> 등록된 댓글이 없습니다. </strong></span>";
-						html += "</div>";
-					}
-					
-					$("#cCnt").html(cCnt);
-					$("#comments-list").html(html);
-				},
-				error: function(request, status, error){
-					alert("code"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-				}
-			});
+    	  $(document).ajaxSend(function(e,xhr, options){
+    		 xhr.setRequestHeader(header, token); 
+    	  });
+    	  
+    	  $.ajax({
+    		 type: "GET",
+    		 contentType: "application/json",
+    		 url: "${pageContext.request.contextPath}/reply/list.do?postNo=${postNo}",
+    		success: function(data){
+    			console.log(data);
+				var cCnt = data.length;
+    			var html = "";
+    			
+    			if(data.length > 0){
+  					$(data).each(function(){
+  						html += "<div class='comment'>";
+  						html += "<span class='comments-title'><strong>"+this.id+"</strong></span>";
+  						html += "&nbsp;&nbsp;<span>"+this.repDate+"</span>&nbsp;&nbsp;";
+  						html += "<button class='btn btn-default btn-xs'>수정</button>&nbsp;&nbsp;";
+  						html += "<button class='btn btn-default btn-xs'>삭제</button><br>";
+  						html += "<span>"+this.repContents+"</span>";
+  						html += "</div>";
+  					});
+  				}else{
+  					html += "<div class='comment'>";
+  					html += "<span class='comments-title'><strong> 등록된 댓글이 없습니다. </strong></span>";
+  					html += "</div>";
+  				}
+  				
+  				$("#cCnt").html(cCnt);
+  				$("#comments-list").html(html);
+
+    		}
+    	  });
+    	 
 		}
      
 		
