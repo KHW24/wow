@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <style>
  /* 이미지 슬라이드 크기 조정 */
@@ -157,8 +156,8 @@
   <div class="row">
     <div class="col-sm-12 text-right section-hr">
   <c:if test="${writer eq loginId}">
-      <a href="postUpdate.do" class="btn btn-default" >글 수정</a>
-      <button class="btn btn-default">글 삭제</button>
+      <a href="postUpdate.do?no=${list.post_no}" class="btn btn-default">글 수정</a>
+      <a href="postDelete.do?no=${list.post_no}" class="btn btn-default">글 삭제</a>
       <br><br>
   </c:if>
     </div>

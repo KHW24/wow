@@ -24,14 +24,25 @@ public class BoardServiceImpl implements BoardService {
 		return boardDao.listCount(); 
 	}
 
+	//board detail page
+	public Board selectPage(int no) throws Exception{
+		return boardDao.selectPage(no);
+	}
+	
 	//board write
 	public int insertBoard(Board board) throws Exception{
 		return boardDao.insertBoard(board);
 	}
 	
-	//board detail page
-	public Board selectPage(int no) throws Exception{
-		return boardDao.selectPage(no);
+	//board update
+	public int updateBoard(Board board) throws Exception{
+		return boardDao.updateBoard(board);
 	}
+	
+	//board delete
+	public int deleteBoard(int no) throws Exception{
+		return boardDao.delteBoard(no);
+	}
+	
 	
 }

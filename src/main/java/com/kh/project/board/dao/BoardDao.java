@@ -24,16 +24,26 @@ public class BoardDao {
 		return sqlSession.selectOne("Board.listCount");
 	}
 		
-	//insert
-	public int insertBoard(Board board) throws Exception {
-		int cnt = sqlSession.insert("Board.insertBoard", board);
-		return cnt;
-	}
-	
 	// select page
 	public Board selectPage(int no) throws Exception {
-		System.out.println("dao+"+no);
 		return sqlSession.selectOne("Board.selectPage", no);
 	}
+	
+	//insert
+	public int insertBoard(Board board) throws Exception {
+		return sqlSession.insert("Board.insertBoard", board);
+	}
+	
+	//update
+	public int updateBoard(Board board) throws Exception{
+		return sqlSession.update("Board.updateBoard", board);
+	}
+	
+	//delete
+	public int delteBoard(int no) throws Exception{
+		System.out.println("dao+"+no);
+		return sqlSession.delete("Board.deleteBoard", no);
+	}
+	
 
 }

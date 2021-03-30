@@ -12,10 +12,17 @@ public interface BoardService {
 	//board list count
 	public int listCount() throws Exception;
 	
+	//board detail page
+	public Board selectPage(int no) throws Exception;
+	
 	//board write
 	public int insertBoard(Board board) throws Exception;
 	
-	//board detail page
-	public Board selectPage(int no) throws Exception;
+	//board update
+	public int updateBoard(Board board) throws Exception;
+	
+	//board delete
+	public int deleteBoard(int no) throws Exception;
+	
 
 }
