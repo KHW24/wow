@@ -42,9 +42,17 @@
             	<li><a href="#" onclick="document.getElementById('logout-btn').submit();">LOGOUT</a>
             	<form id="logout-btn" action="logout.do" method="post">
             		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+            		
             	</form></li>
-            	<li><a href="mypage.do">MYPAGE</a></li>
-            </sec:authorize>
+            	  </sec:authorize>
+            	  <sec:authorize access="hasRole('ROLE_MEMBER')">
+            	  <li><a href="mypage.do">MYPAGE</a></li>
+            	  </sec:authorize>
+            	  
+            	   <sec:authorize access="hasRole('ROLE_ADMIN')">
+            	  <li><a href="membership.do">ADMIN</a></li>
+            	  </sec:authorize>
+            	
           </ul>
         </div>
       </div>
