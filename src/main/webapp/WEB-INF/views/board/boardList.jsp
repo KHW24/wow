@@ -2,6 +2,9 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
     <!-- css 파일 -->
 	<link href="${pageContext.request.contextPath}/resources/css/boardlist2.css"
 		rel="stylesheet" type="text/css" />
@@ -38,16 +41,27 @@ $(function(){
                 <input type="radio" name="goods" value="판매완료"> &nbsp;판매완료
             </div> 
             <!-- 썸네일 게시물 리스트 -->
-            <div class="fixed_img_col">
+            <div class="fixed_img_col"> 
                 <ul>
                     <!-- li가 게시물 하나하나 -->
                     <c:forEach var="n" items="${list}">
                     <li>
-                        <span class="thumb">
-                            <em>${n.post_code }</em>
-                            <a href="postBuyerView.do?id=${n.post_no }"><img class="img-rounded" src="${pageContext.request.contextPath}/resources/images/sample.jpg" alt=""></span>
+                        <span class="thumb"> 
+                           <em>${n.post_code }</em>
+                           <c:set var="writer" value="${n.id}"/>
+                           <sec:authorize access="isAuthenticated()">
+                           <sec:authentication var="loginId" property='principal.member.id'/>
+                           </sec:authorize>
+                           login:${loginId}writer:${writer}                     
+                           <c:if test="${writer eq loginId}">
+                           <a href="postSellerView.do?no=${n.post_no }">
+                           </c:if>
+                           <c:if test="${writer != loginId}">
+                           <a href="postBuyerView.do?no=${n.post_no }">
+                           </c:if>                 
+                            <img class="img-rounded" src="${pageContext.request.contextPath}/resources/images/sample.jpg" alt=""></span>
                             <Strong>${n.post_title }</Strong>
-                        </a>
+                        	</a>
                         <p>${n.post_address }&nbsp;·&nbsp;<fmt:formatDate pattern="MM-dd" value="${n.post_date}" /></p>
                         <p id="price">${n.post_price }원</p>
                         <button name="hbtn" id="hbtn" class="glyphicon glyphicon-heart-empty"></button>
@@ -58,6 +72,9 @@ $(function(){
             
         </div>
         <button type="button" id="more" class="btn btn-default">더보기</button><br/>
+        	
+        	<c:if test="${!empty loginId}">
             <div id="enbtndiv">
             	<a href="postWrite.do" id="enbtn" class="btn btn-default">글 등록</a>
             </div>
+            </c:if>
