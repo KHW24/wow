@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <style>
  /* 이미지 슬라이드 크기 조정 */
   .item>img{
@@ -62,6 +66,11 @@
  }
 </style>
 
+<c:set var="writer" value="${list.id}"/>
+<sec:authorize access="isAuthenticated()">
+<sec:authentication var="loginId" property='principal.member.id'/>
+</sec:authorize>
+
  <div class="container wrapper" >
       <!--이미지 슬라이드-->
         <div class="row" >
@@ -108,8 +117,8 @@
             <tr>
               <td><img src="${pageContext.request.contextPath}/resources/images/userimage.jpg" class="user-info-img"/></td>
               <td>
-                <span class="user-info"><strong>하이d</strong></span><br>
-                <span class="user-info">춘천시 우두동</span>
+                <span class="user-info"><strong>${list.id }</strong></span><br>
+                <span class="user-info">${list.post_address }</span>
               </td>
               <td><button class="btn btn-default">쪽지보내기</button></td>
               <td><button class="btn btn-default">신고하기</button></td>
@@ -118,13 +127,15 @@
               <td class="heart"><img src="${pageContext.request.contextPath}/resources/images/heart.png" class="user-info-img"/>
               </td>
               <td colspan="2" class="title">
-                <strong>마카롱 팝니다</strong>
+                <strong>${list.post_title }</strong>
               </td>
               <td>
+              <c:if test="${writer eq loginId}">
                 <select class="form-control" >
                   <option>판매중</option>
                   <option>판매완료</option>
                 </select>
+               </c:if>
               </td>
             </tr>
           </table>
@@ -133,47 +144,23 @@
       <div class="row">
         <div class="col-sm-12 text-right">
          <br>
-          <span class="read-count"><strong>0 조회</strong></span>
+          <span class="read-count"><strong>${list.hit } 조회</strong></span>
         </div>
       </div>
       <!--글내용-->
       <div class="row">
         <div class="col-sm-12">
-          <pre> 
-            ☆☆☆ 12가지맛 라인업! ☆☆☆
-   
-    
-   
-   안녕하세요 우두동에 살고 있는 "하율맘" 입니다
-   
-   요즘 마카롱을 굽다가 보니 점점 손이 커져서 이렇게 이곳에 판매를 해보려고 합니다.. ^^ 
-   
-   많이 만들지는 못해서 한 10분에게 판매할 수 있을것 같아요~ 
-   
-   우두동 주변까지만 배송 가능한데
-   
-   문의사항 편하게 쪽지 주시면 자세히 답변 드릴게요 ㅎㅎ
-   
-    
-   
-   ☆ 평일주문 및 배송 ↓↓↓
-   
-    
-   
-   ☞ 주문접수후 2일이내 배송
-   
-   
-   
-   
-   댓글로 주문부탁드립니다(선착순 10명)
+          <pre>${list.post_contents}
            </pre>
         </div>
   </div>
   <div class="row">
     <div class="col-sm-12 text-right section-hr">
+  <c:if test="${writer eq loginId}">
       <a href="postUpdate.do" class="btn btn-default" >글 수정</a>
       <button class="btn btn-default">글 삭제</button>
       <br><br>
+  </c:if>
     </div>
   </div>
   <!--댓글-->

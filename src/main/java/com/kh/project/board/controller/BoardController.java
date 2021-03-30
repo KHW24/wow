@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.project.board.service.BoardService;
@@ -30,23 +31,32 @@ public class BoardController {
 		return "template/index";
 	}
 	
-	//게시물 작성 페이지
+	// 글등록- GET
 	@RequestMapping(value="postWrite.do", method=RequestMethod.GET)
 	public String postWriteView(Model model) throws Exception{
 		model.addAttribute("center","../board/post/salesPost.jsp");
 		return "template/index";
 	}
 	
-	// 글등록
+	// 글등록- POST
 	@RequestMapping(value="postWrite.do", method=RequestMethod.POST)
 	public ModelAndView insertMember(Board board, ModelAndView mv) throws Exception {
 		
 	boardService.insertBoard(board);
-	System.out.println("카테고리"+board.getPost_code());
 	
 	mv.setViewName("redirect:boardList.do");
 	return mv;
 	}
 	
+	// 자세한페이지(판매자)
+	@RequestMapping(value="postSellerView.do", method=RequestMethod.GET)
+	public String postSellerView(@RequestParam("no") int no,Model model) throws Exception{
+
+		Board board= boardService.selectPage(no);
+		
+		model.addAttribute("list", board);
+		model.addAttribute("center","../board/post/sellerPostView.jsp");
+		return "template/index";
+	}
 
 }

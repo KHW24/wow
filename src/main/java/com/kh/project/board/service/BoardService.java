@@ -12,8 +12,10 @@ public interface BoardService {
 	//board list count
 	public int listCount() throws Exception;
 	
-	//글 등록
+	//board write
 	public int insertBoard(Board board) throws Exception;
-
+	
+	//board detail page
+	public Board selectPage(int no) throws Exception;
 
 }

@@ -48,17 +48,18 @@ $(function(){
                     <li>
                         <span class="thumb"> 
                            <em>${n.post_code }</em>
-                           <c:set var="writer" value="${n.id}"/>
+                          <%--  <c:set var="writer" value="${n.id}"/> --%>
                            <sec:authorize access="isAuthenticated()">
                            <sec:authentication var="loginId" property='principal.member.id'/>
                            </sec:authorize>
-                           login:${loginId}writer:${writer}                     
+                          <%--  login:${loginId}writer:${writer}                     
                            <c:if test="${writer eq loginId}">
                            <a href="postSellerView.do?no=${n.post_no }">
                            </c:if>
                            <c:if test="${writer != loginId}">
                            <a href="postBuyerView.do?no=${n.post_no }">
-                           </c:if>                 
+                           </c:if> --%> 
+                            <a href="postSellerView.do?no=${n.post_no }">             
                             <img class="img-rounded" src="${pageContext.request.contextPath}/resources/images/sample.jpg" alt=""></span>
                             <Strong>${n.post_title }</Strong>
                         	</a>
