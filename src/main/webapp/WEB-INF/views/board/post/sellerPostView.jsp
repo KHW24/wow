@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+
 <style>
  /* 이미지 슬라이드 크기 조정 */
   .item>img{
@@ -64,7 +65,6 @@
    font-size:15px;
  }
 </style>
-
 <c:set var="writer" value="${list.id}"/>
 <sec:authorize access="isAuthenticated()">
 <sec:authentication var="loginId" property='principal.member.id'/>
@@ -162,25 +162,13 @@
   </c:if>
     </div>
   </div>
-  <!--댓글-->
+   <!--댓글-->
   <div class="row">
     <div class="col-sm-12  section-hr">
       <br>
-      <span class="comments-title"><strong>댓글[0]</strong></span>
-      <div class="comments">
-        <div class="comment">
-          <span class="comments-title"><strong>조멜론</strong></span>&nbsp;&nbsp;<span>2021-03-15</span><br>
-          <span>저 사고 싶어요!!!</span>
-        </div>
-        <div class="reply comment">
-          <span class="glyphicon glyphicon-hand-right"></span>
-          <span class="comments-title"><strong>조멜론</strong></span>&nbsp;&nbsp;<span>2021-03-15</span><br>
-          저 사고 싶어요!!!
-        </div>
-        <div class="comment">
-          <span class="comments-title"><strong>조멜론</strong></span>&nbsp;&nbsp;<span>2021-03-15</span><br>
-          <span>저 사고 싶어요!!!</span>
-        </div>
+      <span class="comments-title"><strong>댓글[<span id="cCnt"></span>]</strong></span>
+      <div class="comments" id="comments-list">
+      
       </div>
     </div>  
   </div>
@@ -188,12 +176,106 @@
     <div class="row text-center">
       <div class="col-sm-9">
         <br>
-        <input type="text" placeholder="댓글을 입력하세요." class="form-control">
-      </div>
-      <div class="col-sm-3">
-        <br>
-        <button class="btn btn-default">댓글등록</button>
+       <form id="replyForm" method="post" action="replyadd.do">
+      <sec:authorize access="isAuthenticated()">
+      <input type="text" placeholder="댓글을 입력하세요." name="repContents" id="repContents" class="form-control">
+   	  <input type="hidden" name="postNo" id="postNo" value="${postNo}"/>
+    </div>
+    <div class="col-sm-3">
+    	<br>
+      	  <input type="hidden" name="id" id="id" value="<sec:authentication property="principal.member.id"/>" />
+      	<input type="button" class="btn btn-default" id="reply-btn" value="댓글등록" />
+      </sec:authorize>
+      </form>
         <br><br><br><br>
       </div>
     </div>
       </div><!--//div.container-->
+      <!-- 제이쿼리 -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      
+    <script>
+      	var header = "${_csrf.headerName}"; 
+		var token = "${_csrf.token}";
+		
+      $(function(){
+    		$("#reply-btn").click(function(){
+	    		var repContents = $("#repContents").val();
+    	  		var postNo = $("#postNo").val();
+    	  		var id = $("#id").val();
+    			$.ajax({
+    				type: "POST",
+    				url: "${pageContext.request.contextPath}/reply/insert.do",
+    				contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+    				data: {repContents : repContents, postNo : postNo, id : id},
+    				beforeSend : function(xhr){
+    					xhr.setRequestHeader(header, token);
+    				},
+    				success : function(data){
+    					if(data=="success"){
+    						alert("댓글이 등록되었습니다.");
+    						$("#repContents").val("");
+    						getReplyList(); 
+    					}
+    				},
+    				error:function(request, status, error){
+    					alert("code"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+    				}
+    			});
+    		});
+    		
+    		
+      });
+      
+     $(function(){
+    	getReplyList(); 
+     });
+     
+      function getReplyList(){
+    	  var header = "${_csrf.headerName}"; 
+  		  var token = "${_csrf.token}";
+    	  
+    	  $(document).ajaxSend(function(e,xhr, options){
+    		 xhr.setRequestHeader(header, token); 
+    	  });
+    	  
+    	  $.ajax({
+    		 type: "GET",
+    		 contentType: "application/json",
+    		 url: "${pageContext.request.contextPath}/reply/list.do?postNo=${postNo}",
+    		success: function(data){
+    			console.log(data);
+				var cCnt = data.length;
+    			var html = "";
+    			
+    			if(data.length > 0){
+  					$(data).each(function(){
+  						html += "<div class='comment'>";
+  						html += "<span class='comments-title'><strong>"+this.id+"</strong></span>";
+  						html += "&nbsp;&nbsp;<span>"+this.repDate+"</span>&nbsp;&nbsp;";
+  						html += "<button class='btn btn-default btn-xs'>수정</button>&nbsp;&nbsp;";
+  						html += "<button class='btn btn-default btn-xs'>삭제</button><br>";
+  						html += "<span>"+this.repContents+"</span>";
+  						html += "</div>";
+  					});
+  				}else{
+  					html += "<div class='comment'>";
+  					html += "<span class='comments-title'><strong> 등록된 댓글이 없습니다. </strong></span>";
+  					html += "</div>";
+  				}
+  				
+  				$("#cCnt").html(cCnt);
+  				$("#comments-list").html(html);
+
+    		}
+    	  });
+    	 
+		}
+     
+		
+	
+	
+</script>
+
+
+      

@@ -34,10 +34,10 @@ public class BoardController {
 	
 	// 자세한페이지(판매자)
 	@RequestMapping(value="postSellerView.do", method=RequestMethod.GET)
-	public String postSellerView(@RequestParam("no") int no,Model model) throws Exception{
-
+	public String postSellerView(@RequestParam("no") int no, Model model) throws Exception{
 		Board board= boardService.selectPage(no);
 		
+		model.addAttribute("postNo", no);
 		model.addAttribute("list", board);
 		model.addAttribute("center","../board/post/sellerPostView.jsp");
 		return "template/index";
