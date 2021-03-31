@@ -119,7 +119,7 @@
                 <span class="user-info"><strong>${list.id }</strong></span><br>
                 <span class="user-info">${list.post_address }</span>
               </td>
-              <td><button class="btn btn-default">쪽지보내기</button></td>
+              <td><button class="btn btn-default" onclick="popupOpen();">쪽지보내기</button></td>
               <td><button class="btn btn-default">신고하기</button></td>
             </tr>
             <tr>
@@ -272,6 +272,11 @@
     	 
 		}
      
+      function popupOpen(){
+    	     var popUrl = "/project/messagepopup.do";	//팝업창에 출력될 페이지 URL
+    	     var popOption = "width=450, height=360, resizable=no, scrollbars=no, status=no;";    //팝업창 옵션(optoin)
+    	         window.open(popUrl,"",popOption);
+    	     };
 		
 	
 	
