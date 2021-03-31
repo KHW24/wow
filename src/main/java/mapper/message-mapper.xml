@@ -15,12 +15,30 @@
 		INSERT INTO MESSAGE(ID, MSG_CONTENTS, MSG_DATE, GET_ID) VALUES(#{id}, #{msg_contents}, DEFAULT, #{get_id})
 	</insert>
 	
-	<!-- 쪽지함 리스트 - SELECT -->
-	<select id="messageList" parameterType="string" resultMap="resultMessage">
-		SELECT * FROM MESSAGE WHERE GET_ID = #{get_id}
+	<!-- 쪽지함 리스트 - SELECT 받은 쪽지함 -->
+	<select id="messageList" parameterType="String" resultMap="resultMessage">
+		SELECT * FROM (SELECT ROWNUM RNUM, MSG_SEQ, ID, MSG_CONTENTS, MSG_DATE, GET_ID 
+		FROM (SELECT * FROM MESSAGE ORDER BY MSG_SEQ DESC)) 
+		WHERE GET_ID = #{get_id}
 	</select>
 	
-	<!-- 쪽지 삭제 - DELETE -->
+	<!-- 쪽지함 리스트 - SELECT 보낸 쪽지함 -->
+	<select id="messagepushList" parameterType="String" resultMap="resultMessage">
+		SELECT * FROM (SELECT ROWNUM RNUM, MSG_SEQ, ID, MSG_CONTENTS, MSG_DATE, GET_ID 
+		FROM (SELECT * FROM MESSAGE ORDER BY MSG_SEQ DESC)) 
+		WHERE ID = #{get_id}
+	</select>
+	
+	<!-- 쪽지함 리스트 count 받은 쪽지함 -->
+	<select id="ListCount" parameterType="string" resultType="int">
+		SELECT COUNT(*) CNT FROM MESSAGE WHERE GET_ID = #{get_id}
+	</select>
+	
+	<!-- 쪽지함 리스트 count 보낸 쪽지함 -->
+	<select id="ListCountpush" parameterType="string" resultType="int">
+		SELECT COUNT(*) CNT FROM MESSAGE WHERE ID = #{get_id}
+	</select>
+	
 	
 	
 </mapper>

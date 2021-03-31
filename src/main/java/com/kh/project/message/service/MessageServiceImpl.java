@@ -1,5 +1,7 @@
 package com.kh.project.message.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,12 +21,28 @@ public class MessageServiceImpl implements MessageService{
 		return cnt;
 	}
 		
-	// 쪽지함 리스트 - select
+	// 쪽지함 리스트 - selectList 받은 쪽지함
 	@Override
-	public Message messageList(String get_id) throws Exception {
-		Message message = messageDao.messageList(get_id);
-		return message;
+	public List<Message> messageList(String get_id) {
+		return messageDao.messageList(get_id);
 	}
 
+	// 쪽지함 리스트 - selectList 보낸 쪽지함
+	@Override
+	public List<Message> messagepushList(String get_id) {
+		return messageDao.messagepushList(get_id);
+	}
+	
+	// 쪽지함 COUNT(*) (받은 쪽지 글 수 조회)
+	@Override
+	public int ListCount(String get_id) {	
+		return messageDao.ListCount(get_id);
+	}
+	
+	// 쪽지함 COUNT(*) (보낸 쪽지 글 수 조회)
+	@Override
+	public int ListCountpush(String get_id) {	
+		return messageDao.ListCountpush(get_id);
+	}
 	
 }

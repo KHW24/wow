@@ -13,7 +13,6 @@
         color: white;
     }
 </style>
-
 <script>
 	$(function(){
 		$('#allSelects').click(function(){
@@ -26,7 +25,6 @@
 	});
 	
 </script>
-
 <div style="text-align: center;">
 	<h2>쪽지함</h2>
 	<hr>
@@ -37,8 +35,8 @@
 			var csrfHeaderName ="${_csrf.headerName}";
 			var csrfTokenValue="${_csrf.token}";
 		</script>	
-		<label><input type="radio" name="message" value="mepost" onclick="window.location.href='message.do?get_id=<sec:authentication property="principal.member.id"/>';" checked>받은 쪽지함 </label> 
-		<label><input type="radio" name="message" value="mepush" onclick="window.location.href='messagepush.do?get_id=<sec:authentication property="principal.member.id"/>';"> 보낸 쪽지함</label><br>
+		<label><input type="radio" name="message" value="mepost" onclick="location.href='message.do?get_id=<sec:authentication property="principal.member.id"/>'" >받은 쪽지함 </label> 
+		<label><input type="radio" name="message" value="mepush" onclick="location.href='messagepush.do?get_id=<sec:authentication property="principal.member.id"/>" checked> 보낸 쪽지함</label><br>
 		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 		<input type="hidden" name="${_csrf.headerName}" value="${_csrf.headerName}" />
 		<input type="submit" class="btn" value="삭제" style="margin-left: 90.7%;">
@@ -47,7 +45,7 @@
 				<tr>
 					<th>글번호</th>
 					<th>내용</th>
-					<th>받은 아이디</th>
+					<th>보낸 아이디</th>
 					<th>날짜</th>
 					<th>&nbsp;&nbsp;<input type="checkbox" name="select" id="allSelects"></th>
 				</tr>
@@ -57,16 +55,16 @@
 			<c:if test="${listCount == 0}">
 				<tr>
 					<td colspan="6" align="center"><br>
-					<br><strong style="color:red;">받은 쪽지가 없습니다.</strong><br>
+					<br><strong style="color:red;">보낸 쪽지가 없습니다.</strong><br>
 					<br></td>
 				</tr>
 			</c:if>
 			<c:if test="${listCount != 0}">
-			<c:forEach var="me" items="${list}">
+			<c:forEach var="me" items="${pushlist}">
 				<tr>
 					<td>${me.msg_seq }</td>
 					<td>${me.msg_contents }</td>
-					<td>${me.id }</td>
+					<td>${me.get_id }</td>
 					<td>${me.msg_date }</td>
 					<td>&nbsp;&nbsp;<input type="checkbox" name="select"></td>
 				</tr>

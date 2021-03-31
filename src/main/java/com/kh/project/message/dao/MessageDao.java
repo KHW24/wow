@@ -1,5 +1,7 @@
 package com.kh.project.message.dao;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -18,11 +20,24 @@ public class MessageDao {
 		return cnt;
 	}
 	
-	// 쪽지함 리스트 - select
-	public Message messageList(String get_id) throws Exception {
-		Message message = sqlSession.selectOne("Message.messageList", get_id);
-		return message;
+	// 쪽지함 리스트 - selectList 받은 쪽지함
+	public List<Message> messageList(String get_id) {
+		return sqlSession.selectList("Message.messageList", get_id);
 	}
 
+	// 쪽지함 리스트 - selectList 보낸 쪽지함
+	public List<Message> messagepushList(String get_id) {
+		return sqlSession.selectList("Message.messagepushList", get_id);
+	}
+	
+	// 쪽지함 COUNT(*) (받은 쪽지 글 수 조회)
+	public int ListCount(String get_id) {	
+		return sqlSession.selectOne("Message.ListCount", get_id);
+	}
+	
+	// 쪽지함 COUNT(*) (보낸 쪽지 글 수 조회)
+	public int ListCountpush(String get_id) {	
+		return sqlSession.selectOne("Message.ListCountpush", get_id);
+	}
 
 }
