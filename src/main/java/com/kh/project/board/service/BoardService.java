@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Param;
 import com.kh.project.board.vo.Board;
 import com.kh.project.board.vo.Criteria;
 import com.kh.project.board.vo.Reply;
+import com.kh.project.board.vo.ReplyPage;
 
 public interface BoardService {
 
@@ -43,7 +44,10 @@ public interface BoardService {
 	public int deleteReply(int repSeq) throws Exception;
 	
 	//페이징해서 댓글 리스트 가져오기
-	public List<Reply> getRepliesList(@Param("cri") Criteria cri, @Param("no") int no) throws Exception;
+	public ReplyPage getRepliesList(@Param("cri") Criteria cri, @Param("postNo") int no) throws Exception;
 
+	//댓글 총 개수
+	public int getCountByPostNo(int postNo) throws Exception;
+	
 
 }

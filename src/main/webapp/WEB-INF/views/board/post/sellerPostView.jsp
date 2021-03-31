@@ -171,9 +171,12 @@
   </div>
    <!--댓글-->
   <div class="row">
-    <div class="col-sm-12  section-hr">
+    <div class="col-sm-12 section-hr">
       <br>
       <span class="comments-title"><strong>댓글[<span id="cCnt"></span>]</strong></span>
+      <div class="paging">
+      <!-- 페이지네이션 -->
+	</div>
       <div class="comments" id="comments-list">
       <!-- 댓글 내용 -->
       </div>
@@ -195,6 +198,12 @@
       </sec:authorize>
       	<input type="button" class="btn btn-default" id="reply-btn" value="댓글등록" />
       </form>
+      <br><br><br>
+      <div class="row">
+      <div class="col-sm-12">
+
+      </div>
+      </div>
       <!-- 댓글 삭제 모달 창 -->
 			<!-- Modal -->
 			<div id="repModal" class="modal fade" role="dialog">
@@ -228,13 +237,14 @@
       	var header = "${_csrf.headerName}"; 
 		var token = "${_csrf.token}";
 		
+		//댓글 등록
       $(function(){
     		$("#reply-btn").click(function(){
 	    		var repContents = $("#repContents").val();
     	  		var postNo = $("#postNo").val();
     	  		var id = $("#id").val();
     	  		
-    	  		if(${empty loginId}){
+    	  		if("${empty loginId}"){
     	  			alert("로그인한 사용자만 댓글 입력이 가능합니다. ");
     	  			location.href="${pageContext.request.contextPath}/login.do";
     	  		}else{
@@ -256,36 +266,38 @@
         				error:function(request, status, error){
         					alert("code"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
         				}
-        			});
+        			});//ajax
     	  		}
-    		});
-      });
+    		});//댓글 등록
+      }); //window.onload
       
      $(function(){
     	getReplyList(); 
     	
      });
      
-      function getReplyList(){
+     //댓글 목록 출력
+      function getReplyList(page){
     	  var header = "${_csrf.headerName}"; 
-  		  var token = "${_csrf.token}";
-  		  var loginId = "${loginId}";
-    	  
-    	  $(document).ajaxSend(function(e,xhr, options){
+ 		  var token = "${_csrf.token}";
+ 		  var loginId = "${loginId}";
+   	  	  var clickPage = page || 1;
+ 		  
+ 		 $(document).ajaxSend(function(e,xhr, options){
     		 xhr.setRequestHeader(header, token); 
     	  });
     	  
     	  $.ajax({
     		 type: "GET",
-    		 contentType: "application/json",
-    		 url: "${pageContext.request.contextPath}/reply/list?postNo=${postNo}",
+    		 url: "${pageContext.request.contextPath}/reply/list?postNo=${postNo}&page="+clickPage,
     		success: function(data){
     			console.log(data);
-				var cCnt = data.length;
     			var html = "";
+				var str = "";
+    			var rCntByPn = data.replyCnt;  //전체 댓글 총 갯수
     			
-    			if(data.length > 0){
-  					$(data).each(function(){
+    			if(rCntByPn > 0){
+  					$(data.list).each(function(){
   						html += "<div class='comment comment-hr'>";
   						html += "<span class='comments-title'><strong>"+this.id+"</strong></span>";
   						html += "&nbsp;&nbsp;<span>"+getFormatDate(this.repDate)+"</span>&nbsp;&nbsp;";
@@ -297,23 +309,40 @@
   						html += "<br><span class='repContents'>"+this.repContents+"</span><br>";
   						html += "</div>";
   					});
+  					showReplyPage(rCntByPn);
   				}else{
   					html += "<div class='comment'>";
   					html += "<span class='comments-title'><strong> 등록된 댓글이 없습니다. </strong></span>";
   					html += "</div>";
   				}
-  				
-  				$("#cCnt").html(cCnt);
+  				$("#cCnt").html(rCntByPn);
   				$("#comments-list").html(html);
-
     		}
-    	  });
+    	  });//ajax
     	  
-		}
+		} // 댓글 목록 출력 함수 
      
-
+		//댓글 작성일이 오늘이면 시간/ 하루 지난 이후부터는 날짜 출력
       function getFormatDate(date){
-    	  var date = new Date(date);
+    	  var today = new Date();			//현재시간 
+    	  var gap = today.getTime()-date;	//댓글 작성시간과 현재시간 차이
+    	  var dateObj = new Date(date);
+    	  var str = "";
+    	  
+    	  if(gap<(1000*60*60*24)){
+    		  var hh = dateObj.getHours();
+    		  var mi = dateObj.getMinutes();
+    		  var ss = dateObj.getSeconds();
+    		  
+    		  return [(hh>9?'':'0')+hh, ":", (mi>9?'':'0')+mi,':',(ss>9?'':'0')+ss].join('');
+    	  }else{
+    		  var yy = dateObj.getFullYear();
+    		  var mm = dateObj.getMonth()+1;  //월은 0이 기본값이기 때문에 1 더해줘야 함.
+    	  	  var dd = dateObj.getDate();
+    		  
+    		  return [yy,'-',(mm>9?'':'0')+mm,'-',(dd>9?'':'0')+dd].join('');
+    	  }
+    	  
           var year = date.getFullYear();
           var month = (date.getMonth()+1);
           var day = date.getDate();
@@ -321,7 +350,7 @@
           var minutes = date.getMinutes();
           var seconds = date.getSeconds();
           return year + '-' + month + '-' + day+" "+hours+":"+minutes+":"+seconds;
-      }
+      }// 날짜 처리 함수
 
       // 쪽지보내기 팝업
       function popupOpen(){
@@ -330,7 +359,7 @@
     	         window.open(popUrl,"",popOption);
     	     };
 		
-	
+		//댓글 수정
       $(function(){
     	  $("#comments-list").on('click','.repmod',function(){
   			var repContents = $(this).siblings(".repContents").text();
@@ -358,11 +387,12 @@
   					error:function(request, status, error){
   						alert("code"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
   					}
-  				});
-  			});
+  				});//ajax
+  			});//댓글 수정완료 클릭
   			
-  	      });
+  	      });//댓글 수정 함수
         
+    	  //댓글 삭제 버튼 클릭 시 확인 모달창
         $("#comments-list").on('click','.repdel',function(){
   			var repContents = $(this).siblings(".repContents").text();
   			var repSeq = $(this).nextAll("input[type=hidden]").val();
@@ -372,6 +402,7 @@
   			$(".modal-reply").prev().html("<font color='red'>댓글을 삭제하시겠습니까?</font>");
       });
         
+    	  //댓글 삭제 처리
         $(".modal-delete-btn").click(function(){
       	  var repSeq = $(".modal-repSeq").val();
 				$.ajax({
@@ -391,12 +422,65 @@
 					error:function(request, status, error){
 						alert("code"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 					}
-				});
-			});
-      });
+				});//ajax
+			}); //댓글 삭제 버튼 클릭 시
+      }); //window.onload
      
 	
-</script>
+	// 댓글 페이징 처리
+	var pageNum = 1;
+	var paging = $(".paging");
+	
+	function showReplyPage(replyCnt){
+		var endNum = Math.ceil(pageNum/10.0)*10;
+		var startNum = endNum - 9;
+		var prev = startNum != 1;
+		var next = false;
+		
+		if(endNum * 10 >= replyCnt){
+			endNum = Math.ceil(replyCnt/10.0);
+		}
+		
+		if(endNum * 10 < replyCnt){
+			next = true;
+		}
+		
+		var str = "<ul class='breadcrumb text-right'>";
+		
+		if(prev){
+			str += "<li><a href='"+(startNum-1)+"'>이전</a></li>";
+		}
+		
+		for(var i = startNum; i <= endNum; i++){
+			var active = pageNum == i? "active":"";
+			str +="<li class='"+active+"'><a href='"+i+"'>"+i+"</a></li>";
+		}
+		
+		if(next){
+			str+="<li><a href='"+(endNum+1)+"'>다음</a></li>";
+		}
+		
+		str+="</ul>";
+		console.log(str);
+		
+		paging.html(str);
+		
+		}// showReplyPage 함수
+		
+		$(function(){
+			paging.on("click","li a",function(e){
+				e.preventDefault();
+				console.log("page click");
+				
+				var targetPageNum = $(this).attr("href");
+				console.log("targetPageNum: "+targetPageNum);
+				pageNum=targetPageNum;
+				getReplyList(pageNum);
+			});
+					
+		});
+	
+	</script>
 
 
       

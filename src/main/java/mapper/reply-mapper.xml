@@ -28,8 +28,21 @@
 		DELETE FROM REPLY WHERE REP_SEQ = #{repSeq} 
 	</delete>
 	
-	<select id="getRepliesList" resultMap="resultReply" parameterType="int">
-		SELECT * FROM REPLY WHERE POST_NO = #{postNo} ORDER BY POST_NO ASC
+	<select id="getListWithPaging" resultMap="resultReply" >
+	<![CDATA[  
+		SELECT rep_seq, post_no, rep_contents, id, rep_date FROM 
+		(SELECT /*+INDEX(REPLY IDX_REPLY) */ 
+		ROWNUM RN, REP_SEQ, POST_NO, REP_CONTENTS, ID, REP_DATE FROM REPLY
+		WHERE POST_NO = #{postNo} 
+		AND REP_SEQ > 0 
+		AND ROWNUM <= #{cri.pageNum}*#{cri.amount}
+		) WHERE RN > (#{cri.pageNum}-1)*#{cri.amount}
+	]]>		
 	</select>
 
+	<select id="getCountByPostNo" resultType="int">
+		<![CDATA[
+			SELECT COUNT(REP_SEQ) FROM REPLY WHERE POST_NO = #{postNo}
+		]]>
+	</select>
 </mapper>
