@@ -58,7 +58,7 @@
     	<p>
     		<b>
     			<c:set var="writer" value="${list.id}"/>
-    			<input type="text" name="get_id" value="${list.id }"/>
+    			<input type="text" name="get_id" value="${list.id }" readonly/>
     		</b>
     		
     	<sec:authorize access="isAuthenticated()">
