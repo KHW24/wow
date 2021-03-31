@@ -234,7 +234,7 @@
     	  		var postNo = $("#postNo").val();
     	  		var id = $("#id").val();
     	  		
-    	  		if( ${empty loginId}){
+    	  		if(${empty loginId}){
     	  			alert("로그인한 사용자만 댓글 입력이 가능합니다. ");
     	  			location.href="${pageContext.request.contextPath}/login.do";
     	  		}else{
@@ -311,7 +311,6 @@
     	  
 		}
      
-<<<<<<< HEAD
       function getFormatDate(date){
     	  var date = new Date(date);
           var year = date.getFullYear();
@@ -322,15 +321,7 @@
           var seconds = date.getSeconds();
           return year + '-' + month + '-' + day+" "+hours+":"+minutes+":"+seconds;
       }
-=======
-      // 쪽지보내기 팝업
-      function popupOpen(){
-    	     var popUrl = "messagepopup.do?no=${list.post_no}";	//팝업창에 출력될 페이지 URL
-    	     var popOption = "width=500, height=430, resizable=no, scrollbars=no, status=no;";    //팝업창 옵션(optoin)
-    	         window.open(popUrl,"",popOption);
-    	     };
-		
->>>>>>> branch 'master' of https://github.com/KHW24/wow.git
+
 	
       $(function(){
     	  $("#comments-list").on('click','.repmod',function(){
