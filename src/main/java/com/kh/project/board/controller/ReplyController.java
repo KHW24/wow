@@ -31,16 +31,32 @@ public class ReplyController {
 	@Autowired
 	private BoardService bservice;
 	
-	@RequestMapping(value = "/insert.do", method = RequestMethod.POST)
-	public String replyCreate(Reply rep, Model model) throws Exception {
+	//댓글 등록
+	@RequestMapping(value = "/insert", method = RequestMethod.POST)
+	public String replyCreate(Reply rep) throws Exception {
 		int cnt = bservice.insertReply(rep);
 		return "success";
 	}
 	
-	@RequestMapping(value = "/list.do")
+	//댓글 목록 조회
+	@RequestMapping(value = "/list")
 	public List<Reply> replyList(int postNo) throws Exception {
 		Criteria cri = new Criteria(1,10);
 		return bservice.getRepliesList(cri, postNo);
+	}
+	
+	//댓글 수정
+	@RequestMapping(value = "/update", method = RequestMethod.POST)
+	public String replyUpdate(Reply rep) throws Exception {
+		int cnt = bservice.updateReply(rep);
+		return "success";
+	}
+	
+	//댓글 삭제
+	@RequestMapping(value = "/delete", method = RequestMethod.GET)
+	public String replyDelete(int repSeq) throws Exception {
+		int cnt = bservice.deleteReply(repSeq);
+		return "success";
 	}
 	
 	

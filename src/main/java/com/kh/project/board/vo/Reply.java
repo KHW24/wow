@@ -1,11 +1,12 @@
 package com.kh.project.board.vo;
 
-import java.sql.Date;
+import java.util.Date;
+
 
 public class Reply {
 
 		private int postNo;  		//글번호
-		private int repSeq;  		//댓글번호
+		private int repSeq; 		//댓글번호
 		private Date repDate;		//댓글작성일
 		private String repContents;	//댓글내용
 		private String id;			//댓글아이디

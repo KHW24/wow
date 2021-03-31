@@ -50,6 +50,9 @@
  .section-hr{
    border-bottom: 2px solid #cccc;
  }
+ .comment-hr{
+  border-bottom: 2px dotted #cccc;
+ }
  /* 대댓글 들여쓰기 */
  .reply{
    margin-left:20px;
@@ -168,7 +171,7 @@
       <br>
       <span class="comments-title"><strong>댓글[<span id="cCnt"></span>]</strong></span>
       <div class="comments" id="comments-list">
-      
+      <!-- 댓글 내용 -->
       </div>
     </div>  
   </div>
@@ -177,17 +180,40 @@
       <div class="col-sm-9">
         <br>
        <form id="replyForm" method="post" action="replyadd.do">
-      <sec:authorize access="isAuthenticated()">
+      
       <input type="text" placeholder="댓글을 입력하세요." name="repContents" id="repContents" class="form-control">
    	  <input type="hidden" name="postNo" id="postNo" value="${postNo}"/>
     </div>
     <div class="col-sm-3">
     	<br>
+      <sec:authorize access="isAuthenticated()">
       	  <input type="hidden" name="id" id="id" value="<sec:authentication property="principal.member.id"/>" />
-      	<input type="button" class="btn btn-default" id="reply-btn" value="댓글등록" />
       </sec:authorize>
+      	<input type="button" class="btn btn-default" id="reply-btn" value="댓글등록" />
       </form>
-        <br><br><br><br>
+      <!-- 댓글 삭제 모달 창 -->
+			<!-- Modal -->
+			<div id="repModal" class="modal fade" role="dialog">
+				<div class="modal-dialog">
+
+					<!-- Modal content-->
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+							<h4 class="modal-title"></h4>
+						</div>
+						<div class="modal-body">
+						<font color='red'>댓글을 삭제하시겠습니까?</font>
+							<input type="hidden" class="modal-repSeq"/>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default modal-delete-btn"
+								data-dismiss="modal">삭제</button>
+						</div>
+					</div>
+				</div>
+			</div><!-- //댓글 삭제 모달창  -->
+			<br><br><br><br>
       </div>
     </div>
       </div><!--//div.container-->
@@ -203,37 +229,43 @@
 	    		var repContents = $("#repContents").val();
     	  		var postNo = $("#postNo").val();
     	  		var id = $("#id").val();
-    			$.ajax({
-    				type: "POST",
-    				url: "${pageContext.request.contextPath}/reply/insert.do",
-    				contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-    				data: {repContents : repContents, postNo : postNo, id : id},
-    				beforeSend : function(xhr){
-    					xhr.setRequestHeader(header, token);
-    				},
-    				success : function(data){
-    					if(data=="success"){
-    						alert("댓글이 등록되었습니다.");
-    						$("#repContents").val("");
-    						getReplyList(); 
-    					}
-    				},
-    				error:function(request, status, error){
-    					alert("code"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-    				}
-    			});
+    	  		
+    	  		if( ${empty loginId}){
+    	  			alert("로그인한 사용자만 댓글 입력이 가능합니다. ");
+    	  			location.href="${pageContext.request.contextPath}/login.do";
+    	  		}else{
+    	  			$.ajax({
+        				type: "POST",
+        				url: "${pageContext.request.contextPath}/reply/insert",
+        				contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+        				data: {repContents : repContents, postNo : postNo, id : id},
+        				beforeSend : function(xhr){
+        					xhr.setRequestHeader(header, token);
+        				},
+        				success : function(data){
+        					if(data=="success"){
+        						alert("댓글이 등록되었습니다.");
+        						$("#repContents").val("");
+        						getReplyList(); 
+        					}
+        				},
+        				error:function(request, status, error){
+        					alert("code"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+        				}
+        			});
+    	  		}
     		});
-    		
-    		
       });
       
      $(function(){
     	getReplyList(); 
+    	
      });
      
       function getReplyList(){
     	  var header = "${_csrf.headerName}"; 
   		  var token = "${_csrf.token}";
+  		  var loginId = "${loginId}";
     	  
     	  $(document).ajaxSend(function(e,xhr, options){
     		 xhr.setRequestHeader(header, token); 
@@ -242,7 +274,7 @@
     	  $.ajax({
     		 type: "GET",
     		 contentType: "application/json",
-    		 url: "${pageContext.request.contextPath}/reply/list.do?postNo=${postNo}",
+    		 url: "${pageContext.request.contextPath}/reply/list?postNo=${postNo}",
     		success: function(data){
     			console.log(data);
 				var cCnt = data.length;
@@ -250,12 +282,15 @@
     			
     			if(data.length > 0){
   					$(data).each(function(){
-  						html += "<div class='comment'>";
+  						html += "<div class='comment comment-hr'>";
   						html += "<span class='comments-title'><strong>"+this.id+"</strong></span>";
-  						html += "&nbsp;&nbsp;<span>"+this.repDate+"</span>&nbsp;&nbsp;";
-  						html += "<button class='btn btn-default btn-xs'>수정</button>&nbsp;&nbsp;";
-  						html += "<button class='btn btn-default btn-xs'>삭제</button><br>";
-  						html += "<span>"+this.repContents+"</span>";
+  						html += "&nbsp;&nbsp;<span>"+getFormatDate(this.repDate)+"</span>&nbsp;&nbsp;";
+  						if(this.id == "${loginId}"){
+  							html += "<button type='button' class='btn btn-default btn-xs repmod'>수정</button>&nbsp;&nbsp;";
+  	  						html += "<button type='button' class='btn btn-default btn-xs repdel' data-toggle='modal' data-target='#repModal'>삭제</button>";	
+  							html += "<input type='hidden' name='repSeq' value='"+this.repSeq+"'/>";
+  						}
+  						html += "<br><span class='repContents'>"+this.repContents+"</span><br>";
   						html += "</div>";
   					});
   				}else{
@@ -269,11 +304,84 @@
 
     		}
     	  });
-    	 
+    	  
 		}
      
-		
+      function getFormatDate(date){
+    	  var date = new Date(date);
+          var year = date.getFullYear();
+          var month = (date.getMonth()+1);
+          var day = date.getDate();
+          var hours = date.getHours();
+          var minutes = date.getMinutes();
+          var seconds = date.getSeconds();
+          return year + '-' + month + '-' + day+" "+hours+":"+minutes+":"+seconds;
+      }
 	
+      $(function(){
+    	  $("#comments-list").on('click','.repmod',function(){
+  			var repContents = $(this).siblings(".repContents").text();
+  			var repSeq = $(this).nextAll("input[type=hidden]").val();
+  			
+  			$(this).siblings(".repContents").html("<input type='text' class='form-control rep-mod-contents' value='"+repContents+"'/>");
+  			$(this).text("수정완료");
+  			
+  			$(this).click(function(){
+  				var repModContents = $(this).siblings(".repContents").children().val();
+  				$.ajax({
+  					type: "POST",
+  					url: "${pageContext.request.contextPath}/reply/update",
+  					contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+  					data: {repContents : repModContents, repSeq : repSeq},
+  					beforeSend : function(xhr){
+  						xhr.setRequestHeader(header, token);
+  					},
+  					success : function(data){
+  						if(data=="success"){
+  							alert("댓글이 수정되었습니다.");
+  							getReplyList(); 
+  						}
+  					},
+  					error:function(request, status, error){
+  						alert("code"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+  					}
+  				});
+  			});
+  			
+  	      });
+        
+        $("#comments-list").on('click','.repdel',function(){
+  			var repContents = $(this).siblings(".repContents").text();
+  			var repSeq = $(this).nextAll("input[type=hidden]").val();
+  			$(".modal-repSeq").val(repSeq);
+  			$(".modal-title").html("<strong>댓글 삭제</strong>");
+  			$(".modal-delete-btn").text("삭제");
+  			$(".modal-reply").prev().html("<font color='red'>댓글을 삭제하시겠습니까?</font>");
+      });
+        
+        $(".modal-delete-btn").click(function(){
+      	  var repSeq = $(".modal-repSeq").val();
+				$.ajax({
+					type: "GET",
+					url: "${pageContext.request.contextPath}/reply/delete",
+					contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+					data: {repSeq : repSeq},
+					beforeSend : function(xhr){
+						xhr.setRequestHeader(header, token);
+					},
+					success : function(data){
+						if(data=="success"){
+							alert("댓글이 삭제되었습니다.");
+							getReplyList(); 
+						}
+					},
+					error:function(request, status, error){
+						alert("code"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+					}
+				});
+			});
+      });
+     
 	
 </script>
 
