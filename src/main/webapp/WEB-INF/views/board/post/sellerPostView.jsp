@@ -122,7 +122,11 @@
                 <span class="user-info"><strong>${list.id }</strong></span><br>
                 <span class="user-info">${list.post_address }</span>
               </td>
-              <td><button class="btn btn-default">쪽지보내기</button></td>
+              <td>
+              <c:if test="${!empty loginId}">
+              <button class="btn btn-default" onclick="popupOpen();">쪽지보내기</button>
+              </c:if>
+              </td>
               <td><button class="btn btn-default">신고하기</button></td>
             </tr>
             <tr>
@@ -307,6 +311,7 @@
     	  
 		}
      
+<<<<<<< HEAD
       function getFormatDate(date){
     	  var date = new Date(date);
           var year = date.getFullYear();
@@ -317,6 +322,15 @@
           var seconds = date.getSeconds();
           return year + '-' + month + '-' + day+" "+hours+":"+minutes+":"+seconds;
       }
+=======
+      // 쪽지보내기 팝업
+      function popupOpen(){
+    	     var popUrl = "messagepopup.do?no=${list.post_no}";	//팝업창에 출력될 페이지 URL
+    	     var popOption = "width=500, height=430, resizable=no, scrollbars=no, status=no;";    //팝업창 옵션(optoin)
+    	         window.open(popUrl,"",popOption);
+    	     };
+		
+>>>>>>> branch 'master' of https://github.com/KHW24/wow.git
 	
       $(function(){
     	  $("#comments-list").on('click','.repmod',function(){

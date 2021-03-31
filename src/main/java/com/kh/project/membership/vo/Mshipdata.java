@@ -49,17 +49,6 @@ public class Mshipdata {
 	public void setId(String id) {
 		this.id = id;
 	}
-	
-	// 추가된 내용
-	public void setMshipDate(Object mshipDate) {
-		// TODO Auto-generated method stub
-		
-	}
-	public void setMshipPrice(Object mshipPrice) {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	
+
 	
 }

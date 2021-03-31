@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
     
     <style>
     .button {
@@ -54,14 +56,15 @@
 		<input type="hidden" name="${_csrf.headerName}" value="${_csrf.headerName}" />
     <div class="name">
     	<p>
-    		<b><input type="text" name="get_id" value="받는 사람.. 바꿔야됨"/></b>
+    		<b>
+    			<c:set var="writer" value="${list.id}"/>
+    			<input type="text" name="get_id" value="${list.id }" readonly/>
+    		</b>
     		
-<%--     	<sec:authorize access="isAuthenticated()">
+    	<sec:authorize access="isAuthenticated()">
             <input type="text" name="id" 
             value="<sec:authentication property="principal.member.id"/>" readonly/>
-        </sec:authorize> --%>
-        <input type="text" name="id" 
-            value="보내는사람.." readonly/>
+        </sec:authorize>
         </p>
        		</div>
     <br>
