@@ -58,12 +58,12 @@
     	<p>
     		<b>
     			<c:set var="writer" value="${list.id}"/>
-    			<input type="text" name="get_id" value="${list.id }" readonly/>
+    			받는 사람 : <input type="text" name="get_id" value="${list.id }" readonly/><br/>
     		</b>
     		
     	<sec:authorize access="isAuthenticated()">
-            <input type="text" name="id" 
-            value="<sec:authentication property="principal.member.id"/>" readonly/>
+            	<b> 보내는 사람 : <input type="text" name="id" 
+            value="<sec:authentication property="principal.member.id"/>" readonly/></b>
         </sec:authorize>
         </p>
        		</div>
