@@ -45,4 +45,22 @@ public class MessageServiceImpl implements MessageService{
 		return messageDao.ListCountpush(get_id);
 	}
 	
+	// 쪽지 상세 view 페이지 
+	@Override
+	public Message messageView(int msg_seq) {
+		return messageDao.messageView(msg_seq);
+	}
+	
+	// 쪽지 수정 페이지
+	@Override
+	public int messageUpdate(Message message) {
+		return messageDao.messageUpdate(message);
+	}
+	
+	// 쪽지 삭제
+	@Override
+	public int messageDelete(Message message) {
+		return messageDao.messageDelete(message);
+	}
+	
 }
