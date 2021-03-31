@@ -36,14 +36,23 @@ public class MessageController {
 		return mv;
 	}
 	
-	// 쪽지 상세 view 팝업
+	// 쪽지 상세 view 팝업 받은 쪽지
 	@RequestMapping(value="messageviewpopup.do", method=RequestMethod.GET)
 	public ModelAndView messageViewPopup (@RequestParam("msg_seq") int msg_seq, ModelAndView mv) throws Exception {
 
 		Message message = messageService.messageView(msg_seq);
-		System.out.println("컨트롤러에서 msg_seq"+msg_seq);
 		mv.addObject("list", message);
 		mv.setViewName("message/messageviewpopup");
+		return mv;
+	}
+	
+	// 쪽지 상세 view 팝업 보낸 쪽지
+	@RequestMapping(value="messageviewpopupUp.do", method=RequestMethod.GET)
+	public ModelAndView messageViewPopupUp (@RequestParam("msg_seq") int msg_seq, ModelAndView mv) throws Exception {
+
+		Message message = messageService.messageView(msg_seq);
+		mv.addObject("list", message);
+		mv.setViewName("message/messageviewpopupUp");
 		return mv;
 	}
 	
@@ -82,6 +91,24 @@ public class MessageController {
 	    mv.addObject("center", "../message/messagepush.jsp");
 	    mv.setViewName("template/index");
 	    return mv;
+	}
+	
+	// 쪽지 수정 - update
+	@RequestMapping(value="messageviewpopupUp.do", method=RequestMethod.POST)
+	public ModelAndView messageUpdate(Message message, ModelAndView mv) throws Exception {
+		
+		messageService.messageUpdate(message);
+        mv.setViewName("template/index");
+		return mv;
+	}
+	
+	// 쪽지 삭제 - delete
+	@RequestMapping(value="messageDelete.do", method=RequestMethod.POST)
+	public ModelAndView messageDelete(Message message, ModelAndView mv) throws Exception {
+		
+		messageService.messageDelete(message);
+		mv.setViewName("redirect:message.do");
+		return mv;
 	}
 
 }

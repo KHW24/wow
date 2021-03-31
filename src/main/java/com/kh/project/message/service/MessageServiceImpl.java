@@ -51,4 +51,16 @@ public class MessageServiceImpl implements MessageService{
 		return messageDao.messageView(msg_seq);
 	}
 	
+	// 쪽지 수정 페이지
+	@Override
+	public int messageUpdate(Message message) {
+		return messageDao.messageUpdate(message);
+	}
+	
+	// 쪽지 삭제
+	@Override
+	public int messageDelete(Message message) {
+		return messageDao.messageDelete(message);
+	}
+	
 }

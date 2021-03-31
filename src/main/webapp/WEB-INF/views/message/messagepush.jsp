@@ -65,7 +65,7 @@
 			<c:forEach var="me" items="${pushlist}">
 				<tr>
 					<td>${me.msg_seq }</td>
-					<td><a href="messageviewpopup.do?msg_seq=${me.msg_seq}" 
+					<td><a href="messageviewpopupUp.do?msg_seq=${me.msg_seq}" 
 					onclick="window.open(this.href, '_blank', 'width=500, height=430'); return false;">${me.msg_contents }</a></td>
 					<td>${me.get_id }</td>
 					<td>${me.msg_date }</td>

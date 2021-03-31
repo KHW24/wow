@@ -44,5 +44,15 @@ public class MessageDao {
 	public Message messageView(int msg_seq) {
 		return sqlSession.selectOne("Message.messageView", msg_seq);
 	}
+	
+	// 쪽지 수정 페이지
+	public int messageUpdate(Message message) {
+		return sqlSession.update("Message.messageUpdate", message);
+	}
+	
+	// 쪽지 삭제
+	public int messageDelete(Message message) {
+		return sqlSession.delete("Message.messageDelete", message);
+	}
 
 }
