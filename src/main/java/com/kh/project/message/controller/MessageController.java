@@ -1,5 +1,7 @@
 package com.kh.project.message.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -7,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.kh.project.board.service.BoardService;
+import com.kh.project.board.vo.Board;
 import com.kh.project.member.vo.Member;
 import com.kh.project.message.service.MessageService;
 import com.kh.project.message.vo.Message;
@@ -17,10 +21,16 @@ public class MessageController {
 	@Autowired
 	MessageService messageService;
 	
+	@Autowired
+	BoardService boardService;
+	
 	// 쪽지 팝업!
 	@RequestMapping(value="messagepopup.do", method=RequestMethod.GET)
-	public ModelAndView messagePopup (Member member, ModelAndView mv) throws Exception {
-
+	public ModelAndView messagePopup (@RequestParam("no") int no, Member member, ModelAndView mv) throws Exception {
+		Board board= boardService.selectPage(no);
+		
+		mv.addObject("postNo", no);
+		mv.addObject("list", board);
 		mv.setViewName("admin/messagepopup");
 		return mv;
 	}
