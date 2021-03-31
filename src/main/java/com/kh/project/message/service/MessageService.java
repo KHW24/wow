@@ -21,4 +21,7 @@ public interface MessageService {
 	// 쪽지함 COUNT(*) (보낸 쪽지 글 수 조회)
 	public int ListCountpush(String get_id);
 
+	// 쪽지 상세 view 페이지 
+	public Message messageView(int msg_seq);
+	
 }

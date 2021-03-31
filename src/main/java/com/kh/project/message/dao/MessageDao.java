@@ -39,5 +39,10 @@ public class MessageDao {
 	public int ListCountpush(String get_id) {	
 		return sqlSession.selectOne("Message.ListCountpush", get_id);
 	}
+	
+	// 쪽지 상세 view 페이지 
+	public Message messageView(int msg_seq) {
+		return sqlSession.selectOne("Message.messageView", msg_seq);
+	}
 
 }

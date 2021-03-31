@@ -12,9 +12,11 @@
         background-color: rgb(173, 39, 173);
         color: white;
     }
+   	a {text-decoration:none; color: #000;}
 </style>
 
 <script>
+	// 전체 선택되면 체크되는 기능
 	$(function(){
 		$('#allSelects').click(function(){
 			if($('#allSelects').prop('checked') == true) {
@@ -25,6 +27,7 @@
 		});
 	});
 	
+
 </script>
 
 <div style="text-align: center;">
@@ -65,7 +68,8 @@
 			<c:forEach var="me" items="${list}">
 				<tr>
 					<td>${me.msg_seq }</td>
-					<td>${me.msg_contents }</td>
+					<td><a href="messageviewpopup.do?msg_seq=${me.msg_seq}" 
+					onclick="window.open(this.href, '_blank', 'width=500, height=430'); return false;">${me.msg_contents }</a></td>
 					<td>${me.id }</td>
 					<td>${me.msg_date }</td>
 					<td>&nbsp;&nbsp;<input type="checkbox" name="select"></td>

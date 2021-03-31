@@ -25,14 +25,25 @@ public class MessageController {
 	@Autowired
 	BoardService boardService;
 	
-	// 쪽지 팝업!
+	// 쪽지 팝업
 	@RequestMapping(value="messagepopup.do", method=RequestMethod.GET)
-	public ModelAndView messagePopup (@RequestParam("no") int no, Member member, ModelAndView mv) throws Exception {
+	public ModelAndView messagePopup (@RequestParam("no") int no, ModelAndView mv) throws Exception {
 		Board board= boardService.selectPage(no);
 		
 		mv.addObject("postNo", no);
 		mv.addObject("list", board);
-		mv.setViewName("admin/messagepopup");
+		mv.setViewName("message/messagepopup");
+		return mv;
+	}
+	
+	// 쪽지 상세 view 팝업
+	@RequestMapping(value="messageviewpopup.do", method=RequestMethod.GET)
+	public ModelAndView messageViewPopup (@RequestParam("msg_seq") int msg_seq, ModelAndView mv) throws Exception {
+
+		Message message = messageService.messageView(msg_seq);
+		System.out.println("컨트롤러에서 msg_seq"+msg_seq);
+		mv.addObject("list", message);
+		mv.setViewName("message/messageviewpopup");
 		return mv;
 	}
 	
@@ -54,7 +65,7 @@ public class MessageController {
 		
 		mv.addObject("listCount", listCount);
 		mv.addObject("list", messagelist);
-	    mv.addObject("center", "../mypage/message.jsp");
+	    mv.addObject("center", "../message/message.jsp");
 	    mv.setViewName("template/index");
 	    return mv;
 	}
@@ -68,7 +79,7 @@ public class MessageController {
 		
 		mv.addObject("listCount", listCount);
 		mv.addObject("pushlist", messagepushList);
-	    mv.addObject("center", "../mypage/messagepush.jsp");
+	    mv.addObject("center", "../message/messagepush.jsp");
 	    mv.setViewName("template/index");
 	    return mv;
 	}

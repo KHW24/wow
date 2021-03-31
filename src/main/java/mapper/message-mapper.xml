@@ -39,6 +39,10 @@
 		SELECT COUNT(*) CNT FROM MESSAGE WHERE ID = #{get_id}
 	</select>
 	
+	<!-- 쪽지 상세 view 페이지 -->
+	<select id="messageView" parameterType="int" resultMap="resultMessage">
+		SELECT * FROM MESSAGE WHERE MSG_SEQ = #{msg_seq}
+	</select>
 	
 	
 </mapper>
