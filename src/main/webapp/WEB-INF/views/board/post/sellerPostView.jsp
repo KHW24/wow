@@ -311,6 +311,7 @@
     	  
 		}
      
+
       function getFormatDate(date){
     	  var date = new Date(date);
           var year = date.getFullYear();
@@ -322,6 +323,13 @@
           return year + '-' + month + '-' + day+" "+hours+":"+minutes+":"+seconds;
       }
 
+      // 쪽지보내기 팝업
+      function popupOpen(){
+    	     var popUrl = "messagepopup.do?no=${list.post_no}";	//팝업창에 출력될 페이지 URL
+    	     var popOption = "width=500, height=430, resizable=no, scrollbars=no, status=no;";    //팝업창 옵션(optoin)
+    	         window.open(popUrl,"",popOption);
+    	     };
+		
 	
       $(function(){
     	  $("#comments-list").on('click','.repmod',function(){
