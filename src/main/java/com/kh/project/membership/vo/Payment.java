@@ -1,6 +1,7 @@
 package com.kh.project.membership.vo;
 
 import java.sql.Date;
+import java.util.List;
 
 public class Payment {
 
@@ -10,6 +11,7 @@ public class Payment {
 		private int price; 
 		private Date paymtDate;
 		private int mshipGrade;
+		private List<Mshipdata> mshipdata;
 		
 		public int getPaymentSeq() {
 			return paymentSeq;
@@ -47,6 +49,13 @@ public class Payment {
 		public void setMshipGrade(int mshipGrade) {
 			this.mshipGrade = mshipGrade;
 		}
+		public List<Mshipdata> getMshipdata() {
+			return mshipdata;
+		}
+		public void setMshipdata(List<Mshipdata> mshipdata) {
+			this.mshipdata = mshipdata;
+		}
+		
 		
 		
 

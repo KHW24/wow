@@ -2,22 +2,32 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="Membership">
-	<resultMap id="resultPayment" type="Payment">
-		<id property="paymentSeq" column="PAYMT_SEQ" />	
-		<result property="paymentStatus" column="PAYMT_STATUS" />
-		<result property="paymetnMethod" column="PAYMT_METHOD" />
-		<result property="price" column="PRICE" />
-		<result property="paymtDate" column="PAYMT_DATE" />
-		<result property="mshipGrade" column="MSHIP_GRADE" />
-	</resultMap>
-	
-	<resultMap id="resultMshipdata" type="Mshipdata">
-		<id property="mshipSeq" column="MSHIP_SEQ" />	
-		<result property="mshipStart" column="MSHIP_START"/>
-		<result property="mshipYn" column="MSHIP_YN"/>		
-		<result property="mshipEnd" column="MSHIP_END"/>	
-		<result property="mshipGrade" column="MSHIP_GRADE"/>
-		<result property="id" column="ID"/>
-		<collection property="payment" resultMap="resultPayment"></collection>
-	</resultMap>
-</mapper>	
+   <resultMap id="resultPayment" type="Payment">
+      <id property="paymentSeq" column="PAYMT_SEQ" />   
+      <result property="price" column="PRICE" />
+      <result property="paymtDate" column="PAYMT_DATE" />
+      <result property="paymetnMethod" column="PAYMT_METHOD" />
+      <result property="paymentStatus" column="PAYMT_STATUS" />
+      <result property="mshipGrade" column="MSHIP_GRADE" />
+       <collection property="mshipdata" resultMap="resultMshipdata"></collection>
+   </resultMap>
+   
+   <resultMap id="resultMshipdata" type="Mshipdata">
+      <id property="mshipSeq" column="MSHIP_SEQ" />   
+      <result property="mshipStart" column="MSHIP_START"/>
+      <result property="mshipYn" column="MSHIP_YN"/>      
+      <result property="mshipEnd" column="MSHIP_END"/>   
+      <result property="mshipGrade" column="MSHIP_GRADE"/>
+      <result property="id" column="ID"/>
+   </resultMap>
+   
+   <!-- SELECT MyMembership , M.MSHIP_START-->
+   <select id="selectMemberShip" parameterType="String" resultMap="resultPayment">
+      SELECT P.PAYMT_SEQ, P.PRICE, P.PAYMT_DATE, P.PAYMT_METHOD, P.PAYMT_STATUS, P.MSHIP_GRADE, M.MSHIP_END, M.MSHIP_SEQ
+      FROM PAYMENT P
+      JOIN MSHIPDATA M
+      ON P.MSHIP_GRADE = M.MSHIP_GRADE
+      WHERE M.ID = #{id}
+   </select>
+   
+</mapper>   

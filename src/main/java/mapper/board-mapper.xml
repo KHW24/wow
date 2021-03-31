@@ -26,13 +26,25 @@
 		SELECT COUNT(*) CNT FROM SALES_POST
 	</select>
 
+	<!-- SELECT PAGE -->
+	<select id="selectPage" parameterType="int" resultType="Board">
+		SELECT * FROM SALES_POST WHERE POST_NO = #{no}
+	</select>
+	
 	<!-- INSERT -->
 	<insert id="insertBoard" parameterType="Board">
 		INSERT INTO SALES_POST(POST_TITLE, POST_PRICE, POST_CONTENTS, POST_ADDRESS, POST_TAGS, ID, POST_CODE) VALUES(#{post_title}, #{post_price}, #{post_contents}, #{post_address}, #{post_tags}, #{id}, #{post_code})
 	</insert>	
 	
-	<!-- SELECT PAGE -->
-	<select id="selectPage" parameterType="int" resultType="Board">
-		SELECT * FROM SALES_POST WHERE POST_NO = #{no}
-	</select>
+	<!-- UPDATE  -->
+	<update id="updateBoard" parameterType="Board">
+		UPDATE SALES_POST SET POST_TITLE=#{post_title}, POST_PRICE=#{post_price}, POST_CONTENTS=#{post_contents}, POST_ADDRESS=#{post_address} , POST_TAGS=#{post_tags}, POST_CODE=#{post_code} where POST_NO=#{post_no}	
+	</update>
+	
+	<!-- DELETE -->
+	<delete id="deleteBoard" parameterType="int">
+		DELETE FROM SALES_POST WHERE POST_NO = #{no}
+	</delete>	
+	
+	
 </mapper>

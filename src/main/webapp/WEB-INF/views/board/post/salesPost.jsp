@@ -45,7 +45,7 @@
   <div class="form-group">
     <label for="location" class="col-sm-2 control-label">지역</label>
     <div class="col-sm-8">
-    <input type="text" class="form-control input-lg" id="loaction" name="post_address">
+    <input type="text" class="form-control input-lg" id="location" name="post_address">
       <!-- <select class="form-control input-lg" id="loaction" name="location">
         <option>서울시 종로구</option>
         <option>서울시 중구</option>

@@ -86,12 +86,14 @@ public class HomeController {
 	 * "template/index"; }
 	 */
 	
-	//게시물 수정 페이지
-	@RequestMapping(value="postUpdate.do", method=RequestMethod.GET)
-	public String postUpdateView(Model model) throws Exception{
-		model.addAttribute("center","../board/post/salesPostUpdate.jsp");
-		return "template/index";
-	}
+	/*
+	 * //게시물 수정 페이지
+	 * 
+	 * @RequestMapping(value="postUpdate.do", method=RequestMethod.GET) public
+	 * String postUpdateView(Model model) throws Exception{
+	 * model.addAttribute("center","../board/post/salesPostUpdate.jsp"); return
+	 * "template/index"; }
+	 */
 	
 	//관심품목 페이지
 	@RequestMapping(value="wishList.do", method=RequestMethod.GET)
@@ -130,12 +132,12 @@ public class HomeController {
 		return "template/index";
 	}
 	
-	//마이 멤버십
-	@RequestMapping(value="myMship.do", method=RequestMethod.GET)
-	public String myMshipView(Model model) throws Exception{
-		model.addAttribute("center","../membership/myMembership.jsp");
-		return "template/index";
-	}
+//	//마이 멤버십
+//	@RequestMapping(value="myMship.do", method=RequestMethod.GET)
+//	public String myMshipView(Model model) throws Exception{
+//		model.addAttribute("center","../membership/myMembership.jsp");
+//		return "template/index";
+//	}
 	
 	//멤버십 결제 페이지
 	@RequestMapping(value="mshippay.do", method=RequestMethod.GET)
@@ -221,12 +223,12 @@ public class HomeController {
 		return "template/index";
 	}
 	
-	// 쪽지함
-	@RequestMapping(value="message.do", method=RequestMethod.GET)
-	public String messageView(Model model) throws Exception{
-		model.addAttribute("center", "../mypage/message.jsp");
-		return "template/index";
-	}
+//	// 쪽지함
+//	@RequestMapping(value="message.do", method=RequestMethod.GET)
+//	public String messageView(Model model) throws Exception{
+//		model.addAttribute("center", "../mypage/message.jsp");
+//		return "template/index";
+//	}
 	
 	// 관리자페이지-멤버십관리
 	@RequestMapping(value="admembership.do", method=RequestMethod.GET)
