@@ -37,6 +37,7 @@ import com.kh.project.admin.vo.Admin;
 			
 		return "template/index";
 	}
+	
 }
 
   

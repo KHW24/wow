@@ -16,4 +16,5 @@
       SELECT * FROM MSHIPDATA 
    </select>
    
+   
 </mapper>   

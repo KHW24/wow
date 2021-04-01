@@ -8,4 +8,5 @@ public interface AdminService {
 	
 	public List<Admin> selectAdmin() throws Exception;
 
+	
 }

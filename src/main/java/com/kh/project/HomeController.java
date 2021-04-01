@@ -230,7 +230,6 @@ public class HomeController {
 //		return "template/index";
 //	}
 	
-	
 	// 아이디 확인 
 	@RequestMapping(value="idFindCon.do", method=RequestMethod.GET)
 	public String idFindConView(Model model) throws Exception{

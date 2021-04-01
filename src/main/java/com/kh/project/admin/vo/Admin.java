@@ -48,15 +48,11 @@ public class Admin {
 	public void setId(String id) {
 		this.id = id;
 	}
+	
 	@Override
 	public String toString() {
 		return "Admin [mshipSeq=" + mshipSeq + ", mshipStart=" + mshipStart + ", mshipEnd=" + mshipEnd + ", mshipYn="
 				+ mshipYn + ", mshipGrade=" + mshipGrade + ", id=" + id + "]";
 	}
-	
-	
-	
-	
-	
 	
 }
