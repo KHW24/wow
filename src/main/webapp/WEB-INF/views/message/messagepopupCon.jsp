@@ -43,12 +43,6 @@
     <script>
 			var csrfHeaderName ="${_csrf.headerName}";
 			var csrfTokenValue="${_csrf.token}";
-/* 			$(function(){
-				$('#pop_btn').on('click',function(){
-					alert("쪽지가 성공적으로 보내졌습니다.")
-					window.open("about:blank","_self").close();
-				});	
-			}); */
 			
 		</script>	
 		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />

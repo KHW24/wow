@@ -107,7 +107,7 @@ public class MessageController {
 		return mv;
 	}
 	
-	// 쪽지 삭제 - delete 
+	// 쪽지 삭제 - delete ㅠㅠ 
 	@RequestMapping(value="messageDelete.do", method=RequestMethod.POST)
 	public ModelAndView messageDelete(HttpServletRequest request, ModelAndView mv) throws Exception {
 		 

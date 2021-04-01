@@ -30,6 +30,7 @@
 	});
 	
 </script>
+
 <div style="text-align: center;">
 	<h2>쪽지함</h2>
 	<hr>

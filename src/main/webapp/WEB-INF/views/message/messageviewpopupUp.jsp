@@ -34,13 +34,8 @@
 	font-family : 맑은고딕, Malgun Gothic, dotum, gulim, sans-serif;
 	font-size : 14px;
 	}
-	
-
     </style>
-
-
 <br>
-
     <form action="messageviewpopupUp.do" name="myForm" method="post">
     <script>
 			var csrfHeaderName ="${_csrf.headerName}";

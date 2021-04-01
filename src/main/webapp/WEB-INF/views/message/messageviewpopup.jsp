@@ -50,7 +50,7 @@
 				self.close();
 			}
 			
-		</script>	
+	</script>	
 		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 		<input type="hidden" name="${_csrf.headerName}" value="${_csrf.headerName}" />
     <div class="name">

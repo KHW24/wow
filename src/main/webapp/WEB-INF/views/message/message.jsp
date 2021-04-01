@@ -130,7 +130,7 @@
 		</table>
 	</form>
 </div>
-<div style="text-align: center;">
+<div style="text-align:center;">
 	<ul class="pagination" style="text-align: center;">
 		<li><a href="#">1</a></li>
 		<li class="active"><a href="#">2</a></li>
