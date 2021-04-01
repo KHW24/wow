@@ -30,4 +30,8 @@
       WHERE M.ID = #{id}
    </select>
    
+   <!-- 결제 취소 요청 -->
+   <delete id="deleteMemberShip" parameterType="Mshipdata" >
+	 DELETE FROM MSHIPDATA WHERE ID = #{id}
+   </delete>
 </mapper>   
