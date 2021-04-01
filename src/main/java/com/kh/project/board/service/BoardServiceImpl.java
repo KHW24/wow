@@ -76,7 +76,7 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public ReplyPage getRepliesList(@Param("cri") Criteria cri, @Param("postNo") int postNo) throws Exception {
+	public ReplyPage getRepliesList(Criteria cri, int postNo) throws Exception {
 		return new ReplyPage(boardDao.getCountByPostNo(postNo), boardDao.getListWithPaging(cri, postNo));
 	}
 	

@@ -44,7 +44,7 @@ public interface BoardService {
 	public int deleteReply(int repSeq) throws Exception;
 	
 	//페이징해서 댓글 리스트 가져오기
-	public ReplyPage getRepliesList(@Param("cri") Criteria cri, @Param("postNo") int no) throws Exception;
+	public ReplyPage getRepliesList(Criteria cri, int no) throws Exception;
 
 	//댓글 총 개수
 	public int getCountByPostNo(int postNo) throws Exception;

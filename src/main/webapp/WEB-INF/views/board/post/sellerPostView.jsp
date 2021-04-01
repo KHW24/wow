@@ -244,7 +244,7 @@
     	  		var postNo = $("#postNo").val();
     	  		var id = $("#id").val();
     	  		
-    	  		if("${empty loginId}"){
+    	  		if(${empty loginId}){
     	  			alert("로그인한 사용자만 댓글 입력이 가능합니다. ");
     	  			location.href="${pageContext.request.contextPath}/login.do";
     	  		}else{
@@ -260,7 +260,7 @@
         					if(data=="success"){
         						alert("댓글이 등록되었습니다.");
         						$("#repContents").val("");
-        						getReplyList(); 
+        						getReplyList(-1); 
         					}
         				},
         				error:function(request, status, error){
@@ -286,7 +286,7 @@
  		 $(document).ajaxSend(function(e,xhr, options){
     		 xhr.setRequestHeader(header, token); 
     	  });
-    	  
+ 		 
     	  $.ajax({
     		 type: "GET",
     		 url: "${pageContext.request.contextPath}/reply/list?postNo=${postNo}&page="+clickPage,
@@ -295,6 +295,12 @@
     			var html = "";
 				var str = "";
     			var rCntByPn = data.replyCnt;  //전체 댓글 총 갯수
+    	
+    			if(clickPage == -1){
+    	 			 clickPage = Math.ceil(rCntByPn/10.0);
+    	 			 getReplyList(clickPage);
+    	 			 return;
+    	 		 }
     			
     			if(rCntByPn > 0){
   					$(data.list).each(function(){
@@ -381,7 +387,7 @@
   					success : function(data){
   						if(data=="success"){
   							alert("댓글이 수정되었습니다.");
-  							getReplyList(); 
+  							getReplyList(-1); 
   						}
   					},
   					error:function(request, status, error){
@@ -416,7 +422,7 @@
 					success : function(data){
 						if(data=="success"){
 							alert("댓글이 삭제되었습니다.");
-							getReplyList(); 
+							getReplyList(-1); 
 						}
 					},
 					error:function(request, status, error){
@@ -467,6 +473,8 @@
 		
 		}// showReplyPage 함수
 		
+		
+		//다음 페이지 눌렀을 때 리스트 나오게
 		$(function(){
 			paging.on("click","li a",function(e){
 				e.preventDefault();

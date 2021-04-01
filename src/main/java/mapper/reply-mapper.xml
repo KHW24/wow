@@ -28,7 +28,7 @@
 		DELETE FROM REPLY WHERE REP_SEQ = #{repSeq} 
 	</delete>
 	
-	<select id="getListWithPaging" resultMap="resultReply" >
+	<select id="getListWithPaging" resultMap="resultReply" parameterType="hashMap">
 	<![CDATA[  
 		SELECT rep_seq, post_no, rep_contents, id, rep_date FROM 
 		(SELECT /*+INDEX(REPLY IDX_REPLY) */ 

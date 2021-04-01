@@ -77,8 +77,14 @@ public class BoardDao {
 	}
 	
 	//댓글 리스트
-	public List<Reply> getListWithPaging(@Param("cri") Criteria cri, @Param("postNo") int postNo) throws Exception{
-		List<Reply> replies = sqlSession.selectList("Reply.getListWithPaging");
+	public List<Reply> getListWithPaging( Criteria cri, int postNo) throws Exception{
+		
+		Map<String, Object> map = new HashMap<>();
+		
+		map.put("cri", cri);
+		map.put("postNo",postNo);
+		
+		List<Reply> replies = sqlSession.selectList("Reply.getListWithPaging",map);
 		return replies;
 	}
 	
