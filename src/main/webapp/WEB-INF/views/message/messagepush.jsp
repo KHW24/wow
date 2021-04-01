@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!-- icon library -->
 <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 <link rel="stylesheet"
@@ -13,6 +14,7 @@
         color: white;
     }
  a {text-decoration:none; color: #000;}
+/*  td {overflow:hidden;text-overflow:ellipsis; width:10} */
 </style>
 <script>
 	// 전체 선택되면 체크되는 기능
@@ -41,15 +43,15 @@
 		<label><input type="radio" name="message" value="mepush" onclick="location.href='messagepush.do?get_id=<sec:authentication property="principal.member.id"/>" checked> 보낸 쪽지함</label><br>
 		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 		<input type="hidden" name="${_csrf.headerName}" value="${_csrf.headerName}" />
-		<input type="submit" class="btn" value="삭제" style="margin-left: 90.7%;">
-		<table class="table table-condensed" >
+		<input type="submit" class="btn" value="삭제" style="margin-left: 89.3%;">
+		<table class="table table-condensed" style="table-layout: fixed">
 			<thead>
 				<tr>
-					<th>글번호</th>
-					<th>내용</th>
-					<th>보낸 아이디</th>
-					<th>날짜</th>
-					<th>&nbsp;&nbsp;<input type="checkbox" name="select" id="allSelects"></th>
+					<th style="width:10%; text-overflow:ellipsis; overflow:hidden; white-space:nowrap;">글번호</th>
+					<th style="width:60%; text-overflow:ellipsis; overflow:hidden; white-space:nowrap;">내용</th>
+					<th style="width:10%; text-overflow:ellipsis; overflow:hidden; white-space:nowrap;">보낸 아이디</th>
+					<th style="width:10%; text-overflow:ellipsis; overflow:hidden; white-space:nowrap;">날짜</th>
+					<th style="width:10%; text-overflow:ellipsis; overflow:hidden; white-space:nowrap;">&nbsp;&nbsp;<input type="checkbox" name="select" id="allSelects"></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -62,11 +64,13 @@
 				</tr>
 			</c:if>
 			<c:if test="${listCount != 0}">
-			<c:forEach var="me" items="${pushlist}">
+			<c:forEach var="me" varStatus="status" items="${pushlist}">
 				<tr>
-					<td>${me.msg_seq }</td>
-					<td><a href="messageviewpopupUp.do?msg_seq=${me.msg_seq}" 
-					onclick="window.open(this.href, '_blank', 'width=500, height=430'); return false;">${me.msg_contents }</a></td>
+					<td>${fn:length(pushlist)-status.index}</td>
+					<td>
+					<a href="messageviewpopupUp.do?msg_seq=${me.msg_seq}" 
+					onclick="window.open(this.href, '_blank', 'width=500, height=430'); return false;">${me.msg_contents }</a>
+					</td>
 					<td>${me.get_id }</td>
 					<td>${me.msg_date }</td>
 					<td>&nbsp;&nbsp;<input type="checkbox" name="select"></td>

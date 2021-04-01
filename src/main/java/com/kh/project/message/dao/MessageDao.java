@@ -51,8 +51,8 @@ public class MessageDao {
 	}
 	
 	// 쪽지 삭제
-	public int messageDelete(Message message) {
-		return sqlSession.delete("Message.messageDelete", message);
+	public int messageDelete(String msg_seq) {
+		return sqlSession.delete("Message.messageDelete", msg_seq);
 	}
 
 }

@@ -28,6 +28,6 @@ public interface MessageService {
 	public int messageUpdate(Message message);
 	
 	// 쪽지 삭제
-	public int messageDelete(Message message);
+	public int messageDelete(String msg_seq);
 	
 }

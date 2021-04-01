@@ -30,52 +30,32 @@
 				  color: black;
 				  border: 1px solid  #7F00FF;}
 	
-	.name {
-	font-family : 맑은고딕, Malgun Gothic, dotum, gulim, sans-serif;
-	font-size : 14px;
-	}
-	
-
+	.name {margin-top:120px;}
+	* {text-align:center;}
+	strong {font-size:20px;}
     </style>
-
-
+	<script>
+	function fnMessagePost(){
+		self.close();
+	}
+	</script>
 <br>
-
-    <form action="" name="myForm" method="post">
     <script>
 			var csrfHeaderName ="${_csrf.headerName}";
 			var csrfTokenValue="${_csrf.token}";
-
-			function fnMessagePost(){
-				self.close();
-			}
+/* 			$(function(){
+				$('#pop_btn').on('click',function(){
+					alert("쪽지가 성공적으로 보내졌습니다.")
+					window.open("about:blank","_self").close();
+				});	
+			}); */
 			
 		</script>	
 		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 		<input type="hidden" name="${_csrf.headerName}" value="${_csrf.headerName}" />
     <div class="name">
-    	<p>
-    		<b>
-    			<c:set var="me" value="${list}"/>
-    			받는 사람 : <input type="text" name="get_id" value="${list.id }" readonly/><br/>
-    		</b>
-    		
-            	<b> 보내는 사람 : <input type="text" name="id" 
-            value="${list.get_id }" readonly/></b>
-		<br/>
-        		<b>보낸 날짜 : <input type="text" name="time" value="${list.msg_date }" readonly /></b>
-        </p>
-       		</div>
-    <br>
-    
-	    <textarea name="msg_contents" cols="60" rows="15" readonly >
-	           ${me.msg_contents }
-	    </textarea>
-    <br><br>
-
-    <button type="button" id="pop_btn" class="button button4">답장 보내기</button>
-    <button onclick="fnMessagePost();" class="button button4">닫기</button>
-    </form>
-
+	<strong>쪽지가 성공적으로 전송되었습니다.</strong>
+    </div>
+    <button type="submit" id="pop_btn" style="margin-top:130px" class="button button4" onclick="fnMessagePost();">닫기</button>
     
     <br>
