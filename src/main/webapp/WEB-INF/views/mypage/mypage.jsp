@@ -23,7 +23,7 @@
                         <sec:authorize access="isAuthenticated()">
                         <p class="p"><sec:authentication property="principal.member.id"/>님 환영합니다.</p>
                         </sec:authorize>
-                        <a href="message.do" class="icon"><i class="far fa-envelope"></i></a>[0]<br>
+                        <a href="message.do?get_id=<sec:authentication property="principal.member.id"/>" class="icon"><i class="far fa-envelope"></i></a>[0]<br>
                         <div class="a">
                         <a href="myMship.do">나의멤버십 </a><a href="myInfoCon.do">나의정보수정</a>
                        </div>
