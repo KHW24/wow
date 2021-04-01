@@ -79,3 +79,4 @@ $(function(){
             	<a href="postWrite.do" id="enbtn" class="btn btn-default">글 등록</a>
             </div>
             </c:if>
+ 

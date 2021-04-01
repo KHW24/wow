@@ -32,9 +32,9 @@
 
 <script>
 function button_click(bt) {
-	IMP.init('imp80340117');
+	IMP.init('imp39894942');
 	IMP.request_pay({
-	    pg : 'kcp', //가맹점 식별코드
+	    pg : 'kakaopay', //가맹점 식별코드
 	    pay_method : 'card',
 	    merchant_uid : 'merchant_' + new Date().getTime(),
 	    name : bt.id, // 멤버십명
@@ -47,10 +47,17 @@ function button_click(bt) {
 	    buyer_addr : '서울특별시 강남구 삼성동',
 	    buyer_postcode : '123-456'
 	}, function(rsp) {
+		console.log("dd")
 	    if ( rsp.success ) {
+	    	console.log("성공")
 	    	//[1] 서버단에서 결제정보 조회를 위해 jQuery ajax로 imp_uid 전달하기
 	    	jQuery.ajax({
-	    		url: "/payments/complete", //cross-domain error가 발생하지 않도록 동일한 도메인으로 전송
+	    		var header = "${_csrf.headerName}"; 
+	            var token = "${_csrf.token}";
+	            $(document).ajaxSend(function(e,xhr, options){
+	                xhr.setRequestHeader(header, token); 
+	             });
+	    		url: "paySuccess.do", //cross-domain error가 발생하지 않도록 동일한 도메인으로 전송
 	    		type: 'POST',
 	    		dataType: 'json',
 	    		data: {
@@ -59,6 +66,7 @@ function button_click(bt) {
 	    		}
 	    	}).done(function(data) {
 	    		//[2] 서버에서 REST API로 결제정보확인 및 서비스루틴이 정상적인 경우
+	    		console.log(data)
 	    		if ( everythings_fine ) {
 	    			var msg = '결제가 완료되었습니다.';
 	    			msg += '\n고유ID : ' + rsp.imp_uid;
