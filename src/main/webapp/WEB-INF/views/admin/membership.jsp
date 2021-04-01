@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+  <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <script>
 function popupOpen(){
     var popUrl = "/project/messagepopup.do";	//팝업창에 출력될 페이지 URL
@@ -77,27 +78,20 @@ function popupOpen(){
     <th>Name</th>
     <th>Value</th>
   </tr>
+   <c:forEach items="${adminList}" var="admin">
   <tr>
     <td><input type="checkbox"></td>
-    <td>1</td>
-    <td>홍길동</td>
-    <td>귀걸이 팝니다</td>
+    <td><c:out value="${admin.mshipSeq}" /></td>
+    <td>${admin.id}</td>
+    <fmt:formatDate value="${admin.mshipStart}"  var="mshipStart" pattern="yyyy-MM-dd"/>
+    <fmt:formatDate value="${admin.mshipEnd}"  var="mshipEnd" pattern="yyyy-MM-dd"/>
+   
+    <td>${mshipStart} ~ ${mshipEnd}</td>  
   </tr>
-  <tr>
-    <td><input type="checkbox"></td>
-    <td>2</td>
-    <td>남궁길동</td>
-    <td>마카롱 팝니다</td>
-  </tr>
-  <tr>
-    <td><input type="checkbox"></td>
-    <td>3</td>
-    <td>김길동</td>
-    <td>목걸이 팝니다</td>
-  </tr>
+      </c:forEach>
 </table>
 <br>
-<a href="#" class="btn btn-default btn-lg">멤버쉽 만료 메세지 보내기
+<a href="#" class="btn btn-default btn-lg">삭제
 </a>
 <br>
 <div class="pagination">
