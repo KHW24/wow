@@ -39,13 +39,13 @@ public class HomeController {
 		model.addAttribute("main","main-request");
 		return "template/index";
 	}
-
-	//관리자페이지 - 멤버쉽
-	@RequestMapping(value = "membership.do", method = RequestMethod.GET)
-	public String membership(Locale locale, Model model) {
-		model.addAttribute("center","../admin/membership.jsp");
-		return "template/index";
-	}
+	
+//	//관리자페이지 - 멤버쉽
+//	@RequestMapping(value = "membership.do", method = RequestMethod.GET)
+//	public String membership(Locale locale, Model model) {
+//		model.addAttribute("center","../admin/membership.jsp");
+//		return "template/index";
+//	}
 	
 	//관리자페이지 - 신고회원관리
 	@RequestMapping(value = "report.do", method = RequestMethod.GET)
@@ -230,12 +230,6 @@ public class HomeController {
 //		return "template/index";
 //	}
 	
-	// 관리자페이지-멤버십관리
-	@RequestMapping(value="admembership.do", method=RequestMethod.GET)
-	public String admembership(Model model) throws Exception{
-		model.addAttribute("center", "../admin/membership.jsp");
-		return "template/index";
-	}
 	
 	// 아이디 확인 
 	@RequestMapping(value="idFindCon.do", method=RequestMethod.GET)
