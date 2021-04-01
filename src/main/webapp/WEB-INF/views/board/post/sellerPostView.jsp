@@ -437,6 +437,7 @@
 	var pageNum = 1;
 	var paging = $(".paging");
 	
+    
 	function showReplyPage(replyCnt){
 		var endNum = Math.ceil(pageNum/10.0)*10;
 		var startNum = endNum - 9;

@@ -93,4 +93,10 @@ public class BoardDao {
 		int repCnt = sqlSession.selectOne("Reply.getCountByPostNo",postNo);
 		return repCnt;
 	}
+	
+	//내 댓글 보기
+	public List<Reply> getReplybyId(String id) throws Exception{
+		List<Reply> myReplies = sqlSession.selectList("Reply.selectReply",id);
+		return myReplies;
+	}
 }

@@ -15,8 +15,8 @@
 		#{postNo})
 	</insert>
 
-	<select id="selectReply" parameterType="string">
-		SELECT * FROM REPLY WHERE REP_SEQ = #{repSeq}
+	<select id="selectReply" parameterType="string" resultMap="resultReply" >
+		SELECT * FROM REPLY WHERE ID = #{id} ORDER BY REP_SEQ DESC
 	</select>
 
 	<update id="updateReply" parameterType="Reply">

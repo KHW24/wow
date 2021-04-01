@@ -49,5 +49,7 @@ public interface BoardService {
 	//댓글 총 개수
 	public int getCountByPostNo(int postNo) throws Exception;
 	
+	//내 댓글 보기
+	public List<Reply> getReplybyId(String id) throws Exception;
 
 }

@@ -1,7 +1,9 @@
 package com.kh.project;
 
+import java.security.Principal;
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import org.slf4j.Logger;
@@ -14,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.kh.project.board.service.BoardService;
+import com.kh.project.board.vo.Reply;
 import com.kh.project.member.service.MemberService;
 import com.kh.project.member.vo.Member;
 
@@ -23,6 +27,9 @@ public class HomeController {
 	
 	@Autowired
 	MemberService memberService;
+	
+	@Autowired
+	private BoardService bservice;
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
@@ -218,7 +225,12 @@ public class HomeController {
 	
 	// 내 댓글 보기
 	@RequestMapping(value="myComment.do", method=RequestMethod.GET)
-	public String myCommentView(Model model) throws Exception{
+	public String myCommentView(Model model, Principal principal) throws Exception{
+		
+		String id = principal.getName();
+		List<Reply> myReplies = bservice.getReplybyId(id);
+		
+		model.addAttribute("myReplies",myReplies);
 		model.addAttribute("center", "../mypage/myComment.jsp");
 		return "template/index";
 	}

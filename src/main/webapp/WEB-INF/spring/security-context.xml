@@ -21,6 +21,8 @@
 		<security:intercept-url pattern="/mypage.do" access="hasRole('ROLE_MEMBER')"/>
 		<security:intercept-url pattern="/membership.do" access="hasRole('ROLE_ADMIN')"/>
 		
+		
+		
 		<security:intercept-url pattern="/login.do" access="isAnonymous()"/>
 		<security:intercept-url pattern="/**" access="permitAll"/>
 		<security:access-denied-handler error-page="/accessError"/>

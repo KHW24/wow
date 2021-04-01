@@ -86,6 +86,12 @@ public class BoardServiceImpl implements BoardService {
 		return repCnt;
 	}
 
+	//내 댓글 보기
+	@Override
+	public List<Reply> getReplybyId(String id) throws Exception {
+		return boardDao.getReplybyId(id);
+	}
+
 	
 
 	

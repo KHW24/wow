@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
@@ -12,7 +12,7 @@
 </style>
 
 <div style="text-align: center;">
-	<h2>댓글 보기</h2>
+	<h2><strong>내 댓글 보기</strong></h2>
 	<hr>
 </div>
 <div class="container" style="height: 700px">
@@ -23,17 +23,19 @@
 				<tr>
 					<th>NO</th>
 					<th>CONTENT</th>
-					<th>NAME</th>
+					<th>ID</th>
 					<th>DELETE</th>
 				</tr>
 			</thead>
 			<tbody>
+			<c:forEach items="${myReplies}" var="myReply" varStatus="status">
 				<tr>
-					<td>1</td>
-					<td>구매할랭</td>
-					<td>또치</td>
+					<td>${status.count}</td>
+					<td><a href="postSellerView.do?no=${myReply.postNo}">${myReply.repContents }</a></td>
+					<td>${myReply.id }</td>
 					<td><input type="checkbox"></td>
 				</tr>
+			</c:forEach>
 			</tbody>
 		</table>
 	</form>
