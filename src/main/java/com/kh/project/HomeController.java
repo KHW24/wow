@@ -153,26 +153,26 @@ public class HomeController {
 		return "template/index";
 	}
 			
-	//멤버십 결제완료
-	@RequestMapping(value="paySuccess.do", method=RequestMethod.GET)
-	public String paySuccessView(Model model) throws Exception{
-		model.addAttribute("center","../membership/membershipPayComplete.jsp");
-		return "template/index";
-	}
+//	//멤버십 결제완료
+//	@RequestMapping(value="paySuccess.do", method=RequestMethod.GET)
+//	public String paySuccessView(Model model) throws Exception{
+//		model.addAttribute("center","../membership/membershipPayComplete.jsp");
+//		return "template/index";
+//	}
+//	
+//	//멤버십 결제취소
+//	@RequestMapping(value="payCancle.do", method=RequestMethod.GET)
+//	public String payCancleView(Model model) throws Exception{
+//		model.addAttribute("center","../membership/membershipPayCancel.jsp");
+//		return "template/index";
+//	}
 	
-	//멤버십 결제취소
-	@RequestMapping(value="payCancle.do", method=RequestMethod.GET)
-	public String payCancleView(Model model) throws Exception{
-		model.addAttribute("center","../membership/membershipPayCancel.jsp");
-		return "template/index";
-	}
-	
-	//멤버십 결제취소완료
-	@RequestMapping(value="payCancleSuccess.do", method=RequestMethod.GET)
-	public String payCancleSuccessView(Model model) throws Exception{
-		model.addAttribute("center","../membership/membershipPayCancelComplete.jsp");
-		return "template/index";
-	}
+//	//멤버십 결제취소완료
+//	@RequestMapping(value="payCancleSuccess.do", method=RequestMethod.GET)
+//	public String payCancleSuccessView(Model model) throws Exception{
+//		model.addAttribute("center","../membership/membershipPayCancelComplete.jsp");
+//		return "template/index";
+//	}
 	
 	//비밀번호 찾기
 	@RequestMapping(value="pwFind.do", method=RequestMethod.GET)

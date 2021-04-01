@@ -41,18 +41,16 @@
 
 <br>
 
-    <form action="messagepost.do" name="myForm" method="post">
+    <form action="" name="myForm" method="post">
     <script>
 			var csrfHeaderName ="${_csrf.headerName}";
 			var csrfTokenValue="${_csrf.token}";
-/* 			$(function(){
-				$('#pop_btn').on('click',function(){
-					alert("쪽지가 성공적으로 보내졌습니다.")
-					window.open("about:blank","_self").close();
-				});	
-			}); */
+
+			function fnMessagePost(){
+				self.close();
+			}
 			
-		</script>	
+	</script>	
 		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 		<input type="hidden" name="${_csrf.headerName}" value="${_csrf.headerName}" />
     <div class="name">
@@ -75,8 +73,8 @@
 	    </textarea>
     <br><br>
 
-    <button type="" id="pop_btn" class="button button4">답장 보내기</button>
-    <button class="button button4">닫기</button>
+    <button type="button" id="pop_btn" class="button button4">답장 보내기</button>
+    <button onclick="fnMessagePost();" class="button button4">닫기</button>
     </form>
 
     

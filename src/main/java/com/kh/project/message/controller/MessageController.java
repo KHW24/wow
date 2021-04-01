@@ -3,6 +3,8 @@ package com.kh.project.message.controller;
 import java.security.Principal;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -59,9 +61,12 @@ public class MessageController {
 	// 쪽지보내기 - insert
 	@RequestMapping(value="messagepost.do", method=RequestMethod.POST)
 	public ModelAndView messagepost(Message message, ModelAndView mv) throws Exception {
+		
+		System.out.println("컨트롤러옴");
 		int cnt = messageService.messagepost(message);
+		System.out.println("컨트롤러에서 cnt"+cnt);
 		mv.addObject("cnt", cnt);
-        mv.setViewName("template/index");
+        mv.setViewName("message/messagepopupCon");
 		return mv;
 	}
 	
@@ -102,12 +107,18 @@ public class MessageController {
 		return mv;
 	}
 	
-	// 쪽지 삭제 - delete 아직 미완
+	// 쪽지 삭제 - delete ㅠㅠ 
 	@RequestMapping(value="messageDelete.do", method=RequestMethod.POST)
-	public ModelAndView messageDelete(Message message, ModelAndView mv) throws Exception {
-		
-		messageService.messageDelete(message);
-		mv.setViewName("redirect:message.do");
+	public ModelAndView messageDelete(HttpServletRequest request, ModelAndView mv) throws Exception {
+		 
+		String[] ajaxMsg = request.getParameterValues("valueArr");
+		System.out.println("컨트롤러 에서 valueArr값"+ajaxMsg);
+		int size = ajaxMsg.length;
+		for(int i=0; i<size; i++) {
+			messageService.messageDelete(ajaxMsg[i]);
+		}
+//		messageService.messageDelete(message);
+//		mv.setViewName("redirect:message.do");
 		return mv;
 	}
 

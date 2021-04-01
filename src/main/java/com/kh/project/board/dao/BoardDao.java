@@ -1,7 +1,10 @@
 package com.kh.project.board.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import org.apache.ibatis.annotations.Param;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -74,8 +77,20 @@ public class BoardDao {
 	}
 	
 	//댓글 리스트
-	public List<Reply> getRepliesList(Criteria cri, int postNo) throws Exception{
-		List<Reply> replies = sqlSession.selectList("Reply.getRepliesList",postNo);
+	public List<Reply> getListWithPaging( Criteria cri, int postNo) throws Exception{
+		
+		Map<String, Object> map = new HashMap<>();
+		
+		map.put("cri", cri);
+		map.put("postNo",postNo);
+		
+		List<Reply> replies = sqlSession.selectList("Reply.getListWithPaging",map);
 		return replies;
+	}
+	
+	//댓글 총 개수
+	public int getCountByPostNo(int postNo) throws Exception{
+		int repCnt = sqlSession.selectOne("Reply.getCountByPostNo",postNo);
+		return repCnt;
 	}
 }

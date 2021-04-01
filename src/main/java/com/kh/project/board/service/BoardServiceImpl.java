@@ -2,6 +2,7 @@ package com.kh.project.board.service;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,6 +10,7 @@ import com.kh.project.board.dao.BoardDao;
 import com.kh.project.board.vo.Board;
 import com.kh.project.board.vo.Criteria;
 import com.kh.project.board.vo.Reply;
+import com.kh.project.board.vo.ReplyPage;
 
 @Service
 public class BoardServiceImpl implements BoardService {
@@ -74,9 +76,17 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public List<Reply> getRepliesList(Criteria cri, int no) throws Exception {
-		return boardDao.getRepliesList(cri, no);
+	public ReplyPage getRepliesList(Criteria cri, int postNo) throws Exception {
+		return new ReplyPage(boardDao.getCountByPostNo(postNo), boardDao.getListWithPaging(cri, postNo));
 	}
+	
+	//댓글 총 개수
+	public int getCountByPostNo(int postNo) throws Exception{
+		int repCnt = boardDao.getCountByPostNo(postNo);
+		return repCnt;
+	}
+
+	
 
 	
 }

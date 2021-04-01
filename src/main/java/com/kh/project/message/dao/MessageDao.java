@@ -50,9 +50,9 @@ public class MessageDao {
 		return sqlSession.update("Message.messageUpdate", message);
 	}
 	
-	// 쪽지 삭제
-	public int messageDelete(Message message) {
-		return sqlSession.delete("Message.messageDelete", message);
+	// 쪽지 삭제 ㅜ
+	public int messageDelete(String msg_seq) {
+		return sqlSession.delete("Message.messageDelete", msg_seq);
 	}
 
 }

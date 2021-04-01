@@ -49,7 +49,7 @@
 		UPDATE MESSAGE SET MSG_CONTENTS = #{msg_contents} WHERE MSG_SEQ = #{msg_seq}
 	</select>
 	
-	<!-- 쪽지 삭제 delete -->
+	<!-- 쪽지 삭제 delete! -->
 	<delete id="messageDelete" parameterType="Message">
 		DELETE FROM MESSAGE WHERE MSG_SEQ = #{msg_seq}	
 	</delete>

@@ -57,10 +57,10 @@ public class MessageServiceImpl implements MessageService{
 		return messageDao.messageUpdate(message);
 	}
 	
-	// 쪽지 삭제
+	// 쪽지 삭제 ㅠ
 	@Override
-	public int messageDelete(Message message) {
-		return messageDao.messageDelete(message);
+	public int messageDelete(String msg_seq) {
+		return messageDao.messageDelete(msg_seq);
 	}
 	
 }
