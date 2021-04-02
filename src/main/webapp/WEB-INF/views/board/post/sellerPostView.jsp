@@ -330,32 +330,14 @@
      
 		//댓글 작성일이 오늘이면 시간/ 하루 지난 이후부터는 날짜 출력
       function getFormatDate(date){
-    	  var today = new Date();			//현재시간 
-    	  var gap = today.getTime()-date;	//댓글 작성시간과 현재시간 차이
     	  var dateObj = new Date(date);
-    	  var str = "";
     	  
-    	  if(gap<(1000*60*60*24)){
-    		  var hh = dateObj.getHours();
-    		  var mi = dateObj.getMinutes();
-    		  var ss = dateObj.getSeconds();
+   		  var yy = dateObj.getFullYear();
+   		  var mm = dateObj.getMonth()+1;  //월은 0이 기본값이기 때문에 1 더해줘야 함.
+   	  	  var dd = dateObj.getDate();
     		  
-    		  return [(hh>9?'':'0')+hh, ":", (mi>9?'':'0')+mi,':',(ss>9?'':'0')+ss].join('');
-    	  }else{
-    		  var yy = dateObj.getFullYear();
-    		  var mm = dateObj.getMonth()+1;  //월은 0이 기본값이기 때문에 1 더해줘야 함.
-    	  	  var dd = dateObj.getDate();
-    		  
-    		  return [yy,'-',(mm>9?'':'0')+mm,'-',(dd>9?'':'0')+dd].join('');
-    	  }
+   		  return [yy,'-',(mm>9?'':'0')+mm,'-',(dd>9?'':'0')+dd].join('');
     	  
-          var year = date.getFullYear();
-          var month = (date.getMonth()+1);
-          var day = date.getDate();
-          var hours = date.getHours();
-          var minutes = date.getMinutes();
-          var seconds = date.getSeconds();
-          return year + '-' + month + '-' + day+" "+hours+":"+minutes+":"+seconds;
       }// 날짜 처리 함수
 
       // 쪽지보내기 팝업
@@ -439,13 +421,13 @@
 	
     
 	function showReplyPage(replyCnt){
-		var endNum = Math.ceil(pageNum/10.0)*10;
-		var startNum = endNum - 9;
-		var prev = startNum != 1;
-		var next = false;
+		var endNum = Math.ceil(pageNum/10.0)*10;//페이지네이션 마지막 페이지
+		var startNum = endNum - 9;//페이지네이션 첫 페이지
+		var prev = startNum != 1; //이전버튼(1일때는 이전페이지 비활성화)
+		var next = false;		 //다음버튼
 		
-		if(endNum * 10 >= replyCnt){
-			endNum = Math.ceil(replyCnt/10.0);
+		if(endNum * 10 >= replyCnt){  //한 페이지네이션 블록은 10개까지
+			endNum = Math.ceil(replyCnt/10.0);	
 		}
 		
 		if(endNum * 10 < replyCnt){
@@ -478,7 +460,7 @@
 		//다음 페이지 눌렀을 때 리스트 나오게
 		$(function(){
 			paging.on("click","li a",function(e){
-				e.preventDefault();
+				e.preventDefault();	
 				console.log("page click");
 				
 				var targetPageNum = $(this).attr("href");

@@ -1,9 +1,9 @@
 package com.kh.project.member.controller;
 
 import java.security.Principal;
+import java.util.List;
 import java.util.Random;
 
-import javax.inject.Inject;
 import javax.mail.internet.MimeMessage;
 
 import org.json.simple.JSONObject;
@@ -15,7 +15,9 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -23,6 +25,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.kh.project.board.service.BoardService;
 import com.kh.project.member.service.MemberService;
 import com.kh.project.member.vo.Member;
 
@@ -32,6 +35,9 @@ public class MemberController {
 
 	@Autowired
 	MemberService memberService;
+	
+	@Autowired
+	private BoardService bservice;
 	
 	// 비밀번호 암호화
 	@Autowired
@@ -155,6 +161,15 @@ public class MemberController {
 		
 		//입력한 비밀번와 일치하는지 match후  return
 		return String.valueOf(pwdEncoder.matches(inputPw,  encodedPw));
+		
+	}
+	
+	//내 댓글 보기 다중 삭제
+	@PostMapping(value="myReplyDelete.do")
+	public String myReplyDeleteView(@RequestParam(value= "delNo") List<Integer> delNos) throws Exception{
+		
+		for(Integer delNo : delNos) bservice.deleteReply(delNo);
+		return "redirect:myComment.do";
 		
 	}
 	

@@ -16,9 +16,11 @@
 	<hr>
 </div>
 <div class="container" style="height: 700px">
-	<form style="margin-top:3%">
-		<input type="submit" class="btn" value="삭제" style="margin-left: 83%;">
-		<table class="table table-condensed">
+	
+	<form  action="myReplyDelete.do" method="get">
+		<input type="submit" class="btn" value="삭제" style="margin-left: 83%;"/>
+		
+		<table style="margin-top:3%" class="table table-condensed">
 			<thead>
 				<tr>
 					<th>NO</th>
@@ -28,17 +30,24 @@
 				</tr>
 			</thead>
 			<tbody>
+			
 			<c:forEach items="${myReplies}" var="myReply" varStatus="status">
+			
 				<tr>
 					<td>${status.count}</td>
 					<td><a href="postSellerView.do?no=${myReply.postNo}">${myReply.repContents }</a></td>
 					<td>${myReply.id }</td>
-					<td><input type="checkbox"></td>
+				
+					<td><input type="checkbox" name="delNo" ></td>
+					<td><input type="hidden" name="delNo" value="${myReply.repSeq}"></td>
+					
 				</tr>
+				
 			</c:forEach>
+		
 			</tbody>
 		</table>
-	</form>
+		</form>
 </div>
 <div style="text-align: center;">
 	<ul class="pagination" style="text-align: center;">
