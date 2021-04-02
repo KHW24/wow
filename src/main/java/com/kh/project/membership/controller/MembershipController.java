@@ -74,8 +74,18 @@ import com.kh.project.membership.vo.Payment;
 	}
 	
 	//멤버십 결제완료
+	//@ResponseBody
 	@RequestMapping(value="paySuccess.do", method=RequestMethod.GET)
-	public String paySuccessView(Model model) throws Exception{
+	public String paySuccessView(Model model, Principal principal, Mshipdata mshipdata, Payment payment) throws Exception{
+		String id = principal.getName();
+		
+//		int mcnt = membershipService.insertMshipdata(mshipdata);
+//		int pcnt = membershipService.insertPayment(payment);
+//		
+//		
+//		model.addAttribute("mshipdata", mshipdata);
+//		model.addAttribute("payment", payment);
+//		
 		model.addAttribute("center","../membership/membershipPayComplete.jsp");
 		return "template/index";
 	}

@@ -24,5 +24,17 @@ public class MembershipDao {
 		int cnt = sqlSession.delete("Membership.deleteMemberShip", id);
 		return cnt;
 		
+	}	
+	// 결제정보넣기-1
+	public int insertMshipdata(Mshipdata mshipdata) throws Exception{
+		int cnt = sqlSession.insert("Membership.insertMshipdata", mshipdata);
+		return cnt;
 	}
+	
+	// 결제정보넣기-2
+	public int insertPayment(Payment payment) throws Exception{
+		int cnt = sqlSession.insert("Membership.insertPayment", payment);
+		return cnt;
+	}
+	
 }

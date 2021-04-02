@@ -8,4 +8,8 @@ public interface MembershipService {
 	public Payment selectMemberShip(String id) throws Exception;
 	
 	public int deleteMemberShip(String id) throws Exception;
+	
+	public int insertMshipdata(Mshipdata mshipdata) throws Exception;
+	
+	public int insertPayment(Payment payment) throws Exception;
 }

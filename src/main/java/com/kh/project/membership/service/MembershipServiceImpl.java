@@ -26,4 +26,18 @@ import com.kh.project.membership.vo.Payment;
 			return cnt;
 		}
 
+		// 결제정보넣기 -1
+		@Override
+		public int insertMshipdata(Mshipdata mshipdata) throws Exception {
+			int cnt = membershipDao.insertMshipdata(mshipdata);
+			return cnt;
+		}
+
+		// 결제정보넣기 -2
+		@Override
+		public int insertPayment(Payment payment) throws Exception {
+			int cnt = membershipDao.insertPayment(payment);
+			return cnt;
+		}
+
 }
