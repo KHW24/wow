@@ -17,7 +17,7 @@
 </div>
 <div class="container" style="height: 700px">
 	
-	<form  action="myReplyDelete.do" method="get">
+	<form  action="myReplyDelete.do" method="post">
 		<input type="submit" class="btn" value="삭제" style="margin-left: 83%;"/>
 		
 		<table style="margin-top:3%" class="table table-condensed">
@@ -38,9 +38,10 @@
 					<td><a href="postSellerView.do?no=${myReply.postNo}">${myReply.repContents }</a></td>
 					<td>${myReply.id }</td>
 				
-					<td><input type="checkbox" name="delNo" ></td>
-					<td><input type="hidden" name="delNo" value="${myReply.repSeq}"></td>
-					
+					<td>
+					<input type="checkbox" name="delNos" value="${myReply.repSeq}">
+					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+					</td>
 				</tr>
 				
 			</c:forEach>

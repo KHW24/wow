@@ -166,7 +166,7 @@ public class MemberController {
 	
 	//내 댓글 보기 다중 삭제
 	@PostMapping(value="myReplyDelete.do")
-	public String myReplyDeleteView(@RequestParam(value= "delNo") List<Integer> delNos) throws Exception{
+	public String myReplyDeleteView(@RequestParam(value= "delNos") List<Integer> delNos) throws Exception{
 		
 		for(Integer delNo : delNos) bservice.deleteReply(delNo);
 		return "redirect:myComment.do";
