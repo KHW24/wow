@@ -6,7 +6,7 @@
       <id property="paymentSeq" column="PAYMT_SEQ" />   
       <result property="price" column="PRICE" />
       <result property="paymtDate" column="PAYMT_DATE" />
-      <result property="paymetnMethod" column="PAYMT_METHOD" />
+      <result property="paymentMethod" column="PAYMT_METHOD" />
       <result property="paymentStatus" column="PAYMT_STATUS" />
       <result property="mshipGrade" column="MSHIP_GRADE" />
        <collection property="mshipdata" resultMap="resultMshipdata"></collection>
@@ -34,4 +34,14 @@
    <delete id="deleteMemberShip" parameterType="Mshipdata" >
 	 DELETE FROM MSHIPDATA WHERE ID = #{id}
    </delete>
+   
+   <!-- 결제 INSERT -->
+   <insert id="insertMshipdata" parameterType="Mshipdata">
+   	 INSERT INTO MSHIPDATA VALUES(MSHIP_SEQ.NEXTVAL, SYSDATE, Y, #{mshipEnd}, #{mshipGrade}, #{id})
+   </insert>
+   
+   <!-- 결제 INSERT -->
+   <insert id="insertPayment" parameterType="Payment">
+    INSERT INTO PAYMENT VALUES(PAYMT_SEQ.CURRVAL, #{paymentStatus}, #{paymetnMethod}, #{price}, SYSDATE, #{mshipGrade})
+   </insert>
 </mapper>   
