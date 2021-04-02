@@ -67,7 +67,19 @@
    color:black;
    font-size:15px;
  }
+ 
+ /*신고하기 팝업창에서 폰트 강조*/
+.alert-strong{
+	color: red;
+}
 </style>
+<script>
+	$(function(){
+		$('#alert').on('click',function(){
+			alert("신고가 완료되었습니다.");
+		}); 
+	 });
+</script>
 <c:set var="writer" value="${list.id}"/>
 <sec:authorize access="isAuthenticated()">
 <sec:authentication var="loginId" property='principal.member.id'/>
@@ -127,7 +139,41 @@
               <button class="btn btn-default" onclick="popupOpen();">쪽지보내기</button>
               </c:if>
               </td>
-              <td><button class="btn btn-default">신고하기</button></td>
+              <td>
+              <!-- 신고하기 팝업창 -->
+              <button class="btn btn-default" data-toggle="modal"
+							data-target="#myModal">신고하기</button> 
+							
+							<!-- Modal -->
+						<div class="modal fade" id="myModal" role="dialog">
+							<div class="modal-dialog">
+
+								<!-- Modal content-->
+								<div class="modal-content">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal">&times;</button>
+										<h4 class="modal-title">
+											<span class="	glyphicon glyphicon-thumbs-down"></span>&nbsp;&nbsp;<strong>게시글
+												신고하기</strong>
+										</h4>
+									</div>
+									<div class="modal-body text-center">
+										<p>
+											<span class="alert-strong">부적절한 판매글</span>로 생각되면 신고해주세요.
+										</p>
+										<p>
+											관리자 확인 후 <span class="alert-strong">판매글 삭제 및 신고회원 제한
+												조치</span>가 취해집니다.
+										</p>
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-default"
+											data-dismiss="modal" id="alert" >신고하기</button>
+									</div>
+								</div>
+							</div>
+						</div>
+              </td>
             </tr>
             <tr>
               <td class="heart"><img src="${pageContext.request.contextPath}/resources/images/heart.png" class="user-info-img"/>
@@ -234,8 +280,6 @@
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
       
     <script>
-      	var header = "${_csrf.headerName}"; 
-		var token = "${_csrf.token}";
 		
 		//댓글 등록
       $(function(){
@@ -243,7 +287,13 @@
 	    		var repContents = $("#repContents").val();
     	  		var postNo = $("#postNo").val();
     	  		var id = $("#id").val();
+    	  		var header = "${_csrf.headerName}"; 
+    	         var token = "${_csrf.token}";
     	  		
+    	  		 $(document).ajaxSend(function(e,xhr, options){
+    	             xhr.setRequestHeader(header, token); 
+    	           });
+    	  		 
     	  		if(${empty loginId}){
     	  			alert("로그인한 사용자만 댓글 입력이 가능합니다. ");
     	  			location.href="${pageContext.request.contextPath}/login.do";
@@ -253,9 +303,6 @@
         				url: "${pageContext.request.contextPath}/reply/insert",
         				contentType: "application/x-www-form-urlencoded; charset=UTF-8",
         				data: {repContents : repContents, postNo : postNo, id : id},
-        				beforeSend : function(xhr){
-        					xhr.setRequestHeader(header, token);
-        				},
         				success : function(data){
         					if(data=="success"){
         						alert("댓글이 등록되었습니다.");
@@ -278,15 +325,9 @@
      
      //댓글 목록 출력
       function getReplyList(page){
-    	  var header = "${_csrf.headerName}"; 
- 		  var token = "${_csrf.token}";
  		  var loginId = "${loginId}";
    	  	  var clickPage = page || 1;
  		  
- 		 $(document).ajaxSend(function(e,xhr, options){
-    		 xhr.setRequestHeader(header, token); 
-    	  });
- 		 
     	  $.ajax({
     		 type: "GET",
     		 url: "${pageContext.request.contextPath}/reply/list?postNo=${postNo}&page="+clickPage,
@@ -349,6 +390,13 @@
 		
 		//댓글 수정
       $(function(){
+    	  var header = "${_csrf.headerName}"; 
+	         var token = "${_csrf.token}";
+	  		
+	  		 $(document).ajaxSend(function(e,xhr, options){
+	             xhr.setRequestHeader(header, token); 
+	           });
+	  		 
     	  $("#comments-list").on('click','.repmod',function(){
   			var repContents = $(this).siblings(".repContents").text();
   			var repSeq = $(this).nextAll("input[type=hidden]").val();
@@ -363,9 +411,6 @@
   					url: "${pageContext.request.contextPath}/reply/update",
   					contentType: "application/x-www-form-urlencoded; charset=UTF-8",
   					data: {repContents : repModContents, repSeq : repSeq},
-  					beforeSend : function(xhr){
-  						xhr.setRequestHeader(header, token);
-  					},
   					success : function(data){
   						if(data=="success"){
   							alert("댓글이 수정되었습니다.");
@@ -398,9 +443,6 @@
 					url: "${pageContext.request.contextPath}/reply/delete",
 					contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 					data: {repSeq : repSeq},
-					beforeSend : function(xhr){
-						xhr.setRequestHeader(header, token);
-					},
 					success : function(data){
 						if(data=="success"){
 							alert("댓글이 삭제되었습니다.");
