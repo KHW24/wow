@@ -40,7 +40,7 @@
 				
 					<td>
 					<input type="checkbox" name="delNos" value="${myReply.repSeq}">
-					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+					
 					</td>
 				</tr>
 				
