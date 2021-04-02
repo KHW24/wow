@@ -4,12 +4,6 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %> 
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>  
     <br><br><br>
-<script>
-	var csrfHeaderName ="${_csrf.headerName}";
-	var csrfTokenValue="${_csrf.token}";
-</script>
-	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-	<input type="hidden" name="${_csrf.headerName}" value="${_csrf.headerName}" />    
     <div class="container">
         <div class="bold">
             <h4><sec:authentication property="principal.member.id"/>님은,</h4>

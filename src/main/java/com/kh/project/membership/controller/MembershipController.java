@@ -38,10 +38,14 @@ import com.kh.project.membership.vo.Payment;
 	public String myMshipView(Model model, Principal principal) throws Exception{
 		String id = principal.getName();
 		
-		Payment payment = membershipService.selectMemberShip(id);
-		model.addAttribute("payment", payment);
-		model.addAttribute("center", "../membership/myMembership.jsp");
-			
+		if(id != null) {
+			Payment payment = membershipService.selectMemberShip(id);
+			model.addAttribute("payment", payment);
+			model.addAttribute("center", "../membership/myMembership.jsp");
+		}else {
+			model.addAttribute("center","../login/login.jsp");
+		}
+		
 		return "template/index";
 	}
 	

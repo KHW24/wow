@@ -126,37 +126,4 @@ function button_click(bt) {
    
 
 </c:if> 
-<c:if test="${empty loginId}">
-  <div class="container">
-    <div class="page-title">
-      멤버십 결제
-    </div>
-    <div class="row contents">
-      <div class="col-sm-4 test">
-        <span>1주 멤버십</span><br>
-        <img src="${pageContext.request.contextPath}/resources/images/membership1.png" class="mshipImg"/>
-        <br>
-        <span>1,200원</span><br>
-        <span class="description">일주일간 검색 상위노출</span><br><br>
-        <button class="btn btn-default" onClick = "return confirm('로그인 후 이용가능합니다.')" id="1주 멤버십" value="1200">결제하기</button>      
-      </div>
-      <div class="col-sm-4 test">
-        <span>2주 멤버십</span><br>
-        <img src="${pageContext.request.contextPath}/resources/images/membership2.png" class="mshipImg"/>
-        <br>
-        <span>2,000원</span><br>
-        <span class="description">이주일간 검색 상위노출</span><br><br>
-        <button class="btn btn-default" onClick = "return confirm('로그인 후 이용가능합니다.')" id="2주 멤버십" value="2000">결제하기</button>
-      </div>
-      <div class="col-sm-4 test">
-        <span>한달 멤버십</span><br>
-        <img src="${pageContext.request.contextPath}/resources/images/membership3.png" class="mshipImg"/>
-        <br>
-        <span>3,500원</span><br>
-        <span class="description">한 달동안 검색 상위노출</span><br><br>
-        <button  class="btn btn-default" onClick = "return confirm('로그인 후 이용가능합니다.')" id="한달 멤버십" value="3500">결제하기</button>
-        <br><br><br>
-      </div>
-    </div>
-  </div>       
-</c:if>
+<c:if test="${empty loginId}"></c:if>
