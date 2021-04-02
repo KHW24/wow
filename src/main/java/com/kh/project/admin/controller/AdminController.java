@@ -14,7 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import com.kh.project.admin.service. AdminService;
-import com.kh.project.admin.vo.Admin;
+import com.kh.project.admin.vo.AdminMs;
 
 @Controller
 	public class AdminController {
@@ -30,9 +30,9 @@ import com.kh.project.admin.vo.Admin;
 //         
 //        String formattedDate = dateFormat.format(date);
 		
-        List<Admin> adminList = adminService.selectAdmin();
+        List<AdminMs> adminMsList = adminService.selectAdmin();
 		
-        model.addAttribute("adminList", adminList);
+        model.addAttribute("adminMsList", adminMsList);
 		model.addAttribute("center", "../admin/membership.jsp");
 			
 		return "template/index";

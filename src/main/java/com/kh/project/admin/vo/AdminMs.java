@@ -1,9 +1,8 @@
 package com.kh.project.admin.vo;
 
 import java.util.Date;
-import java.util.List;
 
-public class Admin {
+public class AdminMs {
 	
 	private int mshipSeq;
 	private Date mshipStart;
