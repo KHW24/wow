@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="Admin">
-   <resultMap id="resultAdmin" type="Admin">
+   <resultMap id="resultAdminMs" type="AdminMs">
       <id property="mshipSeq" column="MSHIP_SEQ" />   
       <result property="mshipStart" column="MSHIP_START"/>  
       <result property="mshipEnd" column="MSHIP_END"/>   
@@ -12,9 +12,8 @@
    </resultMap>
    
    <!-- SELECT MyMembership , M.MSHIP_START-->
-   <select id="selectAdmin"  resultMap="resultAdmin ">
+   <select id="selectAdminMs"  resultMap="resultAdminMs ">
       SELECT * FROM MSHIPDATA 
    </select>
-   
    
 </mapper>   

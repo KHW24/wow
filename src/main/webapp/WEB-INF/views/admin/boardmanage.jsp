@@ -1,14 +1,9 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+      <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
   <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<script>
-function popupOpen(){
-    var popUrl = "/project/messagepopup.do";	//팝업창에 출력될 페이지 URL
-    var popOption = "width=450, height=360, resizable=no, scrollbars=no, status=no;";    //팝업창 옵션(optoin)
-        window.open(popUrl,"",popOption);
-    };
-</script>
+
  <style>
  
    /* 테이블 */
@@ -54,17 +49,18 @@ function popupOpen(){
   
   
   </style>
+ 
 
 
  <!-- Category -->
 <div class="container-fluid bg-3 text-center">
-  <h3 class="margin"><b>멤버쉽 회원 관리</b></h3>
+  <h3 class="margin"><b>게시물 관리</b></h3>
   <br>
   <a href="membership.do" class="btn btn-default btn-lg">멤버쉽 회원 관리<br>
   </a>
   <a href="report.do" class="btn btn-default btn-lg">신고 회원 관리<br>
   </a>
-  <a href="postmanage.do" class="btn btn-default btn-lg">게시물 관리<br>
+  <a href="boardmanage.do" class="btn btn-default btn-lg">게시물 관리<br>
   </a>
 
 
@@ -73,22 +69,19 @@ function popupOpen(){
 <!--CRUD-->
 <table>
   <tr>
-    <th> 전체선택 <input type="checkbox"></th>
+    <th>전체선택 <input type="checkbox"></th>
     <th>No.</th>
-    <th>ID</th>
-    <th>Membership Period</th>
+    <th>Name</th>
+    <th>Value</th>
   </tr>
-   <c:forEach items="${adminMsList}" var="adminMs">
+     <c:forEach items="${adminMsList}" var="adminMs">
   <tr>
     <td><input type="checkbox"></td>
-    <td><c:out value="${adminMs.mshipSeq}" /></td>
-    <td>${adminMs.id}</td>
-    <fmt:formatDate value="${adminMs.mshipStart}"  var="mshipStart" pattern="yyyy-MM-dd"/>
-    <fmt:formatDate value="${adminMs.mshipEnd}"  var="mshipEnd" pattern="yyyy-MM-dd"/>
-   
-    <td>${mshipStart} ~ ${mshipEnd}</td>  
+    <td>1</td>
+    <td><c:out value="${adminMs.id}" /></td>
+    <td><c:out value="${adminMs.postContents}" /></td>
   </tr>
-      </c:forEach>
+  </c:forEach>
 </table>
 <br>
 <a href="#" class="btn btn-default btn-lg">삭제
@@ -108,3 +101,4 @@ function popupOpen(){
 <br>
 <br>
 </div>
+

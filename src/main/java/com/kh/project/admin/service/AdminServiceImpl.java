@@ -7,7 +7,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.kh.project.admin.dao.AdminDao;
-import com.kh.project.admin.vo.Admin;
+import com.kh.project.admin.vo.AdminMs;
 	
 	@Service("adminService")
 	public class AdminServiceImpl implements AdminService {
@@ -16,8 +16,8 @@ import com.kh.project.admin.vo.Admin;
 		private AdminDao adminDao;
 
 		@Override
-		public List<Admin> selectAdmin() throws Exception {
-			return adminDao.selectAdmin();
+		public List<AdminMs> selectAdmin() throws Exception {
+			return adminDao.selectAdminMs();
 		}
 
 		
