@@ -20,8 +20,9 @@
 	<security:http auto-config="true" use-expressions="true">
 		<security:intercept-url pattern="/membership.do" access="hasRole('ROLE_ADMIN')"/>
 		<security:intercept-url pattern="/mshipSelect.do" access="hasRole('ROLE_MEMBER')"/>
+		<security:intercept-url pattern="/mypage.do" access="hasRole('ROLE_MEMBER')"/>
+		<security:intercept-url pattern="/myMship.do" access="hasRole('ROLE_MEMBER')"/>
 		
-	
 		<security:access-denied-handler error-page="/login.do"/>
 		<security:form-login 
 		login-page="/login.do" 
