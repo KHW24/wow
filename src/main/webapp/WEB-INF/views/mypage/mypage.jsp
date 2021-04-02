@@ -1,11 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
- <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!-- icon library -->
 <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/ej/mypage.css"/>
- <div class="container">
+
+<sec:authorize access="isAuthenticated()">
+	<sec:authentication var="loginId" property='principal.member.id'/>
+</sec:authorize>
+<c:if test="${not empty loginId}">
+<div class="container">
         <h3 class="h3">마이페이지</h3><br><br><br>
 <script>
 	var csrfHeaderName ="${_csrf.headerName}";
@@ -45,3 +51,5 @@
         </table>
         <br><br><br><br><br><br><br><br><br>
 </div>
+</c:if>
+<c:if test="${empty loginId}"></c:if>
