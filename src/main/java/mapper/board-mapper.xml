@@ -21,6 +21,11 @@
 		SELECT * FROM (SELECT ROWNUM NUM, S.*FROM (SELECT * FROM SALES_POST ORDER BY POST_NO DESC)S) WHERE NUM BETWEEN 1 AND 8
 	</select>
 	
+	<!-- SELECT LIST MORE -->
+	<select id="selectListMore" parameterType="int" resultType="Board">
+		SELECT * FROM (SELECT ROWNUM NUM, S.*FROM (SELECT * FROM SALES_POST ORDER BY POST_NO DESC)S) WHERE NUM BETWEEN 8+(4*#{more}) AND 11+(4*#{more})
+	</select>
+	
 	<!-- SELECT LIST COUNT  -->
 	<select id="listCount" parameterType="int" resultType="int">
 		SELECT COUNT(*) CNT FROM SALES_POST

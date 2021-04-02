@@ -23,6 +23,11 @@ public class BoardServiceImpl implements BoardService {
 		return boardDao.selectList(page);
 	}
 	
+	//board list more
+	public List<Board> selectListMore(int more) throws Exception{
+		return boardDao.selectListMore(more); 
+	}
+	
 	//board list count
 	public int listCount() throws Exception{
 		return boardDao.listCount(); 

@@ -24,6 +24,11 @@ public class BoardDao {
 		return sqlSession.selectList("Board.selectList", page );
 	}
 	
+	//select list more
+	public List<Board> selectListMore(int more){
+			return sqlSession.selectList("Board.selectListMore", more );
+	}
+	
 	//select list Count
 	public int listCount() {
 		return sqlSession.selectOne("Board.listCount");
