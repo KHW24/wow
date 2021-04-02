@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/ej/membershipPayCancelComplete.css"/>
 
     <div class="container">
-		<br><br><br><br><br>
+		<br><br><br><br><br><br><br><br>
         <div class="icon">
         <i class="fas fa-clipboard-check fa-6x"></i>
         </div>
