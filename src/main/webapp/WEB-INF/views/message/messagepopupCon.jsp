@@ -47,9 +47,18 @@
 		</script>	
 		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 		<input type="hidden" name="${_csrf.headerName}" value="${_csrf.headerName}" />
+    <!-- 쪽지 전송인 경우 -->
+  	<c:if test="${cnt eq 0}">
     <div class="name">
-	<strong>쪽지가 성공적으로 전송되었습니다.</strong>
+		<strong>쪽지가 성공적으로 전송되었습니다.</strong>
     </div>
+    </c:if>
+    <!-- 쪽지 수정인 경우 -->
+	<c:if test="${cnt ne 0}">
+    <div class="name">
+		<strong>쪽지 수정이 완료되었습니다.</strong>
+    </div>
+    </c:if>
     <button type="submit" id="pop_btn" style="margin-top:130px" class="button button4" onclick="fnMessagePost();">닫기</button>
     
     <br>

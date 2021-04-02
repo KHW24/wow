@@ -15,18 +15,33 @@
 		INSERT INTO MESSAGE(ID, MSG_CONTENTS, MSG_DATE, GET_ID) VALUES(#{id}, #{msg_contents}, DEFAULT, #{get_id})
 	</insert>
 	
-	<!-- 쪽지함 리스트 - SELECT 받은 쪽지함 -->
-	<select id="messageList" parameterType="String" resultMap="resultMessage">
+	<!-- 쪽지함 리스트&페이징 - SELECT 받은 쪽지함 -->
+	<select id="messageList" parameterType="hashMap" resultMap="resultMessage">
+		<![CDATA[
+		SELECT * FROM (SELECT /*+INDEX(MESSAGE IDX_MESSAGE) */ 
+		ROWNUM RN, MSG_SEQ, ID, MSG_CONTENTS, MSG_DATE, GET_ID
+		FROM MESSAGE WHERE GET_ID = #{get_id}
+		AND ROWNUM <= #{cri.pageNum}*#{cri.amount}
+		) WHERE RN > (#{cri.pageNum}-1)*#{cri.amount}
+		]]>
+	</select>
+	
+	<!-- (혹시나해서 만든 쿼리문) 쪽지함 리스트 - SELECT 받은 쪽지함 -->
+	<select id="messageListt" parameterType="String" resultMap="resultMessage">
 		SELECT * FROM (SELECT ROWNUM RNUM, MSG_SEQ, ID, MSG_CONTENTS, MSG_DATE, GET_ID 
 		FROM (SELECT * FROM MESSAGE ORDER BY MSG_SEQ DESC)) 
 		WHERE GET_ID = #{get_id}
-	</select>
+	</select> 
 	
-	<!-- 쪽지함 리스트 - SELECT 보낸 쪽지함 -->
-	<select id="messagepushList" parameterType="String" resultMap="resultMessage">
-		SELECT * FROM (SELECT ROWNUM RNUM, MSG_SEQ, ID, MSG_CONTENTS, MSG_DATE, GET_ID 
-		FROM (SELECT * FROM MESSAGE ORDER BY MSG_SEQ DESC)) 
-		WHERE ID = #{get_id}
+	<!-- 쪽지함 리스트&페이징 - SELECT 보낸 쪽지함 -->
+	<select id="messagepushList" parameterType="hashMap" resultMap="resultMessage">
+		<![CDATA[
+		SELECT * FROM (SELECT /*+INDEX(MESSAGE IDX_MESSAGE) */ 
+		ROWNUM RN, MSG_SEQ, ID, MSG_CONTENTS, MSG_DATE, GET_ID
+		FROM MESSAGE WHERE ID = #{get_id}
+		AND ROWNUM <= #{cri.pageNum}*#{cri.amount}
+		) WHERE RN > (#{cri.pageNum}-1)*#{cri.amount}
+		]]>
 	</select>
 	
 	<!-- 쪽지함 리스트 count 받은 쪽지함 -->

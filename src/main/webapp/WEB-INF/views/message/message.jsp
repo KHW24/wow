@@ -40,7 +40,7 @@
 		});
 	});
 	
-	// 체크박스로 삭제 기능
+/* 	// 체크박스로 삭제 기능
 	function deleteValue(){
 		var valueArr = new Array();
 		var list = $("input[name='RowCheck']");
@@ -73,28 +73,27 @@
 				}
 			});
 		}
-	};
-	
-	
-
+	}; */
 
 </script>
-
 <div style="text-align: center;">
 	<h2>쪽지함</h2>
 	<hr>
 </div>
 <div class="container" style="height: 700px">
 	<form style="margin-top:3%">
-	    <script>
+ 	    <script>
 			var csrfHeaderName ="${_csrf.headerName}";
 			var csrfTokenValue="${_csrf.token}";
-		</script>	
+		</script>
 		<label><input type="radio" name="message" value="mepost" onclick="window.location.href='message.do?get_id=<sec:authentication property="principal.member.id"/>';" checked>받은 쪽지함 </label> 
 		<label><input type="radio" name="message" value="mepush" onclick="window.location.href='messagepush.do?get_id=<sec:authentication property="principal.member.id"/>';"> 보낸 쪽지함</label><br>
 		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 		<input type="hidden" name="${_csrf.headerName}" value="${_csrf.headerName}" />
 		<button class="btn" onclick="deleteValue();" style="margin-left: 89.3%;">삭제</button>
+		<!-- 페이징 때문에 값 가져오기 -->
+		<input type="hidden" id="cnt" value="${listCount}"/>
+		<input type="hidden" id="page" value="${page}"/>
 		<table class="table table-condensed" >
 			<thead>
 				<tr>
@@ -107,35 +106,139 @@
 			</thead>
 			<tbody>
 			<!-- 글이 없을 경우 -->
-			<c:if test="${listCount == 0}">
+  			<c:if test="${listCount eq 0}">
 				<tr>
 					<td colspan="6" align="center"><br>
-					<br><strong style="color:red;">받은 쪽지가 없습니다.</strong><br>
+					<br><strong style="color:red;"> 게시판에 저장된 글이 없습니다.</strong><br>
 					<br></td>
 				</tr>
 			</c:if>
-			<c:if test="${listCount != 0}">
-			<c:forEach var="me" varStatus="status" items="${list}">
+			<!-- 글 있는 경우 -->
+			<c:if test="${listCount ne 0}">
+			<!-- items에 list만 적으면 오류남.. 리스트는 forEach 안됨 -->
+ 			<c:forEach var="ms" varStatus="status" items="${list.list}"> 
 				<tr>
-					<td>${fn:length(list)-status.index}</td>
-					<td><a href="messageviewpopup.do?msg_seq=${me.msg_seq}" 
-					onclick="window.open(this.href, '_blank', 'width=500, height=430'); return false;">${me.msg_contents }</a></td>
-					<td>${me.id }</td>
-					<td>${me.msg_date }</td>
-					<td>&nbsp;&nbsp;<input type="checkbox" name="RowCheck" value="${me.msg_seq}"></td>
+ 					<td>${fn:length(list.list)-status.index}</td> <!-- 역순 정렬 / 1번부터는 status.index -->
+					<td><a href="messageviewpopup.do?msg_seq=${ms.msg_seq}" 
+					onclick="window.open(this.href, '_blank', 'width=500, height=430'); return false;">
+					${ms.msg_contents }</a></td>
+					<td>${ms.id }</td>
+					<td>${ms.msg_date }</td>
+					<td>&nbsp;&nbsp;<input type="checkbox" name="RowCheck" value="${ms.msg_seq}"></td> 
 				</tr>
-			</c:forEach>
+ 			</c:forEach> 
 			</c:if>
-			</tbody>
+				<%--<div style="display: block; text-align: center;">		
+ 					<c:if test="${paging.startPage != 1 }">
+						<a href="messageList.do?get_id=${get_id}&page=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}">&lt;</a>
+					</c:if> 
+					<c:forEach begin="${cri.pageNum }" end="10" var="p">
+						<c:choose>
+							<c:when test="${p == page }">
+								<b>${p }</b>
+							</c:when>
+							<c:when test="${p != page }">
+								<a href="message.do?get_id=${get_id}&page=${p }">${p }</a>
+							</c:when>
+						</c:choose>
+					</c:forEach>
+ 					<c:if test="${paging.endPage != paging.lastPage}">
+						<a href="messageList.do?get_id=${get_id}&page=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}">&gt;</a>
+					</c:if> 
+				</div>--%>
+			<%-- <!-- 앞 페이지 번호 처리 -->
+			<tr align="center" height="20">
+			<td colspan="5">
+			<c:if test="${currentPage <= 1}"> [이전]&nbsp;</c:if> 
+			<c:if test="${currentPage > 1}"> <!-- 12345 이상의 페이지가 있어야 이전 다음이 나오도록 -->
+					<!-- url태그 : message.do?page=1 를 자동으로 만들어줌 -->
+					<c:url var="messageST" value="message.do?get_id=${get_id }"> 
+						<c:param name="page" value="${currentPage-1}" />
+					</c:url>
+					<a href="${messageST}">[이전]</a>
+					</c:if> 
+			<!-- 끝 페이지 번호 처리 --> 
+			<c:set var="endPage" value="${maxPage}" /> 
+			<c:forEach var="p" begin="${startPage+1}" end="${endPage}">
+				<c:if test="${p eq currentPage}">
+					<font color="red" size="4"><b>[${p}]</b></font>
+				</c:if>
+				<c:if test="${p ne currentPage}">
+					<c:url var="messagechk" value="message.do?get_id=${get_id }">
+						<c:param name="page" value="${p}" />
+					</c:url>
+					<a href="${messagechk}">${p}</a>
+				</c:if>
+			</c:forEach> 
+			<c:if test="${currentPage >= maxPage}">[다음] </c:if> 
+			<c:if test="${currentPage < maxPage}">
+				<c:url var="messageEND" value="message.do?get_id=${get_id }">
+					<c:param name="page" value="${currentPage+1}" />
+				</c:url>
+				<a href="${messageEND}">[다음]</a>
+			</c:if></td>
+		</tr> --%>
+		</tbody>
 		</table>
 	</form>
-</div>
-<div style="text-align:center;">
-	<ul class="pagination" style="text-align: center;">
-		<li><a href="#">1</a></li>
-		<li class="active"><a href="#">2</a></li>
-		<li><a href="#">3</a></li>
-		<li><a href="#">4</a></li>
-		<li><a href="#">5</a></li>
-	</ul>
-</div>
+	<!-- 글 있는 경우 -->
+	<c:if test="${listCount ne 0}">
+	<div class="paging">
+      <!-- 페이지네이션 -->
+	</div>
+	</c:if>
+	</div>
+<script>
+
+	$(function(){
+		messageList(); 
+	 });
+
+	var messageCnt = $('#cnt').val();
+	var page = $('#page').val();
+	
+ 	// 댓글 페이징 처리
+	var pageNum = 1;
+	var paging = $(".paging");
+	var url = "message.do?get_id=${get_id }&page=";
+	
+	function messageList(messageCnt){
+		var endNum = Math.ceil(pageNum/10.0)*10;
+		var startNum = endNum - 9;
+		var prev = startNum != 1;
+		var next = false;
+		
+//		alert("endNum"+endNum+"startnum"+startNum+"prev"+prev+"next"+next);
+		
+		var str = "<ul class='breadcrumb text-center'>";
+		if(prev){
+			str += "<li><a href='"+(startNum-1)+"'>이전</a></li>";
+		}
+		for(var i = startNum; i <= endNum; i++){
+			var active = pageNum == i? "active":"";
+			str +="<li class='"+active+"'><a href='"+i+"'>"+i+"</a></li>"; // 여기 a태그에 주소넣으면 안됨 아래에 넣어야됨
+		}
+		if(next){
+			str+="<li><a href='"+(endNum+1)+"'>다음</a></li>";
+		}
+		str+="</ul>";
+		console.log(str);
+		paging.html(str);	// div 부분에 표시되게
+		}
+		
+		
+		//다음 페이지 눌렀을 때 리스트 나오게
+		$(function(){
+			paging.on("click","li a",function(e){
+				e.preventDefault();
+				console.log("page click");
+				
+				var targetPageNum = $(this).attr("href");
+				console.log("targetPageNum: "+targetPageNum);
+				pageNum=targetPageNum;
+				window.location.href="message.do?get_id=${get_id }&page="+targetPageNum;	// 주소 주의해서 작성해야함
+			});
+					
+		});
+    
+</script>

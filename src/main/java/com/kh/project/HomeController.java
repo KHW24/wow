@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.project.board.service.BoardService;
@@ -133,11 +134,13 @@ public class HomeController {
 	}
 	
 	//마이 페이지
-	@RequestMapping(value="mypage.do", method=RequestMethod.GET)
-	public String myPageView(Model model) throws Exception{
-		model.addAttribute("center","../mypage/mypage.jsp");
-		return "template/index";
-	}
+		@RequestMapping(value="mypage.do", method=RequestMethod.GET)
+		public String myPageView(@RequestParam(name="page", defaultValue="1") int page, Model model) throws Exception{
+			int currentPage = page;
+			model.addAttribute("currentPage", currentPage);
+			model.addAttribute("center","../mypage/mypage.jsp");
+			return "template/index";
+		}
 	
 //	//마이 멤버십
 //	@RequestMapping(value="myMship.do", method=RequestMethod.GET)
