@@ -53,6 +53,7 @@
 		<c:if test="${requestScope['javax.servlet.error.status_code'] == 503}">
 			서비스를 사용할 수 없습니다.   503error
 		</c:if>
+			<br>관리자에게 문의 바랍니다.
 		</p>
 		<br>
 		<br>
