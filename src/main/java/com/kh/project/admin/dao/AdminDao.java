@@ -21,8 +21,11 @@ public class AdminDao {
 	public List<AlertPost> selectAlert() throws Exception{
 		return sqlSession.selectList("Alert.selectAlerts");
 	}
-	
 
+	//신고내역 삭제
+	public void deleteAlert(int alertSeq) throws Exception{
+		 sqlSession.delete("Alert.deleteAlert",alertSeq);
+	}
 	
 	
 }

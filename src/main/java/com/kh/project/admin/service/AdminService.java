@@ -13,4 +13,6 @@ public interface AdminService {
 	//신고게시글 조회
 	public List<AlertPost> selectAlert() throws Exception;
 	
+	//신고내역삭제
+	public void deleteAlert(int alertSeq) throws Exception;
 }

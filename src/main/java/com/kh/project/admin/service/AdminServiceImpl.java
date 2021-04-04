@@ -28,6 +28,12 @@ import com.kh.project.member.vo.Member;
 			return adminDao.selectAlert();
 		}
 
+		//신고내역 삭제
+		@Override
+		public void deleteAlert(int alertSeq) throws Exception {
+			adminDao.deleteAlert(alertSeq);
+		}
+
 
 		
 }

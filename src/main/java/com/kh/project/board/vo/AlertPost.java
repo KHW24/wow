@@ -11,6 +11,7 @@ public class AlertPost {
 	private int postNo;
 	private String id;
 	private List<Member> member;
+	
 	public int getAlertSeq() {
 		return alertSeq;
 	}
