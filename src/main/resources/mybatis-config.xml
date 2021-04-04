@@ -14,6 +14,7 @@
       <typeAlias type="com.kh.project.member.vo.Member" alias="Member" />
       <typeAlias type="com.kh.project.member.vo.MemberAuth" alias="MemberAuth" />
       <typeAlias type="com.kh.project.board.vo.Board" alias="Board" />
+      <typeAlias type="com.kh.project.board.vo.AlertPost" alias="AlertPost" />
       <typeAlias type="com.kh.project.message.vo.Message" alias="Message" />
       <typeAlias type="com.kh.project.membership.vo.Membership" alias="Membership" />
       <typeAlias type="com.kh.project.membership.vo.Mshipdata" alias="Mshipdata" />
@@ -29,6 +30,7 @@
       <mapper resource="mapper/message-mapper.xml" />
       <mapper resource="mapper/membership-mapper.xml" />
       <mapper resource="mapper/reply-mapper.xml" />
+      <mapper resource="mapper/alert-mapper.xml" />
   </mappers>
 	
 </configuration>

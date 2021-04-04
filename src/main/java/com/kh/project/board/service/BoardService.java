@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.kh.project.board.vo.AlertPost;
 import com.kh.project.board.vo.Board;
 import com.kh.project.board.vo.Criteria;
 import com.kh.project.board.vo.Reply;
@@ -56,4 +57,6 @@ public interface BoardService {
 	//내 댓글 보기
 	public List<Reply> getReplybyId(String id) throws Exception;
 
+	//게시글 신고하기
+	public void alertPost(AlertPost alert) throws Exception;
 }

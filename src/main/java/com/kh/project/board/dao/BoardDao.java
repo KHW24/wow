@@ -9,6 +9,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.kh.project.board.vo.AlertPost;
 import com.kh.project.board.vo.Board;
 import com.kh.project.board.vo.Criteria;
 import com.kh.project.board.vo.Reply;
@@ -103,5 +104,11 @@ public class BoardDao {
 	public List<Reply> getReplybyId(String id) throws Exception{
 		List<Reply> myReplies = sqlSession.selectList("Reply.selectReply",id);
 		return myReplies;
+	}
+	
+	//게시글 신고하기
+	public void alertPost(AlertPost alert) throws Exception{
+		sqlSession.insert("Alert.insertAlertPost",alert);
+		sqlSession.update("Alert.updateAlertCnt",alert);
 	}
 }

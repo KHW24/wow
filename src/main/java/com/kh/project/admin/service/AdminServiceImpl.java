@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 
 import com.kh.project.admin.dao.AdminDao;
 import com.kh.project.admin.vo.AdminMs;
+import com.kh.project.board.vo.AlertPost;
+import com.kh.project.member.vo.Member;
 	
 	@Service("adminService")
 	public class AdminServiceImpl implements AdminService {
@@ -19,6 +21,13 @@ import com.kh.project.admin.vo.AdminMs;
 		public List<AdminMs> selectAdmin() throws Exception {
 			return adminDao.selectAdminMs();
 		}
+
+		//신고게시글 조회
+		@Override
+		public List<AlertPost> selectAlert() throws Exception {
+			return adminDao.selectAlert();
+		}
+
 
 		
 }

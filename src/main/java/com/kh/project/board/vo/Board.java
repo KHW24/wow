@@ -16,6 +16,7 @@ public class Board {
 	private int hit;
 	private String post_code;
 	
+	
 	public Board() {}	
 	
 	public Board(int post_no, String post_title, String post_price, String post_contents, String post_address,

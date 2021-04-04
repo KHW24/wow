@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kh.project.board.dao.BoardDao;
+import com.kh.project.board.vo.AlertPost;
 import com.kh.project.board.vo.Board;
 import com.kh.project.board.vo.Criteria;
 import com.kh.project.board.vo.Reply;
@@ -95,6 +96,12 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public List<Reply> getReplybyId(String id) throws Exception {
 		return boardDao.getReplybyId(id);
+	}
+
+	//게시글 신고하기
+	@Override
+	public void alertPost(AlertPost alert) throws Exception {
+		boardDao.alertPost(alert);
 	}
 
 	

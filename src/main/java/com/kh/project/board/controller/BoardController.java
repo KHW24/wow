@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.project.board.service.BoardService;
+import com.kh.project.board.vo.AlertPost;
 import com.kh.project.board.vo.Board;
 import com.kh.project.member.vo.Member;
 
@@ -133,6 +134,14 @@ public class BoardController {
 		boardService.deleteBoard(no);
 		mv.setViewName("redirect:boardList.do");
 		return mv;
+	}
+	
+	//게시글 신고하기
+	@ResponseBody
+	@RequestMapping(value="alertPost.do",method=RequestMethod.POST)
+	public String postAlert(AlertPost alert) throws Exception{
+		boardService.alertPost(alert);
+		return "success";
 	}
 	
 

@@ -15,12 +15,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import com.kh.project.admin.service. AdminService;
 import com.kh.project.admin.vo.AdminMs;
+import com.kh.project.board.vo.AlertPost;
+import com.kh.project.member.service.MemberService;
 
 @Controller
 	public class AdminController {
 
 	@Autowired
 	AdminService adminService;
+	
+	@Autowired
+	MemberService memberService;
 	
 	@RequestMapping(value="membership.do", method=RequestMethod.GET)
 	public String AdminView(Locale locale, Model model) throws Exception{
@@ -37,6 +42,16 @@ import com.kh.project.admin.vo.AdminMs;
 			
 		return "template/index";
 	}
+	
+	//관리자페이지 - 신고회원관리
+	@RequestMapping(value = "report.do", method = RequestMethod.GET)
+	public String report(Model model) throws Exception {
+		List<AlertPost> alert = adminService.selectAlert();
+		model.addAttribute("alert",alert);
+		model.addAttribute("center","../admin/report.jsp");
+		return "template/index";
+	}
+	
 	
 }
 

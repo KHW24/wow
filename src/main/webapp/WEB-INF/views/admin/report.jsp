@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
  <style>
  
    /* 테이블 */
@@ -65,33 +65,28 @@
 <!--CRUD-->
 <table>
   <tr>
-    <th> 전체선택 <input type="checkbox"></th>
-    <th>No.</th>
-    <th>Name</th>
-    <th>Value</th>
+    <th>전체선택 <input type="checkbox"></th>
+    <th>게시글 작성자</th>
+    <th>작성자 총 신고 횟수</th>
+    <th>게시글 번호</th>
+    <th>신고내용</th>
   </tr>
+  <c:forEach items="${alert}" var="alert">
+	  <tr>
+	    <td><input type="checkbox"></td>
+	    <td>${alert.id}</td>
+	    <td>${alert.member[0].alert_cnt}</td>
+		<td><a href="postSellerView.do?no=${alert.postNo}">${alert.postNo}</a></td>
+	    <td>${alert.alertContents }</td>
+	  </tr>
+    </c:forEach>
   <tr>
-    <td><input type="checkbox"></td>
-    <td>1</td>
-    <td>홍길동</td>
-    <td>부적절한 게시물</td>
-  </tr>
-  <tr>
-    <td><input type="checkbox"></td>
-    <td>2</td>
-    <td>남굴길동</td>
-    <td>홍보글</td>
-  </tr>
-  <tr>
-    <td><input type="checkbox"></td>
-    <td>3</td>
-    <td>김길동</td>
-    <td>홍보글</td>
+  	<td><button type="button" class="btn btn-default btn-sm">신고내역 삭제</td>
+    <td><button type="button" class="btn btn-default btn-sm">쪽지 전송</td>
+    <td col="5"><button type="button" class="btn btn-default btn-sm">회원 탈퇴</td>
   </tr>
 </table>
 <br>
-<a href="#" class="btn btn-default btn-lg">삭제
-</a>
 <br>
 <div class="pagination">
   <a href="#">&laquo;</a>

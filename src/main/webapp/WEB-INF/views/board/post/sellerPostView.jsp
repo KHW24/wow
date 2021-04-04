@@ -76,7 +76,26 @@
 <script>
 	$(function(){
 		$('#alert').on('click',function(){
-			alert("신고가 완료되었습니다.");
+			var header = "${_csrf.headerName}"; 
+	         var token = "${_csrf.token}";
+	  		 $(document).ajaxSend(function(e,xhr, options){
+	             xhr.setRequestHeader(header, token); 
+	           });
+
+			$.ajax({
+				type: "post",
+				url: "${pageContext.request.contextPath}/alertPost.do",
+				contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+				data: {id : "${list.id}", postNo : "${list.post_no}", alertContents : $(".alertContents").val()},
+				success: function(data){
+					if(data=="success"){
+						alert("신고가 완료되었습니다.");
+					}
+				},
+				error:function(request, status, error){
+					alert("code"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+				}
+			});
 		}); 
 	 });
 </script>
@@ -165,12 +184,21 @@
 											관리자 확인 후 <span class="alert-strong">판매글 삭제 및 신고회원 제한
 												조치</span>가 취해집니다.
 										</p>
+										<p>
+										<br>
+											<select class="form-control alertContents">
+												<option value="부적절한 게시글">부적절한 게시글</option>
+												<option value="홍보글">홍보글</option>
+											</select>
+											<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+										</p>
 									</div>
 									<div class="modal-footer">
 										<button type="button" class="btn btn-default"
 											data-dismiss="modal" id="alert" >신고하기</button>
 									</div>
 								</div>
+								
 							</div>
 						</div>
               </td>
