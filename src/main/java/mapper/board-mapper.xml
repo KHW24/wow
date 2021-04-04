@@ -36,10 +36,24 @@
 		SELECT * FROM SALES_POST WHERE POST_NO = #{no}
 	</select>
 	
-	<!-- INSERT -->
+	<!-- SELECT FILE -->
+	<select id="selectFile" parameterType="int" resultType="Image">
+		SELECT * FROM IMAGES WHERE POST_NO = #{no}
+	</select>
+	
+	<!-- INSERT BOARD-->
 	<insert id="insertBoard" parameterType="Board">
-		INSERT INTO SALES_POST(POST_TITLE, POST_PRICE, POST_CONTENTS, POST_ADDRESS, POST_TAGS, ID, POST_CODE) VALUES(#{post_title}, #{post_price}, #{post_contents}, #{post_address}, #{post_tags}, #{id}, #{post_code})
+	{ CALL
+	BEGIN
+		INSERT INTO SALES_POST(POST_NO, POST_TITLE, POST_PRICE, POST_CONTENTS, POST_ADDRESS, POST_TAGS, ID, POST_CODE) VALUES(SALES_POST_SEQ.NEXTVAL, #{post_title}, #{post_price}, #{post_contents}, #{post_address}, #{post_tags}, #{id}, #{post_code});
+		INSERT INTO IMAGES (ORIGINAL_FILENAME, RENAME_FILENAME, FILE_PATH, POST_NO) VALUES(#{original_filename},#{rename_filename},#{file_path}, SALES_POST_SEQ.CURRVAL);
+	END
+	}
 	</insert>	
+	
+	<!-- INSERT BOARD - FILE -->
+	<insert id="insertFile" parameterType="Image">
+	</insert>
 	
 	<!-- UPDATE  -->
 	<update id="updateBoard" parameterType="Board">

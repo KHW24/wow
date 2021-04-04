@@ -10,6 +10,7 @@ import com.kh.project.board.dao.BoardDao;
 import com.kh.project.board.vo.AlertPost;
 import com.kh.project.board.vo.Board;
 import com.kh.project.board.vo.Criteria;
+import com.kh.project.board.vo.Image;
 import com.kh.project.board.vo.Reply;
 import com.kh.project.board.vo.ReplyPage;
 
@@ -39,9 +40,18 @@ public class BoardServiceImpl implements BoardService {
 		return boardDao.selectPage(no);
 	}
 	
+	//board detail page - file
+	public Image selectFile(int no) throws Exception{
+		return boardDao.selectFile(no);
+	}
+	
 	//board write
 	public int insertBoard(Board board) throws Exception{
 		return boardDao.insertBoard(board);
+	}
+	//board write - file
+	public int insertFile(Image image) throws Exception{
+		return boardDao.insertFile(image);
 	}
 	
 	//board update

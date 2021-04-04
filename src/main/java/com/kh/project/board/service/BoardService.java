@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Param;
 import com.kh.project.board.vo.AlertPost;
 import com.kh.project.board.vo.Board;
 import com.kh.project.board.vo.Criteria;
+import com.kh.project.board.vo.Image;
 import com.kh.project.board.vo.Reply;
 import com.kh.project.board.vo.ReplyPage;
 
@@ -18,17 +19,21 @@ public interface BoardService {
 	//board list more
 	public List<Board> selectListMore(int more) throws Exception;
 	
-	
 	//board list count
 	public int listCount() throws Exception;
 	
 	//board detail page
 	public Board selectPage(int no) throws Exception;
 	
+	//board detail page - file
+	public Image selectFile(int no) throws Exception;
+	
 	//board write
 	public int insertBoard(Board board) throws Exception;
 	
-
+	//board write - file
+	public int insertFile(Image image) throws Exception;
+	
 	//board update
 	public int updateBoard(Board board) throws Exception;
 	

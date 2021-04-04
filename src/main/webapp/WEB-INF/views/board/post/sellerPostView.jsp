@@ -119,11 +119,11 @@
             <!-- Wrapper for slides -->
             <div class="carousel-inner">
               <div class="item active">
-                <img src="${pageContext.request.contextPath}/resources/images/macaron.jpg" alt="이미지">
+                <img src="${pageContext.request.contextPath}/resources/upload/${file.rename_filename}" alt="이미지">
               </div>
   
               <div class="item">
-                <img src="${pageContext.request.contextPath}/resources/images/macaron2.jpg" alt="이미지">
+                <img src="${file.file_path }" alt="이미지">
               </div>
   
               <div class="item">

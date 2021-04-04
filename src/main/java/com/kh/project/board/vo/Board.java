@@ -15,12 +15,15 @@ public class Board {
 	private String id;
 	private int hit;
 	private String post_code;
+	private String original_filename;
+	private String rename_filename;
+	private String file_path;
 	
-	
-	public Board() {}	
-	
+	public Board() {}
+		
 	public Board(int post_no, String post_title, String post_price, String post_contents, String post_address,
-			String post_yn, Date post_date, String post_tags, String id, int hit, String post_code) {
+			String post_yn, Date post_date, String post_tags, String id, int hit, String post_code,
+			String original_filename, String rename_filename, String file_path) {
 		super();
 		this.post_no = post_no;
 		this.post_title = post_title;
@@ -33,8 +36,11 @@ public class Board {
 		this.id = id;
 		this.hit = hit;
 		this.post_code = post_code;
+		this.original_filename = original_filename;
+		this.rename_filename = rename_filename;
+		this.file_path = file_path;
 	}
-
+	
 	public int getPost_no() {
 		return post_no;
 	}
@@ -101,12 +107,40 @@ public class Board {
 	public void setPost_code(String post_code) {
 		this.post_code = post_code;
 	}
+	public String getOriginal_filename() {
+		return original_filename;
+	}
+	public void setOriginal_filename(String original_filename) {
+		this.original_filename = original_filename;
+	}
+	public String getRename_filename() {
+		return rename_filename;
+	}
+	public void setRename_filename(String rename_filename) {
+		this.rename_filename = rename_filename;
+	}
+	public String getFile_path() {
+		return file_path;
+	}
+	public void setFile_path(String file_path) {
+		this.file_path = file_path;
+	}
 
 	@Override
 	public String toString() {
 		return "Board [post_no=" + post_no + ", post_title=" + post_title + ", post_price=" + post_price
 				+ ", post_contents=" + post_contents + ", post_address=" + post_address + ", post_yn=" + post_yn
 				+ ", post_date=" + post_date + ", post_tags=" + post_tags + ", id=" + id + ", hit=" + hit
-				+ ", post_code=" + post_code + "]";
+				+ ", post_code=" + post_code + ", original_filename=" + original_filename + ", rename_filename="
+				+ rename_filename + ", file_path=" + file_path + "]";
 	}
+	
+	
+	
+	
+	
+
+	
+	
+	
 }
