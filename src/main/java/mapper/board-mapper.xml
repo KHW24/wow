@@ -14,16 +14,20 @@
 		<result property="id" column="ID"/>
 		<result property="hit" column="HIT"/>
 		<result property="post_code" column="POST_CODE"/>
+		
+		<result property="rename_filename" column="RENAME_FILENAME" />
 	</resultMap>
 	
 	<!-- SELECT LIST -->
 	<select id="selectList" parameterType="int" resultType="Board">
-		SELECT * FROM (SELECT ROWNUM NUM, S.*FROM (SELECT * FROM SALES_POST ORDER BY POST_NO DESC)S) WHERE NUM BETWEEN 1 AND 8
+		<!-- SELECT * FROM (SELECT ROWNUM NUM, S.*FROM (SELECT * FROM SALES_POST ORDER BY POST_NO DESC)S) WHERE NUM BETWEEN 1 AND 8 -->
+		SELECT * FROM (SELECT ROWNUM NUM , S.* FROM (SELECT a.*,  b.RENAME_FILENAME FROM SALES_POST a LEFT OUTER JOIN IMAGES b ON a.POST_NO = b.POST_NO ORDER BY a.POST_NO DESC)S) WHERE NUM BETWEEN 1 AND 8
 	</select>
 	
 	<!-- SELECT LIST MORE -->
 	<select id="selectListMore" parameterType="int" resultType="Board">
-		SELECT * FROM (SELECT ROWNUM NUM, S.*FROM (SELECT * FROM SALES_POST ORDER BY POST_NO DESC)S) WHERE NUM BETWEEN 8+(4*#{more}) AND 11+(4*#{more})
+		<!-- SELECT * FROM (SELECT ROWNUM NUM, S.*FROM (SELECT * FROM SALES_POST ORDER BY POST_NO DESC)S) WHERE NUM BETWEEN 8+(4*#{more}) AND 11+(4*#{more}) -->
+		SELECT * FROM (SELECT ROWNUM NUM , S.* FROM (SELECT a.*,  b.RENAME_FILENAME FROM SALES_POST a LEFT OUTER JOIN IMAGES b ON a.POST_NO = b.POST_NO ORDER BY a.POST_NO DESC)S) WHERE NUM BETWEEN 8+(4*#{more}) AND 11+(4*#{more})
 	</select>
 	
 	<!-- SELECT LIST COUNT  -->
