@@ -39,13 +39,13 @@
   <div class="form-group">
     <label for="title" class="col-sm-2 control-label">제목</label>
     <div class="col-sm-8">
-      <input type="text" class="form-control input-lg" id="title" name="post_title" />
+      <input type="text" class="form-control input-lg" id="title" name="post_title" required/>
     </div>
   </div>
   <div class="form-group">
     <label for="location" class="col-sm-2 control-label">지역</label>
     <div class="col-sm-8">
-    <input type="text" class="form-control input-lg" id="location" name="post_address">
+    <input type="text" class="form-control input-lg" id="location" name="post_address" required>
       <!-- <select class="form-control input-lg" id="loaction" name="location">
         <option>서울시 종로구</option>
         <option>서울시 중구</option>
@@ -59,27 +59,27 @@
   <div class="form-group">
     <label for="price" class="col-sm-2 control-label">가격</label>
     <div class="col-sm-8">
-      <input type="text" class="form-control input-lg" id="price" name="post_price">
+      <input type="text" class="form-control input-lg" id="price" name="post_price" placeholder="숫자만 입력해주세요" required >
     </div>
   </div>
   <div class="form-group">
     <br>
     <div class="col-sm-offset-1">
-      <textarea class="form-control" rows="20" id="comment" name="post_contents" placeholder="내용을 입력해주세요."></textarea>
+      <textarea class="form-control" rows="20" id="comment" name="post_contents" placeholder="내용을 입력해주세요." required></textarea>
     </div>
   </div>
   <div class="form-group">
     <label for="attached-images" class="col-sm-2 control-label">
       첨부파일
     </label>
-    <input type="file" name ="file" id="attached-images"/>
+    <input type="file" name ="file" id="attached-images" required/>
   </div>
   <div class="form-group">
     <label for="hashtags" class="col-sm-2 control-label">
       해쉬태그
     </label>
     <div class="col-sm-8">
-    <input type="text" class="form-control input-lg" id="hashtags" name="post_tags" placeholder="#태그 선택">
+    <input type="text" class="form-control input-lg" id="hashtags" name="post_tags" placeholder="#태그 선택" >
    </div>
   </div>
   <div class="form-group">

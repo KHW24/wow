@@ -15,6 +15,7 @@ public class Board {
 	private String id;
 	private int hit;
 	private String post_code;
+	
 	private String original_filename;
 	private String rename_filename;
 	private String file_path;
@@ -134,13 +135,5 @@ public class Board {
 				+ ", post_code=" + post_code + ", original_filename=" + original_filename + ", rename_filename="
 				+ rename_filename + ", file_path=" + file_path + "]";
 	}
-	
-	
-	
-	
-	
-
-	
-	
 	
 }

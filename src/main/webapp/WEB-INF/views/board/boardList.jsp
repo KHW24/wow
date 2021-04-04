@@ -55,7 +55,7 @@ $(function(){
 			<c:forEach var="n" items="${list}">
 				<li><span class="thumb"> <em>${n.post_code }</em>
 						<a href="postSellerView.do?no=${n.post_no }"> 
-						<img class="img-rounded" src="${pageContext.request.contextPath}/resources/images/sample.jpg"alt=""></span> 
+						<img class="img-rounded" src="${pageContext.request.contextPath}/resources/upload/${n.rename_filename}"alt=""></span> 
 						<Strong>${n.post_title }</Strong> </a>
 					<p>${n.post_address }&nbsp;·&nbsp;
 					<fmt:formatDate	pattern="MM-dd" value="${n.post_date}" />
@@ -109,7 +109,7 @@ var more = -1;
 					addListHtml += "<ul>";
 					addListHtml += "<li><span class='thumb'><em>"+data.list[i].post_code+"</em>";
 				   addListHtml += "<a href='postSellerView.do?no="+data.list[i].post_no+"'> ";
-				   addListHtml += "<img class='img-rounded' src='${pageContext.request.contextPath}/resources/images/sample.jpg'alt=''></span>";
+				   addListHtml += "<img class='img-rounded' src='${pageContext.request.contextPath}/resources/images/"+data.list[i].rename_filename+"'alt=''></span>";
 				   addListHtml += "<Strong>"+decodeURIComponent(data.list[i].post_title)+"</Strong> </a>";
 				   addListHtml += "<p>"+decodeURIComponent(data.list[i].post_address)+"&nbsp;·&nbsp"+data.list[i].post_date+"</p>";
 				   //addListHtml += "<p>"+data.list[i].post_address+　·　+data.list[i].post_date+"</p>";
