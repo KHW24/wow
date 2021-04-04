@@ -13,6 +13,7 @@ public class AdminDao {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	
+	// 멤버십 관리
 	public List<AdminMs> selectAdminMs() throws Exception{
 		return sqlSession.selectList("Admin.selectAdminMs");
 	}

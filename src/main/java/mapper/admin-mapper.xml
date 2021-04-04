@@ -11,7 +11,7 @@
       <result property="id" column="ID"/>
    </resultMap>
    
-   <!-- SELECT MyMembership , M.MSHIP_START-->
+   <!-- SELECT Membership -->
    <select id="selectAdminMs"  resultMap="resultAdminMs ">
       SELECT * FROM MSHIPDATA 
    </select>

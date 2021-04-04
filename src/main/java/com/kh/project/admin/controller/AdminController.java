@@ -31,13 +31,9 @@ import com.kh.project.member.service.MemberService;
 	@Autowired
 	MemberService memberService;
 	
+	// 관리자페이지 - 멤버쉽 관리
 	@RequestMapping(value="membership.do", method=RequestMethod.GET)
 	public String AdminView(Locale locale, Model model) throws Exception{
-
-//		Date date = new Date();
-//        DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-//         
-//        String formattedDate = dateFormat.format(date);
 		
         List<AdminMs> adminMsList = adminService.selectAdmin();
 		
@@ -61,8 +57,7 @@ import com.kh.project.member.service.MemberService;
 		@PostMapping(value="alertDelete.do")
 		public String alertDelete(@RequestParam("alertSeq") List<Integer> alertSeqs) throws Exception{
 			for(Integer alertSeq : alertSeqs) adminService.deleteAlert(alertSeq);
-			return "success";
-			
+			return "success";	
 		}
 	
 }
