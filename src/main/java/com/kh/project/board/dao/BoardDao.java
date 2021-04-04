@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import com.kh.project.board.vo.Board;
 import com.kh.project.board.vo.Criteria;
+import com.kh.project.board.vo.Image;
 import com.kh.project.board.vo.Reply;
 
 @Repository
@@ -39,9 +40,19 @@ public class BoardDao {
 		return sqlSession.selectOne("Board.selectPage", no);
 	}
 	
-	//insert
+	// select file
+	public Image selectFile(int no) throws Exception{
+		return sqlSession.selectOne("Board.selectFile", no);
+	}
+	
+	//insert board
 	public int insertBoard(Board board) throws Exception {
 		return sqlSession.insert("Board.insertBoard", board);
+	}
+	
+	//insert board- file
+	public int insertFile(Image image) throws Exception {
+		return sqlSession.insert("Board.insertFile", image);
 	}
 	
 	//update

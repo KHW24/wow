@@ -17,7 +17,7 @@
   <div class="page-title">
     게시글 작성
   </div>
-<form class="form-horizontal" action="postWrite.do" method="POST">
+<form class="form-horizontal" action="postWrite.do" method="POST" enctype="multipart/form-data">
 <script>
 	var csrfHeaderName ="${_csrf.headerName}";
 	var csrfTokenValue="${_csrf.token}";
@@ -28,11 +28,11 @@
     <label for="category" class="col-sm-2 control-label">카테고리</label>
     <div class="col-sm-8">
       <select class="form-control input-lg" id="category" name="post_code">
-      	<option name="post_code" value="food">음식</option>
-        <option name="post_code" value="accessories">악세사리</option>
-        <option name="post_code" value="pet" >애견용품</option>
-        <option name="post_code" value="interior">인테리어소품</option>
-        <option name="post_code" value="etc">기타</option>
+      	<option value="food">음식</option>
+        <option value="accessories">악세사리</option>
+        <option value="pet" >애견용품</option>
+        <option value="interior">인테리어소품</option>
+        <option value="etc">기타</option>
       </select>
     </div>
   </div>
@@ -72,7 +72,7 @@
     <label for="attached-images" class="col-sm-2 control-label">
       첨부파일
     </label>
-    <input type="file" id="attached-images"/>
+    <input type="file" name ="file" id="attached-images"/>
   </div>
   <div class="form-group">
     <label for="hashtags" class="col-sm-2 control-label">
@@ -89,6 +89,7 @@
       <input type="submit" class="btn btn-default" value="등록">&nbsp;&nbsp;
       <a href="boardList.do" class="btn btn-default">취소</a>
       <br><br><br><br>
+     </div>
   </div>
 </form>
   </div>
