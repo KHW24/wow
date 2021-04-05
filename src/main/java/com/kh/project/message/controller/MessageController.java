@@ -1,15 +1,21 @@
 package com.kh.project.message.controller;
 
 import java.security.Principal;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.project.board.service.BoardService;
@@ -43,7 +49,7 @@ public class MessageController {
 	
 	// 쪽지 상세 view 팝업 받은 쪽지
 	@RequestMapping(value="messageviewpopup.do", method=RequestMethod.GET)
-	public ModelAndView messageViewPopup (@RequestParam("msg_seq") int msg_seq, ModelAndView mv) throws Exception {
+	public ModelAndView messageViewPopup (@RequestParam("msg_seq") String msg_seq, ModelAndView mv) throws Exception {
 
 		Message message = messageService.messageView(msg_seq);
 		mv.addObject("list", message);
@@ -53,7 +59,7 @@ public class MessageController {
 	
 	// 쪽지 상세 view 팝업 보낸 쪽지
 	@RequestMapping(value="messageviewpopupUp.do", method=RequestMethod.GET)
-	public ModelAndView messageViewPopupUp (@RequestParam("msg_seq") int msg_seq, ModelAndView mv) throws Exception {
+	public ModelAndView messageViewPopupUp (@RequestParam("msg_seq") String msg_seq, ModelAndView mv) throws Exception {
 
 		Message message = messageService.messageView(msg_seq);
 		mv.addObject("list", message);
@@ -255,19 +261,56 @@ public class MessageController {
 		return mv;
 	}
 	
+//	// 쪽지 삭제 - delete 미완
+//	@RequestMapping(value="messageDelete.do", method=RequestMethod.GET)
+//	public String messageDelete(int msg_seq) throws Exception { 
+//		messageService.messageDelete(msg_seq);
+//		return "redirect:message.do";
+//	}
+	
+	// 카트 삭제
+//	@RequestMapping(value = "messageDelete.do", method = RequestMethod.POST)
+//	public ModelAndView messageDelete(@ModelAttribute Message message, ModelAndView mv) throws Exception {
+//
+//	    JSONObject result = new JSONObject();
+//	    messageService.messageDelete(message);
+//	    mv.addObject("result", "success");
+//	    mv.addObject("status", 1);
+//	    return mv;
+//	}
+	
 	// 쪽지 삭제 - delete 미완
-	@RequestMapping(value="messageDelete.do", method=RequestMethod.POST)
-	public ModelAndView messageDelete(HttpServletRequest request, ModelAndView mv) throws Exception {
-		 
-		String[] ajaxMsg = request.getParameterValues("valueArr");
-		System.out.println("컨트롤러 에서 valueArr값"+ajaxMsg);
-		int size = ajaxMsg.length;
-		for(int i=0; i<size; i++) {
-			messageService.messageDelete(ajaxMsg[i]);
-		}
+//	@RequestMapping(value="messageDelete.do", method=RequestMethod.POST)
+//	public String messageDelete( Message message) throws Exception { 
+//		System.out.println("컨트롤러옴");
 //		messageService.messageDelete(message);
-//		mv.setViewName("redirect:message.do");
-		return mv;
+//		return "redirect:message.do";
+//	}
+	
+	// 쪽지 삭제 - 받은 쪽지함
+	@ResponseBody
+	@RequestMapping(value="messageDelete.do", method=RequestMethod.POST)
+	public String messageDelete(HttpServletRequest request) throws Exception {
+
+		String[] ajaxMsg = request.getParameterValues("valueArr");
+        int size = ajaxMsg.length;
+        for(int i=0; i<size; i++) {
+        	messageService.messageDelete(ajaxMsg[i]);
+        }
+		return "redirect:message.do"; 
+	}
+	
+	// 쪽지 삭제 - 보낸 쪽지함
+	@ResponseBody
+	@RequestMapping(value="messagepushDelete.do", method=RequestMethod.POST)
+	public String messagepushDelete(HttpServletRequest request) throws Exception {
+
+		String[] ajaxMsg = request.getParameterValues("valueArr");
+        int size = ajaxMsg.length;
+        for(int i=0; i<size; i++) {
+        	messageService.messageDelete(ajaxMsg[i]);
+        }
+		return "redirect:messagepush.do"; 
 	}
 
 }

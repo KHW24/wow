@@ -69,5 +69,13 @@
 		DELETE FROM SALES_POST WHERE POST_NO = #{no}
 	</delete>	
 	
+	<!-- mypage 내 글 보기 -->
+	<select id="myBoardList" parameterType="String" resultType="Board">
+		SELECT * FROM (SELECT ROWNUM NUM, P.*FROM (SELECT * FROM SALES_POST WHERE ID =#{id} ORDER BY POST_NO DESC)P) WHERE NUM BETWEEN 1 AND 8
+	</select>
 	
+	<!-- mypage page  -->
+	<select id="myBoardPage" parameterType="map" resultType="Board">
+		SELECT * FROM (SELECT ROWNUM NUM, P.*FROM (SELECT * FROM SALES_POST WHERE ID = #{Pid} ORDER BY POST_NO DESC)P) WHERE NUM BETWEEN 5+(#{more}*4) AND 8+(#{more}*4)
+	</select>
 </mapper>

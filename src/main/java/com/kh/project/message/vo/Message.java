@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public class Message {
 
-	private int msg_seq;
+	private String msg_seq;
 	private String id;
 	private String msg_contents;
 	private Date msg_date;
@@ -12,13 +12,13 @@ public class Message {
 	/**
 	 * @return the msg_seq
 	 */
-	public int getMsg_seq() {
+	public String getMsg_seq() {
 		return msg_seq;
 	}
 	/**
 	 * @param msg_seq the msg_seq to set
 	 */
-	public void setMsg_seq(int msg_seq) {
+	public void setMsg_seq(String msg_seq) {
 		this.msg_seq = msg_seq;
 	}
 	/**
