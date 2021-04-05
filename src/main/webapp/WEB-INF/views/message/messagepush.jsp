@@ -18,27 +18,70 @@
 /*  td {overflow:hidden;text-overflow:ellipsis; width:10} */
 </style>
 <script>
-	//전체 선택되면 체크되는 기능
-	$(function(){
-		var chkObj = document.getElementsByName("RowCheck");
-		var rowCnt = chkObj.length;
-		
-		$("input[name='allCheck']").click(function(){
-			var chk_listArr = $("input[name='RowCheck']");
-			for(var i=0; i<chk_listArr.length; i++) {
-				chk_listArr[i].checked = this.checked;
-			}
+		$(function(){
+			var chkObj = document.getElementsByName("RowCheck");
+			var rowCnt = chkObj.length;
+			
+			$("input[name='allCheck']").click(function(){
+				var chk_listArr = $("input[name='RowCheck']");
+				for (var i=0; i<chk_listArr.length; i++){
+					chk_listArr[i].checked = this.checked;
+				}
+			});
+			$("input[name='RowCheck']").click(function(){
+				if($("input[name='RowCheck']:checked").length == rowCnt){
+					$("input[name='allCheck']")[0].checked = true;
+				}
+				else{
+					$("input[name='allCheck']")[0].checked = false;
+				}
+			});
 		});
-		
-		$("input[name='RowCheck']").click(function(){
-			if($("input[name='RowCheck']:checked").length == rowCnt) {
-				$("input[name='allCheck']")[0].checked = true;
+		function deleteValue(){
+			var url = "messagepushDelete.do";    // Controller로 보내고자 하는 URL (.dh부분은 자신이 설정한 값으로 변경해야됨)
+			var valueArr = new Array();
+		    var list = $("input[name='RowCheck']");
+		    for(var i = 0; i < list.length; i++){
+		        if(list[i].checked){ //선택되어 있으면 배열에 값을 저장함
+		            valueArr.push(list[i].value);
+		        }
+		    }
+		    if (valueArr.length == 0){
+		    	alert("선택된 글이 없습니다.");
+		    }
+		    else{
+				var chk = confirm("정말 삭제하시겠습니까?");				 
+				$.ajax({
+				    url : url,                    // 전송 URL
+				    type : 'POST',                // GET or POST 방식
+				    traditional : true,
+				    data : {
+				    	valueArr : valueArr        // 보내고자 하는 data 변수 설정
+				    },
+					beforeSend : function(xhr){
+						xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+					},
+				    contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+		            success: function(jdata){
+		                if(jdata = "redirect:messagepush.do") {
+		                    alert("삭제를 성공했습니다.");
+
+		                }
+		                else{
+		                    alert("삭제를 실패했습니다.");
+		                }
+		            },  error: function (request,status,errorData){   
+				    	alert('error code: '+request.status+"\n"
+				    			+'message:' +request.reponseText+'\n'
+				    			+ 'error :'+  errorData);
+				    }
+				});
 			}
-			else {
-				$("input[name='allCheck']")[0].checked = false;
-			}
-		});
-	});
+		}
+/* 		function newPage(){  
+		      //$("#container").load(window.location.href + "#container");
+				location.replace("messagepush.do");
+		} */
 	
 </script>
 
@@ -46,7 +89,7 @@
 	<h2>쪽지함</h2>
 	<hr>
 </div>
-<div class="container" style="height: 700px">
+<div class="container" id="container" style="height: 700px">
 	<form style="margin-top:3%">
 	    <script>
 			var csrfHeaderName ="${_csrf.headerName}";
@@ -56,7 +99,7 @@
 		<label><input type="radio" name="message" value="mepush" onclick="location.href='messagepush.do?get_id=<sec:authentication property="principal.member.id"/>" checked> 보낸 쪽지함</label><br>
 		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 		<input type="hidden" name="${_csrf.headerName}" value="${_csrf.headerName}" />
-		<input type="submit" class="btn" value="삭제" style="margin-left: 89.3%;">
+		<input type="button" class="btn" style="margin-left: 89.3%;" onclick="deleteValue();" value="삭제"/>
 		<!-- 페이징 때문에 값 가져오기 -->
 		<input type="hidden" id="cnt" value="${listCount}"/>
 		<input type="hidden" id="page" value="${page}"/>
@@ -67,7 +110,7 @@
 					<th style="width:60%; text-overflow:ellipsis; overflow:hidden; white-space:nowrap;">내용</th>
 					<th style="width:10%; text-overflow:ellipsis; overflow:hidden; white-space:nowrap;">보낸 아이디</th>
 					<th style="width:10%; text-overflow:ellipsis; overflow:hidden; white-space:nowrap;">날짜</th>
-					<th style="width:10%; text-overflow:ellipsis; overflow:hidden; white-space:nowrap;">&nbsp;&nbsp;<input type="checkbox" name="allCheck" id="allCheck"></th>
+					<th style="width:10%; text-overflow:ellipsis; overflow:hidden; white-space:nowrap;">&nbsp;&nbsp;<input type="checkbox" name="allCheck"></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -91,7 +134,7 @@
 					</td>
 					<td>${me.get_id }</td>
 					<td>${me.msg_date }</td>
-					<td>&nbsp;&nbsp;<input type="checkbox" name="RowCheck" value="${ms.msg_seq}"></td>
+					<td>&nbsp;&nbsp;<input type="checkbox" name="RowCheck" value="${me.msg_seq }"></td> 
 				</tr>
 			</c:forEach>
 			</c:if>

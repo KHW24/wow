@@ -55,7 +55,7 @@
 	</select>
 	
 	<!-- 쪽지 상세 view 페이지 -->
-	<select id="messageView" parameterType="int" resultMap="resultMessage">
+	<select id="messageView" parameterType="String" resultMap="resultMessage">
 		SELECT * FROM MESSAGE WHERE MSG_SEQ = #{msg_seq}
 	</select>
 	
@@ -64,8 +64,8 @@
 		UPDATE MESSAGE SET MSG_CONTENTS = #{msg_contents} WHERE MSG_SEQ = #{msg_seq}
 	</select>
 	
-	<!-- 쪽지 삭제 delete! -->
-	<delete id="messageDelete" parameterType="Message">
+	<!-- 쪽지 삭제 delete -->
+	<delete id="messageDelete" parameterType="String">
 		DELETE FROM MESSAGE WHERE MSG_SEQ = #{msg_seq}	
 	</delete>
 	
