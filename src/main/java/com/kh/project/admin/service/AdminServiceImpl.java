@@ -21,6 +21,7 @@ import com.kh.project.member.vo.Member;
 		public List<AdminMs> selectAdmin() throws Exception {
 			return adminDao.selectAdminMs();
 		}
+			
 
 		//신고게시글 조회
 		@Override
@@ -33,6 +34,14 @@ import com.kh.project.member.vo.Member;
 		public void deleteAlert(int alertSeq) throws Exception {
 			adminDao.deleteAlert(alertSeq);
 		}
+
+		// 멤버쉽 다중 삭제
+		@Override
+		public int deleteAdminMs(int mshipSeq) throws Exception {
+
+			return adminDao.deleteAdminMs(mshipSeq);
+		}
+
 
 
 		

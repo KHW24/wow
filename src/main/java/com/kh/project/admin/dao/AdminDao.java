@@ -18,6 +18,11 @@ public class AdminDao {
 		return sqlSession.selectList("Admin.selectAdminMs");
 	}
 	
+	//신고내역 삭제
+	public int deleteAdminMs (int mshipSeq) throws Exception{
+		return sqlSession.delete("Membership.deleteAdminMs",mshipSeq);
+	} 
+	
 	//신고게시글 조회
 	public List<AlertPost> selectAlert() throws Exception{
 		return sqlSession.selectList("Alert.selectAlerts");
