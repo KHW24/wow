@@ -53,6 +53,7 @@ import sun.print.resources.serviceui;
 //		return "redirect:list";
 //	}
 //	
+	
 	// 멤버쉽 선택 삭제
 	@PostMapping(value="adminMsDelete.do")
 	public String myReplyDeleteView(@RequestParam(value= "delNos") List<Integer> delNos) throws Exception{

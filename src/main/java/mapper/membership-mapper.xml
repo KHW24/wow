@@ -50,6 +50,7 @@
 		DELETE FROM MSHIPDATA WHERE MSHIP_SEQ = ${mshipSeq}
 	</delete>
    
+   
 </mapper>   
 
 

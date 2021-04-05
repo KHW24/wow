@@ -33,5 +33,4 @@ public class AdminDao {
 		 sqlSession.delete("Alert.deleteAlert",alertSeq);
 	}
 	
-	
 }

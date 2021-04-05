@@ -15,6 +15,5 @@
    <select id="selectAdminMs"  resultMap="resultAdminMs ">
       SELECT * FROM MSHIPDATA 
    </select>
-  
    
 </mapper>   
