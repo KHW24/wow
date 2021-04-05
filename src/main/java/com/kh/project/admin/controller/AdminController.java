@@ -13,6 +13,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,6 +29,8 @@ import com.kh.project.board.vo.AlertPost;
 import com.kh.project.board.vo.Board;
 import com.kh.project.board.vo.Criteria;
 import com.kh.project.member.service.MemberService;
+
+import sun.print.resources.serviceui;
 
 @Controller
 	public class AdminController {
@@ -54,6 +57,21 @@ import com.kh.project.member.service.MemberService;
 		return "template/index";
 	}
 	
+
+//	// 멤버쉽 삭제
+//	@RequestMapping(value="/update", method=RequestMethod.POST)
+//	public String postdelete(AdminMs vo) throws Exception {
+//		adminService.deleteAlert(vo);
+//		return "redirect:list";
+//	}
+//	
+	
+	// 멤버쉽 선택 삭제
+	@PostMapping(value="adminMsDelete.do")
+	public String myReplyDeleteView(@RequestParam(value= "delNos") List<Integer> delNos) throws Exception{
+		for(Integer delNo : delNos) adminService.deleteAdminMs(delNo);
+		return "Membership.do";
+	}
 	
 	//관리자페이지 - 신고회원관리
 	@RequestMapping(value = "report.do", method = RequestMethod.GET)
@@ -62,7 +80,6 @@ import com.kh.project.member.service.MemberService;
 		model.addAttribute("center","../admin/report.jsp");
 		return "template/index";
 	}
-	
 	
 	//관리자페이지 - 게시글 관리
 	@RequestMapping(value = "postmanage.do", method = RequestMethod.GET)

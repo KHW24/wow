@@ -110,7 +110,7 @@ public class MessageDao {
 	}
 	
 	// 쪽지 상세 view 페이지 
-	public Message messageView(int msg_seq) {
+	public Message messageView(String msg_seq) {
 		return sqlSession.selectOne("Message.messageView", msg_seq);
 	}
 	
@@ -119,7 +119,7 @@ public class MessageDao {
 		return sqlSession.update("Message.messageUpdate", message);
 	}
 	
-	// 쪽지 삭제 ㅜ
+	// 쪽지 삭제 
 	public int messageDelete(String msg_seq) {
 		return sqlSession.delete("Message.messageDelete", msg_seq);
 	}

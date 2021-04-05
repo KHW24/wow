@@ -85,7 +85,7 @@ public class MessageServiceImpl implements MessageService{
 	
 	// 쪽지 상세 view 페이지 
 	@Override
-	public Message messageView(int msg_seq) {
+	public Message messageView(String msg_seq) {
 		return messageDao.messageView(msg_seq);
 	}
 	
@@ -95,7 +95,7 @@ public class MessageServiceImpl implements MessageService{
 		return messageDao.messageUpdate(message);
 	}
 	
-	// 쪽지 삭제 ㅠ
+	// 쪽지 삭제 
 	@Override
 	public int messageDelete(String msg_seq) {
 		return messageDao.messageDelete(msg_seq);

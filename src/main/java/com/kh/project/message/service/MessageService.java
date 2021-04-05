@@ -40,12 +40,12 @@ public interface MessageService {
 	public int ListCountpush(String get_id);
 
 	// 쪽지 상세 view 페이지 
-	public Message messageView(int msg_seq);
+	public Message messageView(String msg_seq);
 	
 	// 쪽지 수정 페이지
 	public int messageUpdate(Message message);
 	
-	// 쪽지 삭제 ㅜ
+	// 쪽지 삭제 ㅠ
 	public int messageDelete(String msg_seq);
 	
 }

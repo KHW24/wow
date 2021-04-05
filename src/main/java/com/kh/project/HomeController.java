@@ -112,12 +112,12 @@ public class HomeController {
 		return "template/index";
 	}
 
-	//내가 쓴 글 리스트
-	@RequestMapping(value="myList.do", method=RequestMethod.GET)
-	public String myListView(Model model) throws Exception{
-		model.addAttribute("center","../mypage/myList.jsp");
-		return "template/index";
-	}
+//	//내가 쓴 글 리스트
+//	@RequestMapping(value="myList.do", method=RequestMethod.GET)
+//	public String myListView(Model model) throws Exception{
+//		model.addAttribute("center","../mypage/myList.jsp");
+//		return "template/index";
+//	}
 	
 	//마이 페이지
 		@RequestMapping(value="mypage.do", method=RequestMethod.GET)

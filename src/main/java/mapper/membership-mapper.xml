@@ -44,4 +44,16 @@
    <insert id="insertPayment" parameterType="Payment">
     INSERT INTO PAYMENT VALUES(PAYMT_SEQ.CURRVAL, #{paymentStatus}, #{paymetnMethod}, #{price}, SYSDATE, #{mshipGrade})
    </insert>
+   
+   <!-- 관리자 페이지 멤버십 삭제 -->
+    <delete id="deleteAdminMs" parameterType="int">
+		DELETE FROM MSHIPDATA WHERE MSHIP_SEQ = ${mshipSeq}
+	</delete>
+   
+   
 </mapper>   
+
+
+
+
+
