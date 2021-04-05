@@ -55,13 +55,6 @@ public class HomeController {
 //		return "template/index";
 //	}
 	
-	//관리자페이지 - 게시글 관리
-	@RequestMapping(value = "postmanage.do", method = RequestMethod.GET)
-	public String postmanage(Locale locale, Model model) {
-		model.addAttribute("center","../admin/postmanage.jsp");
-		return "template/index";
-	}
-	
 	//구매자 버전 게시물 보기 
 	@RequestMapping(value="postBuyerView.do", method=RequestMethod.GET)
 	public String postBuyerView(Model model) throws Exception{

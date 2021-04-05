@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
-    
     <style>
     .button {
 				  background-color: #4CAF50; /* Green */
@@ -52,10 +51,18 @@
     <div class="name">
     	<p>
     		<b>
-    			<c:set var="writer" value="${list.id}"/>
-    			받는 사람 : <input type="text" name="get_id" value="${list.id }" readonly/><br/>
-    		</b>
     		
+    			<c:set var="writer" value="${list.id}"/>
+    			받는 사람 : 
+    			<sec:authorize access="hasRole('ROLE_MEMBER')">
+    				<input type="text" name="get_id" value="${list.id }" readonly/>
+    			</sec:authorize>	
+    			<sec:authorize access="hasRole('ROLE_ADMIN')">
+    				<input type="text" name="get_id" value="${getId}" readonly/>
+    			</sec:authorize>	
+    			<br/>
+    		
+    		</b>
     	<sec:authorize access="isAuthenticated()">
             	<b> 보내는 사람 : <input type="text" name="id" 
             value="<sec:authentication property="principal.member.id"/>" readonly/></b>

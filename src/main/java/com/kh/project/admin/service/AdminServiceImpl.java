@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import com.kh.project.admin.dao.AdminDao;
 import com.kh.project.admin.vo.AdminMs;
 import com.kh.project.board.vo.AlertPost;
+import com.kh.project.board.vo.Board;
+import com.kh.project.board.vo.Criteria;
 import com.kh.project.member.vo.Member;
 	
 	@Service("adminService")
@@ -22,16 +24,16 @@ import com.kh.project.member.vo.Member;
 			return adminDao.selectAdminMs();
 		}
 
-		//신고게시글 조회
-		@Override
-		public List<AlertPost> selectAlert() throws Exception {
-			return adminDao.selectAlert();
-		}
-
 		//신고내역 삭제
 		@Override
 		public void deleteAlert(int alertSeq) throws Exception {
 			adminDao.deleteAlert(alertSeq);
+		}
+
+		//게시글 관리
+		@Override
+		public List<Board> selectPosts(Criteria cri) throws Exception {
+			return adminDao.selectPosts(cri);
 		}
 
 

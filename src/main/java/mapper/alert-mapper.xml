@@ -7,23 +7,30 @@
 		<result property="alertContents" column="ALERT_CONTENTS"/>
 		<result property="postNo" column="POST_NO"/>
 		<result property="id" column="ID"/>
-		<collection property="member" resultMap="resultMember"/>
+		<collection property="post" resultMap="resultBoard"/>
 	</resultMap>
 	
-	<resultMap id="resultMember" type="Member">
+	<resultMap id="resultBoard" type="Board">
 		<result property="alert_cnt" column="ALERT_CNT" />
+		<result property="post_title" column="POST_TITLE" />
 	</resultMap>
 	
 	<insert  id="insertAlertPost" parameterType="AlertPost">
 			INSERT INTO ALERT_POST VALUES(ALERT_SEQ.NEXTVAL,#{alertContents},#{postNo},#{id})
 	</insert>
 	
-	<insert id="updateAlertCnt" parameterType="AlertPost">
-			UPDATE MEMBER SET ALERT_CNT= (SELECT NVL(MAX(ALERT_CNT),0)+1 FROM MEMBER) WHERE ID = #{id}
-	</insert>
+	<update id="updateAlertCnt" parameterType="AlertPost">
+	{ CALL
+	BEGIN
+			UPDATE MEMBER SET ALERT_CNT= (SELECT NVL(MAX(ALERT_CNT),0)+1 FROM MEMBER) WHERE ID = #{id};
+			UPDATE SALES_POST SET ALERT_CNT= (SELECT NVL(MAX(ALERT_CNT),0)+1 FROM SALES_POST) WHERE POST_NO = #{postNo};
+	END
+	}	
+	</update>
 	
 	<select id="selectAlerts" resultMap="resultAlert">
-		SELECT ALERT_SEQ, ALERT_CONTENTS, POST_NO, ALERT_POST.ID, ALERT_CNT FROM ALERT_POST LEFT OUTER JOIN MEMBER ON ALERT_POST.ID = MEMBER.ID ORDER BY ALERT_SEQ DESC
+		SELECT ALERT_SEQ, ALERT_CONTENTS, ALERT_POST.POST_NO, ALERT_POST.ID, ALERT_CNT, POST_TITLE FROM ALERT_POST 
+		LEFT OUTER JOIN SALES_POST ON ALERT_POST.POST_NO = SALES_POST.POST_NO ORDER BY ALERT_SEQ DESC
 	</select>
 	
 	<delete id="deleteAlert" parameterType="int">

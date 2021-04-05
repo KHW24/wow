@@ -121,5 +121,6 @@ public class BoardDao {
 	public void alertPost(AlertPost alert) throws Exception{
 		sqlSession.insert("Alert.insertAlertPost",alert);
 		sqlSession.update("Alert.updateAlertCnt",alert);
+		
 	}
 }

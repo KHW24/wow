@@ -4,6 +4,8 @@ import java.util.List;
 
 import com.kh.project.admin.vo.AdminMs;
 import com.kh.project.board.vo.AlertPost;
+import com.kh.project.board.vo.Board;
+import com.kh.project.board.vo.Criteria;
 import com.kh.project.member.vo.Member;
 
 public interface AdminService {
@@ -11,7 +13,7 @@ public interface AdminService {
 	public List<AdminMs> selectAdmin() throws Exception;
 
 	//신고게시글 조회
-	public List<AlertPost> selectAlert() throws Exception;
+	public List<Board> selectPosts(Criteria cri) throws Exception;
 	
 	//신고내역삭제
 	public void deleteAlert(int alertSeq) throws Exception;

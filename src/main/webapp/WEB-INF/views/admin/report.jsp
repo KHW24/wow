@@ -110,20 +110,19 @@
 <table>
   <tr>
     <th>전체선택 <input type="checkbox" id="allAlert"></th>
-    <th>게시글 작성자</th>
-    <th>작성자 총 신고 횟수</th>
-    <th>게시글 번호</th>
-    <th>신고내용</th>
+    <th>ID</th>
+    <th>글 번호</th>
   </tr>
   <c:forEach items="${alert}" var="alert">
 	  <tr>
 	    <td><input type="checkbox" name="alertCheck" ></td>
 	    <td>${alert.id}</td>
-	    <td>${alert.member[0].alert_cnt}</td>
 		<td>
 		<a href="postSellerView.do?no=${alert.postNo}">${alert.postNo}</a>
 		<input type="hidden" name="alertSeq" value="${alert.alertSeq}"/>
 		</td>
+		<td><a href="postSellerView.do?no=${alert.postNo}">${alert.post[0].post_title}</a></td>
+		<td>${alert.post[0].alert_cnt}</td>
 	    <td>${alert.alertContents }</td>
 	  </tr>
     </c:forEach>
