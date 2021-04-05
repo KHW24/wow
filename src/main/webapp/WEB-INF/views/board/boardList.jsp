@@ -17,12 +17,63 @@ $(function(){
        if($(this).hasClass('glyphicon glyphicon-heart-empty')== true){
           $(this).removeClass('glyphicon glyphicon-heart-empty');
           $(this).addClass('glyphicon glyphicon-heart');
-       }else{
-          $(this).removeClass('glyphicon glyphicon-heart');
-          $(this).addClass('glyphicon glyphicon-heart-empty');
+          alert($(this).val());	// post_no 값 확인
+          
+		  	var post_no = $(this).val();
+  			var get_id = $('#infoConId').val();
+  			
+  			$.ajax({
+  				url : "wishInsert.do",
+  				type : "POST",
+  				data : { post_no : post_no, get_id : get_id },
+  				beforeSend : function(xhr){
+  					xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+  				},
+  			    contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+  				success : function(data){
+  					if(data = "1") {
+  						alert("관심품목에 추가되었습니다.");
+  					} else {
+  						alert("관심품목 추가를 실패했습니다.")
+  					}
+  				},	error: function (request,status,errorData){   
+      		    	alert('error code: '+request.status+"\n"
+      		    			+'message:' +request.reponseText+'\n'
+      		    			+ 'error :'+  errorData);
+      		    }
+  			});
+       }	else{
+	          $(this).removeClass('glyphicon glyphicon-heart');
+	          $(this).addClass('glyphicon glyphicon-heart-empty');
+	          
+	          var post_no = $(this).val();
+	  			
+	  			$.ajax({
+	  				url : "wishDelete.do",
+	  				type : "POST",
+	  				data : { post_no : post_no},
+	  				beforeSend : function(xhr){
+	  					xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+	  				},
+	  			    contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+	  				success : function(data){
+	  					if(data = "1") {
+	  						alert("관심품목에서 삭제하였습니다.");
+	  					} else {
+	  						alert("관심품목 삭제를 실패했습니다.")
+	  					}
+	  				},	error: function (request,status,errorData){   
+	      		    	alert('error code: '+request.status+"\n"
+	      		    			+'message:' +request.reponseText+'\n'
+	      		    			+ 'error :'+  errorData);
+	      		    }
+	  			});
        }
+       
+       
     });
  });
+
 </script>
 <script>
 	var csrfHeaderName ="${_csrf.headerName}";
@@ -61,7 +112,8 @@ $(function(){
 					<fmt:formatDate	pattern="MM-dd" value="${n.post_date}" />
 					</p>
 					<p id="price">${n.post_price }원</p>
-					<button name="hbtn" id="hbtn" class="glyphicon glyphicon-heart-empty"></button>
+					<input type="hidden" id="${n.post_no }" name="wbtn" value="${n.post_no }"/>
+					<button name="hbtn" id="hbtn" class="glyphicon glyphicon-heart-empty" value="${n.post_no }"></button>
 				</li>
 			</c:forEach>
 		</ul>
@@ -82,6 +134,7 @@ $(function(){
 		<a href="postWrite.do" id="enbtn" class="btn btn-default">글 등록</a>
 	</div>
 </c:if>
+<input type="hidden" id="infoConId" value="<sec:authentication property="principal.member.id"/>">
 
 <script>
 var more = -1;
@@ -131,6 +184,13 @@ var more = -1;
 		});
 	}); 
  }); 
+</script>
+<script>
+	
+	// 찜하기
+
+
+	
 </script>
 
 

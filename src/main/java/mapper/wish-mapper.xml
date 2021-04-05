@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Wish">
+	<resultMap id="resultWish" type="Wish">
+		<id property="wish_seq" column="wish_seq" />
+		<result property="post_no" column="POST_NO" />
+		<result property="get_id" column="GET_ID" />
+	</resultMap>
+
+	<!-- 관심품목에 삽입 -->
+	<insert id="wishInsert" parameterType="Wish">
+		INSERT INTO WISH_LIST(POST_NO, GET_ID) VALUES(#{post_no}, #{get_id})
+	</insert>
+	
+	<!-- 관심품목 리스트 -->
+	
+	<!-- 관심품목 페이징(더보기) -->
+	
+	<!-- 관심품목 삭제 -->
+	<delete id="wishDelete" parameterType="String">
+		DELETE FROM WISH_LIST WHERE POST_NO = #{post_no}		
+	</delete>
+
+
+</mapper>

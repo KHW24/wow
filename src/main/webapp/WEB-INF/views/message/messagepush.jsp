@@ -64,8 +64,8 @@
 				    contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 		            success: function(jdata){
 		                if(jdata = "redirect:messagepush.do") {
-		                    alert("삭제를 성공했습니다.");
-
+		                	alert("삭제를 성공했습니다.");
+		                    	window.location.href="messagepush.do?get_id=<sec:authentication property="principal.member.id"/>";
 		                }
 		                else{
 		                    alert("삭제를 실패했습니다.");
@@ -185,7 +185,6 @@
 		console.log(str);
 		paging.html(str);	// div 부분에 표시되게
 		}
-		
 		
 		//다음 페이지 눌렀을 때 리스트 나오게
 		$(function(){
