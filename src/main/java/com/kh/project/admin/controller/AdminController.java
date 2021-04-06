@@ -75,8 +75,13 @@ import sun.print.resources.serviceui;
 	
 	//관리자페이지 - 신고회원관리
 	@RequestMapping(value = "report.do", method = RequestMethod.GET)
-	public String report( Model model) throws Exception {
-		
+	public String report(@RequestParam(defaultValue="1", required=false) int page, Model model) throws Exception {
+		int listCount = adminService.allCountAlertMember();
+		Criteria cri = new Criteria(page, 10);
+		model.addAttribute("cri",cri);
+		model.addAttribute("alert",adminService.selectListAlertMember());
+		model.addAttribute("listCount", listCount);
+		model.addAttribute("page", page);
 		model.addAttribute("center","../admin/report.jsp");
 		return "template/index";
 	}
@@ -93,20 +98,21 @@ import sun.print.resources.serviceui;
 		model.addAttribute("center","../admin/boardmanage.jsp");
 		return "template/index";
 	}
-	
-	//신고내역 다중 삭제
-		@ResponseBody
-		@PostMapping(value="alertDelete.do")
-		public String alertDelete(@RequestParam("alertSeq") List<Integer> alertSeqs) throws Exception{
-			for(Integer alertSeq : alertSeqs) adminService.deleteAlert(alertSeq);
-			return "success";	
-		}
 		
+	//게시글 관리  - 게시글 다중삭제
 	@RequestMapping(value="postAdminDelete.do", method=RequestMethod.POST)
 	@ResponseBody
 	public String deletePost(@RequestParam(value="postDel[]") List<Integer> postDels) throws Exception{
-			
 		for(Integer postNo : postDels) boardService.deleteBoard(postNo);
+		return "success";
+		
+	} 
+	
+	//게시글 관리  - 신고회원 탈퇴
+	@RequestMapping(value="memberAdminDelete.do", method=RequestMethod.POST)
+	@ResponseBody
+	public String deleteMember(@RequestParam(value="memberId[]") List<String> memberIds) throws Exception{
+		for(String memberId : memberIds) memberService.deleteMember(memberId);
 		return "success";
 		
 	} 

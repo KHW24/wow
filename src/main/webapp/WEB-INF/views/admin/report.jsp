@@ -6,7 +6,7 @@
   table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
-    width: 70%;
+    width: 50%;
     margin-left: auto;
     margin-right: auto;
     color:black;
@@ -22,6 +22,7 @@
     background-color: #dddddd;
     text-align: center;
   }
+  
   /* 페이징 처리 */
   .pagination {
     display: inline-block;
@@ -67,30 +68,46 @@
 			}
 		});
 		
-		//신고내역 삭제
-		$("#alertDelete").click(function(){
+		//신고회원 탈퇴
+		$("#memberSignOut").click(function(){
 			var header = "${_csrf.headerName}"; 
 	         var token = "${_csrf.token}";
-	         var alertSeqs= $('input[name=alertSeq]').val();
 	  		 $(document).ajaxSend(function(e,xhr, options){
 	             xhr.setRequestHeader(header, token); 
 	           });
-			$.ajax({
-				type: "post",
-				url: "${pageContext.request.contextPath}/alertDelete.do",
-				contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-				data: {alertSeq : alertSeqs},
-				success: function(data){
-					if(data=="success"){
-						alert("삭제가 완료되었습니다.");
-					}
-				},
-				error:function(request, status, error){
-					alert("code"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-				}
+	  		 
+	  		  var cnt = $("input[name='alertCheck']:checked").length;
+		      var arr = new Array();
+		         
+		         $("input[name='alertCheck']:checked").each(function(){
+		        	arr.push($(this).val()); 
+		        	console.log($(this).val())
+		         });
+		         
+		         if(cnt==0){
+		        	 alert("선택된 회원이 없습니다.");
+		         }else{
+		        	 if(confirm("탈퇴시키겠습니까?")){
+		        		 $.ajax({
+		 	 				type: "post",
+		 	 				url: "${pageContext.request.contextPath}/memberAdminDelete.do",
+		 	 				data: {memberId:arr},
+		 	 				success: function(data){
+		 	 					if(data=="success"){
+		 	 						alert("탈퇴가 완료되었습니다.");
+		 	 						arr = new Array();
+		 	 						location.reload();
+		 	 					}else{
+		 	 						alert("삭!제! 실!패!")
+		 	 					}
+		 	 				},
+		 	 				error:function(request, status, error){
+		 	 					alert("code"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+		 	 				}
+		 	 			});
+		        	 }
+		         }
 			});
-		});
-		
 	});
 </script>  
 
@@ -111,25 +128,19 @@
   <tr>
     <th>전체선택 <input type="checkbox" id="allAlert"></th>
     <th>ID</th>
-    <th>글 번호</th>
+    <th>신고 횟수</th>
   </tr>
   <c:forEach items="${alert}" var="alert">
 	  <tr>
-	    <td><input type="checkbox" name="alertCheck" ></td>
+	    <td><input type="checkbox" name="alertCheck" value="${alert.id }" ></td>
 	    <td>${alert.id}</td>
-		<td>
-		<a href="postSellerView.do?no=${alert.postNo}">${alert.postNo}</a>
-		<input type="hidden" name="alertSeq" value="${alert.alertSeq}"/>
-		</td>
-		<td><a href="postSellerView.do?no=${alert.postNo}">${alert.post[0].post_title}</a></td>
-		<td>${alert.post[0].alert_cnt}</td>
-	    <td>${alert.alertContents }</td>
+		<td>${alert.alert_cnt}</td>
 	  </tr>
     </c:forEach>
   <tr>
-  	<td><button type="button" class="btn btn-default btn-sm" id="alertDelete">신고내역 삭제</td>
-    <td><button type="button" class="btn btn-default btn-sm">쪽지 전송</td>
-    <td col="5"><button type="button" class="btn btn-default btn-sm">회원 탈퇴</td>
+  	<td colspan="3" style="text-align:left;padding-left:100px;">
+  	<button type="button" class="btn btn-default btn-sm" id="memberSignOut">회원 탈퇴
+  	</td>
   </tr>
 </table>
 <br>

@@ -80,5 +80,8 @@
 		UPDATE MEMBER SET PASSWORD = #{password} WHERE ID = #{id}
 	</update>
 	
+	<select id="selectListAlertMember" resultMap="resultMember" >
+		SELECT ID, ALERT_CNT FROM MEMBER WHERE ALERT_CNT > 0 
+	</select>
 	
 </mapper>

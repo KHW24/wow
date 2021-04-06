@@ -8,6 +8,7 @@ import com.kh.project.admin.vo.AdminMs;
 import com.kh.project.board.vo.AlertPost;
 import com.kh.project.board.vo.Board;
 import com.kh.project.board.vo.Criteria;
+import com.kh.project.member.vo.Member;
 
 @Repository
 public class AdminDao {
@@ -29,14 +30,11 @@ public class AdminDao {
 		return sqlSession.delete("Membership.deleteAdminMs",mshipSeq);
 	} 
 	
-	//신고게시글 조회
-	public List<AlertPost> selectAlert() throws Exception{
-		return sqlSession.selectList("Alert.selectAlerts");
+	public int allCountAlertMember() throws Exception{
+		return sqlSession.selectOne("Admin.allCountAlertMember");
 	}
 
-	//신고내역 삭제
-	public void deleteAlert(int alertSeq) throws Exception{
-		 sqlSession.delete("Alert.deleteAlert",alertSeq);
+	public List<Member> selectListAlertMember() throws Exception{
+		return sqlSession.selectList("Member.selectListAlertMember");
 	}
-	
 }

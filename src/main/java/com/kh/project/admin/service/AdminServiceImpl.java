@@ -31,17 +31,22 @@ import com.kh.project.member.vo.Member;
 			return adminDao.deleteAdminMs(mshipSeq);
 		}
 
-
-		//신고내역 삭제
-		@Override
-		public void deleteAlert(int alertSeq) throws Exception {
-			adminDao.deleteAlert(alertSeq);
-		}
-
 		//게시글 관리
 		@Override
 		public List<Board> selectPosts(Criteria cri) throws Exception {
 			return adminDao.selectPosts(cri);
+		}
+
+		//신고회원 총 인원수
+		@Override
+		public int allCountAlertMember() throws Exception {
+			return adminDao.allCountAlertMember();
+		}
+
+		//신고회원 목록조회
+		@Override
+		public List<Member> selectListAlertMember() throws Exception {
+			return adminDao.selectListAlertMember();
 		}
 
 

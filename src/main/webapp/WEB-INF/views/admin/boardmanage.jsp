@@ -47,27 +47,27 @@
 	$(function(){
 		
 		//전체 선택 및 해제
-		$("#allAlert").change(function(){
-			if($("#allAlert").prop("checked")==true){
-				$("input[name=alertCheck]").prop("checked",true);
+		$("#allPost").change(function(){
+			if($("#allPost").prop("checked")==true){
+				$("input[name=postCheck]").prop("checked",true);
 			}else{
-				$("input[name=alertCheck]").prop("checked",false);
+				$("input[name=postCheck]").prop("checked",false);
 			}
 		});
 		
 		//개별 선택 시 전체선택 및 해제버튼 변경
-		$("input[name=alertCheck]").change(function(){
-			checkBoxLength = $("input[name=alertCheck]").length;
-			checkedLength = $("input[name=alertCheck]:checked").length;
+		$("input[name=postCheck]").change(function(){
+			checkBoxLength = $("input[name=postCheck]").length;
+			checkedLength = $("input[name=postCheck]:checked").length;
 			
 			if(checkBoxLength==checkedLength){
-				$("#allAlert").prop("checked",true);
+				$("#allPost").prop("checked",true);
 			}else{
-				$("#allAlert").prop("checked",false);
+				$("#allPost").prop("checked",false);
 			}
 		});
 		
-		//신고내역 삭제
+		//게시글 삭제
 		$("#postDelete").click(function(){
 			 var header = "${_csrf.headerName}"; 
 	         var token = "${_csrf.token}";
@@ -109,14 +109,22 @@
 		
 	});
 	
-	// 쪽지보내기 팝업
-	function popupOpen(){
-	    		var getId = $("#sendMsg").prev().val();
-	    		console.log(getId);
-	    	     var popUrl = "messagepopupAdmin.do?getId="+getId;	//팝업창에 출력될 페이지 URL
-	    	     var popOption = "width=500, height=430, resizable=no, scrollbars=no, status=no;";    //팝업창 옵션(optoin)
-	    	         window.open(popUrl,"",popOption);  
-	}
+	$(function(){
+		// 쪽지보내기 팝업
+		$(".sendMsg").click(function(){
+	 		var sendMsgId = $(this).attr("id");
+	 		console.log(sendMsgId);
+	 		var getId = $("#"+sendMsgId).prev().val();
+	 		console.log(getId);
+	 		
+		    var popUrl = "messagepopupAdmin.do?getId="+getId;	//팝업창에 출력될 페이지 URL
+		    var popOption = "width=500, height=430, resizable=no, scrollbars=no, status=no;";    //팝업창 옵션(optoin)
+		    window.open(popUrl,"",popOption);
+		});	
+	});
+	
+	
+	     
 </script>  
 
  <!-- Category -->
@@ -134,7 +142,7 @@
 <!--CRUD-->
 <table>
   <tr>
-    <th>전체선택 <input type="checkbox" id="allAlert"></th>
+    <th>전체선택 <input type="checkbox" id="allPost"></th>
     <th>게시글 작성자</th>
     <th>게시글 번호</th>
     <th>게시글 제목</th>
@@ -143,7 +151,8 @@
     <th>작성자 쪽지 전송</th>
   </tr>
   <c:if test="${listCount != 0}">
-  <c:forEach items="${posts}" var="posts">
+
+  <c:forEach items="${posts}" var="posts" varStatus="status">
 	  <tr>
 	    <td><input type="checkbox" name="postCheck" value="${posts.post_no}"></td>
 	    <td>${posts.id}</td>
@@ -155,8 +164,8 @@
 		<td>${posts.alert_cnt}</td>
 	    <td><font color="red">${posts.alertPost[0].alertContents }</font></td>
 	    <td>
-	    <input type="hidden" value="${posts.id}"/>
-	    <button type="button" class="btn btn-default btn-sm" onclick="popupOpen();" id="sendMsg">쪽지 전송</button>
+	    <input type="hidden" value="${posts.id}" />
+	    <button type="button" class="btn btn-default btn-sm sendMsg" id="sendMsg${status.count}" >쪽지 전송</button>
 	    </td>
 	  </tr>
     </c:forEach>

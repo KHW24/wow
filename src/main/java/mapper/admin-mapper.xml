@@ -16,4 +16,8 @@
       SELECT * FROM MSHIPDATA 
    </select>
    
+   <!-- 관리자 페이지-신고회원 총 인원수 -->
+	<select id="allCountAlertMember" resultType="_int">
+		SELECT COUNT(*) FROM MEMBER WHERE ALERT_CNT > 0
+	</select>
 </mapper>   

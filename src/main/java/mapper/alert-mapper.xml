@@ -28,13 +28,7 @@
 	}	
 	</update>
 	
-	<select id="selectAlerts" resultMap="resultAlert">
-		SELECT ALERT_SEQ, ALERT_CONTENTS, ALERT_POST.POST_NO, ALERT_POST.ID, ALERT_CNT, POST_TITLE FROM ALERT_POST 
-		LEFT OUTER JOIN SALES_POST ON ALERT_POST.POST_NO = SALES_POST.POST_NO ORDER BY ALERT_SEQ DESC
-	</select>
 	
-	<delete id="deleteAlert" parameterType="int">
-		DELETE FROM ALERT_POST WHERE ALERT_SEQ = ${alertSeq}
-	</delete>
+	
 	
 </mapper>

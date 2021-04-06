@@ -16,10 +16,13 @@ public interface AdminService {
 	// 멤버쉽 삭제
 	public int deleteAdminMs (int mshipSeq) throws Exception;
 
-	//신고게시글 조회
+	//게시글 관리
 	public List<Board> selectPosts(Criteria cri) throws Exception;
 	
-	//신고내역삭제
-	public void deleteAlert(int alertSeq) throws Exception;
+	//신고회원 총 인원수
+	public int allCountAlertMember() throws Exception;
+	
+	//신고회원 목록 조회
+	public List<Member> selectListAlertMember() throws Exception;
 
 }
