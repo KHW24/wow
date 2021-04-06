@@ -54,18 +54,18 @@
 
 
 
-  <!-- first Container Category -->
+ <!-- first Container Category -->
   <div class="container-fluid bg-3 text-center">
     <h3 class="margin"><b>카테고리</b></h3>
-    <a href="boardList.do" class="btn btn-default btn-lg"> <br>&nbsp; &nbsp;&nbsp;  FOOD&nbsp; &nbsp; &nbsp; <br><br>
+    <a href="boardList.do?category=food&onsale=&post_title=" class="btn btn-default btn-lg"> <br>&nbsp; &nbsp;&nbsp;  FOOD&nbsp; &nbsp; &nbsp; <br><br>
     </a>
-    <a href="boardList.do" class="btn btn-default btn-lg"> <br>&nbsp; &nbsp;&nbsp;  ACC&nbsp; &nbsp; &nbsp; <br><br>
+    <a href="boardList.do?category=accessories&onsale=" class="btn btn-default btn-lg"> <br>&nbsp; &nbsp;&nbsp;  ACC&nbsp; &nbsp; &nbsp; <br><br>
     </a>
-    <a href="boardList.do" class="btn btn-default btn-lg"> <br>&nbsp; &nbsp;&nbsp;  PET&nbsp; &nbsp; &nbsp; <br><br>
+    <a href="boardList.do?category=pet&onsale=" class="btn btn-default btn-lg"> <br>&nbsp; &nbsp;&nbsp;  PET&nbsp; &nbsp; &nbsp; <br><br>
     </a>
-    <a href="boardList.do" class="btn btn-default btn-lg"> <br>&nbsp;INTERIOR&nbsp;<br><br>
+    <a href="boardList.do?category=interior&onsale=" class="btn btn-default btn-lg"> <br>&nbsp;INTERIOR&nbsp;<br><br>
     </a>
-    <a href="boardList.do" class="btn btn-default btn-lg"> <br>&nbsp; &nbsp;&nbsp;  ETC&nbsp; &nbsp; &nbsp; <br><br>
+    <a href="boardList.do?category=etc&onsale=" class="btn btn-default btn-lg"> <br>&nbsp; &nbsp;&nbsp;  ETC&nbsp; &nbsp; &nbsp; <br><br>
     </a>
 
   </div>
