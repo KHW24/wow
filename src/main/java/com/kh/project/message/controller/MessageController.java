@@ -81,8 +81,6 @@ public class MessageController {
 		
 		System.out.println("컨트롤러옴");
 		int cnt = messageService.messagepost(message);
-		System.out.println("컨트롤러에서 cnt"+cnt);
-		mv.addObject("cnt", cnt);
         mv.setViewName("message/messagepopupCon");
 		return mv;
 	}

@@ -89,12 +89,12 @@ public class HomeController {
 	 * "template/index"; }
 	 */
 	
-	//관심품목 페이지
-	@RequestMapping(value="wishList.do", method=RequestMethod.GET)
-	public String wishListView(Model model) throws Exception{
-		model.addAttribute("center","../mypage/wishList.jsp");
-		return "template/index";
-	}
+//	//관심품목 페이지
+//	@RequestMapping(value="wishList.do", method=RequestMethod.GET)
+//	public String wishListView(Model model) throws Exception{
+//		model.addAttribute("center","../mypage/wishList.jsp");
+//		return "template/index";
+//	}
 	
 	/*
 	 * //게시물 리스트 페이지

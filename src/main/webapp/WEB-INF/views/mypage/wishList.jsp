@@ -1,8 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
+<%@ taglib uri="http://www.springframework.org/security/tags"
+	prefix="sec"%>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
     <!-- css 파일 -->
 	<link href="${pageContext.request.contextPath}/resources/css/mylist2.css"
 		rel="stylesheet" type="text/css" />
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+	<input type="hidden" name="${_csrf.headerName}" value="${_csrf.headerName}" />           
+	<script>
+	var csrfHeaderName ="${_csrf.headerName}";
+	var csrfTokenValue="${_csrf.token}";
+	</script>
     <!-- 전체 div -->
         <div class="wraps">
             <h1>관심 품목</h1>
@@ -27,52 +41,148 @@
             <div class="fixed_img_col">
                 <ul>
                     <!-- li가 게시물 하나하나 -->
-                    <li>
-                        <span class="thumb">
-                            <em>카테고리명</em>
-                            <a href="postBuyerView.do"><img class="img-rounded" src="${pageContext.request.contextPath}/resources/images/sample.jpg" alt=""></span>
-                            <Strong>글 제목</Strong>
-                        </a>
-                        <p>작성자(or지역) 12-18(날짜)</p>
-                        <p>5,000원</p>
-                    </li>
-                    <li>
-                        <span class="thumb">
-                            <em>카테고리명</em>
-                            <a href="postBuyerView.do"><img class="img-rounded" src="${pageContext.request.contextPath}/resources/images/sample.jpg" alt=""></span>
-                            <Strong>글 제목</Strong>
-                        </a>
-                        <p>작성자(or지역) 12-18(날짜)</p>
-                        <p>5,000원</p>
-                    </li>
-                    <li>
-                        <span class="thumb">
-                            <em>카테고리명</em>
-                            <a href="postBuyerView.do"><img class="img-rounded" src="${pageContext.request.contextPath}/resources/images/sample.jpg" alt=""></span>
-                            <Strong>글 제목</Strong>
-                        </a>
-                        <p>작성자(or지역) 12-18(날짜)</p>
-                        <p>5,000원</p>
-                    </li>
-                    <li>
-                        <span class="thumb">
-                            <em>카테고리명</em>
-                            <a href="postBuyerView.do"><img class="img-rounded" src="${pageContext.request.contextPath}/resources/images/sample.jpg" alt=""></span>
-                            <Strong>글 제목</Strong>
-                        </a>
-                        <p>작성자(or지역) 12-18(날짜)</p>
-                        <p>5,000원</p>
-                    </li>
-                    <li>
-                        <span class="thumb">
-                            <em>카테고리명</em>
-                            <a href="postBuyerView.do"><img class="img-rounded" src="${pageContext.request.contextPath}/resources/images/sample.jpg" alt=""></span>
-                            <Strong>글 제목</Strong>
-                        </a>
-                        <p>작성자(or지역) 12-18(날짜)</p>
-                        <p>5,000원</p>
-                    </li>
+					<c:forEach var="n" items="${wishList}" varStatus="status">
+						<li><span class="thumb"> <em>${boardList[status.index].post_code }</em>
+								<a href="postSellerView.do?no=${boardList[status.index].post_no }"> 
+								<img class="img-rounded" src="${pageContext.request.contextPath}/resources/upload/${boardList[status.index].rename_filename}"alt=""> 
+								<Strong>${boardList[status.index].post_title }</Strong></a></span>
+							<p>${boardList[status.index].post_address }&nbsp;·&nbsp;
+							<fmt:formatDate	pattern="MM-dd" value="${boardList[status.index].post_date}" />
+							</p>
+							<p id="price">${boardList[status.index].post_price }원</p>
+							<input type="hidden" id="${boardList[status.index].post_no }" name="wbtn" value="${boardList[status.index].post_no }"/>
+							<button name="hbtn${boardList[status.index].post_no }" id="hbtn" class="glyphicon glyphicon-heart" value="${boardList[status.index].post_no }"></button>
+						</li>
+					</c:forEach>
                 </ul>
             </div>
         </div>
-        <button type="button" id="more" class="btn btn-default">더보기</button>
+       <div id="dd">
+		</div>
+	<button type="button" id="more" class="btn btn-default">더보기</button>
+	<br />
+	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+	<input type="hidden" name="${_csrf.headerName}" value="${_csrf.headerName}" />
+	
+	<sec:authorize access="isAuthenticated()">
+		<sec:authentication var="loginId" property='principal.member.id' />
+	</sec:authorize>
+	<sec:authorize access="isAuthenticated()">
+	<input type="hidden" id="infoConId" value="<sec:authentication property="principal.member.id"/>">
+	</sec:authorize>
+	<script>
+	/* var more = -1;
+	 $(function(){$('#more').on('click',function(){
+		 
+		 	more = more +1;
+			alert(more);
+			
+			$.ajax({
+				url : "wishListMore.do",
+			    type: 'POST',
+			    //contentType : 'text/html; charset=utf-8;',//내가 서버로 보내는 데이터의 타입
+			    data: { more : more},
+				dataType: "json",
+				beforeSend : function(xhr){
+					xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+				},
+				success: function(data){
+	
+					var addListHtml ="";
+	
+						addListHtml += "<div class='fixed_img_col' style='height:350px'>";
+					for(var i in data.list){
+						
+						addListHtml += "<ul>";
+						addListHtml += "<li><span class='thumb'><em>"+data.list[i].post_code+"</em>";
+					   addListHtml += "<a href='postSellerView.do?no="+data.list[i].post_no+"'> ";
+					   addListHtml += "<img class='img-rounded' src='${pageContext.request.contextPath}/resources/images/"+data.list[i].rename_filename+"'alt=''></span>";
+					   addListHtml += "<Strong>"+decodeURIComponent(data.list[i].post_title)+"</Strong> </a>";
+					   addListHtml += "<p>"+decodeURIComponent(data.list[i].post_address)+"&nbsp;·&nbsp"+data.list[i].post_date+"</p>";
+					   //addListHtml += "<p>"+data.list[i].post_address+　·　+data.list[i].post_date+"</p>";
+					   addListHtml += "<p id='price'>"+data.list[i].post_price+"원</p>";
+					   addListHtml += "<button name='hbtn' id='hbtn' class='glyphicon glyphicon-heart-empty'></button>";
+					   addListHtml += "</li>";
+					   addListHtml += "</ul>";					
+					}
+	
+						addListHtml += "</div>";
+					 $("#dd").append(addListHtml);
+					
+				},
+			    error: function (request,status,errorData){   
+			    	alert('error code: '+request.status+"\n"
+			    			+'message:' +request.reponseText+'\n'
+			    			+ 'error :'+  errorData);
+			    }
+			});
+		}); 
+	 });  */
+	</script>
+	
+	<script>
+	$(function(){
+	    $('button[name^="hbtn"]').on('click', function(){
+	       if($(this).hasClass('glyphicon glyphicon-heart-empty')== true){
+	          alert($(this).val());	// post_no 값 확인
+	          
+			  	var post_no = $(this).val();
+	  			var get_id = $('#infoConId').val();
+	  			
+	  			$.ajax({
+	  				url : "wishInsert.do",
+	  				type : "POST",
+	  				data : { post_no : post_no, get_id : get_id },
+	  				beforeSend : function(xhr){
+	  					xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+	  				},
+	  			    contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+	  				success : function(data){
+	  					if(data = "success") {
+	  						alert("관심품목에 추가되었습니다.");
+	                    	window.location.href="boardList.do";
+	  					} else {
+	  						alert("관심품목 추가를 실패했습니다.")
+	  					}
+	  				},	error: function (request,status,errorData){   
+	      		    	alert('error code: '+request.status+"\n"
+	      		    			+'message:' +request.reponseText+'\n'
+	      		    			+ 'error :'+  errorData);
+	      		    }
+	  			});
+	            $(this).removeClass('glyphicon glyphicon-heart-empty');
+	            $(this).addClass('glyphicon glyphicon-heart');
+	       }	else{
+		          $(this).removeClass('glyphicon glyphicon-heart');
+		          $(this).addClass('glyphicon glyphicon-heart-empty');
+		          
+		          var post_no = $(this).val();
+		  			
+		  			$.ajax({
+		  				url : "wishDelete.do",
+		  				type : "POST",
+		  				data : { post_no : post_no},
+		  				beforeSend : function(xhr){
+		  					xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+		  				},
+		  			    contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+		  				success : function(data){
+		  					if(data = "1") {
+		  						alert("관심품목에서 삭제하였습니다.");
+		  					} else {
+		  						alert("관심품목 삭제를 실패했습니다.")
+		  					}
+		  				},	error: function (request,status,errorData){   
+		      		    	alert('error code: '+request.status+"\n"
+		      		    			+'message:' +request.reponseText+'\n'
+		      		    			+ 'error :'+  errorData);
+		      		    }
+		  			});
+	       }
+	       
+	       
+	    });
+	 });
+
+	</script>
+	

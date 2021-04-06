@@ -12,10 +12,26 @@
 	<insert id="wishInsert" parameterType="Wish">
 		INSERT INTO WISH_LIST(POST_NO, GET_ID) VALUES(#{post_no}, #{get_id})
 	</insert>
-	
+	<insert id="wishYNInsert" parameterType="Wish">
+		INSERT INTO SALES_POST(WISH_YN) VALUES(#{wish_yn})
+	</insert>
+		
 	<!-- 관심품목 리스트 -->
+	<select id="wishList" parameterType="String" resultMap="resultWish">	
+		SELECT * FROM SALES_POST A
+		LEFT JOIN WISH_LIST B 
+		ON A.POST_NO = B.POST_NO
+        WHERE ROWNUM BETWEEN 1 AND 8 AND EXISTS ( SELECT * FROM WISH_LIST WHERE B.GET_ID = #{get_id})
+	</select>
 	
 	<!-- 관심품목 페이징(더보기) -->
+	<select id="wishListMore" parameterType="Map" resultMap="resultWish">	
+		SELECT * FROM SALES_POST A
+		LEFT JOIN WISH_LIST B 
+		ON A.POST_NO = B.POST_NO
+        WHERE ROWNUM BETWEEN 8+(4*#{more}) AND 11+(4*#{more})
+        AND EXISTS ( SELECT * FROM WISH_LIST WHERE B.GET_ID = #{get_id})
+	</select>
 	
 	<!-- 관심품목 삭제 -->
 	<delete id="wishDelete" parameterType="int">
@@ -28,9 +44,6 @@
 		LEFT JOIN WISH_LIST B 
 		ON A.POST_NO = B.POST_NO
         WHERE EXISTS ( SELECT * FROM WISH_LIST WHERE B.WISH_SEQ IS NOT NULL)
-	</select> 
-	
-	
-
+	</select>
 
 </mapper>
