@@ -165,10 +165,11 @@
 	    </td>
   </tr>
       </c:forEach>
+        <tr>
+  	<td><button type="button" class="btn btn-default btn-sm" id="postDelete">게시글 삭제</td>
+  	<td colspan="6"></td>
+  </tr>
 </table>
-<br>
-<input type="button" value="삭제" class="btn btn-outlin-info" id="membershipDelet" onclick="deleteMembership();">
-
 <br>
 <div class="pagination">
   <a href="#">&laquo;</a>
