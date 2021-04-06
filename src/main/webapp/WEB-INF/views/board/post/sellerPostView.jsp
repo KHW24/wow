@@ -211,9 +211,9 @@
               </td>
               <td>
               <c:if test="${writer eq loginId}">
-                <select class="form-control" >
-                  <option>판매중</option>
-                  <option>판매완료</option>
+                <select class="form-control" id="onSaleUp">
+                  <option value="y" <c:if test="${list.post_yn eq 'y'}">selected</c:if>>판매중</option>
+                  <option value="n" <c:if test="${list.post_yn eq 'n'}">selected</c:if>>판매완료</option>
                 </select>
                </c:if>
               </td>
@@ -542,6 +542,42 @@
 		});
 	
 	</script>
+	
+<script>
+// 판매중, 판매완료
+
+$(function () { $("#onSaleUp").change(function(){
+	var header = "${_csrf.headerName}"; 
+    var token = "${_csrf.token}";
+		 $(document).ajaxSend(function(e,xhr, options){
+        xhr.setRequestHeader(header, token); 
+      });
+		 
+	var onSaleUp = $("#onSaleUp option:selected").val();
+	alert(onSaleUp);
+		$.ajax({
+			url : "onSaleUp.do",
+			type : "POST",
+			//contentType : 'text/html; charset=utf-8;',
+			data: {onSaleUp : onSaleUp, no : ${param.no} },
+			success: function(data){
+				if(data == 1){
+					alert("판매상태가 변경되었습니다");
+				}
+				
+			},
+		    error: function (request,status,errorData){   
+		    	alert('error code: '+request.status+"\n"
+		    			+'message:' +request.reponseText+'\n'
+		    			+ 'error :'+  errorData);
+		    }
+		});
+	
+	});
+});
+
+
+</script>
 
 
       

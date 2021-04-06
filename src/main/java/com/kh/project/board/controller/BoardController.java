@@ -203,6 +203,15 @@ public class BoardController {
 		return "success";
 	}
 	
+	// 판매중, 판매완료
+	@ResponseBody
+	@RequestMapping(value="onSaleUp.do", method=RequestMethod.POST)
+	public int update_YN(@RequestParam("no") int no, String onSaleUp)throws Exception{
+		int cnt = boardService.update_YN(onSaleUp, no);
+		return cnt;
+	}
+	
+	
 
 
 }

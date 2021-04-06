@@ -59,7 +59,11 @@ public class BoardServiceImpl implements BoardService {
 		return boardDao.updateBoard(board);
 	}
 	
-
+	//post_yn update
+	public int update_YN(String onSaleUp, int no) throws Exception{
+		return boardDao.update_YN(onSaleUp, no);
+	}
+	
 	//board delete
 	public int deleteBoard(int no) throws Exception{
 		return boardDao.delteBoard(no);

@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Param;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kh.project.board.vo.AlertPost;
 import com.kh.project.board.vo.Board;
@@ -70,6 +71,15 @@ public class BoardDao {
 	//update
 	public int updateBoard(Board board) throws Exception{
 		return sqlSession.update("Board.updateBoard", board);
+	}
+	
+	//update post_yn (ajax)
+	public int update_YN(String onSaleUp, int no) throws Exception{
+		Map map = new HashMap();
+		map.put("onSaleUp",onSaleUp);
+		map.put("no",no);
+		
+		return sqlSession.update("Board.update_YN" , map);
 	}
 	
 	//delete

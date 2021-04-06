@@ -99,6 +99,11 @@
 		UPDATE SALES_POST SET POST_TITLE=#{post_title}, POST_PRICE=#{post_price}, POST_CONTENTS=#{post_contents}, POST_ADDRESS=#{post_address} , POST_TAGS=#{post_tags}, POST_CODE=#{post_code} where POST_NO=#{post_no}	
 	</update>
 	
+	<!-- UPDATE POST_YN (ajax) -->
+	<update id="update_YN" parameterType="map">
+		UPDATE SALES_POST SET POST_YN = #{onSaleUp} WHERE POST_NO = #{no}
+	</update>
+	
 	<!-- DELETE -->
 	<delete id="deleteBoard" parameterType="int">
 		DELETE FROM SALES_POST WHERE POST_NO = #{no}

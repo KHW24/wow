@@ -3,6 +3,7 @@ package com.kh.project.board.service;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kh.project.board.vo.AlertPost;
 import com.kh.project.board.vo.Board;
@@ -36,6 +37,9 @@ public interface BoardService {
 	
 	//board update
 	public int updateBoard(Board board) throws Exception;
+	
+	//post_yn update
+	public int update_YN(String onSaleUp, int no) throws Exception;
 	
 	//board delete
 	public int deleteBoard(int no) throws Exception;
