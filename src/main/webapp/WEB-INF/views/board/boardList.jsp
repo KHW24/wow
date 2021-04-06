@@ -164,7 +164,7 @@ var more = -1;
 			     category : "${param.category}"	,
 			     onsale : "${param.onsale}" ,
 			     post_title : "${param.post_title}"
-			    }
+			    },
 			dataType: "json",
 			beforeSend : function(xhr){
 				xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
