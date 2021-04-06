@@ -9,7 +9,6 @@ public class AlertPost {
 	private int alertSeq;
 	private String alertContents;
 	private int postNo;
-	private String id;
 	private List<Board> post;
 	
 	public AlertPost() {}
@@ -38,13 +37,7 @@ public class AlertPost {
 		this.postNo = postNo;
 	}
 
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
+	
 
 	public List<Board> getPost() {
 		return post;
@@ -56,8 +49,7 @@ public class AlertPost {
 
 	@Override
 	public String toString() {
-		return "AlertPost [alertSeq=" + alertSeq + ", alertContents=" + alertContents + ", postNo=" + postNo + ", id="
-				+ id + ", post=" + post + "]";
+		return "AlertPost [alertSeq=" + alertSeq + ", alertContents=" + alertContents + ", postNo=" + postNo + ","+ ", post=" + post + "]";
 	}
 	
 	
