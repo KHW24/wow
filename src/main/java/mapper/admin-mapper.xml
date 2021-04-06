@@ -13,7 +13,7 @@
    
    <!-- SELECT Membership -->
    <select id="selectAdminMs"  resultMap="resultAdminMs ">
-      SELECT * FROM MSHIPDATA 
+      SELECT * FROM MSHIPDATA ORDER BY MSHIP_SEQ DESC
    </select>
    
    <!-- 관리자 페이지-신고회원 총 인원수 -->
