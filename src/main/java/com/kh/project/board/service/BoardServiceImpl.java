@@ -104,14 +104,19 @@ public class BoardServiceImpl implements BoardService {
 
 	//내 댓글 보기
 	@Override
-	public List<Reply> getReplybyId(String id) throws Exception {
-		return boardDao.getReplybyId(id);
+	public List<Reply> getReplybyId(Criteria cri, String id) throws Exception {
+		return boardDao.getReplybyId(cri, id);
 	}
 
 	//게시글 신고하기
 	@Override
 	public void alertPost(AlertPost alert) throws Exception {
 		boardDao.alertPost(alert);
+	}
+
+	@Override
+	public int allCountReplyById(String id) throws Exception {
+		return boardDao.allCountReplyById(id);
 	}
 
 	

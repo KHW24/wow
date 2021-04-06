@@ -17,7 +17,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.kh.project.board.service.BoardService;
 import com.kh.project.board.vo.Board;
+import com.kh.project.board.vo.Criteria;
+import com.kh.project.board.vo.Reply;
 import com.kh.project.mypage.service.MypageService;
 
 @Controller
@@ -26,6 +29,8 @@ public class MypageController {
 	@Autowired
 	MypageService mypageService;
 	
+	@Autowired
+	BoardService bservice;
 	//내가 쓴 글 리스트
 	@RequestMapping(value="myList.do", method=RequestMethod.GET)
 	public String myListView(Model model, Principal principal) throws Exception{
@@ -121,4 +126,18 @@ public class MypageController {
 //		sendJson.put("list", list);
 //		return sendJson.toJSONString();
 //	}
+	
+	// 내 댓글 보기
+		@RequestMapping(value="myComment.do", method=RequestMethod.GET)
+		public String myCommentView(@RequestParam(defaultValue="1", required=false) int page,Model model, Principal principal) throws Exception{
+			String id = principal.getName();
+			int listCount = bservice.allCountReplyById(id);
+			Criteria cri = new Criteria(page, 10);
+			model.addAttribute("cri",cri);
+			model.addAttribute("listCount", listCount);
+			model.addAttribute("page", page);
+			model.addAttribute("myReplies",bservice.getReplybyId(cri,id));
+			model.addAttribute("center", "../mypage/myComment.jsp");
+			return "template/index";
+		}
 }

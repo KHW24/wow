@@ -120,10 +120,6 @@ public class MemberController {
 		return obj.toJSONString();
 	}
 	
-	
-
-
-	
 	 // 아이디 찾기!!
 	 @RequestMapping(value="findId.do", method=RequestMethod.POST)
 	 public ModelAndView findId(@ModelAttribute Member member, ModelAndView mv) throws Exception {

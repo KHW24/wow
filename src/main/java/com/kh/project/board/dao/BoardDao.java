@@ -110,15 +110,23 @@ public class BoardDao {
 		return replies;
 	}
 	
-	//댓글 총 개수
+	//게시글 당 댓글 총 개수
 	public int getCountByPostNo(int postNo) throws Exception{
 		int repCnt = sqlSession.selectOne("Reply.getCountByPostNo",postNo);
 		return repCnt;
 	}
 	
+	//아이디 당 댓글 총 갯수
+	public int allCountReplyById(String id) throws Exception{
+		return sqlSession.selectOne("Reply.allCountReplyById",id);
+	}
+	
 	//내 댓글 보기
-	public List<Reply> getReplybyId(String id) throws Exception{
-		List<Reply> myReplies = sqlSession.selectList("Reply.selectReply",id);
+	public List<Reply> getReplybyId(Criteria cri, String id) throws Exception{
+		Map<String, Object> map = new HashMap<>();
+		map.put("cri", cri);
+		map.put("id",id);
+		List<Reply> myReplies = sqlSession.selectList("Reply.selectReply",map);
 		return myReplies;
 	}
 	

@@ -212,17 +212,6 @@ public class HomeController {
 		return "template/index";
 	}
 	
-	// 내 댓글 보기
-	@RequestMapping(value="myComment.do", method=RequestMethod.GET)
-	public String myCommentView(Model model, Principal principal) throws Exception{
-		
-		String id = principal.getName();
-		List<Reply> myReplies = bservice.getReplybyId(id);
-		
-		model.addAttribute("myReplies",myReplies);
-		model.addAttribute("center", "../mypage/myComment.jsp");
-		return "template/index";
-	}
 	
 //	// 쪽지함
 //	@RequestMapping(value="message.do", method=RequestMethod.GET)

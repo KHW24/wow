@@ -152,19 +152,19 @@
   </tr>
   <c:if test="${listCount != 0}">
 
-  <c:forEach items="${posts}" var="posts" varStatus="status">
+  <c:forEach items="${posts}" var="post" varStatus="status">
 	  <tr>
-	    <td><input type="checkbox" name="postCheck" value="${posts.post_no}"></td>
-	    <td>${posts.id}</td>
+	    <td><input type="checkbox" name="postCheck" value="${post.post_no}"></td>
+	    <td>${post.id}</td>
 		<td>
-		<a href="postSellerView.do?no=${posts.post_no}">${posts.post_no}</a>
-		<input type="hidden" name="postNo" value="${posts.post_no}"/>
+		<a href="postSellerView.do?no=${post.post_no}">${post.post_no}</a>
+		<input type="hidden" name="postNo" value="${post.post_no}"/>
 		</td>
-		<td><a href="postSellerView.do?no=${posts.post_no}">${posts.post_title}</a></td>
-		<td>${posts.alert_cnt}</td>
-	    <td><font color="red">${posts.alertPost[0].alertContents }</font></td>
+		<td><a href="postSellerView.do?no=${post.post_no}">${post.post_title}</a></td>
+		<td>${post.alert_cnt}</td>
+	    <td><font color="red">${post.alertPost[0].alertContents }</font></td>
 	    <td>
-	    <input type="hidden" value="${posts.id}" />
+	    <input type="hidden" value="${post.id}" />
 	    <button type="button" class="btn btn-default btn-sm sendMsg" id="sendMsg${status.count}" >쪽지 전송</button>
 	    </td>
 	  </tr>
@@ -197,14 +197,12 @@
 </div>
 <script>
 	$(function(){
-		postList(); 
+		var postCnt = "${listCount}";
+		postList(postCnt); 
 	 });
 	
-	var postCnt = "${listCount}";
-	var page = "${page}";
-	
 		// 댓글 페이징 처리
-	var pageNum = 1;
+	var pageNum = "${page}";
 	var paging = $(".paging");
 	var url = "postmanage.do?page=";
 	
@@ -214,10 +212,20 @@
 		var prev = startNum != 1;
 		var next = false;
 		
+		if(endNum*10>=postCnt){
+			endNum = Math.ceil(postCnt/10.0);
+		}
+		
+		if(endNum*10<postCnt){
+			next = true;
+		}
+		
 		var str = "<ul class='breadcrumb text-center'>";
+		
 		if(prev){
 			str += "<li><a href='"+(startNum-1)+"'>이전</a></li>";
 		}
+		
 		for(var i = startNum; i <= endNum; i++){
 			var active = pageNum == i? "active":"";
 			str +="<li class='"+active+"'><a href='"+i+"'>"+i+"</a></li>"; // 여기 a태그에 주소넣으면 안됨 아래에 넣어야됨

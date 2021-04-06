@@ -130,6 +130,8 @@
     <th>ID</th>
     <th>신고 횟수</th>
   </tr>
+  <c:if test="${listCount != 0}">
+  
   <c:forEach items="${alert}" var="alert">
 	  <tr>
 	    <td><input type="checkbox" name="alertCheck" value="${alert.id }" ></td>
@@ -137,6 +139,15 @@
 		<td>${alert.alert_cnt}</td>
 	  </tr>
     </c:forEach>
+    </c:if>
+    <c:if test="${listCount == 0}">
+    	<tr>
+    		<td colspan="3" align="center">
+    		<br><strong>게시글이 없습니다.</strong>
+    		<br><br>
+    		</td>
+    	</tr>
+    </c:if>
   <tr>
   	<td colspan="3" style="text-align:left;padding-left:100px;">
   	<button type="button" class="btn btn-default btn-sm" id="memberSignOut">회원 탈퇴
@@ -145,18 +156,72 @@
 </table>
 <br>
 <br>
-<div class="pagination">
-  <a href="#">&laquo;</a>
-  <a href="#">1</a>
-  <a href="#">2</a>
-  <a href="#">3</a>
-  <a href="#">4</a>
-  <a href="#">5</a>
-  <a href="#">6</a>
-  <a href="#">&raquo;</a>
-</div>
+<!-- 글 있는 경우 -->
+<c:if test="${listCount ne 0}">
+	<div class="paging">
+	  <!-- 페이지네이션 공간 -->
+	</div>
+</c:if>
 <br>
 <br>
 <br>
 </div>
+<script>
+	$(function(){
+		var postCnt = "${listCount}";
+		postList(postCnt); 
+	 });
+	
+		// 댓글 페이징 처리
+	var pageNum = "${page}";
+	var paging = $(".paging");
+	var url = "postmanage.do?page=";
+	
+	function postList(postCnt){
+		var endNum = Math.ceil(pageNum/10.0)*10;
+		var startNum = endNum - 9;
+		var prev = startNum != 1;
+		var next = false;
+		
+		if(endNum*10>=postCnt){
+			endNum = Math.ceil(postCnt/10.0);
+		}
+		
+		if(endNum*10<postCnt){
+			next = true;
+		}
+		
+		var str = "<ul class='breadcrumb text-center'>";
+		
+		if(prev){
+			str += "<li><a href='"+(startNum-1)+"'>이전</a></li>";
+		}
+		
+		for(var i = startNum; i <= endNum; i++){
+			var active = pageNum == i? "active":"";
+			str +="<li class='"+active+"'><a href='"+i+"'>"+i+"</a></li>"; // 여기 a태그에 주소넣으면 안됨 아래에 넣어야됨
+		}
+		if(next){
+			str+="<li><a href='"+(endNum+1)+"'>다음</a></li>";
+		}
+		str+="</ul>";
+		console.log(str);
+		paging.html(str);	// div 부분에 표시되게
+		}
+		
+		
+		//다음 페이지 눌렀을 때 리스트 나오게
+		$(function(){
+			paging.on("click","li a",function(e){
+				e.preventDefault();
+				console.log("page click");
+				
+				var targetPageNum = $(this).attr("href");
+				console.log("targetPageNum: "+targetPageNum);
+				pageNum=targetPageNum;
+				window.location.href="postmanage.do?page="+targetPageNum;	// 주소 주의해서 작성해야함
+			});
+					
+		});
+</script>
 

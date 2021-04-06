@@ -56,11 +56,14 @@ public interface BoardService {
 	//페이징해서 댓글 리스트 가져오기
 	public ReplyPage getRepliesList(Criteria cri, int no) throws Exception;
 
-	//댓글 총 개수
+	//게시글 당 댓글 총 개수
 	public int getCountByPostNo(int postNo) throws Exception;
 	
+	//아이디별 댓글 총 갯수
+	public int allCountReplyById(String id) throws Exception;
+	
 	//내 댓글 보기
-	public List<Reply> getReplybyId(String id) throws Exception;
+	public List<Reply> getReplybyId(Criteria cri, String id) throws Exception;
 
 	//게시글 신고하기
 	public void alertPost(AlertPost alert) throws Exception;

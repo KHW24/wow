@@ -13,6 +13,7 @@
 		<result property="post_tags" column="POST_TAGS" />
 		<result property="id" column="ID"/>
 		<result property="hit" column="HIT"/>
+		<result property="alert_cnt" column="ALERT_CNT"/>
 		<result property="post_code" column="POST_CODE"/>
 		<result property="rename_filename" column="RENAME_FILENAME" />
 		<collection property="alertPost" resultMap="resultAlert"/>
@@ -91,13 +92,12 @@
 	<!-- 관리자페이지- 게시물관리 -->
 	<select id="selectPostAdmin" parameterType="Criteria" resultMap="resultBoard" >
 	<![CDATA[
-		SELECT * FROM (SELECT ROWNUM RN, SALES_POST.POST_NO, POST_TITLE, 
-		SALES_POST.ID, SALES_POST.ALERT_CNT, ALERT_CONTENTS 
-		FROM SALES_POST LEFT OUTER JOIN ALERT_POST 
-		ON ALERT_POST.POST_NO = SALES_POST.POST_NO 
-		WHERE ROWNUM <= #{pageNum}*#{amount} ORDER BY ALERT_CNT DESC, POST_NO DESC
-		) WHERE RN > (#{pageNum}-1)*#{amount}
-		
+	 select  * from(select  rownum rn,  r.POST_NO, r.POST_TITLE, 
+		r.ID, r.ALERT_CNT, r.ALERT_CONTENTS from (select S.POST_NO, POST_TITLE, 
+		S.ID, S.ALERT_CNT, ALERT_CONTENTS 
+		FROM SALES_POST s LEFT OUTER JOIN ALERT_POST a  
+		ON a.POST_NO = s.POST_NO 
+		order by s.alert_cnt desc, post_no desc) r where rownum <= (#{pageNum}*#{amount}) ) where rn > (#{pageNum}-1)*#{amount}
 	]]>
 	</select>
 	
