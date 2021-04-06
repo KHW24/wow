@@ -178,7 +178,7 @@ $(".modal-delete-btn").click(function(){
 			}
 		});//ajax
 	}); //댓글 삭제 버튼 클릭 시
-}) 
+});
 </script>
 </form>
 <br>
