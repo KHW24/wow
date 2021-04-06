@@ -117,6 +117,22 @@ import sun.print.resources.serviceui;
 		
 	} 
 	
+	// 멤버십 삭제
+	@ResponseBody
+	@RequestMapping(value="deleteMembership.do", method=RequestMethod.POST)
+	public String deleteAdminMs(HttpServletRequest request) throws Exception{
+		
+		String[] ajax = request.getParameterValues("valueArr");
+		
+		int size = ajax.length;
+		for(int i=0; i<size; i++) {
+			adminService.deleteMembership(ajax[i]);
+	     }
+		return "success";
+	}
+
+
+	
 }
 
   

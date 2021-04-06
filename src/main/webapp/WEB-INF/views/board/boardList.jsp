@@ -160,7 +160,11 @@ var more = -1;
 			url : "boardList.do",
 		    type: 'POST',
 		    //contentType : 'text/html; charset=utf-8;',//내가 서버로 보내는 데이터의 타입
-		    data: { more : more},
+		    data: { more : more,		    
+			     category : "${param.category}"	,
+			     onsale : "${param.onsale}" ,
+			     post_title : "${param.post_title}"
+			    },
 			dataType: "json",
 			beforeSend : function(xhr){
 				xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
