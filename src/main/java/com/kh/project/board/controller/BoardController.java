@@ -40,9 +40,15 @@ public class BoardController {
 	
 	//게시물 리스트 페이지
 	@RequestMapping(value="boardList.do", method=RequestMethod.GET)
-	public String boardListView(Model model) throws Exception{
+	public String boardListView(@RequestParam(value="category", defaultValue="") String category , 
+			@RequestParam(value="onsale", defaultValue="") String onsale ,  
+			@RequestParam(value="post_title", defaultValue="") String post_title , Model model) throws Exception{
 		
-		List<Board> boardList = boardService.selectList(10);
+		category = category.trim();
+		onsale = onsale.trim();
+		post_title = post_title.trim();
+		
+		List<Board> boardList = boardService.selectList(category, onsale, post_title);
 		List<Wish> wishList = wishS.wishHeart();
 		System.out.println(wishList.size());
 		System.out.println(wishList.size());

@@ -2,6 +2,22 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
  <!-- Navbar -->
+<script>
+	$(function(){
+		$('#searchBtn').on('click', function(){
+			
+			var category = $('select[name="category"]').val();
+			var categoryArr = category.split('=');
+			var categoryVal = categoryArr[1];
+		
+			var onsaleVal = $('input[name="onsale"]:checked').val();
+
+			$('input[name="onsale"]').val(onsaleVal);
+			$('input[name="category"]').val(categoryVal);
+			$('#searchFrm').submit();
+		});
+	});
+</script>
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container">
     <div class="navbar-header">
@@ -22,11 +38,13 @@
 
         <ul class="nav navbar-nav">
           <li class="active">
-               <form class="navbar-form navbar-left" action="/action_page.php">
+               <form class="navbar-form navbar-left" action="boardList.do" method="GET" id="searchFrm">
+               		<input type="hidden" name="onsale">
+               		<input type="hidden" name="category">
                 <div class="input-group">
-                  <input type="text" class="form-control" placeholder="Search" name="search">
+                  <input type="text" class="form-control" placeholder="Search" name="post_title" value="${param.post_title }">
                   <div class="input-group-btn">
-                    <button class="btn btn-default" type="submit">
+                    <button class="btn btn-default" type="button" id="searchBtn">
                       <i class="glyphicon glyphicon-search"></i>
                     </button>
                   </div>

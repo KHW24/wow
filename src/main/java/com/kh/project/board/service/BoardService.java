@@ -14,7 +14,7 @@ import com.kh.project.board.vo.ReplyPage;
 public interface BoardService {
 
 	//board list
-	public List<Board> selectList(int page) throws Exception;
+	public List<Board> selectList(String category, String onsale, String post_title) throws Exception;
 	
 	//board list more
 	public List<Board> selectListMore(int more) throws Exception;
