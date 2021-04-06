@@ -145,6 +145,41 @@
   </tr>
       </c:forEach>
 </table>
+<br>
+ <a href="<c:url value='/books/delete/${ book.id }' />" class="btn btn-lg btn-danger">삭제
+</a>
+<script>
+//댓글 삭제 버튼 클릭 시 확인 모달창
+$("#membership-list").on('click','.repdel',function(){
+		var mshipContents = $(this).siblings(".repContents").text();
+		var mshipSeq = $(this).nextAll("input[type=hidden]").val();
+		$(".modal-mshipSeq").val(repSeq);
+		$(".modal-title").html("<strong>댓글 삭제</strong>");
+		$(".modal-delete-btn").text("삭제");
+		$(".modal-reply").prev().html("<font color='red'>댓글을 삭제하시겠습니까?</font>");
+});
+
+  //댓글 삭제 처리
+$(".modal-delete-btn").click(function(){
+	  var repSeq = $(".modal-repSeq").val();
+		$.ajax({
+			type: "GET",
+			url: "${pageContext.request.contextPath}/membership/delete",
+			contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+			data: {mshipSeq : mshipSeq},
+			success : function(data){
+				if(data=="success"){
+					alert("댓글이 삭제되었습니다.");
+					getReplyList(-1); 
+				}
+			},
+			error:function(request, status, error){
+				alert("code"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+			}
+		});//ajax
+	}); //댓글 삭제 버튼 클릭 시
+}) 
+</script>
 </form>
 <br>
 <input type="button" value="선택삭제" class="btn btn-outlin-info" onclick="deleteValue();">
