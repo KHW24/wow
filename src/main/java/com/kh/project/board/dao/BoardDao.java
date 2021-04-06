@@ -32,8 +32,14 @@ public class BoardDao {
 	}
 	
 	//select list more
-	public List<Board> selectListMore(int more){
-			return sqlSession.selectList("Board.selectListMore", more );
+	public List<Board> selectListMore(int more, String category, String onsale, String post_title){
+		Map map = new HashMap();
+		map.put("category",category);
+		map.put("onsale",onsale);
+		map.put("post_title",post_title);
+		map.put("more", more);
+				
+		return sqlSession.selectList("Board.selectListMore", map );
 	}
 	
 	//select list Count
