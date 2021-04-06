@@ -134,7 +134,9 @@ $(function(){
 		<a href="postWrite.do" id="enbtn" class="btn btn-default">글 등록</a>
 	</div>
 </c:if>
+<sec:authorize access="isAuthenticated()">
 <input type="hidden" id="infoConId" value="<sec:authentication property="principal.member.id"/>">
+</sec:authorize>
 
 <script>
 var more = -1;
