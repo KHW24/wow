@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <%@ taglib uri="http://www.springframework.org/security/tags"
 	prefix="sec"%>
@@ -13,10 +14,8 @@
 	rel="stylesheet" type="text/css" />
 <script>
 $(function(){
-    $('button[name="hbtn"]').on('click', function(){
+    $('button[name^="hbtn"]').on('click', function(){
        if($(this).hasClass('glyphicon glyphicon-heart-empty')== true){
-          $(this).removeClass('glyphicon glyphicon-heart-empty');
-          $(this).addClass('glyphicon glyphicon-heart');
           alert($(this).val());	// post_no 값 확인
           
 		  	var post_no = $(this).val();
@@ -31,8 +30,9 @@ $(function(){
   				},
   			    contentType: "application/x-www-form-urlencoded; charset=UTF-8",
   				success : function(data){
-  					if(data = "1") {
+  					if(data = "success") {
   						alert("관심품목에 추가되었습니다.");
+                    	window.location.href="boardList.do";
   					} else {
   						alert("관심품목 추가를 실패했습니다.")
   					}
@@ -42,6 +42,8 @@ $(function(){
       		    			+ 'error :'+  errorData);
       		    }
   			});
+            $(this).removeClass('glyphicon glyphicon-heart-empty');
+            $(this).addClass('glyphicon glyphicon-heart');
        }	else{
 	          $(this).removeClass('glyphicon glyphicon-heart');
 	          $(this).addClass('glyphicon glyphicon-heart-empty');
@@ -103,17 +105,24 @@ $(function(){
 	<div class="fixed_img_col">
 		<ul>
 			<!-- li가 게시물 하나하나 -->
-			<c:forEach var="n" items="${list}">
+			<c:forEach var="n" items="${list}" varStatus="status">
 				<li><span class="thumb"> <em>${n.post_code }</em>
 						<a href="postSellerView.do?no=${n.post_no }"> 
-						<img class="img-rounded" src="${pageContext.request.contextPath}/resources/upload/${n.rename_filename}"alt=""></span> 
-						<Strong>${n.post_title }</Strong> </a>
+						<img class="img-rounded" src="${pageContext.request.contextPath}/resources/upload/${n.rename_filename}"alt=""> 
+						<Strong>${n.post_title }</Strong></a></span>
 					<p>${n.post_address }&nbsp;·&nbsp;
 					<fmt:formatDate	pattern="MM-dd" value="${n.post_date}" />
 					</p>
 					<p id="price">${n.post_price }원</p>
 					<input type="hidden" id="${n.post_no }" name="wbtn" value="${n.post_no }"/>
-					<button name="hbtn" id="hbtn" class="glyphicon glyphicon-heart-empty" value="${n.post_no }"></button>
+					<c:choose>
+						<c:when test="${wishList[status.index].wish_seq ne null}">
+							<button name="hbtn${n.post_no }" id="hbtn" class="glyphicon glyphicon-heart" value="${n.post_no }"></button>
+						</c:when>
+						<c:otherwise>
+							<button name="hbtn${n.post_no }" id="hbtn" class="glyphicon glyphicon-heart-empty" value="${n.post_no }"></button>
+						</c:otherwise>
+					</c:choose>
 				</li>
 			</c:forEach>
 		</ul>

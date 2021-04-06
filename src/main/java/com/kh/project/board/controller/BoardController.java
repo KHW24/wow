@@ -25,7 +25,9 @@ import com.kh.project.board.service.BoardService;
 import com.kh.project.board.vo.AlertPost;
 import com.kh.project.board.vo.Board;
 import com.kh.project.board.vo.Image;
+import com.kh.project.member.service.WishService;
 import com.kh.project.member.vo.Member;
+import com.kh.project.member.vo.Wish;
 
 @Controller
 public class BoardController {
@@ -33,12 +35,20 @@ public class BoardController {
 	@Autowired
 	BoardService boardService;
 	
+	@Autowired
+	WishService wishS;
+	
 	//게시물 리스트 페이지
 	@RequestMapping(value="boardList.do", method=RequestMethod.GET)
 	public String boardListView(Model model) throws Exception{
 		
 		List<Board> boardList = boardService.selectList(10);
+		List<Wish> wishList = wishS.wishHeart();
+		System.out.println(wishList.size());
+		System.out.println(wishList.size());
+		System.out.println(wishList.size());
 		
+		model.addAttribute("wishList", wishList);
 		model.addAttribute("list", boardList);
 		model.addAttribute("center","../board/boardList.jsp");
 		return "template/index";

@@ -18,9 +18,19 @@
 	<!-- 관심품목 페이징(더보기) -->
 	
 	<!-- 관심품목 삭제 -->
-	<delete id="wishDelete" parameterType="String">
+	<delete id="wishDelete" parameterType="int">
 		DELETE FROM WISH_LIST WHERE POST_NO = #{post_no}		
 	</delete>
+	
+	<!-- 찜하트 있는 값 받아오려고(출력하기위함) -->
+	<select id="wishHeart" parameterType="int" resultMap="resultWish">
+		SELECT * FROM SALES_POST A
+		LEFT JOIN WISH_LIST B 
+		ON A.POST_NO = B.POST_NO
+        WHERE EXISTS ( SELECT * FROM WISH_LIST WHERE B.WISH_SEQ IS NOT NULL)
+	</select> 
+	
+	
 
 
 </mapper>

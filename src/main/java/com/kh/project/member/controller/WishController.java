@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -23,15 +24,15 @@ public class WishController {
 	// insert
 	@ResponseBody
 	@RequestMapping(value="wishInsert.do", method=RequestMethod.POST)
-	public String wishInsert(Wish wish) throws Exception {
-		int data = wishS.wishInsert(wish);
-		return "1";
+	public String wishInsert(Wish wish, Model m) throws Exception {
+		m.addAttribute("success", wishS.wishInsert(wish));
+		return "";
 	}
 	
 	// delete
 	@ResponseBody
 	@RequestMapping(value="wishDelete.do", method=RequestMethod.POST)
-	public String wishDelete(String post_no) throws Exception {
+	public String wishDelete(int post_no) throws Exception {
 		int data = wishS.wishDelete(post_no);
 		return "1";
 	}

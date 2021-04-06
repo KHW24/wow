@@ -1,5 +1,7 @@
 package com.kh.project.member.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,7 +22,14 @@ public class WishServiceImpl implements WishService{
 	
 	// delete
 	@Override
-	public int wishDelete(String post_no) throws Exception {
+	public int wishDelete(int post_no) throws Exception {
 		return wishDao.wishDelete(post_no);
 	}
+	
+	// 찜 하트 받아오기
+	public List<Wish> wishHeart() throws Exception {
+		return wishDao.wishHeart();
+	}
+	
+	
 }
