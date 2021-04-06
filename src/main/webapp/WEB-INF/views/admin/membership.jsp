@@ -64,6 +64,23 @@
    		});
 	}
 	}	
+	
+	$(function(){
+		// 쪽지보내기 팝업
+		$(".sendMsg").click(function(){
+	 		var sendMsgId = $(this).attr("id");
+	 		console.log(sendMsgId);
+	 		var getId = $("#"+sendMsgId).prev().val();
+	 		console.log(getId);
+	 		
+		    var popUrl = "messagepopupAdmin.do?getId="+getId;	//팝업창에 출력될 페이지 URL
+		    var popOption = "width=500, height=430, resizable=no, scrollbars=no, status=no;";    //팝업창 옵션(optoin)
+		    window.open(popUrl,"",popOption);
+		});	
+	});
+	
+	
+	
 </script>	
 
  <style>
@@ -131,7 +148,8 @@
     <th> 전체선택 <input id ="allAdminMs"  type="checkbox" name="allCheck"></th>
     <th>No.</th>
     <th>ID</th>
-    <th>Membership Period</th>
+    <th>멤버쉽 기간</th>
+    <th>쪽지 전송</th>
   </tr>
    <c:forEach items="${adminMsList}" var="adminMs">
   <tr>
@@ -142,6 +160,9 @@
     <fmt:formatDate value="${adminMs.mshipStart}"  var="mshipStart" pattern="yyyy-MM-dd"/>
     <fmt:formatDate value="${adminMs.mshipEnd}"  var="mshipEnd" pattern="yyyy-MM-dd"/>
     <td>${mshipStart} ~ ${mshipEnd}</td>  
+    <td>  <input type="hidden" value="${post.id}" />
+	    <button type="button" class="btn btn-default btn-sm sendMsg" id="sendMsg${status.count}" >쪽지 전송</button>
+	    </td>
   </tr>
       </c:forEach>
 </table>
