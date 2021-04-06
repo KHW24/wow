@@ -1,5 +1,7 @@
 package com.kh.project.member.dao;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -18,8 +20,13 @@ public class WishDao {
 	}
 	
 	// delete
-	public int wishDelete(String post_no) throws Exception {
+	public int wishDelete(int post_no) throws Exception {
 		return sqlSession.delete("Wish.wishDelete", post_no);
+	}
+	
+	// 찜 하트 받아오기
+	public List<Wish> wishHeart() throws Exception {
+		return sqlSession.selectList("Wish.wishHeart");
 	}
 	
 	

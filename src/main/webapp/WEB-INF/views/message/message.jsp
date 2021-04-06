@@ -64,10 +64,11 @@
 				    contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 	                success: function(jdata){
 	                    if(jdata = "redirect:message.do") {
-	                        alert("삭제 성공");
+	                        alert("삭제를 성공했습니다.");
+	                    	window.location.href="message.do?get_id=<sec:authentication property="principal.member.id"/>";
 	                    }
 	                    else{
-	                        alert("삭제 실패");
+	                        alert("삭제를 실패했습니다.");
 	                    }
 	                },  error: function (request,status,errorData){   
 	    		    	alert('error code: '+request.status+"\n"

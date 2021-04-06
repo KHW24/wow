@@ -3,7 +3,7 @@ package com.kh.project.member.vo;
 public class Wish {
 
 	private int wish_seq;
-	private String post_no;
+	private int post_no;
 	private String get_id;
 
 	public int getWish_seq() {
@@ -12,10 +12,10 @@ public class Wish {
 	public void setWish_seq(int wish_seq) {
 		this.wish_seq = wish_seq;
 	}
-	public String getPost_no() {
+	public int getPost_no() {
 		return post_no;
 	}
-	public void setPost_no(String post_no) {
+	public void setPost_no(int post_no) {
 		this.post_no = post_no;
 	}
 	public String getGet_id() {
