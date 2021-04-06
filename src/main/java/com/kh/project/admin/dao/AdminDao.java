@@ -37,4 +37,9 @@ public class AdminDao {
 	public List<Member> selectListAlertMember() throws Exception{
 		return sqlSession.selectList("Member.selectListAlertMember");
 	}
+	
+	// 멤버십 삭제
+	public int deleteMembership(String mshipSeq) throws Exception{
+		return sqlSession.delete("Membership.deleteMembership", mshipSeq);
+	}
 }

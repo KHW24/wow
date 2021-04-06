@@ -49,6 +49,11 @@ import com.kh.project.member.vo.Member;
 			return adminDao.selectListAlertMember();
 		}
 
+		// 멤버십 삭제
+		public int deleteMembership(String mshipSeq) throws Exception{
+			return adminDao.deleteMembership(mshipSeq);
+		}
+				
 
 		
 }

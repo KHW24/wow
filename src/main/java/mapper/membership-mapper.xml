@@ -50,6 +50,10 @@
 		DELETE FROM MSHIPDATA WHERE MSHIP_SEQ = ${mshipSeq}
 	</delete>
    
+   <!-- 멤버십 다중삭제 -->
+    <delete id="deleteMembership" parameterType="String">
+		DELETE FROM MSHIPDATA WHERE MSHIP_SEQ = #{mshipSeq}
+	</delete>
    
 </mapper>   
 

@@ -25,4 +25,6 @@ public interface AdminService {
 	//신고회원 목록 조회
 	public List<Member> selectListAlertMember() throws Exception;
 
+	// 멤버십 삭제
+	public int deleteMembership(String mshipSeq) throws Exception;
 }
