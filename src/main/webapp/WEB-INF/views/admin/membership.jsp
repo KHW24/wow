@@ -73,7 +73,7 @@
 	 		var getId = $("#"+sendMsgId).prev().val();
 	 		console.log(getId);
 	 		
-		    var popUrl = "messagepopupAdmin.do?getId="+getId;	//팝업창에 출력될 페이지 URL
+		    var popUrl = "messagepopupMembership.do?getId="+getId;	//팝업창에 출력될 페이지 URL
 		    var popOption = "width=500, height=430, resizable=no, scrollbars=no, status=no;";    //팝업창 옵션(optoin)
 		    window.open(popUrl,"",popOption);
 		});	
@@ -148,15 +148,18 @@
     <th> 전체선택 <input id ="allAdminMs"  type="checkbox" name="allCheck"></th>
     <th>No.</th>
     <th>ID</th>
+    <th>멤버쉽 등급</th>
     <th>멤버쉽 기간</th>
     <th>쪽지 전송</th>
   </tr>
+    <c:if test="${listCount != 0}">
    <c:forEach items="${adminMsList}" var="adminMs">
   <tr>
     <td><input type="checkbox" name="membershipCheck" value="${adminMs.mshipSeq}">
 		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /></td>
     <td><c:out value="${adminMs.mshipSeq}" /></td>
     <td>${adminMs.id}</td>
+    <td>${adminMs.mshipGrade}</td>
     <fmt:formatDate value="${adminMs.mshipStart}"  var="mshipStart" pattern="yyyy-MM-dd"/>
     <fmt:formatDate value="${adminMs.mshipEnd}"  var="mshipEnd" pattern="yyyy-MM-dd"/>
     <td>${mshipStart} ~ ${mshipEnd}</td>  
@@ -164,24 +167,88 @@
 	    <button type="button" class="btn btn-default btn-sm sendMsg" id="sendMsg${status.count}" >쪽지 전송</button>
 	    </td>
   </tr>
-      </c:forEach>
+       </c:forEach>
+    </c:if>
+    <c:if test="${listCount == 0}">
+    	<tr>
+    		<td colspan="3" align="center">
+    		<br><strong>게시글이 없습니다.</strong>
+    		<br><br>
+    		</td>
+    	</tr>
+    </c:if>
         <tr>
   	<td><button type="button" class="btn btn-default btn-sm" id="postDelete">게시글 삭제</td>
   	<td colspan="6"></td>
   </tr>
 </table>
 <br>
-<div class="pagination">
-  <a href="#">&laquo;</a>
-  <a href="#">1</a>
-  <a href="#">2</a>
-  <a href="#">3</a>
-  <a href="#">4</a>
-  <a href="#">5</a>
-  <a href="#">6</a>
-  <a href="#">&raquo;</a>
-</div>
+<br>
+<!-- 글 있는 경우 -->
+<c:if test="${listCount ne 0}">
+	<div class="paging">
+	  <!-- 페이지네이션 공간 -->
+	</div>
+</c:if>
 <br>
 <br>
 <br>
 </div>
+<script>
+	$(function(){
+		var postCnt = "${listCount}";
+		postList(postCnt); 
+	 });
+	
+		// 페이징 처리
+	var pageNum = "${page}";
+	var paging = $(".paging");
+	var url = "membership.do?page=";
+	
+	function postList(postCnt){
+		var endNum = Math.ceil(pageNum/10.0)*10;
+		var startNum = endNum - 9;
+		var prev = startNum != 1;
+		var next = false;
+		
+		if(endNum*10>=postCnt){
+			endNum = Math.ceil(postCnt/10.0);
+		}
+		
+		if(endNum*10<postCnt){
+			next = true;
+		}
+		
+		var str = "<ul class='breadcrumb text-center'>";
+		
+		if(prev){
+			str += "<li><a href='"+(startNum-1)+"'>이전</a></li>";
+		}
+		
+		for(var i = startNum; i <= endNum; i++){
+			var active = pageNum == i? "active":"";
+			str +="<li class='"+active+"'><a href='"+i+"'>"+i+"</a></li>"; // 여기 a태그에 주소넣으면 안됨 아래에 넣어야됨
+		}
+		if(next){
+			str+="<li><a href='"+(endNum+1)+"'>다음</a></li>";
+		}
+		str+="</ul>";
+		console.log(str);
+		paging.html(str);	// div 부분에 표시되게
+		}
+		
+		
+		//다음 페이지 눌렀을 때 리스트 나오게
+		$(function(){
+			paging.on("click","li a",function(e){
+				e.preventDefault();
+				console.log("page click");
+				
+				var targetPageNum = $(this).attr("href");
+				console.log("targetPageNum: "+targetPageNum);
+				pageNum=targetPageNum;
+				window.location.href="membership.do?page="+targetPageNum;	// 주소 주의해서 작성해야함
+			});
+					
+		});
+</script>

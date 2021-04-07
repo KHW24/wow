@@ -54,6 +54,14 @@ public class MessageController {
 			mv.setViewName("message/messagepopup");
 			return mv;
 		}
+		
+		// 관리자 - 쪽지 팝업
+		@RequestMapping(value="messagepopupMembership.do", method=RequestMethod.GET)
+		public ModelAndView messagePopupMembsership (@RequestParam("getId") String getId, ModelAndView mv) throws Exception {
+			mv.addObject("getId",getId);
+			mv.setViewName("message/messagepopup");
+			return mv;
+		}
 	
 	// 쪽지 상세 view 팝업 받은 쪽지
 	@RequestMapping(value="messageviewpopup.do", method=RequestMethod.GET)

@@ -73,8 +73,6 @@
 
  		<sec:authorize access="hasRole('ROLE_ADMIN')">
     		<textarea name="msg_contents" cols="60" rows="15" >
-게시물이 신고처리되어 삭제하였습니다. 
-신고 누적 시 회원탈퇴 조치가 취해질 수 있습니다.
     		</textarea>
     	</sec:authorize>
     	<sec:authorize access="hasRole('ROLE_MEMBER')">
