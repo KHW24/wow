@@ -16,7 +16,6 @@
 $(function(){
     $('button[name^="hbtn"]').on('click', function(){
        if($(this).hasClass('glyphicon glyphicon-heart-empty')== true){
-          alert($(this).val());	// post_no 값 확인
           
 		  	var post_no = $(this).val();
   			var get_id = $('#infoConId').val();
@@ -61,6 +60,7 @@ $(function(){
 	  				success : function(data){
 	  					if(data = "1") {
 	  						alert("관심품목에서 삭제하였습니다.");
+	                    	window.location.href="wishList.do";
 	  					} else {
 	  						alert("관심품목 삭제를 실패했습니다.")
 	  					}
