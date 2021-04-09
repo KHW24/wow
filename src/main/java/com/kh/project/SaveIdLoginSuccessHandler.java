@@ -15,7 +15,7 @@ public class SaveIdLoginSuccessHandler extends SavedRequestAwareAuthenticationSu
 
 	static final String REQUEST_PARAM_NAME = "remember_id";
 	static final String COOKIE_NAME = "saved_id";
-	static final int DEFAULT_MAX_AGE= 60*60*24*7;
+	static final int DEFAULT_MAX_AGE= 60*60*24*7; //초단위
 	
 	private int maxAge = DEFAULT_MAX_AGE;
 	

@@ -97,16 +97,7 @@ private NaverLogin naverLogin;
 		//네이버 ID와 이웃의솜씨 저장된 ID 중복여부 체크
 		int naverIdCheck = memberService.checkIdDup(naverId);
 		
-		//중복 아이디 존재시
-		Map<String, Object> memberMap = new HashMap<>();
-		memberMap.put("id", naverId);
-		memberMap.put("nickname", naverNickname);
-		memberMap.put("email", naverEmail);
-		memberMap = response_obj;
 		
-		System.out.println("멤버맵 출력" + memberMap);
-		
-		String userId = (String) memberMap.get("id");
 		
 		// 중복되는 ID가 없을 경우 신규가입으로 아래 구문을 실행
 		if (naverIdCheck == 0) {
