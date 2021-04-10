@@ -32,6 +32,9 @@
 		<if test="post_title !=''">
 			AND POST_TITLE LIKE '%'||#{post_title}||'%'
 		</if>
+		<if test="post_address !=''">
+			AND POST_ADDRESS LIKE '%'||#{post_address}||'%'
+		</if>
 
 		<if test="category != ''">
 			AND POST_CODE = #{category} 		

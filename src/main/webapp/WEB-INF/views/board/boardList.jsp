@@ -89,19 +89,19 @@ $(function(){
 			Category <span class="caret"></span>
 		</button> -->
 		<select class="btn btn-default" name="category" onchange="if(this.value) location.href=(this.value);">
-			<option value="boardList.do?category=">Category</option>
-			<option value="boardList.do?category=food" <c:if test="${param.category eq 'food'}">selected</c:if>>Food</option>
-			<option value="boardList.do?category=accessories" <c:if test="${param.category eq 'accessories'}">selected</c:if>>Accessory</option>
-			<option value="boardList.do?category=pet" <c:if test="${param.category eq 'pet'}">selected</c:if>>Pet</option>
-			<option value="boardList.do?category=interior" <c:if test="${param.category eq 'interior'}">selected</c:if>>Interior</option>
-			<option value="boardList.do?category=etc" <c:if test="${param.category eq 'etc'}">selected</c:if>>Etc</option>
+			<option value="boardList.do?address=${param.address }&category=">Category</option>
+			<option value="boardList.do?address=${param.address }&category=food" <c:if test="${param.category eq 'food'}">selected</c:if>>Food</option>
+			<option value="boardList.do?address=${param.address }&category=accessories" <c:if test="${param.category eq 'accessories'}">selected</c:if>>Accessory</option>
+			<option value="boardList.do?address=${param.address }&category=pet" <c:if test="${param.category eq 'pet'}">selected</c:if>>Pet</option>
+			<option value="boardList.do?address=${param.address }&category=interior" <c:if test="${param.category eq 'interior'}">selected</c:if>>Interior</option>
+			<option value="boardList.do?address=${param.address }&category=etc" <c:if test="${param.category eq 'etc'}">selected</c:if>>Etc</option>
 		</select>
 	</div>
 	<!-- 판매중/판매완료 라디오버튼 -->
 	<div class="radiobtn" >
-		<input type="radio" name="onsale" value="" onclick="window.location.href='boardList.do?category=${param.category}&onsale=';" <c:if test="${empty param.onsale}">checked</c:if>>&nbsp;전체 &nbsp;&nbsp; 
-		<input type="radio" name="onsale" value="y" onclick="window.location.href='boardList.do?category=${param.category}&onsale=y';" <c:if test="${param.onsale eq 'y'}">checked</c:if>>&nbsp;판매중 &nbsp;&nbsp; 
-		<input type="radio" name="onsale" value="n" onclick="window.location.href='boardList.do?category=${param.category}&onsale=n';" <c:if test="${param.onsale eq 'n'}">checked</c:if>>&nbsp;판매완료
+		<input type="radio" name="onsale" value="" onclick="window.location.href='boardList.do?address=${param.address }&category=${param.category}&onsale=';" <c:if test="${empty param.onsale}">checked</c:if>>&nbsp;전체 &nbsp;&nbsp; 
+		<input type="radio" name="onsale" value="y" onclick="window.location.href='boardList.do?address=${param.address }&category=${param.category}&onsale=y';" <c:if test="${param.onsale eq 'y'}">checked</c:if>>&nbsp;판매중 &nbsp;&nbsp; 
+		<input type="radio" name="onsale" value="n" onclick="window.location.href='boardList.do?address=${param.address }&category=${param.category}&onsale=n';" <c:if test="${param.onsale eq 'n'}">checked</c:if>>&nbsp;판매완료
 	</div>
 	<!-- 썸네일 게시물 리스트 -->
 	<div class="fixed_img_col">

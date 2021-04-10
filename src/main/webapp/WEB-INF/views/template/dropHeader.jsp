@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
  <!-- Navbar -->
 <script>
 	$(function(){
@@ -27,7 +28,12 @@
         <span class="icon-bar"></span>                        
       </button>
       <ul class="nav navbar-nav">
+      <c:if test="${empty param.address }">
         <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">이웃의 솜씨<span class="caret"></span></a>
+       </c:if>
+       <c:if test="${!empty param.address }">
+       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">${param.address }<span class="caret"></span></a>
+        </c:if>
         <ul class="dropdown-menu">
           <li><a href="#">종로구 명동</a></li>
           <li><a href="#">종로구 을지로1동</a></li>
@@ -40,6 +46,9 @@
           <li class="active">
                <form class="navbar-form navbar-left" action="boardList.do" method="GET" id="searchFrm">
                		<input type="hidden" name="onsale">
+               		<c:if test="${!empty param.address }">
+               		<input type="hidden" name="address" value="${param.address }">
+               		</c:if>
                		<input type="hidden" name="category">
                 <div class="input-group">
                   <input type="text" class="form-control" placeholder="Search" name="post_title" value="${param.post_title }">

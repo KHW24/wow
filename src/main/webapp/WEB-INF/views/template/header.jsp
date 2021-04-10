@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
  <!-- Navbar -->
     <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container">
@@ -15,9 +16,9 @@
       
             <ul class="nav navbar-nav">
               <li class="active">
-                  <form class="navbar-form navbar-left" action="/action_page.php">
+                  <form class="navbar-form navbar-left" action="boardList.do" method="GET">
                     <div class="input-group">
-                      <input type="text" class="form-control" placeholder="Search" name="search">
+                      <input type="text" class="form-control" placeholder="우리동네를 검색해주세요" name="address">
                       <div class="input-group-btn">
                         <button class="btn btn-default" type="submit">
                           <i class="glyphicon glyphicon-search"></i>

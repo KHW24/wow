@@ -42,13 +42,19 @@ public class BoardController {
 	@RequestMapping(value="boardList.do", method=RequestMethod.GET)
 	public String boardListView(@RequestParam(value="category", defaultValue="") String category , 
 			@RequestParam(value="onsale", defaultValue="") String onsale ,  
-			@RequestParam(value="post_title", defaultValue="") String post_title , Model model) throws Exception{
+			@RequestParam(value="post_title", defaultValue="") String post_title , 
+			@RequestParam(value="address", defaultValue="") String address, Model model) throws Exception{
 		
 		category = category.trim();
 		onsale = onsale.trim();
 		post_title = post_title.trim();
+		address = address.trim();
 		
-		List<Board> boardList = boardService.selectList(category, onsale, post_title);
+		//address.replaceAll("%26", "&");
+				
+		
+		//List<Board> boardList = boardService.selectList(category, onsale, post_title);
+		List<Board> boardList = boardService.selectList(category, onsale, post_title, address);
 		List<Wish> wishList = wishS.wishHeart();
 		System.out.println(wishList.size());
 		System.out.println(wishList.size());

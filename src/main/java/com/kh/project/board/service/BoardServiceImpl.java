@@ -21,8 +21,8 @@ public class BoardServiceImpl implements BoardService {
 	BoardDao boardDao;
 	
 	//board list
-	public List<Board> selectList(String category, String onsale, String post_title) throws Exception{
-		return boardDao.selectList(category, onsale, post_title);
+	public List<Board> selectList(String category, String onsale, String post_title, String address) throws Exception{
+		return boardDao.selectList(category, onsale, post_title, address);
 	}
 	
 	//board list more
