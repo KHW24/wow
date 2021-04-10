@@ -105,6 +105,7 @@ public class BoardController {
 				jboard.put("post_date",sf.format(board.getPost_date()));
 				jboard.put("post_price",board.getPost_price());
 				jboard.put("rename_filename",board.getRename_filename());
+
 				jarr.add(jboard);
 			}
 			

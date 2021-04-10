@@ -89,9 +89,9 @@ $(function(){
 			Category <span class="caret"></span>
 		</button> -->
 		<select class="btn btn-default" name="category" onchange="if(this.value) location.href=(this.value);">
-			<option value="boardList.do?address=${param.address }&category=">Category</option>
-			<option value="boardList.do?address=${param.address }&category=food" <c:if test="${param.category eq 'food'}">selected</c:if>>Food</option>
-			<option value="boardList.do?address=${param.address }&category=accessories" <c:if test="${param.category eq 'accessories'}">selected</c:if>>Accessory</option>
+			<option value="boardList.do?category=">Category</option>
+			<option value="boardList.do?category=food" <c:if test="${param.category eq 'food'}">selected</c:if>>Food</option>
+			<option value="boardList.do?category=accessories" <c:if test="${param.category eq 'accessories'}">selected</c:if>>Accessory</option>
 			<option value="boardList.do?address=${param.address }&category=pet" <c:if test="${param.category eq 'pet'}">selected</c:if>>Pet</option>
 			<option value="boardList.do?address=${param.address }&category=interior" <c:if test="${param.category eq 'interior'}">selected</c:if>>Interior</option>
 			<option value="boardList.do?address=${param.address }&category=etc" <c:if test="${param.category eq 'etc'}">selected</c:if>>Etc</option>
@@ -179,14 +179,14 @@ var more = -1;
 					addListHtml += "<ul>";
 					addListHtml += "<li><span class='thumb'><em>"+data.list[i].post_code+"</em>";
 				 	addListHtml += "<a href='postSellerView.do?no="+data.list[i].post_no+"'> ";
-				   	addListHtml += "<img class='img-rounded' src='${pageContext.request.contextPath}/resources/images/"+data.list[i].rename_filename+"'alt=''></span>";
+				   	addListHtml += "<img class='img-rounded' src='${pageContext.request.contextPath}/resources/upload/"+data.list[i].rename_filename+"'></span>";
 				   	addListHtml += "<Strong>"+decodeURIComponent(data.list[i].post_title)+"</Strong> </a>";
 				   	addListHtml += "<p>"+decodeURIComponent(data.list[i].post_address)+"&nbsp;·&nbsp"+data.list[i].post_date+"</p>";
 				   	//addListHtml += "<p>"+data.list[i].post_address+　·　+data.list[i].post_date+"</p>";
 				   	addListHtml += "<p id='price'>"+data.list[i].post_price+"원</p>";
 				   	addListHtml += "<button name='hbtn' id='hbtn' class='glyphicon glyphicon-heart-empty'></button>";
 				   	addListHtml += "</li>";
-				   	addListHtml += "</ul>";					
+				   	addListHtml += "</ul>";	
 				}
 					addListHtml += "</div>";
 				 $("#dd").append(addListHtml);
