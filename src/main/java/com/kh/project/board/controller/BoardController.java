@@ -87,8 +87,15 @@ public class BoardController {
 				JSONObject jboard = new JSONObject();
 				jboard.put("post_code",board.getPost_code());
 				jboard.put("post_no",board.getPost_no());
-				jboard.put("post_title", URLEncoder.encode(board.getPost_title(),"UTF-8"));
-				jboard.put("post_address",URLEncoder.encode(board.getPost_address(),"UTF-8"));
+				
+				//인코딩 (인코딩후 디코딩시 공백 +로 표시되는 문제 해결)
+				String title = URLEncoder.encode(board.getPost_title(),"UTF-8");
+				title = title.replaceAll("\\+", "%20");
+				String address = URLEncoder.encode(board.getPost_address(),"UTF-8");
+				address = address.replaceAll("\\+", "%20");
+					
+				jboard.put("post_title", title);
+				jboard.put("post_address",address);
 				jboard.put("post_date",sf.format(board.getPost_date()));
 				jboard.put("post_price",board.getPost_price());
 				jboard.put("rename_filename",board.getRename_filename());
@@ -106,12 +113,7 @@ public class BoardController {
 		Board board= boardService.selectPage(no);
 		
 		Image image = boardService.selectFile(no);
-//		System.out.println(image.getFile_path());
-//		System.out.println(image.getFile_path());
-//		System.out.println(image.getFile_path());
-//		System.out.println(image.getFile_path());
-//		System.out.println(image.getFile_path());
-		
+
 		model.addAttribute("postNo", no);
 		model.addAttribute("list", board);
 		model.addAttribute("file", image);
@@ -145,13 +147,6 @@ public class BoardController {
 		
 		//파일저장
 		file.transferTo(f);
-		
-		//image vo에 저장
-//		Image image = new Image();
-//		image.setOriginal_filename(originalName);
-//		image.setRename_filename(rename);
-//		image.setPost_no(board.getPost_no());
-//		image.setFile_path(path);
 		
 		//board vo에 파일저장
 		board.setOriginal_filename(originalName);
