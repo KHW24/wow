@@ -103,6 +103,27 @@ $(function(){
 		<input type="radio" name="onsale" value="y" onclick="window.location.href='boardList.do?address=${param.address }&category=${param.category}&onsale=y';" <c:if test="${param.onsale eq 'y'}">checked</c:if>>&nbsp;판매중 &nbsp;&nbsp; 
 		<input type="radio" name="onsale" value="n" onclick="window.location.href='boardList.do?address=${param.address }&category=${param.category}&onsale=n';" <c:if test="${param.onsale eq 'n'}">checked</c:if>>&nbsp;판매완료
 	</div>
+	
+	<!-- 상위노출 AD -->	
+	<div class="fixed_img_col" style="height:350px">
+		<ul>
+			<!-- li가 게시물 하나하나 -->
+			<c:forEach var="ad" items="${listAD}" begin="0" end="3">
+				<li><span class="thumb"> <em>${ad.post_code }</em>
+						<a href="postSellerView.do?no=${ad.post_no }"> 
+						<img class="img-rounded" src="${pageContext.request.contextPath}/resources/upload/${ad.rename_filename}"alt=""> 
+						<Strong>${ad.post_title }</Strong></a></span>
+					<p>${ad.post_address }&nbsp;·&nbsp;
+					<fmt:formatDate	pattern="MM-dd" value="${ad.post_date}" />
+					</p>
+					<p id="price">${ad.post_price }원</p>
+					<input type="hidden" id="${ad.post_no }" name="wbtn" value="${ad.post_no }"/>
+					<button id="hbtn" class="glyphicon glyphicon-heart-empty" ></button>
+		</c:forEach>
+		</ul>
+	</div>
+	<hr>
+	
 	<!-- 썸네일 게시물 리스트 -->
 	<div class="fixed_img_col">
 		<ul>

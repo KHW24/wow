@@ -3,6 +3,7 @@ package com.kh.project.board.controller;
 import java.io.File;
 import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
+import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 
@@ -54,14 +55,20 @@ public class BoardController {
 				
 		
 		//List<Board> boardList = boardService.selectList(category, onsale, post_title);
+		
 		List<Board> boardList = boardService.selectList(category, onsale, post_title, address);
+		List<Board> boardListAD = boardService.selectListAD(0);	
+		//랜덤추출
+		Collections.shuffle(boardListAD);
+
 		List<Wish> wishList = wishS.wishHeart();
-		System.out.println(wishList.size());
-		System.out.println(wishList.size());
-		System.out.println(wishList.size());
+//		System.out.println(wishList.size());
+//		System.out.println(wishList.size());
+//		System.out.println(wishList.size());
 		
 		model.addAttribute("wishList", wishList);
 		model.addAttribute("list", boardList);
+		model.addAttribute("listAD", boardListAD);
 		model.addAttribute("center","../board/boardList.jsp");
 		return "template/index";
 	}

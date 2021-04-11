@@ -20,6 +20,11 @@ public class BoardServiceImpl implements BoardService {
 	@Autowired
 	BoardDao boardDao;
 	
+	// board list ad
+	public List<Board> selectListAD(int ad) throws Exception{
+		return boardDao.selectListAD(ad);
+	}
+	
 	//board list
 	public List<Board> selectList(String category, String onsale, String post_title, String address) throws Exception{
 		return boardDao.selectList(category, onsale, post_title, address);

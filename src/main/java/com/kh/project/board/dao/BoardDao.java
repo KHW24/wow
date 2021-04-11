@@ -22,6 +22,11 @@ public class BoardDao {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	
+	//select list ad
+	public List<Board> selectListAD(int ad) {
+		return sqlSession.selectList("Board.selectListAD", ad);
+	}
+	
 	//select list
 	public List<Board> selectList(String category, String onsale, String post_title, String address){
 		Map map = new HashMap();

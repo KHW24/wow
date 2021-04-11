@@ -23,6 +23,10 @@
 		<id property="alertSeq" column="ALERT_SEQ"/>
 		<result property="alertContents" column="ALERT_CONTENTS" />
 	</resultMap>
+	<!-- SELECT LIST AD -->
+	<select id="selectListAD" parameterType="int" resultType="Board">
+		SELECT B.*, C.RENAME_FILENAME FROM MSHIPDATA A LEFT OUTER JOIN SALES_POST B ON(B.ID = A.ID) LEFT OUTER JOIN IMAGES C ON(B.POST_NO = C.POST_NO) WHERE NOT B.POST_NO is NULL
+	</select>
 	
 	<!-- SELECT LIST -->
 	<select id="selectList" parameterType="map" resultType="Board">
