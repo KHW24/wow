@@ -186,8 +186,11 @@
 <br>
 <!-- 글 있는 경우 -->
 <c:if test="${listCount ne 0}">
-	<div class="paging">
-	  <!-- 페이지네이션 공간 -->
+	<div class="pagination">
+  <a href="#">&laquo;</a>
+  <a href="#" class="active">1</a>
+  <a href="#">&raquo;</a>
+</div>
 	</div>
 </c:if>
 <br>
