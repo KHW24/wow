@@ -34,7 +34,7 @@
                         <span class="thumb">
                             <em>${m.post_code }</em>
                             <a href="postSellerView.do?no=${m.post_no }">
-                            <img class="img-rounded" src="${pageContext.request.contextPath}/resources/images/sample.jpg" alt=""></span>
+                            <img class="img-rounded"  src="${pageContext.request.contextPath}/resources/upload/${m.rename_filename}"alt=""></span>
                             <Strong>${m.post_title }</Strong></a>
             
                         <p>${m.post_address }</p>
