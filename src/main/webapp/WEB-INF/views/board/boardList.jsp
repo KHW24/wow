@@ -103,7 +103,7 @@ $(function(){
 		<input type="radio" name="onsale" value="y" onclick="window.location.href='boardList.do?address=${param.address }&category=${param.category}&onsale=y';" <c:if test="${param.onsale eq 'y'}">checked</c:if>>&nbsp;판매중 &nbsp;&nbsp; 
 		<input type="radio" name="onsale" value="n" onclick="window.location.href='boardList.do?address=${param.address }&category=${param.category}&onsale=n';" <c:if test="${param.onsale eq 'n'}">checked</c:if>>&nbsp;판매완료
 	</div>
-	
+	<div style="text-align:right; margin-right:150px; font-weight:bold; ">▼상위노출AD</div>
 	<!-- 상위노출 AD -->	
 	<div class="fixed_img_col" style="height:350px">
 		<ul>

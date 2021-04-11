@@ -69,7 +69,7 @@
 		</if> 
 
 		</where>
-		ORDER BY a.POST_NO DESC)S) WHERE NUM BETWEEN 8+(4*#{more}) AND 11+(4*#{more})
+		ORDER BY a.POST_NO DESC)S) WHERE NUM BETWEEN 9+(4*#{more}) AND 12+(4*#{more})
 	</select>
 	
 	<!-- SELECT LIST COUNT  -->

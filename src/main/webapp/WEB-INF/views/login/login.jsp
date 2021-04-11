@@ -37,7 +37,7 @@
         </div>       
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10" >
-                <button type="submit" class="btn" style="width:313px">로그인</button>
+                <button type="submit" class="btn" style="width:340px">로그인</button>
             </div>
            
         </div>
