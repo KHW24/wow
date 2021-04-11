@@ -40,7 +40,7 @@ public class WishController {
 	@RequestMapping(value="wishInsert.do", method=RequestMethod.POST)
 	public String wishInsert(Wish wish, Model m) throws Exception {
 		m.addAttribute("success", wishS.wishInsert(wish));
-		return "";
+		return "1";
 	}
 	
 	// delete
@@ -56,11 +56,13 @@ public class WishController {
 	@RequestMapping(value="wishList.do", method=RequestMethod.GET)
 	public ModelAndView wishList(@RequestParam(value="category", defaultValue="") String category , 
 			@RequestParam(value="onsale", defaultValue="") String onsale ,  
-			@RequestParam(value="post_title", defaultValue="") String post_title ,Principal principal, ModelAndView mv) throws Exception {
+			@RequestParam(value="post_title", defaultValue="") String post_title , 
+			@RequestParam(value="address", defaultValue="") String address
+			,Principal principal, ModelAndView mv) throws Exception {
 		
 		String get_id= principal.getName();
 		
-		List<Board> boardList = boardService.selectList(category, onsale, post_title);
+		List<Board> boardList = boardService.selectList(category, onsale, post_title, address);
 		List<Wish> wishList = wishS.wishList(get_id);
 		
 		mv.addObject("wishList", wishList);

@@ -169,6 +169,7 @@
 		  				success : function(data){
 		  					if(data = "1") {
 		  						alert("관심품목에서 삭제하였습니다.");
+		                    	window.location.href="wishList.do";
 		  					} else {
 		  						alert("관심품목 삭제를 실패했습니다.")
 		  					}
