@@ -7,7 +7,7 @@ public class Payment {
 
 		private int paymentSeq;
 		private String paymentStatus;
-		private String paymetnMethod;
+		private String paymentMethod;
 		private int price; 
 		private Date paymtDate;
 		private int mshipGrade;
@@ -26,10 +26,10 @@ public class Payment {
 			this.paymentStatus = paymentStatus;
 		}
 		public String getPaymetnMethod() {
-			return paymetnMethod;
+			return paymentMethod;
 		}
 		public void setPaymetnMethod(String paymetnMethod) {
-			this.paymetnMethod = paymetnMethod;
+			this.paymentMethod = paymetnMethod;
 		}
 		public int getPrice() {
 			return price;
