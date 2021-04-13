@@ -1,6 +1,6 @@
  # 💜 이웃의 솜씨 💜 
 :triangular_flag_on_post: **과정명:  KH정보교육원 : [NCS] 디지털컨버전스 융합 응용SW 개발자 양성과정**   
-:triangular_flag_on_post: **프로젝트 기간: 2020년 10월 20일 - 2021년 04월 12일**
+:triangular_flag_on_post: **프로젝트 기간: 2021년 03월 08일 - 2021년 04월 12일**
 
 <br>
 
