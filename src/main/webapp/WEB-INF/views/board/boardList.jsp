@@ -150,7 +150,7 @@ $(function(){
 			</c:forEach>
 		</ul>
 	</div>
-	<div id="dd">
+	<div id="morePage">
 	</div>
 </div>
 <button type="button" id="more" class="btn btn-default">더보기</button>
@@ -210,7 +210,15 @@ var more = -1;
 				   	addListHtml += "</ul>";	
 				}
 					addListHtml += "</div>";
-				 $("#dd").append(addListHtml);
+					
+					
+				if(data.list.length>=1){
+					
+				 $("#morePage").append(addListHtml);
+				}else {
+					alert("다음게시글이 없습니다.");
+				}
+				
 				
 			},
 		    error: function (request,status,errorData){   
