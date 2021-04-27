@@ -107,7 +107,7 @@ public class MemberController {
 		return obj.toJSONString();
 	}
 		
-	// 닉네임 중복체크
+	//닉네임 중복체크
 	@ResponseBody
 	@RequestMapping(value="checkNiDup.do", method=RequestMethod.POST)
 	public String checkNiDup(String nickname) throws Exception {
@@ -139,25 +139,20 @@ public class MemberController {
 	      return mv; 
 	}
 		
-	// 이은지
-	// 본인 확인
+	//by은지, 본인 확인페이지
 	@ResponseBody
 	@RequestMapping(value="myInfoCon.do", method=RequestMethod.POST)
 	public String myInfoConView(@RequestBody String paramData, Principal principal) throws Exception{
 		
-		//입력한 비밀번호값 , principal id값
+		//by은지, 입력한 비밀번호값 
 		String inputPw = paramData.trim();
-		String id = principal.getName();
 		
-		//디비에서 회원 비밀번호 가져오기
+		//by은지, 디비에서 회원 비밀번호 가져오기
+		String id = principal.getName(); //-> 로그인된사용자 id
 		String encodedPw = memberService.pwMatch(id);
-		System.out.println(encodedPw);
 		
-		//String encodedPw="$2a$10$IxumPio6f7GpHUCO66v65ObFuhz1TphF.2JHnxb0Ffy.2yhKCmglq";
-		
-		//입력한 비밀번와 일치하는지 match후  return
+		//by은지, 입력한 비밀번와 일치하는지 match -> true또는 false로 결과값 return
 		return String.valueOf(pwdEncoder.matches(inputPw,  encodedPw));
-		
 	}
 	
 	//내 댓글 보기 다중 삭제
@@ -181,7 +176,7 @@ public class MemberController {
 //		return "template/index";
 //	}
 
-	// 회원정보 수정
+	//by은지, 회원정보 수정
 	@RequestMapping(value="myInfoUp.do", method=RequestMethod.POST)
 	public ModelAndView updateMember(Member member, ModelAndView mv)throws Exception{
 			String inputPw = member.getPassword();
@@ -194,12 +189,12 @@ public class MemberController {
 			return mv;
 	}
 	
-	// 회원정보 수정 - >닉네임 중복체크 (본인제외)
+	//by은지, 회원정보 수정 - >닉네임 중복체크 (본인제외)
 	@ResponseBody //응답
 	@RequestMapping(value="nickCheck.do", method=RequestMethod.POST)
 	public String nickCheck(@RequestBody String paramData, Principal principal) throws Exception {
 		
-		// 입력한 nickname, 로그인한 id값 vo에 저장 
+		//by은지, 입력한 nickname · 로그인한 id값 vo에 저장 
 		Member member = new Member();
 		
 		member.setNickname(paramData.trim());
@@ -209,50 +204,50 @@ public class MemberController {
 		return cnt+"";
 	}
 	
-	// 회원정보 수정-> 이메일인증
-		@ResponseBody //응답
-		@RequestMapping(value="sendEmail.do", method=RequestMethod.POST)
-		public String SendMail(String mail) {
-			
-			JSONObject js= new JSONObject();
-			Random random = new Random();
-			String key = "";
+	//by은지, 회원정보 수정-> 이메일인증
+	@ResponseBody //응답
+	@RequestMapping(value="sendEmail.do", method=RequestMethod.POST)
+	public String SendMail(String mail) {
+		
+		JSONObject js= new JSONObject();
+		Random random = new Random();
+		String key = "";
+		SimpleMailMessage message = new SimpleMailMessage();
+		message.setTo(mail); // 스크립트에서 보낸 메일을 받을 사용자 이메일 주소
 
-			SimpleMailMessage message = new SimpleMailMessage();
-			message.setTo(mail); // 스크립트에서 보낸 메일을 받을 사용자 이메일 주소
-			// 입력 키를 위한 코드
-			for (int i = 0; i < 3; i++) {
-				int index = random.nextInt(25) + 65; // A~Z까지 랜덤 알파벳 생성
-				key += (char) index;
-			}
-			int numIndex = random.nextInt(8999) + 1000; // 4자리 정수를 생성
-			
-			key += numIndex;
-			message.setSubject("인증번호 입력을 위한 메일 전송");
-			message.setText("인증 번호 : " + key);
-			mailSender.send(message);
-			js.put("key", key);
-			return js.toJSONString();
+		// 입력 키를 위한 코드
+		for (int i = 0; i < 3; i++) {
+			int index = random.nextInt(25) + 65; // A~Z까지 랜덤 알파벳 생성
+			key += (char) index;
+		}
+		int numIndex = random.nextInt(8999) + 1000; // 4자리 정수를 생성
+		
+		key += numIndex;
+		message.setSubject("인증번호 입력을 위한 메일 전송");
+		message.setText("인증 번호 : " + key);
+		mailSender.send(message);
+		js.put("key", key);
+		
+		return js.toJSONString();
 	}
 	
-		// 회원탈퇴 (세션도끊어주기)
-		@ResponseBody
-		@RequestMapping(value="secession.do", method=RequestMethod.POST)
-		public String deleteMember(@RequestBody String paramData)throws Exception{
-			String id = paramData.trim();
-			int cnt = memberService.deleteMember(id);
-			System.out.println("결과"+cnt);
-			
-			if(cnt == -1) {
-				//★ 스프링 시큐리티 탈퇴 시 로그아웃 처리가 됨
-				SecurityContextHolder.clearContext();
-			}
-			else {
-
-			}
+	//by은지, 회원탈퇴
+	@ResponseBody
+	@RequestMapping(value="secession.do", method=RequestMethod.POST)
+	public String deleteMember(@RequestBody String paramData)throws Exception{
+		String id = paramData.trim();
+		int cnt = memberService.deleteMember(id);
+		System.out.println("결과"+cnt);
 		
-			return cnt+"";
+		if(cnt == -1) {
+			//by은지, ★ 스프링 시큐리티 탈퇴 시 로그아웃 처리가 됨
+			SecurityContextHolder.clearContext();
 		}
+		else {
+			}
+	
+		return cnt+"";
+	}
 	
 	// 비밀번호 찾기 -> 아이디/이메일 인증후 변경페이지로
 	@RequestMapping(value="pwFind.do", method=RequestMethod.POST)

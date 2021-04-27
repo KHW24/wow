@@ -39,7 +39,7 @@ public class BoardController {
 	@Autowired
 	WishService wishS;
 	
-	//게시물 리스트 페이지
+	// by은지, 게시글 리스트 페이지
 	@RequestMapping(value="boardList.do", method=RequestMethod.GET)
 	public String boardListView(@RequestParam(value="category", defaultValue="") String category , 
 			@RequestParam(value="onsale", defaultValue="") String onsale ,  
@@ -51,77 +51,74 @@ public class BoardController {
 		post_title = post_title.trim();
 		address = address.trim();
 		
-		//address.replaceAll("%26", "&");
-				
-		
-		//List<Board> boardList = boardService.selectList(category, onsale, post_title);
-		
+		//by은지, 게시글리스트
 		List<Board> boardList = boardService.selectList(category, onsale, post_title, address);
 		List<Board> boardListAD = boardService.selectListAD(0);	
-		//랜덤추출
+		
+		//by은지, 멤버십회원 게시글 랜덤추출
 		Collections.shuffle(boardListAD);
 
 		List<Wish> wishList = wishS.wishHeart();
 //		System.out.println(wishList.size());
 //		System.out.println(wishList.size());
-//		System.out.println(wishList.size());
+//		System.out.println(wishList.size());														
 		
 		model.addAttribute("wishList", wishList);
+		
 		model.addAttribute("list", boardList);
 		model.addAttribute("listAD", boardListAD);
 		model.addAttribute("center","../board/boardList.jsp");
 		return "template/index";
 	}
 	
-	//게시물 리스트 페이지 - ajax(post)
-		@ResponseBody
-		@RequestMapping(value="boardList.do", method=RequestMethod.POST)
-		public String boardListMore(String category, String onsale, String post_title,String more, Model model) throws Exception{
+	//by은지, 게시글 리스트 페이지(더보기페이징) - ajax
+	@ResponseBody
+	@RequestMapping(value="boardList.do", method=RequestMethod.POST)
+	public String boardListMore(String category, String onsale, String post_title,String more, Model model) throws Exception{
+		category = category.trim();
+		onsale = onsale.trim();
+		post_title = post_title.trim();
 
-			category = category.trim();
-			onsale = onsale.trim();
-			post_title = post_title.trim();
+		int page = Integer.parseInt(more);
 
-			int page = Integer.parseInt(more);
-
-			List<Board> boardListMore = boardService.selectListMore(page, category, onsale, post_title);
+		List<Board> boardListMore = boardService.selectListMore(page, category, onsale, post_title);
 			
-			//전송용 최종 json객체
-			JSONObject sendJson = new JSONObject();
-			
-			//JSONArray 객체를 생성하여 JSONObject 객체를 하나씩 담는다
-			JSONArray jarr = new JSONArray();
-			
+		//by은지, 전송용 최종 json객체
+		JSONObject sendJson = new JSONObject();
+	
+		//by은지, JSONArray 객체를 생성하여 JSONObject 객체를 하나씩 담는다
+		JSONArray jarr = new JSONArray();
+		
 
-			SimpleDateFormat sf = new SimpleDateFormat("MM-dd");
-			//list를 jarr에 저장처리
-			for (Board board : boardListMore) {
-				//board 정보 저장할 json객체 선언
-				JSONObject jboard = new JSONObject();
-				jboard.put("post_code",board.getPost_code());
-				jboard.put("post_no",board.getPost_no());
+		SimpleDateFormat sf = new SimpleDateFormat("MM-dd");
+		//by은지, list를 jarr에 저장처리
+		for (Board board : boardListMore) {
+			//by은지, board 정보 저장할 json객체 선언
+			JSONObject jboard = new JSONObject();
+			jboard.put("post_code",board.getPost_code());
+			jboard.put("post_no",board.getPost_no());
+			
+			//by은지, 인코딩 (인코딩후 디코딩시 공백 +로 표시되는 문제 해결)
+			String title = URLEncoder.encode(board.getPost_title(),"UTF-8");
+			title = title.replaceAll("\\+", "%20");
+			String address = URLEncoder.encode(board.getPost_address(),"UTF-8");
+			address = address.replaceAll("\\+", "%20");
 				
-				//인코딩 (인코딩후 디코딩시 공백 +로 표시되는 문제 해결)
-				String title = URLEncoder.encode(board.getPost_title(),"UTF-8");
-				title = title.replaceAll("\\+", "%20");
-				String address = URLEncoder.encode(board.getPost_address(),"UTF-8");
-				address = address.replaceAll("\\+", "%20");
-					
-				jboard.put("post_title", title);
-				jboard.put("post_address",address);
-				jboard.put("post_date",sf.format(board.getPost_date()));
-				jboard.put("post_price",board.getPost_price());
-				jboard.put("rename_filename",board.getRename_filename());
+			jboard.put("post_title", title);
+			jboard.put("post_address",address);
+			jboard.put("post_date",sf.format(board.getPost_date()));
+			jboard.put("post_price",board.getPost_price()); 
+			jboard.put("rename_filename",board.getRename_filename());
 
-				jarr.add(jboard);
-			}
+			jarr.add(jboard);
+		}
 			
-			//전송할 객체 배열을 JSONObject에 담아 한번에 처리한다.
+			//by은지, 전송할 객체 배열을 JSONObject에 담아 한번에 처리한다.
 			sendJson.put("list", jarr);
 			return sendJson.toJSONString();
 		}
 	
-	// 자세한페이지(판매자)
+	//by은지, 자세한페이지(판매자)
 	@RequestMapping(value="postSellerView.do", method=RequestMethod.GET)
 	public String postSellerView(@RequestParam("no") int no, Model model) throws Exception{
 		Board board= boardService.selectPage(no);
@@ -135,23 +132,22 @@ public class BoardController {
 		return "template/index";
 	}
 	
-	// 글등록- GET
+	//by은지, 글등록- GET
 	@RequestMapping(value="postWrite.do", method=RequestMethod.GET)
 	public String postWriteView(Model model) throws Exception{
 		model.addAttribute("center","../board/post/salesPost.jsp");
 		return "template/index";
 	}
 	
-	// 글등록- POST
+	//by은지, 글등록- POST
 	@RequestMapping(value="postWrite.do", method=RequestMethod.POST)  
 	public ModelAndView postWrite(MultipartHttpServletRequest request, HttpServletRequest path_, ModelAndView mv, Board board) throws Exception {
 		
 		MultipartFile file = request.getFile("file");
-		//MultipartFile file = board.getMfile();
 		
 		String originalName = file.getOriginalFilename();
 		
-		//uuid로 새로운 파일명 
+		//by은지, uuid로 새로운 파일명 
 		UUID uid = UUID.randomUUID();
 		String rename = uid.toString() + "_" + originalName;
 		
@@ -159,22 +155,21 @@ public class BoardController {
 		
 		File f = new File(path);
 		
-		//파일저장
+		//by은지, 파일저장
 		file.transferTo(f);
 		
-		//board vo에 파일저장
+		//by은지, board vo에 파일저장
 		board.setOriginal_filename(originalName);
 		board.setRename_filename(rename);
 		board.setFile_path(path);
 
 	boardService.insertBoard(board);
-	//boardService.insertFile(image);
-	
+
 	mv.setViewName("redirect:boardList.do");
 	return mv;
 	}
 	
-	// 글수정 - GET
+	//by은지, 글수정 - GET
 	@RequestMapping(value="postUpdate.do", method=RequestMethod.GET)
 	public String postUpdateView(@RequestParam("no") int no, Model model) throws Exception{
 		
@@ -185,7 +180,7 @@ public class BoardController {
 		return "template/index";
 	}
 	
-	// 글수정 - POST
+	//by은지, 글수정 - POST
 	@RequestMapping(value="postUpdate.do", method=RequestMethod.POST)
 	public ModelAndView postUpdate(Board board, ModelAndView mv) throws Exception{
 		
@@ -194,7 +189,7 @@ public class BoardController {
 		return mv;
 	}
 	
-	// 글삭제 - GET
+	//by은지, 글삭제 - GET
 	@ResponseBody
 	@RequestMapping (value="postDelete.do", method=RequestMethod.GET)
 	public ModelAndView postDelete(@RequestParam("no") int no, ModelAndView mv) throws Exception{
@@ -212,7 +207,7 @@ public class BoardController {
 		return "success";
 	}
 	
-	// 판매중, 판매완료
+	//by은지, 판매중/판매완료 ajax 수정
 	@ResponseBody
 	@RequestMapping(value="onSaleUp.do", method=RequestMethod.POST)
 	public int update_YN(@RequestParam("no") int no, String onSaleUp)throws Exception{

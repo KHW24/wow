@@ -132,9 +132,9 @@
 
  <!-- Category -->
 <div class="container-fluid bg-3 text-center">
-  <h3 class="margin"><b>멤버쉽 회원 관리</b></h3>
+  <h3 class="margin"><b>멤버십 회원 관리</b></h3>
   <br>
-  <a href="membership.do" class="btn btn-default btn-lg">멤버쉽 회원 관리<br>
+  <a href="membership.do" class="btn btn-default btn-lg">멤버십 회원 관리<br>
   </a>
   <a href="report.do" class="btn btn-default btn-lg">신고 회원 관리<br>
   </a>
@@ -148,8 +148,8 @@
     <th> 전체선택 <input id ="allAdminMs"  type="checkbox" name="allCheck"></th>
     <th>No.</th>
     <th>ID</th>
-    <th>멤버쉽 등급</th>
-    <th>멤버쉽 기간</th>
+    <th>멤버십 등급</th>
+    <th>멤버십 기간</th>
     <th>쪽지 전송</th>
   </tr>
     <c:if test="${listCount != 0}">

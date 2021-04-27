@@ -540,19 +540,16 @@
 			});
 					
 		});
-	
 	</script>
 	
 <script>
-// 판매중, 판매완료
-
+//by은지, 판매중/판매완료 수정 - ajax
 $(function () { $("#onSaleUp").change(function(){
 	var header = "${_csrf.headerName}"; 
     var token = "${_csrf.token}";
 		 $(document).ajaxSend(function(e,xhr, options){
         xhr.setRequestHeader(header, token); 
-      });
-		 
+      });		 
 	var onSaleUp = $("#onSaleUp option:selected").val();
 	alert(onSaleUp);
 		$.ajax({
@@ -563,8 +560,7 @@ $(function () { $("#onSaleUp").change(function(){
 			success: function(data){
 				if(data == 1){
 					alert("판매상태가 변경되었습니다");
-				}
-				
+				}			
 			},
 		    error: function (request,status,errorData){   
 		    	alert('error code: '+request.status+"\n"
@@ -572,11 +568,8 @@ $(function () { $("#onSaleUp").change(function(){
 		    			+ 'error :'+  errorData);
 		    }
 		});
-	
 	});
 });
-
-
 </script>
 
 
